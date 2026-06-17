@@ -164,21 +164,130 @@ function BgStack({ plain }) {
 function Reticles() {
   return (<div className="c-reticles"><span className="r tl"></span><span className="r tr"></span><span className="r bl"></span><span className="r br"></span></div>);
 }
+// Shared header — same logo + nav + Portfolio mega-menu as every other page.
+// Defined here (not loaded from src/Header.jsx) because the contact app's Babel
+// scripts only share scope within their own set.
+const CT_NAV_R = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
+const CT_PORTFOLIO_MEGA = [
+  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png", items: [
+    { label: "Festival & Narrative Projects", href: "portfolio/films-festival-narrative.html" },
+    { label: "Commercial Clients", href: "portfolio/films-commercial-clients.html" },
+    { label: "Featured Experimental & Music Video Work", href: "portfolio/films-experimental-music-video.html" },
+    { label: "Tedflix - Viewing Experience", href: "portfolio/films-tedflix.html" },
+    { label: "The Library - Full Archive of Ted's Videos", href: "portfolio/films-library.html" },
+    { label: "Original Scripts & IP", href: "portfolio/films-scripts-ip.html" },
+  ]},
+  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png", items: [
+    { label: "Portraits", href: "portfolio/photography-portraits.html" },
+    { label: "Headshots", href: "portfolio/photography-headshots.html" },
+    { label: "Stock Photography", href: "portfolio/photography-stock.html" },
+    { label: "Advertisements", href: "portfolio/photography-advertisements.html" },
+    { label: "VFX Composites / Commercial", href: "portfolio/photography-vfx-composites.html" },
+    { label: "Wizard Light Painting", href: "portfolio/photography-wizard-light-painting.html" },
+    { label: "Events", href: "portfolio/photography-events.html" },
+    { label: "Weddings", href: "portfolio/photography-weddings.html" },
+    { label: "Experimental and Abstract", href: "portfolio/photography-experimental-abstract.html" },
+  ]},
+  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png", items: [
+    { label: "TedDrops & Mastercodes DJ Sets", href: "portfolio/music-teddrops-mastercodes.html" },
+    { label: "Original Music", href: "portfolio/music-original.html" },
+  ]},
+  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png", items: [
+    { label: "The Book of Ignorance", href: "portfolio/literature-book-of-ignorance.html" },
+    { label: "Poetry", href: "portfolio/literature-poetry.html" },
+    { label: "Articles", href: "portfolio/literature-articles.html" },
+    { label: "TedThoughts Tweets / Epiphanies", href: "portfolio/literature-tedthoughts.html" },
+    { label: "Worldbuilding", href: "portfolio/literature-worldbuilding.html" },
+  ]},
+];
+const CT_MEGA = { Portfolio: CT_PORTFOLIO_MEGA };
+
+function CtHdrCaret() {
+  return (
+    <svg className="tk-caret" viewBox="0 0 24 24" width="16" height="16" fill="none"
+         stroke="currentColor" strokeWidth="2.6" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+function CtMegaPanel() {
+  return (
+    <div className="tk-dropdown tk-mega">
+      <div className="tk-mega__grid">
+        {CT_PORTFOLIO_MEGA.map((cat) => (
+          <div className="tk-cat" key={cat.label}>
+            <a className="tk-cat__card" href={cat.href}>
+              <img src={CT_NAV_R(cat.res, cat.img)} alt={cat.label} />
+              <span className="tk-cat__title">{cat.label}</span>
+            </a>
+            <div className="tk-cat__list">
+              {cat.items.map((s) => (<a key={s.label} href={s.href}>{s.label}</a>))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Header({ active = "Contact" }) {
   const items = ["About", "Portfolio", "Work With Ted", "Contact"];
   const HREFS = {
+    Home: "index.html",
     About: "About.html",
     Portfolio: "Portfolio.html",
     "Work With Ted": "work-with-ted.html",
     Contact: "contact.html",
   };
+  const [open, setOpen] = React.useState(false);
+  const logoSrc = CT_NAV_R("logo", "assets/logo.png");
+
   return (
-    <header className="c-header">
-      <a className="c-brand" href="index.html"><img src={LOGO} alt="Ted Saunders"/></a>
-      <ul className="c-nav">
-        {items.map((l) => (<li key={l}><a className={l === active ? "is-active" : ""} href={l === active ? "#" : (HREFS[l] || "#")}>{l}</a></li>))}
+    <header className="tk-header">
+      <a className="tk-brand" href={HREFS.Home}>
+        <img className="logo" src={logoSrc} alt="Ted Saunders" />
+      </a>
+
+      <ul className="tk-nav">
+        {items.map((label) => {
+          const mega = CT_MEGA[label];
+          return (
+            <li key={label} className={mega ? "tk-has-sub" : ""}>
+              <a className={active === label ? "is-active" : ""}
+                 href={active === label ? "#" : (HREFS[label] || "#")}>
+                {label}{mega ? <CtHdrCaret/> : null}
+              </a>
+              {mega ? <CtMegaPanel/> : null}
+            </li>
+          );
+        })}
       </ul>
-      <a className="c-cta-explore" href="index.html">Explore the Work</a>
+
+      <button className="tk-menu-toggle" aria-label="Open menu" onClick={() => setOpen(true)}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" /></svg>
+      </button>
+
+      <div className={"tk-mobile-menu" + (open ? " is-open" : "")}>
+        <button className="close" aria-label="Close menu" onClick={() => setOpen(false)}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
+        </button>
+        {items.map((label) => (
+          <React.Fragment key={label}>
+            <a className={active === label ? "is-active" : ""} href={HREFS[label] || "#"} onClick={() => setOpen(false)}>{label}</a>
+            {CT_MEGA[label] ? (
+              <div className="tk-mobile-sub">
+                {CT_MEGA[label].map((cat) => (
+                  <React.Fragment key={cat.label}>
+                    <a href={cat.href} className="tk-mobile-cat" onClick={() => setOpen(false)}>{cat.label}</a>
+                    {cat.items.map((s) => (<a key={s.label} href={s.href} className="tk-mobile-subitem" onClick={() => setOpen(false)}>{s.label}</a>))}
+                  </React.Fragment>
+                ))}
+              </div>
+            ) : null}
+          </React.Fragment>
+        ))}
+        <a className="tk-mobile-cta" href="index.html" onClick={() => setOpen(false)}>EXPLORE THE WORK</a>
+      </div>
     </header>
   );
 }
@@ -234,6 +343,22 @@ function AdaptiveForm({ inquiry, setInquiry, selectMode = "chips", showDesc = fa
       ) : null}
 
       <div className="c-formfields">
+        {(q.id === "general" || q.id === "film" || q.id === "coaching") ? (
+          <div className="c-field" style={{ marginBottom: 26 }}>
+            <label className="c-label">Inquiry Type</label>
+            <div className="c-selectwrap">
+              <select className="c-input c-iselect" defaultValue="" required>
+                <option value="" disabled>Select inquiry type…</option>
+                <option value="brands">Brands</option>
+                <option value="individuals">Individuals</option>
+                {q.id === "general" ? <option value="investors">Investors</option> : null}
+              </select>
+              <span className="c-select__chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </div>
+          </div>
+        ) : null}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 26 }}>
           <div className="c-field"><label className="c-label">Name</label>
             <input className="c-input" type="text" placeholder="Your name" required/></div>

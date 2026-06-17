@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700&family=Sacramento&display=swap");
+@import url("nav.css");
 @font-face{font-family:"Cinzel";font-weight:400 900;font-style:normal;font-display:swap;src:url("../fonts/Cinzel-VariableFont_wght.ttf") format("truetype");}
 @font-face{font-family:"Castoro";font-weight:400;font-style:normal;font-display:swap;src:url("../fonts/Castoro-Regular.ttf") format("truetype");}
 @font-face{font-family:"Castoro";font-weight:400;font-style:italic;font-display:swap;src:url("../fonts/Castoro-Italic.ttf") format("truetype");}
@@ -490,37 +491,8 @@ html, body {
 .tk-hero__reticles .bl { top:  920px; left:  226px; border-bottom: 2px solid #fff; border-left: 2px solid #fff; }
 .tk-hero__reticles .br { top:  920px; right: 226px; border-bottom: 2px solid #fff; border-right: 2px solid #fff; }
 
-/* ----- HEADER (top strip) ----- */
-.tk-header {
-  position: relative; z-index: 4;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 32px 64px 0 64px;
-  gap: 40px;
-}
-.tk-brand {
-  display: flex; align-items: center;
-  text-decoration: none; cursor: pointer;
-}
-.tk-brand .logo {
-  height: 80px; width: auto; display: block;
-  filter: drop-shadow(0 1px 12px rgba(232,170,101,0.18));
-}
-.tk-nav {
-  display: flex; gap: 72px; list-style: none; margin: 0; padding: 0;
-}
-.tk-nav a {
-  font-family: var(--font-sans);
-  font-weight: 400; font-size: 20px; line-height: 1;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  text-decoration: none; color: #fff;
-  transition: opacity .25s ease;
-}
-.tk-nav a:hover { opacity: 0.6; }
-.tk-nav a.is-active {
-  background: var(--grad-bronze);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-}
+/* ----- HEADER + NAV + Portfolio mega-menu ----- moved to src/nav.css
+   (single source, @imported at the top of this file). ----- */
 
 /* ----- CENTER STACK ----- */
 .tk-hero__center {

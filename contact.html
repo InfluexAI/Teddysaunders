@@ -10,8 +10,26 @@
   <meta name="ext-resource-dependency" content="assets/teddy-hero.jpg" data-resource-id="teddyhero" />
   <meta name="ext-resource-dependency" content="assets/logomark.png" data-resource-id="logomark" />
   <meta name="ext-resource-dependency" content="assets/heading-texture.jpg" data-resource-id="headingTexture" />
+  <meta name="ext-resource-dependency" content="assets/footer-scene.jpg" data-resource-id="footerScene" />
+  <meta name="ext-resource-dependency" content="assets/logo-mark.png" data-resource-id="logoMark" />
+  <meta name="ext-resource-dependency" content="assets/nav/films.png" data-resource-id="navFilms" />
+  <meta name="ext-resource-dependency" content="assets/nav/photography.png" data-resource-id="navPhotography" />
+  <meta name="ext-resource-dependency" content="assets/nav/music.png" data-resource-id="navMusic" />
+  <meta name="ext-resource-dependency" content="assets/nav/literature.png" data-resource-id="navLiterature" />
+
+  <script>
+    window.__resources = Object.assign({
+      footerScene: "assets/footer-scene.jpg",
+      logoMark: "assets/logo-mark.png",
+      navFilms: "assets/nav/films.png",
+      navPhotography: "assets/nav/photography.png",
+      navMusic: "assets/nav/music.png",
+      navLiterature: "assets/nav/literature.png",
+    }, window.__resources || {});
+  </script>
 
   <link rel="stylesheet" href="colors_and_type.css">
+  <link rel="stylesheet" href="src/nav.css">
   <link rel="stylesheet" href="contact.css">
 
   <style>
@@ -52,6 +70,7 @@
   <div id="root"></div>
 
   <script type="text/babel" src="contact-core.jsx"></script>
+  <script type="text/babel" src="src/Footer.jsx"></script>
   <script type="text/babel" src="direction-c.jsx"></script>
   <script type="text/babel" src="direction-d.jsx"></script>
   <script type="text/babel" src="app-v2.jsx"></script>
