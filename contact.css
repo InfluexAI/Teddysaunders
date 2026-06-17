@@ -131,14 +131,15 @@ body.v2-standalone .c-hero .c-reticles .tr, body.v2-standalone .c-hero .c-reticl
   gap: 32px;
 }
 .c-brand { display: flex; align-items: center; text-decoration: none; }
-.c-brand img { height: 80px; width: auto; display: block;
+.c-brand img { height: 4.1667vw; width: auto; display: block;
   filter: drop-shadow(0 1px 12px rgba(232,170,101,0.18)); }
 body.v2-standalone .c-brand img { height: 4.17vw; }
 
-/* Header CTA — matches the homepage turquoise “EXPLORE THE WORK” button */
-.c-cta-explore { display: none; }
+/* Header CTA removed — the homepage header is logo + nav only (no desktop button). */
+.c-cta-explore { display: none !important; }
 body.v2-standalone .c-cta-explore {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: none !important;
+  align-items: center; justify-content: center;
   font-family: var(--font-sans); font-weight: 700; font-size: 1.0417vw;
   letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
   color: #fff; text-decoration: none; border: 0; cursor: pointer;
@@ -148,9 +149,9 @@ body.v2-standalone .c-cta-explore {
 }
 body.v2-standalone .c-cta-explore:hover { filter: brightness(1.06); }
 body.v2-standalone .c-cta-explore:active { transform: scale(0.97); }
-.c-nav { display: flex; gap: 72px; list-style: none; margin: 0; padding: 0; }
+.c-nav { display: flex; gap: 3.75vw; list-style: none; margin: 0; padding: 0; }
 .c-nav a {
-  font-family: var(--font-sans); font-weight: 400; font-size: 20px; line-height: 1;
+  font-family: var(--font-sans); font-weight: 400; font-size: 1.0417vw; line-height: 1;
   letter-spacing: 0.06em; text-transform: uppercase; color: #fff;
   text-decoration: none; opacity: 1; transition: opacity .25s ease;
 }

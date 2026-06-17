@@ -24,11 +24,11 @@
 /* Header sits transparent over the hero */
 .work-page .tk-header {
   position: absolute; top: 0; left: 0; right: 0; z-index: 30;
-  padding: 28px clamp(24px, 4vw, 72px) 0; background: transparent;
+  padding: 1.667vw 3.333vw 0; background: transparent;
 }
-.work-page .tk-brand .logo { height: clamp(46px, 4vw, 64px); }
-.work-page .tk-nav { gap: clamp(28px, 3vw, 56px); }
-.work-page .tk-nav a { font-size: clamp(13px, 1vw, 16px); }
+.work-page .tk-brand .logo { height: 4.1667vw; }
+.work-page .tk-nav { gap: 3.75vw; }
+.work-page .tk-nav a { font-size: 1.0417vw; }
 .work-page .tk-header .tk-btn { font-size: clamp(12px, 0.9vw, 15px); height: 50px; padding: 0 24px; }
 
 /* drifting gold dust used across sections */

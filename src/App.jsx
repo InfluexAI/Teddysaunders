@@ -65,7 +65,7 @@ function useStageScale(designWidth = 1920) {
 }
 
 function App() {
-  const [active, setActive] = useState("Portfolio");
+  const [active, setActive] = useState("Home");
   const [events, setEvents] = useState([]);
   const { wrapRef, stageRef } = useStageScale(1920);
   const { wrapRef: wrap2Ref, stageRef: stage2Ref } = useStageScale(1920);
