@@ -153,7 +153,7 @@ function LpBanner({ img, eyebrow, title, blurb, side, compass }) {
 
 /* ============ THE BOOK OF IGNORANCE ============ */
 const BOOK_CHAPTERS = [
-  { no: "01", title: "On Not Knowing",      line: "Why the first act of wisdom is to lay down the weight of certainty.", img: "film1", file: "assets/film/photo-1.jpg" },
+  { no: "01", title: "Truth… Saftey… Compassion… Relationships…",      line: "Why the first act of wisdom is to lay down the weight of certainty.", img: "film1", file: "assets/film/photo-1.jpg" },
   { no: "02", title: "The Unfinished Wall", line: "Leaving a door in every belief, so the weather of truth can pass through.", img: "film2", file: "assets/film/photo-2.jpg" },
   { no: "03", title: "Wonder",              line: "To meet the world as if for the first time, and the thousandth.", img: "film3", file: "assets/film/photo-3.jpg" },
   { no: "04", title: "Humility",            line: "The wisest sentence I know still ends in a question.", img: "film4", file: "assets/film/photo-4.jpg" },
@@ -182,7 +182,6 @@ function BookOfIgnorance({ virtues, bg, onCta }) {
               <div className="lp-chapter__no" aria-hidden="true">{c.no}</div>
               <div className="lp-chapter__tag">Chapter {c.no}</div>
               <h3 className="lp-chapter__title">{c.title}</h3>
-              <p className="lp-chapter__line">{c.line}</p>
               <span className="lp-chapter__read">Read<span aria-hidden="true">→</span></span>
             </div>
           </div>
@@ -271,8 +270,33 @@ function EssaysSection({ essays, onOpen }) {
 
 /* ============ TEDTHOUGHTS ============ */
 const TT_DATES = ["5/21", "5/20", "5/18", "5/15", "5/12", "5/09", "5/06", "5/02", "4/28", "4/24", "4/19", "4/15"];
-function TedThoughts({ thoughts, onCta }) {
+// Full poem text for the reader popup, keyed by card index. Index 0 is written out;
+// others fall back to their card line until full versions are supplied.
+const TT_POEM_FULL = {
+  0: [
+    "One second shots of moments.\nCelebrating, laughing, talking, hugging.",
+    "Did you catch that?\nThose were moments created from decisions that took a split second of action.",
+    "You see our minds think fast. And one little smile or hello can change your entire destiny.",
+    "Like right now. I could do this. Or this. Or this. It's all up to me.",
+    "Because we. Are each a miracle. An individual. With the power to shift.",
+  ],
+};
+function TedThoughts({ thoughts, lyrics, onCta }) {
   const ref = useLpReveal();
+  const [mode, setMode] = useLsState("poem");
+  const [openIdx, setOpenIdx] = useLsState(null);
+  const items = mode === "lyrics" ? (lyrics || []) : thoughts;
+  const label = mode === "lyrics" ? "Lyrics" : "Poem";
+  const openParas = openIdx === null ? null : (TT_POEM_FULL[openIdx] || [items[openIdx]]);
+  // lock body scroll + close on Escape while the reader is open
+  useLsEffect(() => {
+    if (openIdx === null) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") setOpenIdx(null); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [openIdx]);
   return (
     <section className="lp-sec lp-sec--thoughts lp-grain" id="tedthoughts" data-screen-label="TedThoughts" ref={ref}>
       <div className="lp-env"><div className="lp-env__veil" /></div>
@@ -282,17 +306,42 @@ function TedThoughts({ thoughts, onCta }) {
         eyebrow="Epiphanies · Thought Sparks"
         title="TedThoughts"
         blurb={<span>Short philosophical fragments — aphorisms caught mid-flight. Scattered, discovered, alive.</span>} />
-      <LpRow par="0.035">
-        {thoughts.map((t, i) => (
-          <div className="lp-tt" key={i}>
-            <span className="lp-tt__date">{TT_DATES[i % TT_DATES.length]}</span>
-            <p className="lp-tt__quote">{t}</p>
-          </div>
-        ))}
-      </LpRow>
+      <div className="lp-ttwrap">
+        <div className="lp-ttfilter" role="tablist" aria-label="Choose category">
+          <button type="button" role="tab" aria-selected={mode === "poem"}
+            className={"lp-ttfilter__btn" + (mode === "poem" ? " is-on" : "")}
+            onClick={() => setMode("poem")}>Poems</button>
+          <button type="button" role="tab" aria-selected={mode === "lyrics"}
+            className={"lp-ttfilter__btn" + (mode === "lyrics" ? " is-on" : "")}
+            onClick={() => setMode("lyrics")}>Lyrics</button>
+        </div>
+        <LpRow par="0.035">
+          {items.map((t, i) => (
+            <div className="lp-tt" key={mode + i}>
+              <span className="lp-tt__date">{label.toUpperCase()}</span>
+              <p className="lp-tt__quote">{t}</p>
+              <button type="button" className="lp-tt__view"
+                onClick={() => setOpenIdx(i)}>View {label}<span className="arr">→</span></button>
+            </div>
+          ))}
+        </LpRow>
+      </div>
       <div className="lp-ttcta lp-reveal">
         <button className="lp-cta lp-cta--gold" onClick={onCta}>Follow TedThoughts<span className="arr">→</span></button>
       </div>
+
+      {openIdx !== null ? ReactDOM.createPortal(
+        <div className="lp-pmodal" role="dialog" aria-modal="true" aria-label={label} onClick={() => setOpenIdx(null)}>
+          <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={() => setOpenIdx(null)}>×</button>
+          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
+            <div className="lp-pmodal__inner">
+              <span className="lp-pmodal__kicker">{label}</span>
+              <div className="lp-pmodal__body">
+                {openParas.map((p, i) => (<p key={i}>{p}</p>))}
+              </div>
+            </div>
+          </div>
+        </div>, document.body) : null}
     </section>
   );
 }

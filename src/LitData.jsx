@@ -70,10 +70,10 @@
 
   // ---- TedThoughts — aphorisms, scattered fragments ----
   const THOUGHTS = [
-    "The opposite of faith is not doubt. It's certainty.",
-    "You don't find your voice. You stop apologizing for it.",
-    "Every map is a confession about what the cartographer was afraid to leave out.",
-    "Healing is just grief that learned to walk.",
+    "One second shots of moments. Celebrating, laughing, talking, hugging.",
+    "Sometimes when I'm feeling stressed\nI remind myself, just do your best",
+    "Carlos castineda - the art of Dreaming",
+    "Damn. Life is but a sham.\nSaid the lamb. To the wolf.",
     "We are stories that became aware of themselves and got nervous.",
     "The future is not a place we go. It's a decision we keep almost making.",
     "Beauty is the universe remembering it has a witness.",
@@ -82,6 +82,22 @@
     "You will never be more alive than the moment you admit you don't know.",
     "The soul keeps no appointments. It only keeps returning.",
     "Make the thing. The thing makes you back.",
+  ];
+
+  // ---- TedLyrics — song fragments, sung lines ----
+  const LYRICS = [
+    "This is a story about some sorcerers living on this planet knowing…",
+    "We were lightning in a borrowed coat, two sparks the dark could not hold.",
+    "Sing me the road I never took, the one that still remembers my feet.",
+    "Every ending is a chorus we were too afraid to repeat.",
+    "I traded all my certainties for one true, trembling note.",
+    "Carry me home on a melody, where the silence learned to sing.",
+    "The heart is a drum that keeps no time but its own.",
+    "We danced until the morning broke its promise to the dark.",
+    "Love is the only verse I keep forgetting how to end.",
+    "Let the river take the words I couldn't say out loud.",
+    "Strike the match, let the chorus catch — we burn the brightest live.",
+    "Some songs aren't written. They're survived.",
   ];
 
   // ---- Worldbuilding — a drawer of unfinished universes ----
@@ -109,5 +125,5 @@
       note: "A man who cannot see faces falls in love with the shape of a presence." },
   ];
 
-  window.LIT_DATA = { VIRTUES, POEMS, ESSAYS, THOUGHTS, WORLDS, PAST_FILMS, FUTURE_FILMS };
+  window.LIT_DATA = { VIRTUES, POEMS, ESSAYS, THOUGHTS, LYRICS, WORLDS, PAST_FILMS, FUTURE_FILMS };
 })();
