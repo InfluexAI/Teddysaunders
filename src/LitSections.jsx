@@ -280,6 +280,40 @@ const TT_POEM_FULL = {
     "Like right now. I could do this. Or this. Or this. It's all up to me.",
     "Because we. Are each a miracle. An individual. With the power to shift.",
   ],
+  1: [
+    "Sometimes when I'm feeling stressed\nI remind myself, just do your best\nFor best is all that one can do\nAnd there's no need for feeling blue.",
+    "And when you feel you have no time\nRemind yourself, it's in your mind\nFor time is just a silly thing\nThat humans made to measure lines.",
+  ],
+  2: [
+    "Carlos castineda - the art of Dreaming",
+    "There once was a mother unique as can be\nBecause she's the mother who gave birth to me.\nIf it wasn't for her, I'd be but a blur\nSo I'm thankful for the time she spent raising we.",
+    "My sister and I, are the people we are,\nBecause of my mother commitment thus far,\nShe nurtured us well,\nAnd gave us hell.\nBut mostly when blasting the bass from my car.",
+    "So thank you mom. For being the bomb. For singing us songs and keeping us calm.\nFor trusting that we would be safe when we play.\nFor teaching us things and showing the way.",
+    "Thank you for craftfully cooking us meals and thank you for truth in keeping us real.\nWithout you dearest mom, we wouldn't be us. Never making a fuss because we have trust.",
+    "I wish I could see you more offten these days,\nbut I'm glad that you let me explore life's great maze.\nI love you dearest mom\nSo here is a poem\nTo show you how proud that I am to say...",
+    "My mom is the best. I wouldn't change a hair. She's perfect and beautiful and smart and she cares.\nSo cheers to you boo.\nThe mom that's so coo.\nI hope that you know how much we love you.",
+  ],
+  3: [
+    "Damn. Life is but a sham.\nSaid the lamb. To the wolf.\nIn sheeps clothing.\n\u201cBut why the loathing?\u201d\nSaid the wolf.",
+  ],
+};
+// Full lyric text for the reader popup, keyed by lyrics-card index.
+const TT_LYRIC_FULL = {
+  0: [
+    "This is a story about some sorcerers living on this planet knowing that their force of words aren't given granted because everything do and say are spells casted powerful to change our destinay.",
+    "So shoot the magic out your fingertips, out your hips, out your lips knowing it's a gift\nto up lift every person, every moment lived, around you; to be the party for those feeling blue.",
+    "What I'm saying is that there is nothing you can't do; with this magic that you have deep inside of you. Any moment you can choose to be the light you spread. Even if alone and feeling trapped inside your head.",
+    "Cause sorceress know that hexes are a state of mind. And enchantments can effect you in a wink of time. But knowing YOU are the one who is the wizard here. How about you make an aura for those far and near.",
+    "CHORUS:\nCause we are we are the magic and it feels so right.\nWe are we are the magic and we spread that light.\nX2",
+    "This second verse is about the curse: Knowing that we are the same yet have different brains.\nBecause you and I yes we both are one consciousness; experiencing itself from two different rifts.",
+    "But knowing we're the same light\nmakes it hella tight--the same source of course, sharing the same force.\nConnected deeper than we'll ever really know. With His life effected strongly from Her clever flow.",
+    "The power's in our hands to be each others glee. Perhaps by droppin' pants or bouncin' round with your titties--to make a smile that we both enjoy for miles. That's why we're here together in this super sexy pile.",
+    "So thank you for what you contribute.\nFor sharing things and speaking up when your typically mute. And for your magic that we hardly ever see. To me this magic is what makes us all Resourcery.",
+    "CHORUS:\nCause we are we are the magic and it feels so right.\nWe are we are the magic and we spread that light.\nX2",
+    "you The sparkle pony or the sincere hug to",
+    "smoke a Spliff get it lit and uplift to the fifth d. Mention to infinity. Cause you and me together we write the story if the destiny they didn't see. Coming disruptive original in every way, created from the games we played, on these grounds we made, and this trust we must",
+    "Cause we are, we are the magic and it feels so right.\nWe are we are the magic,\nCause these stars theses stars inside us make us shine so bright.",
+  ],
 };
 function TedThoughts({ thoughts, lyrics, onCta }) {
   const ref = useLpReveal();
@@ -287,7 +321,7 @@ function TedThoughts({ thoughts, lyrics, onCta }) {
   const [openIdx, setOpenIdx] = useLsState(null);
   const items = mode === "lyrics" ? (lyrics || []) : thoughts;
   const label = mode === "lyrics" ? "Lyrics" : "Poem";
-  const openParas = openIdx === null ? null : (TT_POEM_FULL[openIdx] || [items[openIdx]]);
+  const openParas = openIdx === null ? null : ((mode === "lyrics" ? TT_LYRIC_FULL : TT_POEM_FULL)[openIdx] || [items[openIdx]]);
   // lock body scroll + close on Escape while the reader is open
   useLsEffect(() => {
     if (openIdx === null) return;

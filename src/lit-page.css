@@ -452,13 +452,16 @@
   display: flex; align-items: center; justify-content: center;
   animation: lpPmodalPop .35s cubic-bezier(.16,1,.3,1); }
 @keyframes lpPmodalPop { from { opacity: 0; transform: translateY(20px) scale(.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.lp-pmodal__inner { width: 100%; text-align: center; }
+.lp-pmodal__inner { width: 100%; text-align: center; max-height: 400px; overflow-y: auto; }
+.lp-pmodal__inner::-webkit-scrollbar { width: 8px; }
+.lp-pmodal__inner::-webkit-scrollbar-thumb { background: rgba(107,63,23,0.4); border-radius: 4px; }
+.lp-pmodal__inner::-webkit-scrollbar-track { background: transparent; }
 .lp-pmodal__kicker {
   display: block; font-family: var(--font-sans); font-weight: 700; font-size: 12px;
-  letter-spacing: 0.34em; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+  letter-spacing: 0.34em; text-transform: uppercase; color: #000; margin-bottom: 20px; }
 .lp-pmodal__body p {
   font-family: var(--font-serif); font-style: italic; font-size: clamp(17px, 1.5vw, 22px);
-  line-height: 1.5; color: #fff; margin: 0 0 14px; text-wrap: pretty; white-space: pre-line; }
+  line-height: 1.5; color: #000; margin: 0 0 14px; text-wrap: pretty; white-space: pre-line; }
 .lp-pmodal__body p:last-child { margin-bottom: 0; }
 .lp-pmodal__x {
   position: fixed; top: 24px; right: 24px; z-index: 2;
