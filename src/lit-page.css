@@ -133,9 +133,10 @@
 .lp-cta:active { transform: scale(0.98); }
 .lp-cta .arr { font-size: 18px; color: #E8B777; transition: transform .35s; }
 .lp-cta:hover .arr { transform: translateX(5px); }
-.lp-cta--gold { border: none; color: #1a1208; background: var(--lp-peach); font-weight: 700; }
-.lp-cta--gold .arr { color: #5a3a16; }
-.lp-cta--gold:hover { filter: brightness(1.06); }
+.lp-cta--gold { border: 1px solid rgba(209,157,99,0.8); color: #1a1208; background: var(--lp-peach); font-weight: 700; }
+.lp-cta--gold .arr { color: #5a3a16; transition: transform .35s, color .35s; }
+.lp-cta--gold:hover { background: rgba(0,0,0,0.85); color: #E8B777; border-color: rgba(232,183,119,0.95); }
+.lp-cta--gold:hover .arr { color: #E8B777; }
 
 /* ============================================================
  *  SECTION SCAFFOLD
@@ -405,6 +406,17 @@
 /* Parchment thought cards — light bg, dark serif quotes, laid out in a horizontal row */
 .lp-sec--thoughts .lp-row, .lp-sec--poetry .lp-row { margin-top: 52px; }
 .lp-sec--thoughts .lp-row__view, .lp-sec--poetry .lp-row__view { overflow-x: clip; overflow-y: visible; }
+/* Left-edge black vignette — sits above cards, keeps category labels legible on scroll */
+.lp-sec--thoughts .lp-row::before, .lp-sec--poetry .lp-row::before {
+  content: ""; pointer-events: none;
+  position: absolute; left: 0; top: 0; bottom: 0; width: 220px;
+  background: linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0) 100%);
+  z-index: 4; }
+.lp-sec--thoughts .lp-row::after, .lp-sec--poetry .lp-row::after {
+  content: ""; pointer-events: none;
+  position: absolute; right: 0; top: 0; bottom: 0; width: 120px;
+  background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+  z-index: 4; }
 .lp-tt { flex: 0 0 auto; width: 540px; min-height: 300px; cursor: default; position: relative;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
   text-align: center; padding: 90px 96px 90px;
