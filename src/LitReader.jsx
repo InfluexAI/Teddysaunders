@@ -58,9 +58,9 @@ function PoetryReader({ poems, index, onClose, onIndex }) {
 
       <div className="lp-reader__stage">
         <div className={"lp-reader__page" + (fading ? " is-fading" : "")}>
-          {p.no ? <div className="lp-reader__no">{p.no}</div> : null}
-          {p.tag ? <div className="lp-reader__tag">{p.tag}</div> : null}
-          {p.title ? <h2 className="lp-reader__title lp-title-fill">{p.title}</h2> : null}
+          <div className="lp-reader__no">{p.no}</div>
+          <div className="lp-reader__tag">{p.tag}</div>
+          <h2 className="lp-reader__title lp-title-fill">{p.title}</h2>
           <div className="lp-reader__lines">
             {p.lines.map((ln, i) => <span className="ln" key={i}>{ln || "\u00A0"}</span>)}
           </div>
