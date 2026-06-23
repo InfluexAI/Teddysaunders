@@ -199,13 +199,14 @@ function LitPageApp() {
 
             <div className="lp-body-bg">
               <BookOfIgnorance virtues={D.VIRTUES} bg={AR("bookOfIgnorance", "assets/book-of-ignorance.jpg")} onCta={() => fire("The Book of Ignorance — joined the waitlist")} />
-              <PoetryRow thoughts={D.THOUGHTS} lyrics={D.LYRICS} />
+              <PoetryRow poems={D.POEMS} onOpen={(i) => setPoem(i)} />
               <EssaysSection essays={D.ESSAYS} onOpen={(title) => fire(`Open: ${title}`)} />
-              <TedThoughts poems={D.POEMS} onOpen={(i) => setPoem(i)} onCta={() => fire("Following TedThoughts")} />
+              <TedThoughts thoughts={D.THOUGHTS} lyrics={D.LYRICS} onCta={() => fire("Following TedThoughts")} />
               <Worldbuilding worlds={D.WORLDS} bg={AR("worldBg", "assets/worldbuilding-bg.jpg")} onOpen={(title) => fire(`Enter world: ${title}`)} />
 
               <section className="lp-excerpt" data-screen-label="Closing Quote"
                 style={{ background: "url(" + AR("excerptBg", "assets/excerpt-bg.png") + ") right center / cover no-repeat" }}>
+                <span className="lp-excerpt__label">Featured Excerpt</span>
                 <span className="lp-excerpt__mark" aria-hidden="true">&ldquo;</span>
                 <blockquote className="lp-excerpt__q">
                   &ldquo;No matter what I say, it can&rsquo;t possibly be true. So I have permission to say everything.&rdquo;
