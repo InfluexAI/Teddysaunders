@@ -153,10 +153,10 @@ function LpBanner({ img, eyebrow, title, blurb, side, compass }) {
 
 /* ============ THE BOOK OF IGNORANCE ============ */
 const BOOK_CHAPTERS = [
-  { no: "01", title: "Truth… Saftey… Compassion… Relationships…",      line: "Why the first act of wisdom is to lay down the weight of certainty.", img: "film1", file: "assets/film/photo-1.jpg" },
-  { no: "02", title: "The Unfinished Wall", line: "Leaving a door in every belief, so the weather of truth can pass through.", img: "film2", file: "assets/film/photo-2.jpg" },
-  { no: "03", title: "Wonder",              line: "To meet the world as if for the first time, and the thousandth.", img: "film3", file: "assets/film/photo-3.jpg" },
-  { no: "04", title: "Humility",            line: "The wisest sentence I know still ends in a question.", img: "film4", file: "assets/film/photo-4.jpg" },
+  { no: "01", title: "Truth",        line: "Why the first act of wisdom is to lay down the weight of certainty.", img: "film1", file: "assets/film/photo-1.jpg" },
+  { no: "02", title: "Safety",       line: "Leaving a door in every belief, so the weather of truth can pass through.", img: "film2", file: "assets/film/photo-2.jpg" },
+  { no: "03", title: "Compassion",   line: "To meet the world as if for the first time, and the thousandth.", img: "film3", file: "assets/film/photo-3.jpg" },
+  { no: "04", title: "Relationships", line: "The wisest sentence I know still ends in a question.", img: "film4", file: "assets/film/photo-4.jpg" },
   { no: "05", title: "Surrender",           line: "Not defeat — the art of letting the river carry what you cannot.", img: "film5", file: "assets/film/photo-5.jpg" },
   { no: "06", title: "Presence",            line: "The only country I have never been exiled from is now.", img: "film6", file: "assets/film/photo-6.jpg" },
   { no: "07", title: "Devotion",            line: "To return, and return, to the thing that asks everything of you.", img: "film7", file: "assets/film/photo-7.jpg" },
@@ -194,9 +194,23 @@ function BookOfIgnorance({ virtues, bg, onCta }) {
   );
 }
 
-/* ============ POETRY ============ */
-function PoetryRow({ poems, onOpen }) {
+/* ============ POETRY — scroll cards + Poems/Lyrics categories ============ */
+function PoetryRow({ thoughts, lyrics }) {
   const ref = useLpReveal();
+  const [mode, setMode] = useLsState("poem");
+  const [openIdx, setOpenIdx] = useLsState(null);
+  const items = mode === "lyrics" ? (lyrics || []) : (thoughts || []);
+  const label = mode === "lyrics" ? "Lyrics" : "Poem";
+  const openParas = openIdx === null ? null : ((mode === "lyrics" ? TT_LYRIC_FULL : TT_POEM_FULL)[openIdx] || [items[openIdx]]);
+  // lock body scroll + close on Escape while the reader is open
+  useLsEffect(() => {
+    if (openIdx === null) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") setOpenIdx(null); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [openIdx]);
   return (
     <section className="lp-sec lp-sec--poetry" id="poetry" data-screen-label="Poetry" ref={ref}>
       <div className="lp-seam-top" />
@@ -205,20 +219,37 @@ function PoetryRow({ poems, onOpen }) {
         eyebrow="Sixteen Pages · Fullscreen Reading"
         title="Poetry"
         blurb={<span>Fragments of meaning written down before they disappeared. Pull one from the desk — it opens into a quiet, fullscreen room built for a single poem.</span>} />
-      <LpRow par="0.04">
-        {poems.map((p, i) => (
-          <div className="lp-poem" key={i} onClick={() => onOpen(i)} role="button" tabIndex={0}
-            onKeyDown={(e) => { if (e.key === "Enter") onOpen(i); }}>
-            <div className="lp-poem__no">{p.no}</div>
-            <h3 className="lp-poem__title">{p.title}</h3>
-            <p className="lp-poem__excerpt">{(p.lines.filter(Boolean).slice(0, 3)).join(" / ")}</p>
-            <div className="lp-poem__foot">
-              <span className="lp-poem__tag">{p.tag}</span>
-              <span className="lp-poem__read">Read<span aria-hidden="true">→</span></span>
+      <div className="lp-ttwrap">
+        <div className="lp-ttfilter" role="tablist" aria-label="Choose category">
+          <button type="button" role="tab" aria-selected={mode === "poem"}
+            className={"lp-ttfilter__btn" + (mode === "poem" ? " is-on" : "")}
+            onClick={() => setMode("poem")}>Poems</button>
+          <button type="button" role="tab" aria-selected={mode === "lyrics"}
+            className={"lp-ttfilter__btn" + (mode === "lyrics" ? " is-on" : "")}
+            onClick={() => setMode("lyrics")}>Lyrics</button>
+        </div>
+        <LpRow par="0.04">
+          {items.map((t, i) => (
+            <div className="lp-tt" key={mode + i}>
+              <p className="lp-tt__quote">{t}</p>
+              <button type="button" className="lp-tt__view"
+                onClick={() => setOpenIdx(i)}>View {label}<span className="arr">→</span></button>
+            </div>
+          ))}
+        </LpRow>
+      </div>
+
+      {openIdx !== null ? ReactDOM.createPortal(
+        <div className="lp-pmodal" role="dialog" aria-modal="true" aria-label={label} onClick={() => setOpenIdx(null)}>
+          <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={() => setOpenIdx(null)}>×</button>
+          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
+            <div className="lp-pmodal__inner">
+              <div className="lp-pmodal__body">
+                {openParas.map((p, i) => (<p key={i}>{p}</p>))}
+              </div>
             </div>
           </div>
-        ))}
-      </LpRow>
+        </div>, document.body) : null}
     </section>
   );
 }
@@ -246,20 +277,12 @@ function EssaysSection({ essays, onOpen }) {
           return (
             <div className="lp-essay lp-reveal" key={i} onClick={() => onOpen(e.title)} role="button" tabIndex={0}
               onKeyDown={(ev) => { if (ev.key === "Enter") onOpen(e.title); }}>
+              {e.img && <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(e.imgKey || '', e.img)})`}} />}
               <div className="lp-essay__meta">
                 <h3 className="lp-essay__title">{e.title}</h3>
                 <div className="lp-essay__date">{e.date}</div>
               </div>
-              <span className="lp-essay__quill" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none">
-                  <path d="M40 8C29 11 19 20 15 31l3.5 3.5C29 30 38 20 41 9z" fill="rgba(232,183,119,0.16)" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-                  <path d="M16 31c3-6 8-11 15-15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
-                  <path d="M15 31l-4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                  <path d="M9 40c1.6-2 3-3.4 5-5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                  <path d="M27 38c2.5 1.2 6 1 8.5-1.2 2.6-2.3 3-5.6 2-8.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                  <ellipse cx="33.5" cy="40.5" rx="6.5" ry="2.4" fill="currentColor" opacity="0.18" />
-                </svg>
-              </span>
+
             </div>
           );
         })}
@@ -315,22 +338,8 @@ const TT_LYRIC_FULL = {
     "Cause we are, we are the magic and it feels so right.\nWe are we are the magic,\nCause these stars theses stars inside us make us shine so bright.",
   ],
 };
-function TedThoughts({ thoughts, lyrics, onCta }) {
+function TedThoughts({ poems, onOpen, onCta }) {
   const ref = useLpReveal();
-  const [mode, setMode] = useLsState("poem");
-  const [openIdx, setOpenIdx] = useLsState(null);
-  const items = mode === "lyrics" ? (lyrics || []) : thoughts;
-  const label = mode === "lyrics" ? "Lyrics" : "Poem";
-  const openParas = openIdx === null ? null : ((mode === "lyrics" ? TT_LYRIC_FULL : TT_POEM_FULL)[openIdx] || [items[openIdx]]);
-  // lock body scroll + close on Escape while the reader is open
-  useLsEffect(() => {
-    if (openIdx === null) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e) => { if (e.key === "Escape") setOpenIdx(null); };
-    window.addEventListener("keydown", onKey);
-    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
-  }, [openIdx]);
   return (
     <section className="lp-sec lp-sec--thoughts lp-grain" id="tedthoughts" data-screen-label="TedThoughts" ref={ref}>
       <div className="lp-env"><div className="lp-env__veil" /></div>
@@ -340,42 +349,21 @@ function TedThoughts({ thoughts, lyrics, onCta }) {
         eyebrow="Epiphanies · Thought Sparks"
         title="TedThoughts"
         blurb={<span>Short philosophical fragments — aphorisms caught mid-flight. Scattered, discovered, alive.</span>} />
-      <div className="lp-ttwrap">
-        <div className="lp-ttfilter" role="tablist" aria-label="Choose category">
-          <button type="button" role="tab" aria-selected={mode === "poem"}
-            className={"lp-ttfilter__btn" + (mode === "poem" ? " is-on" : "")}
-            onClick={() => setMode("poem")}>Poems</button>
-          <button type="button" role="tab" aria-selected={mode === "lyrics"}
-            className={"lp-ttfilter__btn" + (mode === "lyrics" ? " is-on" : "")}
-            onClick={() => setMode("lyrics")}>Lyrics</button>
-        </div>
-        <LpRow par="0.035">
-          {items.map((t, i) => (
-            <div className="lp-tt" key={mode + i}>
-              <span className="lp-tt__date">{label.toUpperCase()}</span>
-              <p className="lp-tt__quote">{t}</p>
-              <button type="button" className="lp-tt__view"
-                onClick={() => setOpenIdx(i)}>View {label}<span className="arr">→</span></button>
+      <LpRow par="0.04">
+        {(poems || []).map((p, i) => (
+          <div className="lp-tc" key={i} onClick={() => onOpen(i)} role="button" tabIndex={0}
+            onKeyDown={(e) => { if (e.key === "Enter") onOpen(i); }}>
+            <p className="lp-tc__excerpt">{(() => { const words = p.lines.join(" ").split(/\s+/); return words.slice(0, 16).join(" ") + (words.length > 16 ? "…" : ""); })()}</p>
+            <div className="lp-tc__foot">
+              <span className="lp-tc__date">5/18/2026</span>
+              <span className="lp-tc__read">Read<span aria-hidden="true">→</span></span>
             </div>
-          ))}
-        </LpRow>
-      </div>
+          </div>
+        ))}
+      </LpRow>
       <div className="lp-ttcta lp-reveal">
         <button className="lp-cta lp-cta--gold" onClick={onCta}>Follow TedThoughts<span className="arr">→</span></button>
       </div>
-
-      {openIdx !== null ? ReactDOM.createPortal(
-        <div className="lp-pmodal" role="dialog" aria-modal="true" aria-label={label} onClick={() => setOpenIdx(null)}>
-          <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={() => setOpenIdx(null)}>×</button>
-          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
-            <div className="lp-pmodal__inner">
-              <span className="lp-pmodal__kicker">{label}</span>
-              <div className="lp-pmodal__body">
-                {openParas.map((p, i) => (<p key={i}>{p}</p>))}
-              </div>
-            </div>
-          </div>
-        </div>, document.body) : null}
     </section>
   );
 }
