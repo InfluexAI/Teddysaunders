@@ -5,6 +5,21 @@
   <title>Ted Saunders — Literature &amp; Philosophy · A Cinematic Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Page lives one folder deep (portfolio/). Compute the real site root from the
+       URL and set <base> before any asset loads — robust on Vercel whether the page
+       is served as /portfolio/literature.html, /portfolio/literature, or .../literature/
+       (a static href="../" breaks under clean-URL / trailing-slash serving). -->
+  <script>
+    (function () {
+      var p = location.pathname;
+      var i = p.indexOf('/portfolio/');
+      var root = i >= 0 ? p.slice(0, i + 1) : '/';
+      var b = document.createElement('base');
+      b.href = location.origin + root;
+      document.head.insertBefore(b, document.head.firstChild);
+    })();
+  </script>
+
   <!-- Offline-bundle resource dependencies (referenced as strings in JSX). -->
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
   <meta name="ext-resource-dependency" content="assets/footer-scene.jpg" data-resource-id="footerScene" />
@@ -14,7 +29,7 @@
   <meta name="ext-resource-dependency" content="assets/essays-bg.jpg" data-resource-id="essaysBg" />
   <meta name="ext-resource-dependency" content="assets/worldbuilding-bg.jpg" data-resource-id="worldBg" />
   <meta name="ext-resource-dependency" content="assets/tedthoughts-bg.jpg" data-resource-id="thoughtsBg" />
-  <meta name="ext-resource-dependency" content="assets/heroes/literature-macro.jpg" data-resource-id="heroPhil" />
+  <meta name="ext-resource-dependency" content="assets/heroes/philosopher-c.jpg" data-resource-id="heroPhil" />
   <meta name="ext-resource-dependency" content="assets/book-of-ignorance.jpg" data-resource-id="bookOfIgnorance" />
   <meta name="ext-resource-dependency" content="assets/cosmic-bg-c.jpg" data-resource-id="cosmicBg" />
   <meta name="ext-resource-dependency" content="assets/ted-cinematic-c.jpg" data-resource-id="tedCinematic" />
@@ -74,7 +89,7 @@
       essaysBg:        "assets/essays-bg.jpg",
       worldBg:         "assets/worldbuilding-bg.jpg",
       thoughtsBg:      "assets/tedthoughts-bg.jpg",
-      heroPhil:        "assets/heroes/literature-macro.jpg",
+      heroPhil:        "assets/heroes/philosopher-c.jpg",
       bookOfIgnorance: "assets/book-of-ignorance.jpg",
       cosmicBg:        "assets/cosmic-bg.png",
       tedCinematic:    "assets/ted-cinematic.jpg",
