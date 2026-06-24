@@ -29,7 +29,7 @@ function frPoster(title, i) {
     <text x='44' y='720' font-family='ui-monospace, monospace' font-size='17' letter-spacing='2' fill='rgba(209,157,99,0.55)'>CONCEPT ART</text>
     <text x='44' y='748' font-family='ui-monospace, monospace' font-size='14' letter-spacing='1' fill='rgba(255,234,202,0.30)'>${title.toUpperCase()}</text>
   </svg>`;
-  return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+  return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
 function FocusRail({ items, initialIndex = 0, loop = true, header = null, controlledActive = null, onStep = null, controlsCta = null, arrows = false }) {

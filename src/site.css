@@ -399,6 +399,23 @@
 html, body {
   margin: 0; padding: 0;
   background: #000;
+
+/* ---- Global cursor spotlight ---- */
+/* A subtle warm gold radial follows the cursor everywhere on the page.
+   The vars --glow-x / --glow-y / --glow-xp are set on <html> by OriginalIP's
+   pointermove listener (fires once, lives for the whole session). */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  background: radial-gradient(
+    600px 600px at calc(var(--glow-x, -9999) * 1px) calc(var(--glow-y, -9999) * 1px),
+    rgba(201, 162, 75, 0.055) 0%,
+    rgba(201, 162, 75, 0.018) 38%,
+    transparent 70%
+  );
+  transition: background 0.08s linear;
+}
   color: var(--fg);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -820,8 +837,8 @@ html, body {
 
 .tk-figure {
   position: absolute;
-  left: 0; top: 0;
-  width: 1920px;
+  left: -40px; top: 0;
+  width: 1240px;
   height: 100%;          /* spans the full director row */
   z-index: 1;
   overflow: hidden;
@@ -845,7 +862,7 @@ html, body {
   display: block;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 18% 22%;
+  object-position: 50% 42%;
   pointer-events: none;
 }
 
@@ -981,6 +998,24 @@ html, body {
 }
 .tk-stage.is-mobile .tk-tedivider--logo { gap: 18px; }
 .tk-stage.is-mobile .tk-tedivider--logo .tk-tedflix { height: 52px; }
+
+/* Per-category wordmark lockup — echoes the TEDFLIX logo (heavy gold + 3D
+   extrude) for the non-film archive categories (TedShots / TedDrops / …). */
+.tk-tedivider--logo .tk-tedword {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(50px, 8vh, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #FCD877 0%, #F3B23A 50%, #E4961C 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  transform: scaleX(0.92);
+  filter: drop-shadow(2px 3px 0 #815015) drop-shadow(4px 5px 0 rgba(0,0,0,0.4));
+}
+.tk-stage.is-mobile .tk-tedivider--logo .tk-tedword { font-size: 44px; }
 
 .tk-section-head {
   display: flex; flex-direction: column; align-items: center; gap: 18px;

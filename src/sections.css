@@ -726,9 +726,6 @@
 .card-sheen { display: none; }
 .cine-card__photo {
   position: relative; align-self: stretch;
-  /* The figure is a sepia cut-out on transparency — multiply it into the
-     parchment so it reads as an ink illustration printed on the page.
-     No hard mask needed; a soft base fade grounds the feet. */
   filter: contrast(1.04) brightness(1.04);
   mix-blend-mode: multiply;
   -webkit-mask: linear-gradient(180deg, #000 84%, transparent 100%);
@@ -736,14 +733,14 @@
 }
 .cine-card__photo img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-  object-position: center bottom; transform-origin: 50% 100%;
+  object-position: right bottom; transform-origin: 100% 100%;
   will-change: transform, opacity, filter;
 }
 .cine-card__photo-veil { display: none; }
 .cine-card__copy {
   position: relative; z-index: 4;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 56px 72px; will-change: transform, opacity;
+  padding: 56px 64px 56px 32px; will-change: transform, opacity;
 }
 /* Warm lamplight pooling on the parchment behind the copy — lifts the
    ink off the page and sells the "magically illuminated manuscript" feel. */
@@ -798,7 +795,7 @@
   /* vw padding (110px @ 1920 = 5.73vw) so the section rhythm matches the
      in-stage sections, which scale with the viewport. */
   padding: 2.4vw 0 5.73vw;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .fscroll-inner {
   width: 100%;
@@ -836,7 +833,7 @@
   display: flex; align-items: center; gap: 14px;
   color: #D9A85C;
 }
-.award__laurel { width: 56px; height: auto; flex-shrink: 0; opacity: 0.92; }
+.award__laurel { height: 64px; width: auto; flex-shrink: 0; opacity: 0.92; }
 .award__body { text-align: center; }
 .award__title {
   font-family: var(--font-display); text-transform: uppercase;
@@ -856,41 +853,82 @@
 .fscroll-header {
   max-width: 1100px; margin: 0 auto 2vw; padding: 0 48px; text-align: center;
   display: flex; flex-direction: column; align-items: center;
+  position: relative; z-index: 4;
   will-change: transform;
 }
 
-/* The 3D card holding the video */
-.fscroll-card {
+/* ---- full-bleed autoplaying reel ---- */
+.fwork-stage {
   position: relative;
-  width: min(1280px, 92vw); margin: 0 auto;
-  border: 4px solid rgba(247,219,160,0.16);
-  background: #160F0A;
-  border-radius: 30px;
-  padding: 14px;
-  box-shadow:
-    0 0 90px rgba(240,196,120,0.22), 0 30px 120px rgba(217,151,51,0.20),
-    0 9px 20px #0000004a, 0 37px 37px #00000042,
-    0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003;
-  will-change: transform;
-  transform-style: preserve-3d;
+  width: 100vw; margin-left: calc(-50vw + 50%);
+  height: min(82vh, 820px);
+  overflow: hidden;
+  /* pull the reel up so its soft top fade tucks under the awards instead of
+     leaving a black gap */
+  margin-top: clamp(-220px, -13vh, -120px);
 }
-/* Soft golden halo bloom behind the video card */
-.fscroll-card::before {
-  content: ""; position: absolute; inset: -8% -6%; z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(60% 60% at 50% 50%, rgba(240,196,120,0.35) 0%, rgba(217,151,51,0.16) 45%, rgba(240,196,120,0) 72%);
-  filter: blur(46px);
-  pointer-events: none;
+.fwork-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.8;
+  /* long, gentle top fade so the reel emerges softly from under the awards;
+     soft fade at the bottom so the CTAs below stay legible */
+  -webkit-mask: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 16%, #000 34%, #000 82%, transparent 100%);
+          mask: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 16%, #000 34%, #000 82%, transparent 100%);
 }
-.fscroll-screen {
-  width: 100%; border-radius: 18px; overflow: hidden; background: #000;
-}
-/* Reset the inherited tk-video max-width so it fills the card screen */
-.fscroll-screen .tk-video {
-  max-width: none; width: 100%; border-radius: 0; box-shadow: none; margin: 0;
+/* extra bottom scrim into the page black */
+.fwork-fade {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background:
+    linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 80%, #000 100%);
 }
 
-/* Testimonials + CTA, sitting directly below the video card */
+/* ---- rising YouTube reviews ---- */
+.fwork-reviews {
+  position: absolute; inset: 0; z-index: 4; overflow: hidden; pointer-events: none;
+}
+.fwork-review {
+  position: absolute; bottom: 0;
+  height: auto; border-radius: 12px;
+  opacity: 0;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.96);
+  padding: 4px;
+  animation-name: fworkReviewFly;
+  animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+@keyframes fworkReviewFly {
+  0%   { transform: translateY(8%); opacity: 0; }
+  10%  { opacity: 0.97; }
+  46%  { opacity: 0.97; }
+  100% { transform: translateY(calc(-1 * var(--rise, 44vh))); opacity: 0; }
+}
+
+/* ---- centered play button ---- */
+.fwork-play {
+  position: absolute; left: 50%; top: 46%; z-index: 6;
+  transform: translate(-50%, -50%);
+  width: 108px; height: 108px; border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 40%, rgba(20,15,10,0.55), rgba(10,7,4,0.78));
+  border: 1px solid rgba(247,219,160,0.55);
+  box-shadow: 0 0 40px rgba(240,196,120,0.35), inset 0 1px 2px rgba(255,240,210,0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(2px);
+}
+.fwork-play:hover {
+  transform: translate(-50%, -50%) scale(1.07);
+  box-shadow: 0 0 60px rgba(240,196,120,0.55), inset 0 1px 2px rgba(255,240,210,0.4);
+}
+.fwork-play:active { transform: translate(-50%, -50%) scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .fwork-review { animation: none !important; opacity: 0 !important; }
+}
+
+/* Testimonials + CTA, sitting directly below the reel */
 .fscroll-after {
   width: min(1280px, 92vw); margin: 0 auto;
 }
@@ -933,6 +971,15 @@
     #060402;
 }
 .compass-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+/* Leather-macro photograph bleeding in from the top, fading to black toward
+   the bottom so it melts into the section's dark base. */
+.compass-photo {
+  position: absolute; left: 0; right: 0; top: 0; height: 64%;
+  background: url("../assets/compass-leather-bg.jpg") center 38% / cover no-repeat;
+  opacity: 0.65; filter: brightness(1.15) contrast(1.05);
+  -webkit-mask: linear-gradient(180deg, #000 0%, #000 34%, rgba(0,0,0,0.4) 72%, transparent 100%);
+          mask: linear-gradient(180deg, #000 0%, #000 34%, rgba(0,0,0,0.4) 72%, transparent 100%);
+}
 .compass-vignette {
   position: absolute; inset: 0;
   background:
@@ -964,8 +1011,8 @@
 @keyframes compassDrift { to { background-position: 0 -600px, 0 -700px, 0 -500px, 0 -800px, 0 -650px; } }
 
 .compass-pin {
-  position: relative; min-height: 100vh; overflow: hidden;
-  padding: 48px 0 64px;
+  position: relative; min-height: calc(100vh + 72px); overflow: hidden;
+  padding: 120px 0 64px;
 }
 /* Section heading — centered, sized + spaced so it clears the right-side orrery */
 .compass-header {
@@ -1482,9 +1529,8 @@
 .film-cell {
   flex: 0 0 auto;
   width: 232px; height: 100%;
-  /* Generous top/bottom padding keeps photos in the central brown band,
-     well clear of the perforation rows on each edge. */
-  padding: 40px 12px;
+  /* Tighter top/bottom so images fill more of the strip height. */
+  padding: 26px 18px;
   box-sizing: border-box;
 }
 .film-photo {
@@ -1584,7 +1630,7 @@
 /* ---- Light / gallery variant (concept-art prints framed on warm ivory) ---- */
 .tk-ip--light {
   background:
-    radial-gradient(120% 80% at 50% 0%, #FBF6EC 0%, rgba(241,234,219,0) 55%),
+    url("../assets/ip-lens-bg.jpg") center / cover no-repeat,
     #EFE7D7;
 }
 .tk-ip--light .tk-section-head .eyebrow {
@@ -1709,32 +1755,11 @@
 }
 
 
-/* Cursor-tracking gold spotlight glow-border on the IP cards (hover) */
+/* Cursor-tracking gold spotlight glow-border on the IP cards (hover) — now global, see site.css */
 .ip-world {
   --glow-spot: 240px;
   --glow-hue: calc(36 + (var(--glow-xp, 0.5) * 26));
 }
-.ip-world::before, .ip-world::after {
-  content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none;
-  border-radius: inherit; padding: 2px;
-  background-attachment: fixed; background-repeat: no-repeat;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: 0; transition: opacity 0.4s ease;
-}
-.ip-world::before {
-  background-image: radial-gradient(var(--glow-spot) var(--glow-spot) at
-    calc(var(--glow-x, 0) * 1px) calc(var(--glow-y, 0) * 1px),
-    hsl(var(--glow-hue) 96% 62% / 1) 0%, transparent 72%);
-  filter: brightness(1.5);
-}
-.ip-world::after {
-  background-image: radial-gradient(calc(var(--glow-spot) * 0.55) calc(var(--glow-spot) * 0.55) at
-    calc(var(--glow-x, 0) * 1px) calc(var(--glow-y, 0) * 1px),
-    hsl(44 100% 94% / 1) 0%, transparent 70%);
-}
-.ip-world:hover::before, .ip-world:hover::after { opacity: 1; }
 .ip-world:hover {
   box-shadow: 0 40px 100px -40px rgba(0,0,0,0.9), 0 0 50px rgba(240,196,120,0.18);
 }
