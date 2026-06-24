@@ -49,10 +49,7 @@ function CinematicManifesto({ onCta }) {
         copy.style.filter = `blur(${(1 - rev) * 5}px)`;
       }
       if (photo) {
-        const pr = ss(0.30, 0.66, p);
-        photo.style.transform = `scale(${1.2 - grow * 0.1})`;
         photo.style.opacity = String(ss(0.28, 0.60, p));
-        photo.style.filter = `blur(${(1 - pr) * 7}px)`;
       }
     };
 

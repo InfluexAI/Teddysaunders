@@ -108,6 +108,7 @@ function TestimonialSlider({ title, items }) {
   const go = (n) => { setI((n + N) % N); reset(); };
 
   return (
+    <div className="wk-tband">
     <div className="wk-slider">
       {title && <p className="wk-slider__title">{title}</p>}
       <div className="wk-slider__track">
@@ -133,7 +134,43 @@ function TestimonialSlider({ title, items }) {
         </button>
       </div>
     </div>
+    </div>
   );
 }
 
-Object.assign(window, { useReveal, ArchetypeGlyph, TestimonialSlider });
+// Full-screen section intro: number + eyebrow + title + italic subheader +
+// body on the left, a full-bleed cinematic image on the right (homepage
+// "FILMS" category treatment). `body` and `title` are JSX nodes.
+function WkIntro({ num, eyebrow, title, titleClass, titleStyle, sub, body, imgId, imgPlaceholder, imgSrc, cta }) {
+  return (
+    <div className="wk-intro wk-reveal">
+      <div className="wk-intro__bg">
+        {imgSrc
+          ? <img src={imgSrc} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+          : <image-slot id={imgId} shape="rect" placeholder={imgPlaceholder}></image-slot>
+        }
+      </div>
+      <div className="wk-intro__scrim" aria-hidden="true"></div>
+      <span className="wk-intro__reticle tl" aria-hidden="true"></span>
+      <span className="wk-intro__reticle br" aria-hidden="true"></span>
+      <div className="wk-intro__copy">
+        <div className="wk-intro__copy-inner">
+          <p className="wk-eyebrow">{eyebrow}</p>
+          <h2 className={"wk-intro__title " + (titleClass || "")} style={titleStyle}>{title}</h2>
+          {sub ? <p className="wk-intro__sub">{sub}</p> : null}
+          <div className="wk-intro__body">{body}</div>
+          {cta ? (
+            <div className="wk-cta-row">
+              <button className={"wk-btn " + (cta.variant || "wk-btn--ghost")} onClick={cta.onClick}>
+                {cta.label}
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { useReveal, ArchetypeGlyph, TestimonialSlider, WkIntro });

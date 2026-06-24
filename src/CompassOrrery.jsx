@@ -46,28 +46,9 @@ const COMPASS_NODES = [
 // <img> so swapping in a real still later is a one-line src change per node.
 function compassPreview(key, name, tint, sub) {
   const caption = (sub || "Cinematic Preview").toUpperCase();
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='720' height='460' viewBox='0 0 720 460'>
-    <defs>
-      <radialGradient id='g' cx='38%' cy='32%' r='90%'>
-        <stop offset='0%' stop-color='${tint[0]}'/>
-        <stop offset='62%' stop-color='${tint[1]}'/>
-        <stop offset='100%' stop-color='#0A0703'/>
-      </radialGradient>
-      <linearGradient id='v' x1='0' y1='0' x2='0' y2='1'>
-        <stop offset='55%' stop-color='rgba(0,0,0,0)'/>
-        <stop offset='100%' stop-color='rgba(8,5,2,0.85)'/>
-      </linearGradient>
-      <pattern id='s' width='30' height='30' patternUnits='userSpaceOnUse' patternTransform='rotate(38)'>
-        <line x1='0' y1='0' x2='0' y2='30' stroke='rgba(247,219,160,0.08)' stroke-width='1'/>
-      </pattern>
-    </defs>
-    <rect width='720' height='460' fill='url(#g)'/>
-    <rect width='720' height='460' fill='url(#s)'/>
-    <rect width='720' height='460' fill='url(#v)'/>
-    <text x='40' y='402' font-family='ui-monospace, monospace' font-size='15' letter-spacing='5' fill='rgba(247,219,160,0.6)'>${name}</text>
-    <text x='40' y='428' font-family='ui-monospace, monospace' font-size='12' letter-spacing='3' fill='rgba(255,234,202,0.32)'>${caption}</text>
-  </svg>`;
-  return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+  const [c1, c2] = tint || ["#2A1C10", "#0A0703"];
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='720' height='460' viewBox='0 0 720 460'><rect width='720' height='460' fill='${c2}'/><rect width='720' height='460' fill='${c1}' opacity='0.7'/><rect width='720' height='460' fill='#000000' opacity='0.3'/><text x='40' y='402' font-family='ui-monospace,monospace' font-size='15' letter-spacing='5' fill='#F7DBA0' fill-opacity='0.6'>${name}</text><text x='40' y='428' font-family='ui-monospace,monospace' font-size='12' letter-spacing='3' fill='#FFEACA' fill-opacity='0.32'>${caption}</text></svg>`;
+  return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
 // Per-destination tints (warm brass family, each shifted so every chapter
@@ -184,6 +165,7 @@ function CompassOrrery({ onActivate }) {
   return (
     <section className="tk-compass" ref={rootRef}>
       <div className="compass-bg" aria-hidden="true">
+        <div className="compass-photo" />
         <div className="compass-vignette" />
         <div className="compass-dust" />
       </div>

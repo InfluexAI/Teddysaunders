@@ -111,7 +111,9 @@ function Portfolio({ onExplore }) {
               </div>
               <div className="tk-tedivider tk-tedivider--logo">
                 <div className="rule" />
-                <img className="tk-tedflix" src={(window.__resources && window.__resources.tedflix) || "assets/tedflix-logo.png"} alt="TEDFLIX" />
+                {cat.id === "film"
+                  ? <img className="tk-tedflix" src={(window.__resources && window.__resources.tedflix) || "assets/tedflix-logo.png"} alt="TEDFLIX" />
+                  : <span className="tk-tedword">{ ({ photography: "TedShots", music: "TedDrops", literature: "TedThoughts" })[cat.id] }</span>}
                 <div className="rule" />
               </div>
               <div className="tedflix-tabs" role="tablist" aria-label="Browse the archive">

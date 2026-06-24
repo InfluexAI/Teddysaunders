@@ -8,12 +8,10 @@ const { useRef: useIpRef, useEffect: useIpEffect } = React;
 function OriginalIP({ onExplore, onContact }) {
   const gridRef = useIpRef(null);
   useIpEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
     const onMove = (e) => {
-      grid.style.setProperty("--glow-x", e.clientX.toFixed(1));
-      grid.style.setProperty("--glow-y", e.clientY.toFixed(1));
-      grid.style.setProperty("--glow-xp", (e.clientX / window.innerWidth).toFixed(3));
+      document.documentElement.style.setProperty("--glow-x", e.clientX.toFixed(1));
+      document.documentElement.style.setProperty("--glow-y", e.clientY.toFixed(1));
+      document.documentElement.style.setProperty("--glow-xp", (e.clientX / window.innerWidth).toFixed(3));
     };
     document.addEventListener("pointermove", onMove);
     return () => document.removeEventListener("pointermove", onMove);
@@ -72,12 +70,6 @@ function OriginalIP({ onExplore, onContact }) {
               <p className="ip-world__log">{w.log}</p>
             </div>
 
-            {w.side && <div className="ip-world__side">{w.side}<span className="ip-world__side-t">T &minus; 0</span></div>}
-
-            <div className="ip-world__frag">
-              <div className="frag__label">{w.fragLabel}</div>
-              <div className="frag__quote">{w.frag}</div>
-            </div>
           </article>
         ))}
       </div>

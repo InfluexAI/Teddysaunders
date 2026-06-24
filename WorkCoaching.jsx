@@ -24,37 +24,47 @@ const WK_COACH_TESTIMONIALS = [
   { body: "Half philosopher, half strategist. I left every session clearer than I have ever been.", by: "Personal Coaching Client" },
 ];
 
-function CoachDial() {
-  const rings = [486, 430, 372, 300];
+// Map node positions, in panel-percent (x across, y down). Career N, Relationships W,
+// Health E, Finance S — matching the treasure-map reference.
+const WK_MAP_POS = {
+  king:     { x: 50, y: 13 },  // Career — top
+  lover:    { x: 15, y: 49 },  // Relationships — left
+  warrior:  { x: 85, y: 49 },  // Health — right
+  magician: { x: 50, y: 87 },  // Finance — bottom
+};
+// SVG uses viewBox 0 0 100 75 (4:3); convert panel-percent y → svg y.
+function wkSvgPath(p) {
+  const cx = 50, cy = 37.5, x = p.x, y = p.y * 0.75;
+  const mx = (cx + x) / 2, my = (cy + y) / 2;
+  const dx = x - cx, dy = y - cy, len = Math.hypot(dx, dy) || 1;
+  const off = 5, ox = -dy / len * off, oy = dx / len * off;     // perpendicular bow → winding trail
+  return `M ${cx} ${cy} Q ${mx + ox} ${my + oy} ${x} ${y}`;
+}
+
+// A small brass compass rose for the center of the map.
+function MapCompassRose() {
   return (
-    <svg className="wk-compass__svg" viewBox="0 0 1000 1000" aria-hidden="true">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
       <defs>
-        <linearGradient id="wkBrass" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#9C7B38" /><stop offset="28%" stopColor="#F4D58E" />
-          <stop offset="55%" stopColor="#A9863F" /><stop offset="80%" stopColor="#E8C98A" /><stop offset="100%" stopColor="#6E5226" />
-        </linearGradient>
+        <radialGradient id="wkRoseGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FBE6B8" stopOpacity="0.9" />
+          <stop offset="60%" stopColor="#C9A24B" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#C9A24B" stopOpacity="0" />
+        </radialGradient>
       </defs>
-      <circle cx="500" cy="500" r="486" fill="none" stroke="url(#wkBrass)" strokeWidth="2" opacity="0.85" />
-      <circle cx="500" cy="500" r="454" fill="none" stroke="#3A2C16" strokeWidth="24" opacity="0.5" />
-      {rings.map((r, i) => (
-        <circle key={r} cx="500" cy="500" r={r} fill="none" stroke="url(#wkBrass)" strokeWidth={i === 0 ? 2.2 : 1.1} opacity={0.32 + i * 0.07} />
-      ))}
-      <g opacity="0.5">
-        {Array.from({ length: 72 }).map((_, i) => {
-          const a = (i * 5) * Math.PI / 180, r1 = 372, r2 = i % 3 === 0 ? 352 : 362;
-          return <line key={i} x1={500 + r1 * Math.sin(a)} y1={500 - r1 * Math.cos(a)} x2={500 + r2 * Math.sin(a)} y2={500 - r2 * Math.cos(a)} stroke="#D9B96B" strokeWidth="1" />;
-        })}
-      </g>
-      {/* cardinal spokes */}
-      {[0, 90, 180, 270].map((deg) => {
-        const a = deg * Math.PI / 180;
-        return <line key={deg} x1={500 + 150 * Math.sin(a)} y1={500 - 150 * Math.cos(a)} x2={500 + 430 * Math.sin(a)} y2={500 - 430 * Math.cos(a)} stroke="url(#wkBrass)" strokeWidth="2" opacity="0.5" />;
-      })}
-      {/* compass star */}
-      <path d="M500 150 L520 480 L500 500 L480 480 Z" fill="#E8C98A" opacity="0.85" />
-      <path d="M500 850 L520 520 L500 500 L480 520 Z" fill="#C9A24B" opacity="0.7" />
-      <path d="M150 500 L480 480 L500 500 L480 520 Z" fill="#C9A24B" opacity="0.7" />
-      <path d="M850 500 L520 480 L500 500 L520 520 Z" fill="#E8C98A" opacity="0.85" />
+      <circle cx="50" cy="50" r="46" fill="url(#wkRoseGlow)" />
+      <circle cx="50" cy="50" r="30" fill="none" stroke="#E8C98A" strokeWidth="1.4" opacity="0.85" />
+      <circle cx="50" cy="50" r="24" fill="none" stroke="#C9A24B" strokeWidth="0.7" opacity="0.6" />
+      {/* 8-point star */}
+      <path d="M50 8 L56 44 L50 50 L44 44 Z" fill="#F4D58E" />
+      <path d="M50 92 L56 56 L50 50 L44 56 Z" fill="#C9A24B" />
+      <path d="M8 50 L44 44 L50 50 L44 56 Z" fill="#C9A24B" />
+      <path d="M92 50 L56 44 L50 50 L56 56 Z" fill="#F4D58E" />
+      <path d="M22 22 L47 47 L50 50 L46 46 Z" fill="#D9B96B" opacity="0.8" />
+      <path d="M78 78 L53 53 L50 50 L54 54 Z" fill="#D9B96B" opacity="0.8" />
+      <path d="M78 22 L53 47 L50 50 L54 46 Z" fill="#D9B96B" opacity="0.8" />
+      <path d="M22 78 L47 53 L50 50 L46 54 Z" fill="#D9B96B" opacity="0.8" />
+      <circle cx="50" cy="50" r="5.5" fill="#FBE6B8" />
     </svg>
   );
 }
@@ -83,42 +93,53 @@ function WorkCoaching({ onApply, onActivate }) {
     <section className="wk-sec wk-sec--dark" id="wk-coaching">
       <div className="wk-dust" aria-hidden="true"></div>
       <div className="wk-inner">
-        <div className="wk-head wk-reveal">
-          <p className="wk-eyebrow"><span className="wk-slash">/</span> Compass Coaching — Individuals</p>
-          <h2 className="wk-head__title wk-textured">Mentorship for Modern Men</h2>
-          <p className="wk-head__sub">Full Spectrum transformation for men building meaningful lives.</p>
-          <div className="wk-body">
+        <WkIntro
+          num="01"
+          eyebrow="Compass Coaching — Individuals"
+          title="Mentorship for Modern Men"
+          titleClass="wk-textured"
+          sub="Full Spectrum transformation for men building meaningful lives."
+          imgSrc="assets/pathways/individuals.jpg"
+          imgId="wk-intro-coaching"
+          imgPlaceholder="Ted in mentorship / coaching session"
+          body={<React.Fragment>
             <p>Ted works with filmmakers, creatives, founders, and visionaries navigating identity, creativity, alignment, storytelling, and transformation.</p>
             <p>The work blends philosophy, practical strategy, emotional clarity, and creative direction.</p>
-          </div>
-        </div>
+          </React.Fragment>}
+        />
 
         <div className="wk-coach__grid">
-          {/* the compass */}
-          <div className="wk-compass wk-reveal" role="group" aria-label="Coaching categories compass">
-            <div className="wk-compass__glow" aria-hidden="true"></div>
-            <div className="wk-compass__dial"><CoachDial /></div>
-            <div className="wk-compass__bearings" aria-hidden="true">
-              <span className="wk-bearing wk-bearing--n">N</span>
-              <span className="wk-bearing wk-bearing--e">E</span>
-              <span className="wk-bearing wk-bearing--s">S</span>
-              <span className="wk-bearing wk-bearing--w">W</span>
-            </div>
-            {WK_QUADRANTS.map((q, i) => (
-              <div key={q.key} className={"wk-node wk-node--" + q.pos + (i === active ? " is-active" : "")}
-                   onClick={() => pick(i)} role="button" aria-label={q.cat + " — " + q.arch}>
-                <div className="wk-node__inner">
-                  <div className="wk-node__disc"><ArchetypeGlyph name={q.key} size={42} /></div>
-                  <div className="wk-node__label">{q.cat}</div>
-                  <div className="wk-node__arch">{q.arch}</div>
-                </div>
-              </div>
-            ))}
-            <div className="wk-compass__core">
-              <div className="wk-compass__core-name">Highest<br />Path</div>
-              <div className="wk-compass__core-rule"></div>
-              <div className="wk-compass__core-sub">Full Spectrum</div>
-            </div>
+          {/* the treasure map */}
+          <div className="wk-mapc wk-reveal" role="group" aria-label="Coaching categories map">
+            <div className="wk-mapc__img" aria-hidden="true"></div>
+            <div className="wk-mapc__vignette" aria-hidden="true"></div>
+            <svg className="wk-mapc__paths" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true">
+              {WK_QUADRANTS.map((q, i) => {
+                const d = wkSvgPath(WK_MAP_POS[q.key]);
+                return (
+                  <g key={q.key} className={"wk-trail" + (i === active ? " is-active" : "")}>
+                    <path className="wk-trail__base" d={d} vectorEffect="non-scaling-stroke" />
+                    <path className="wk-trail__flow" d={d} vectorEffect="non-scaling-stroke" />
+                  </g>
+                );
+              })}
+            </svg>
+
+            <div className="wk-mapc__center" aria-hidden="true"><MapCompassRose /></div>
+
+            {WK_QUADRANTS.map((q, i) => {
+              const p = WK_MAP_POS[q.key];
+              return (
+                <button key={q.key} type="button"
+                  className={"wk-mnode wk-mnode--" + q.key + (i === active ? " is-active" : "")}
+                  style={{ left: p.x + "%", top: p.y + "%" }}
+                  onClick={() => pick(i)} aria-label={q.cat + " — " + q.arch}>
+                  <span className="wk-mnode__disc"><ArchetypeGlyph name={q.key} size={30} /></span>
+                  <span className="wk-mnode__label">{q.cat}</span>
+                  <span className="wk-mnode__arch">{q.arch}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* editorial panel */}
@@ -144,7 +165,7 @@ function WorkCoaching({ onApply, onActivate }) {
 
         {/* testimonials */}
         <div className="wk-reveal">
-          <TestimonialSlider title="Testimonials · Personal Clients" items={WK_COACH_TESTIMONIALS} />
+          <TestimonialSlider items={WK_COACH_TESTIMONIALS} />
         </div>
 
         {/* walk your highest path */}
