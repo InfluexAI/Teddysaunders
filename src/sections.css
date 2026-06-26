@@ -59,11 +59,16 @@
 }
 /* TEDFLIX eyebrow — "Explore the [Archive / Library / Work]" with a flipping word */
 .tedflix-eyebrow {
-  display: inline-flex; align-items: baseline; gap: 10px;
+  display: inline-flex; align-items: baseline; justify-content: center; gap: 10px;
   font-family: var(--font-sans); font-weight: 700;
   font-size: 14px; letter-spacing: 0.26em; text-transform: uppercase;
 }
 .tedflix-eyebrow__lead { color: rgba(245,237,227,0.6); }
+.tedflix-eyebrow__word {
+  background: var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
 .tedflix-flip {
   position: relative; display: inline-block;
   height: 1.2em; overflow: hidden; vertical-align: bottom;
@@ -740,7 +745,7 @@
 .cine-card__copy {
   position: relative; z-index: 4;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 56px 28px 56px 8px; margin-left: -150px; will-change: transform, opacity;
+  padding: 32px 28px 32px 8px; margin-left: -150px; will-change: transform, opacity;
 }
 /* Warm lamplight pooling on the parchment behind the copy — lifts the
    ink off the page and sells the "magically illuminated manuscript" feel. */
@@ -754,20 +759,28 @@
   font-family: var(--font-sans); font-weight: 700; font-size: 15px;
   letter-spacing: 0.24em; text-transform: uppercase;
   color: #7a531f;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 .cine-card__head {
   font-family: var(--font-display);
-  font-size: clamp(30px, 2.7vw, 50px); line-height: 1.04; text-transform: uppercase; letter-spacing: 0.01em;
-  margin: 0 0 26px;
+  font-size: clamp(28px, 2.5vw, 46px); line-height: 1.04; text-transform: uppercase; letter-spacing: 0.01em;
+  margin: 0 0 18px; max-width: 420px;
   color: #241606;
   text-shadow: 0 1px 0 rgba(255,250,236,0.5);
 }
 .cine-card__copy p {
-  font-family: var(--font-body); font-size: clamp(15px, 1.05vw, 20px); line-height: 1.6;
-  color: #3a2814; opacity: 0.96; margin: 0 0 18px; max-width: 420px;
+  font-family: var(--font-body); font-size: clamp(15px, 1.05vw, 20px); line-height: 1.55;
+  color: #3a2814; opacity: 0.96; margin: 0 0 14px; max-width: 420px;
 }
-.cine-card__cta { margin-top: 20px; }
+.cine-card__cta { margin-top: 14px; }
+
+/* Short viewports — tighten the manifesto copy so it never overflows the card */
+@media (max-height: 800px) {
+  .cine-eyebrow { margin-bottom: 10px; }
+  .cine-card__head { font-size: clamp(24px, 2.1vw, 34px); margin-bottom: 12px; }
+  .cine-card__copy p { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+  .cine-card__cta { margin-top: 10px; }
+}
 
 /* Mobile (this section is outside the scaled stage → its own breakpoint) */
 @media (max-width: 768px) {
@@ -828,6 +841,12 @@
 .fintro-awards {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 54px;
   margin: 34px auto 0;
+}
+/* On wide viewports keep all three wins on a single line */
+@media (min-width: 1080px) {
+  .fintro-awards { flex-wrap: nowrap; gap: clamp(24px, 2.6vw, 48px); }
+  .award { gap: 10px; }
+  .award__laurel { height: 56px; }
 }
 .award {
   display: flex; align-items: center; gap: 14px;
@@ -1386,15 +1405,37 @@
 }
 
 .pathway__content {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
+  position: absolute; left: 0; right: 0; top: 30%; bottom: 0; z-index: 4;
   padding: 0 34px 40px; pointer-events: none;
+  display: flex; flex-direction: column; justify-content: flex-start;
   transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 /* All text shows by default; when a card is hovered, the OTHER cards' text
    fades away so focus lands on the chosen world. */
-.pathways-row:hover .pathway:not(:hover) .pathway__content {
-  opacity: 0; transform: translateY(12px);
+.pathways-row:hover .pathway:not(:hover) .pathway__copy,
+.pathways-row:hover .pathway:not(:hover) .pathway__cta {
+  opacity: 0; transform: translateY(12px); pointer-events: none;
 }
+/* Hover affordance — small bronze "+" badge on each condensed card; fades
+   out on the one being hovered (its full copy takes over). */
+.pathway__hint {
+  position: absolute; bottom: 34px; right: 28px; z-index: 5;
+  display: inline-flex; align-items: center; gap: 10px;
+  opacity: 1; transition: opacity 0.5s ease;
+}
+.pathway__hint span {
+  font-family: var(--font-sans); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,237,227,0.82); text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+}
+.pathway__hint i {
+  width: 26px; height: 26px; border-radius: 50%; flex: 0 0 auto;
+  border: 1px solid rgba(201,162,75,0.55);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #CBA14C; font-style: normal; font-size: 15px; line-height: 1;
+  background: rgba(8,5,3,0.38);
+}
+.pathway:hover .pathway__hint { opacity: 0; }
 .pathways-row:hover .pathway:not(:hover) .pathway__index { opacity: 0; }
 .pathway__index { transition: opacity 0.4s ease; }
 .pathway__category {
@@ -1630,7 +1671,7 @@
 /* ---- Light / gallery variant (concept-art prints framed on warm ivory) ---- */
 .tk-ip--light {
   background:
-    url("../assets/ip-lens-bg.jpg") center / cover no-repeat,
+    url("../assets/ip-camera-bg.jpg") center / cover no-repeat,
     #EFE7D7;
 }
 .tk-ip--light .tk-section-head .eyebrow {
@@ -1664,7 +1705,7 @@
   max-width: 1500px; margin: 0 auto; padding: 0 40px;
 }
 .ip-world {
-  position: relative; aspect-ratio: 16 / 11; overflow: hidden;
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
   border: 1px solid rgba(247,219,160,0.16);
   background: #0b0805;
   box-shadow: 0 40px 100px -40px rgba(0,0,0,0.9);

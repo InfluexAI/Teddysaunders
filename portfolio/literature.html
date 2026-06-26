@@ -5,21 +5,6 @@
   <title>Ted Saunders — Literature &amp; Philosophy · A Cinematic Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Page lives one folder deep (portfolio/). Compute the real site root from the
-       URL and set <base> before any asset loads — robust on Vercel whether the page
-       is served as /portfolio/literature.html, /portfolio/literature, or .../literature/
-       (a static href="../" breaks under clean-URL / trailing-slash serving). -->
-  <script>
-    (function () {
-      var p = location.pathname;
-      var i = p.indexOf('/portfolio/');
-      var root = i >= 0 ? p.slice(0, i + 1) : '/';
-      var b = document.createElement('base');
-      b.href = location.origin + root;
-      document.head.insertBefore(b, document.head.firstChild);
-    })();
-  </script>
-
   <!-- Offline-bundle resource dependencies (referenced as strings in JSX). -->
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
   <meta name="ext-resource-dependency" content="assets/footer-scene.jpg" data-resource-id="footerScene" />
@@ -28,8 +13,8 @@
   <meta name="ext-resource-dependency" content="assets/excerpt-bg.png" data-resource-id="excerptBg" />
   <meta name="ext-resource-dependency" content="assets/essays-bg.jpg" data-resource-id="essaysBg" />
   <meta name="ext-resource-dependency" content="assets/worldbuilding-bg.jpg" data-resource-id="worldBg" />
-  <meta name="ext-resource-dependency" content="assets/tedthoughts-bg.jpg" data-resource-id="thoughtsBg" />
-  <meta name="ext-resource-dependency" content="assets/heroes/philosopher-c.jpg" data-resource-id="heroPhil" />
+  <meta name="ext-resource-dependency" content="assets/tedthoughts-bg-v4.png" data-resource-id="thoughtsBg" />
+  <meta name="ext-resource-dependency" content="assets/heroes/literature-macro.jpg" data-resource-id="heroPhil" />
   <meta name="ext-resource-dependency" content="assets/book-of-ignorance.jpg" data-resource-id="bookOfIgnorance" />
   <meta name="ext-resource-dependency" content="assets/cosmic-bg-c.jpg" data-resource-id="cosmicBg" />
   <meta name="ext-resource-dependency" content="assets/ted-cinematic-c.jpg" data-resource-id="tedCinematic" />
@@ -61,7 +46,7 @@
 
   <link rel="stylesheet" href="src/site.css?v=119">
   <link rel="stylesheet" href="src/sections.css?v=118">
-  <link rel="stylesheet" href="src/lit-page.css?v=124">
+  <link rel="stylesheet" href="src/lit-page.css?v=120">
 
   <template id="__bundler_thumbnail" data-bg-color="#070502">
     <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -88,8 +73,8 @@
       excerptBg:       "assets/excerpt-bg.png",
       essaysBg:        "assets/essays-bg.jpg",
       worldBg:         "assets/worldbuilding-bg.jpg",
-      thoughtsBg:      "assets/tedthoughts-bg.jpg",
-      heroPhil:        "assets/heroes/philosopher-c.jpg",
+      thoughtsBg:      "assets/tedthoughts-bg-v4.png",
+      heroPhil:        "assets/heroes/literature-macro.jpg",
       bookOfIgnorance: "assets/book-of-ignorance.jpg",
       cosmicBg:        "assets/cosmic-bg.png",
       tedCinematic:    "assets/ted-cinematic.jpg",
@@ -109,13 +94,7 @@
       litTile7:        "assets/lit-hero/tile7.png",
       litTile8:        "assets/lit-hero/tile8.png",
       litTile9:        "assets/lit-hero/tile9.png",
-      litTile10:       "assets/lit-hero/tile10.png",
-      hyperlapse:           "assets/hyperlapse.jpg",
-      videoEditing:         "assets/video-editing.png",
-      sixReasonsWix:        "assets/6-reasons-wix.jpg",
-      emotionalStorytelling:"assets/emotional-storytelling.jpg",
-      aiEndUs:              "assets/ai-end-us.jpg",
-      animatedExplainer:    "assets/animated-explainer.jpg"
+      litTile10:       "assets/lit-hero/tile10.png"
     }, window.__resources || {});
   </script>
 
@@ -131,10 +110,9 @@
   <script type="text/babel" src="src/LitGallery.jsx?v=2"></script>
   <script type="text/babel" src="src/Header.jsx?v=118"></script>
   <script type="text/babel" src="src/Footer.jsx?v=118"></script>
-  <script type="text/babel" src="src/LitData.jsx?v=7"></script>
-  <script type="text/babel" src="src/LitSections.jsx?v=44"></script>
+  <script type="text/babel" src="src/LitData.jsx?v=1"></script>
+  <script type="text/babel" src="src/LitSections.jsx?v=47"></script>
   <script type="text/babel" src="src/LitReader.jsx?v=1"></script>
-  <script type="text/babel" src="src/LitPageApp.jsx?v=21"></script>
-  <script src="src/sparkle-cursor.js?v=1"></script>
+  <script type="text/babel" src="src/LitPageApp.jsx?v=25"></script>
 </body>
 </html>

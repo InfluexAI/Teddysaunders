@@ -536,7 +536,7 @@ body::before {
   white-space: nowrap;
   font-weight: 400;
 }
-.tk-hero .credits .c-architect { font-weight: 700; }
+.tk-hero .credits .c-architect { font-weight: 400; }
 .tk-hero .credits .dot {
   width: 6px; height: 6px;
   border-radius: 50%;

@@ -191,7 +191,7 @@ function LitPageApp() {
                   <h2 className="lph-title lp-title-fill">Literature &amp; Philosophy</h2>
                   <div className="lph-rule" />
                   <p className="lph-motto">Thoughts that refused to stay quiet.</p>
-                  <p className="lph-sub">Philosophy, poetry, essays, observations, or fragments of meaning written down before they disappear.<br /><br />Ted&rsquo;s literary work explores human behavior, spirituality, creativity, suffering, polarity, technology, healing, mythology, consciousness, and the strange beauty of uncertainty.<br /><br />At the center sits <em>The Book of Ignorance</em>, an evolving framework built on the idea that truth cannot be possessed, only experienced.</p>
+                  <p className="lph-sub"><span>Philosophy, poetry, essays, observations, or fragments of meaning written down before they disappear.</span><span style={{display:'block'}}><span style={{display:'block',whiteSpace:'nowrap'}}>Ted&rsquo;s literary work explores human behavior, spirituality, creativity, suffering, polarity,</span><span style={{display:'block',whiteSpace:'nowrap'}}>technology, healing, mythology, consciousness, and the strange beauty of uncertainty.</span></span><span>At the center sits <em>The Book of Ignorance</em>, an evolving framework built on the idea that truth cannot be possessed, only experienced.</span></p>
                 </div>
                 <div className="lph-scrollcue"><span>Scroll</span><span className="bar" /></div>
               </div>
@@ -211,7 +211,7 @@ function LitPageApp() {
                   &ldquo;No matter what I say, it can&rsquo;t possibly be true. So I have permission to say everything.&rdquo;
                 </blockquote>
                 <span className="lp-excerpt__tick" aria-hidden="true"></span>
-                <cite className="lp-excerpt__by">Ted Saunders</cite>
+                <cite className="lp-excerpt__by">From the Book of Ignorance</cite>
               </section>
             </div>
 
