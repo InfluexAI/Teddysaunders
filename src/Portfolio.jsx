@@ -101,13 +101,9 @@ function Portfolio({ onExplore }) {
           }
           header={
             <React.Fragment>
-              <div className="tedflix-eyebrow" aria-label="Explore the Archive">
+              <div className="tedflix-eyebrow" aria-label="Explore the Library">
                 <span className="tedflix-eyebrow__lead">Explore the</span>
-                <span className="tedflix-flip">
-                  <span className="tedflix-flip__word">Archive</span>
-                  <span className="tedflix-flip__word">Library</span>
-                  <span className="tedflix-flip__word">Work</span>
-                </span>
+                <span className="tedflix-eyebrow__word">Library</span>
               </div>
               <div className="tk-tedivider tk-tedivider--logo">
                 <div className="rule" />

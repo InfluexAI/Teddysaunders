@@ -43,6 +43,13 @@
     /* standalone: the page itself scrolls; center the fluid design column */
     .v2-stage { width: var(--col, 1200px); }
     .v2-stage .cpage { animation: c-fade .6s ease both; }
+    /* Footer must escape the constrained v2-stage column and fill the viewport */
+    .v2-stage .tk-footer2 {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   </style>
 
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>

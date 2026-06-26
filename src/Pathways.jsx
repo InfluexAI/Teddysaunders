@@ -49,6 +49,10 @@ function Pathways({ onPath, onConverge }) {
             <div className="pathway__atmos" aria-hidden="true" />
             <div className="pathway__scrim" aria-hidden="true" />
             <div className="pathway__index" aria-hidden="true">{p.index}</div>
+            <div className="pathway__hint" aria-hidden="true">
+              <span>Hover</span>
+              <i>+</i>
+            </div>
 
             <div className="pathway__content">
               <div className="pathway__category">{p.label}</div>

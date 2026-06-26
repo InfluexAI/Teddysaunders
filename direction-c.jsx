@@ -94,9 +94,9 @@ function DirectionC() {
         {/* SOCIAL */}
         <section style={{ padding: "96px 64px 0", textAlign: "center" }}>
           <div ref={socialRef}>
-            <h3 className="c-display" style={{ fontSize: 34, margin: "0 0 16px" }}>FOLLOW TED AND HIS BRAND PAGES</h3>
+            <h3 className="c-display" style={{ fontSize: 38, margin: "0 0 16px" }}>Follow Ted in Real Time</h3>
             <p className="c-body reveal d2" style={{ margin: "0 auto 26px", maxWidth: 880, whiteSpace: "nowrap" }}>
-              Social platforms, creative ecosystems, ventures, films, music, and future worlds.
+              Get real-time updates from social platforms.
             </p>
             <div className="reveal d3" style={{ display: "flex", justifyContent: "center" }}><SocialRow/></div>
           </div>
