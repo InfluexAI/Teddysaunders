@@ -31,8 +31,11 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
 .cpage__aura {
   position: absolute; inset: 0;
   background:
-    radial-gradient(70% 55% at 50% 0%, rgba(90,52,25,0.70) 0%, rgba(90,52,25,0) 62%),
-    radial-gradient(55% 45% at 92% 72%, rgba(90,52,25,0.40) 0%, rgba(90,52,25,0) 60%);
+    radial-gradient(70% 55% at 50% 0%, rgba(90,52,25,0.70) 0%, rgba(90,52,25,0) 62%);
+}
+/* Soft warm light at the bottom of the Follow Ted In Real Time section. */
+.c-follow {
+  background: radial-gradient(70% 70% at 50% 100%, rgba(191,135,83,0.16) 0%, rgba(191,135,83,0) 62%);
 }
 .cpage__vignette {
   position: absolute; inset: 0;
@@ -48,13 +51,24 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
 }
 .cpage.no-grain .cpage__grain { display: none; }
 
-/* ---------- The big warm spotlight drifts full-width L→R ---------- */
-.cpage__sweep {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(56% 46% at 50% 28%, rgba(191,135,83,0.26) 0%, rgba(191,135,83,0) 62%);
-  mix-blend-mode: screen;
-  will-change: transform, opacity;
-  animation: cpage-sweep 18s ease-in-out infinite alternate;
+/* ---------- Rustic studio-macro background with a dark transition ---------- */
+/* ---------- Rustic studio-macro backdrop behind the whole Choose Your Path block ---------- */
+.c-choosepath {
+  position: relative;
+}
+/* Background breaks out to the full viewport width (no side letterboxing) and spans
+   the full height of the heading + tabs + form stacked on top of it. */
+.c-choosepath::before {
+  content: ""; position: absolute; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%); width: 100vw; z-index: 0; pointer-events: none;
+  background: #000 url("assets/choosepath-bg.jpg") center center / cover no-repeat;
+}
+.c-choosepath > * { position: relative; z-index: 1; }
+/* Dark gradient at the bottom so the backdrop flows evenly into the black below. */
+.c-choosepath::after {
+  content: ""; position: absolute; bottom: 0;
+  left: 50%; transform: translateX(-50%); width: 100vw; height: 32vw; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #000 90%);
 }
 .cpage.no-motion .cpage__sweep { animation: none; }
 @keyframes cpage-sweep {

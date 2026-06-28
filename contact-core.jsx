@@ -172,7 +172,6 @@ function BgStack({ plain }) {
     <div className="cpage__bg">
       {!plain ? <div className="cpage__cosmic"></div> : null}
       <div className="cpage__aura"></div>
-      <div className="cpage__sweep"></div>
       <div className="cpage__vignette"></div>
       <div className="cpage__grain"></div>
     </div>
