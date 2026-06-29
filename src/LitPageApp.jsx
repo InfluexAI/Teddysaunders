@@ -199,7 +199,7 @@ function LitPageApp() {
 
             <div className="lp-body-bg">
               <BookOfIgnorance virtues={D.VIRTUES} bg={AR("bookOfIgnorance", "assets/book-of-ignorance.jpg")} onCta={() => fire("The Book of Ignorance — joined the waitlist")} />
-              <PoetryRow thoughts={D.THOUGHTS} lyrics={D.LYRICS} />
+              <PoetryRow thoughts={D.THOUGHTS} />
               <EssaysSection essays={D.ESSAYS} onOpen={(title) => fire(`Open: ${title}`)} />
               <TedThoughts poems={D.POEMS} onOpen={(i) => setPoem(i)} onCta={() => fire("Following TedThoughts")} />
               <Worldbuilding worlds={D.WORLDS} bg={AR("worldBg", "assets/worldbuilding-bg.jpg")} onOpen={(title) => fire(`Enter world: ${title}`)} />
