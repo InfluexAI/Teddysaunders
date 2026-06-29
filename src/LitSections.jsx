@@ -310,14 +310,13 @@ function getPreview(t) {
   return snippet || clean.slice(0, 140);
 }
 
-function PoetryRow({ thoughts, lyrics }) {
+function PoetryRow({ thoughts }) {
   const ref = useLpReveal();
-  const [mode, setMode] = useLsState("poem");
   const [openIdx, setOpenIdx] = useLsState(null);
-  const items = mode === "lyrics" ? (lyrics || []) : (thoughts || []);
-  const label = mode === "lyrics" ? "Lyrics" : "Poem";
+  const items = thoughts || [];
+  const label = "Poem";
   const openItem = openIdx === null ? null : items[openIdx];
-  // For poem objects: use .content; for lyrics (strings): use the string itself
+  // For poem objects: use .content
   const openParas = openItem
     ? (typeof openItem === "object" ? null : (TT_LYRIC_FULL[openIdx] || [openItem]))
     : null;
@@ -334,20 +333,15 @@ function PoetryRow({ thoughts, lyrics }) {
     <section className="lp-sec lp-sec--poetry" id="poetry" data-screen-label="Poetry" ref={ref}>
       <div className="lp-seam-top" />
       <LpBanner img={LR("poetryBg", "assets/poetry-bg.jpg")}
+        eyebrow="Fragments · Inner Worlds"
+        title={<span>Poetry</span>}
         blurb={<span>Fragments of meaning written down before they disappeared. Pull one from the desk — it opens into a quiet, fullscreen room built for a single poem.</span>}>
-        <div className="lp-ttfilter lp-ttfilter--inline" role="tablist" aria-label="Choose category">
-          <button type="button" role="tab" aria-selected={mode === "poem"}
-            className={"lp-ttfilter__btn" + (mode === "poem" ? " is-on" : "")}
-            onClick={() => setMode("poem")}>Poems</button>
-          <button type="button" role="tab" aria-selected={mode === "lyrics"}
-            className={"lp-ttfilter__btn" + (mode === "lyrics" ? " is-on" : "")}
-            onClick={() => setMode("lyrics")}>Lyrics</button>
-        </div>
+        
       </LpBanner>
       <div className="lp-ttwrap">
         <LpRow par="0.04">
           {items.map((t, i) => (
-            <div className={"lp-tt" + (mode === "lyrics" ? " is-lyrics" : "")} key={mode + i}>
+            <div className="lp-tt" key={i}>
               <p className="lp-tt__quote">{typeof t === "object" ? t.title : t}</p>
               <p className="lp-tt__preview">{getPreview(t)}</p>
               <button type="button" className="lp-tt__view"
@@ -371,7 +365,7 @@ function PoetryRow({ thoughts, lyrics }) {
           <div className="lp-pmodal__count">
             <b>{String(openIdx + 1).padStart(2, "0")}</b> / {String(items.length).padStart(2, "0")}
           </div>
-          <div className={"lp-pmodal__scroll" + (mode === "lyrics" ? " is-lyrics" : "")} onClick={(e) => e.stopPropagation()}>
+          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
             <div className="lp-pmodal__inner">
               {openItem && typeof openItem === "object" ? (
                 <div className="lp-pmodal__body lp-pmodal__body--poem">
@@ -392,7 +386,7 @@ function PoetryRow({ thoughts, lyrics }) {
                 </div>
               )}
               <div className="lp-pmodal__share">
-                <ShareBtn param={mode === "lyrics" ? "lyrics" : "poem"} value={typeof openItem === "object" && openItem.title ? openItem.title : String(openIdx)} />
+                <ShareBtn param="poem" value={typeof openItem === "object" && openItem.title ? openItem.title : String(openIdx)} />
               </div>
             </div>
           </div>
