@@ -193,9 +193,7 @@
 }
 .ao-story--light {
   position: relative;
-  background:
-    linear-gradient(90deg, rgba(239,231,215,0) 0%, rgba(239,231,215,0.04) 14%, rgba(239,231,215,0.16) 38%, rgba(239,231,215,0.44) 58%, rgba(239,231,215,0.66) 78%),
-    url("assets/about-director-lens.jpg") left center / cover no-repeat;
+  background: url("assets/about-director-lens.jpg") left center / cover no-repeat;
   background-color: #EFE7D7;
 }
 .ao-story--light::after {
@@ -205,6 +203,15 @@
   background-size: 160px 160px;
 }
 .ao-story--light > * { position: relative; z-index: 1; }
+/* On narrower screens (laptops, resized windows) the lens background scales up under
+   cover and creeps into the left copy column. Strengthen the cream wash earlier so the
+   text always sits on a readable cream field while the lens still shows at the edge. */
+/* responsive — keep text off the lens */@media (max-width: 1800px) {
+  .ao-story__grid { padding-left: clamp(60px, 9vw, 180px); }
+}
+@media (max-width: 1100px) {
+  .ao-story__grid { padding-left: 0; }
+}
 .ao-story__grid {
   display: grid; grid-template-columns: 0.92fr 1.08fr;
   gap: clamp(40px, 5vw, 96px); align-items: center;
