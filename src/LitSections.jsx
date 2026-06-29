@@ -347,7 +347,7 @@ function PoetryRow({ thoughts, lyrics }) {
       <div className="lp-ttwrap">
         <LpRow par="0.04">
           {items.map((t, i) => (
-            <div className="lp-tt" key={mode + i}>
+            <div className={"lp-tt" + (mode === "lyrics" ? " is-lyrics" : "")} key={mode + i}>
               <p className="lp-tt__quote">{typeof t === "object" ? t.title : t}</p>
               <p className="lp-tt__preview">{getPreview(t)}</p>
               <button type="button" className="lp-tt__view"
@@ -371,7 +371,7 @@ function PoetryRow({ thoughts, lyrics }) {
           <div className="lp-pmodal__count">
             <b>{String(openIdx + 1).padStart(2, "0")}</b> / {String(items.length).padStart(2, "0")}
           </div>
-          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
+          <div className={"lp-pmodal__scroll" + (mode === "lyrics" ? " is-lyrics" : "")} onClick={(e) => e.stopPropagation()}>
             <div className="lp-pmodal__inner">
               {openItem && typeof openItem === "object" ? (
                 <div className="lp-pmodal__body lp-pmodal__body--poem">

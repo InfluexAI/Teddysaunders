@@ -623,6 +623,14 @@
 .lp-tt__view .arr { transition: transform .2s ease; }
 .lp-tt__view:hover { background: rgba(107,63,23,0.12); border-color: rgba(107,63,23,0.7); color: #4a2c10; }
 .lp-tt__view:hover .arr { transform: translateX(3px); }
+
+/* ---------- Lyrics variant — music parchment background ---------- */
+.lp-tt.is-lyrics {
+  background: url("../assets/lyrics-parchment.png") center / 100% 100% no-repeat;
+}
+.lp-pmodal__scroll.is-lyrics {
+  background: url("../assets/lyrics-parchment.png") center / 100% 100% no-repeat;
+}
 .lp-ttcta { position: relative; z-index: 2; display: flex; justify-content: flex-start; margin-top: 48px; padding: 0 var(--lp-pad); }
 
 /* Poem / Lyrics category toggle — tall vertical gold-stroke tabs (sideways text) */
