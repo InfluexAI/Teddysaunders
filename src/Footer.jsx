@@ -99,4 +99,44 @@ function Footer({ onSubscribe }) {
   );
 }
 
+// FooterStage — wraps Footer in a 1920-design stage scaled to the viewport,
+// EXACTLY matching the homepage (src/App.jsx useStageScale). Use this on
+// standalone pages (contact, 404) so the footer renders at the same size and
+// framing as the homepage instead of at true 100vw scale.
+function FooterStage(props) {
+  const wrapRef = React.useRef(null);
+  const stageRef = React.useRef(null);
+  React.useEffect(() => {
+    const wrap = wrapRef.current, stage = stageRef.current;
+    if (!wrap || !stage) return;
+    const apply = () => {
+      const vw = window.innerWidth;
+      if (vw <= 760) {
+        stage.classList.add("is-mobile");
+        stage.style.width = vw + "px";
+        stage.style.transform = "none";
+        wrap.style.height = "auto";
+      } else {
+        stage.classList.remove("is-mobile");
+        const scale = vw / 1920;
+        stage.style.width = "1920px";
+        stage.style.transform = "scale(" + scale + ")";
+        wrap.style.height = (stage.scrollHeight * scale) + "px";
+      }
+    };
+    apply();
+    const t1 = setTimeout(apply, 300), t2 = setTimeout(apply, 1200);
+    window.addEventListener("resize", apply);
+    return () => { window.removeEventListener("resize", apply); clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+  return (
+    <div className="ft-scaler" ref={wrapRef}>
+      <div className="ft-stage" ref={stageRef}>
+        <Footer {...props} />
+      </div>
+    </div>
+  );
+}
+
 window.Footer = Footer;
+window.FooterStage = FooterStage;

@@ -9,14 +9,14 @@ function NotFound() {
     <div className="cpage">
       <BgStack plain/>
       <div className="cpage__inner">
-        <section className="c-hero" style={{ minHeight: "100vh", flexDirection: "column", justifyContent: "center" }}>
+        <section className="c-hero" style={{ minHeight: "100vh", flexDirection: "column", justifyContent: "center", paddingBottom: "120px" }}>
           <Reticles/>
           <div className="c-hero__top"><Header active=""/></div>
 
-          <div className="c-hero__content" style={{ padding: "0 64px" }}>
+          <div className="c-hero__content" style={{ padding: "140px 64px 0" }}>
             <div className="nf-wrap">
               <div className="nf-stack">
-                <div className="nf-404 reveal d1">
+                <div className="nf-404 reveal d1" style={{ transform: "scale(0.9)", transformOrigin: "center center" }}>
                   <span className="nf-digit">4</span>
                   <Compass size={210} angle={0} id="nf-cmp" broken/>
                   <span className="nf-digit">4</span>
@@ -40,8 +40,7 @@ function NotFound() {
           </div>
         </section>
 
-        <div style={{ padding: "0 64px 8px" }}><Tedivider/></div>
-        <Footer/>
+        <FooterStage/>
       </div>
     </div>
   );

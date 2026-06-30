@@ -103,7 +103,7 @@ function DirectionC() {
         </section>
 
         <div style={{ padding: "60px 64px 0" }}></div>
-        <Footer/>
+        <FooterStage/>
       </div>
     </div>
   );
