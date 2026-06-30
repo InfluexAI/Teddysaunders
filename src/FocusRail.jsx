@@ -32,7 +32,23 @@ function frPoster(title, i) {
   return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
-function FocusRail({ items, initialIndex = 0, loop = true, header = null, controlledActive = null, onStep = null, controlsCta = null, arrows = false }) {
+// Small line-icons keyed to the discipline of a card / category.
+function FRIcon({ type, size = 15 }) {
+  const p = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" };
+  switch (type) {
+    case "camera":
+      return (<svg {...p}><path d="M3 8h3l1.5-2h9L18 8h3v11H3z" /><circle cx="12" cy="13" r="3.4" /></svg>);
+    case "music":
+      return (<svg {...p}><path d="M9 18V6l10-2v11" /><circle cx="6.5" cy="18" r="2.5" /><circle cx="16.5" cy="15" r="2.5" /></svg>);
+    case "book":
+      return (<svg {...p}><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" /><path d="M20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" /></svg>);
+    case "film":
+    default:
+      return (<svg {...p}><rect x="3" y="4" width="18" height="16" rx="1.5" /><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4" /></svg>);
+  }
+}
+
+function FocusRail({ items, initialIndex = 0, loop = true, header = null, controlledActive = null, onStep = null, controlsCta = null, arrows = false, atmosphere = null, onExplore = null }) {
   const [internalActive, setInternalActive] = useState(initialIndex);
   const [playing, setPlaying] = useState(null);
   const drag = useRef(null);
@@ -86,6 +102,21 @@ function FocusRail({ items, initialIndex = 0, loop = true, header = null, contro
         <div className="fr-amb__veil" />
       </div>
 
+      {/* Per-discipline atmosphere — theatre / gallery / concert / study.
+          Crossfades in when the tab (and thus this rail) remounts. */}
+      {atmosphere && (
+        <div className={"fr-atmos fr-atmos--" + atmosphere} aria-hidden="true">
+          <span className="fr-atmos__bloom" />
+          <span className="fr-atmos__haze" />
+          <span className="fr-atmos__grain" />
+          {atmosphere === "concert" && (
+            <span className="fr-atmos__eq">
+              {Array.from({ length: 13 }).map((_, i) => <i key={i} style={{ animationDelay: (i * 0.12) + "s" }} />)}
+            </span>
+          )}
+        </div>
+      )}
+
       {header && <div className="fr-header">{header}</div>}
 
       <div className="fr-stage">
@@ -118,6 +149,10 @@ function FocusRail({ items, initialIndex = 0, loop = true, header = null, contro
                    onClick={() => { offset !== 0 ? stepBy(offset) : setPlaying(item); }}>
                 <img src={item.imageSrc} alt={item.title} draggable="false" />
                 <div className="fr-card__sheen" />
+                {item.icon && (
+                  <span className="fr-card__badge" aria-hidden="true"><FRIcon type={item.icon} size={14} /></span>
+                )}
+                {item.year && <span className="fr-card__year">{item.year}</span>}
                 {isCenter && (
                   <button className="fr-play" aria-label={"Play " + item.title}
                           onClick={(e) => { e.stopPropagation(); setPlaying(item); }}>
@@ -131,9 +166,21 @@ function FocusRail({ items, initialIndex = 0, loop = true, header = null, contro
 
         <div className="fr-info">
           <div className="fr-info__text" key={"t-" + activeItem.id}>
-            {activeItem.meta && <span className="fr-meta">{activeItem.meta}</span>}
+            {activeItem.category ? (
+              <span className="fr-cat">
+                {activeItem.icon && <FRIcon type={activeItem.icon} size={14} />}
+                <span>{activeItem.category}</span>
+              </span>
+            ) : (activeItem.meta && <span className="fr-meta">{activeItem.meta}</span>)}
             <h3 className="fr-title">{activeItem.title}</h3>
             {activeItem.description && <p className="fr-desc">{activeItem.description}</p>}
+            {(activeItem.year || activeItem.medium || activeItem.duration) && (
+              <div className="fr-specs">
+                {activeItem.year && <span className="fr-spec">{activeItem.year}</span>}
+                {activeItem.medium && <span className="fr-spec">{activeItem.medium}</span>}
+                {activeItem.duration && <span className="fr-spec">{activeItem.duration}</span>}
+              </div>
+            )}
           </div>
 
           <div className="fr-controls">
@@ -148,7 +195,9 @@ function FocusRail({ items, initialIndex = 0, loop = true, header = null, contro
                 ))}
               </div>
             )}
-            {controlsCta}
+            {activeItem.ctaLabel
+              ? <Button variant="bronze" onClick={() => onExplore && onExplore(activeItem)}>{activeItem.ctaLabel}&nbsp;&rarr;</Button>
+              : controlsCta}
           </div>
         </div>
       </div>

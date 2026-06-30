@@ -21,24 +21,28 @@ function OriginalIP({ onExplore, onContact }) {
   const worlds = [
     {
       id: "juiced", num: "World 01", title: "Juiced", img: R.ipJuiced || "assets/ip/juiced.jpg",
+      genres: ["Drama", "Coming-of-Age", "True Story"],
       log: "Based on a true story: kidnapped, forced to sell fruit juice in the ghetto, and awoken to the realities of race, class, and culture.",
       fragLabel: "Field Journal",
       frag: "They took everything, but the hunger to be something more.",
     },
     {
       id: "prosopagnosia", num: "World 02", title: "Prosopagnosia", img: R.ipProsopagnosia || "assets/ip/prosopagnosia.jpg",
+      genres: ["Thriller", "Sci-Fi", "Mystery"],
       log: "A man who loses the ability to recognize faces must find his kidnapped fiancée, aided only by an elixir that bends time.",
       fragLabel: "Temporal Elixir Notes",
       frag: "One drop unlocks the moments between moments.",
     },
     {
       id: "fated", num: "World 03", title: "The Fated", img: R.ipFated || "assets/ip/fated.jpg",
+      genres: ["Fantasy", "Epic", "Action"],
       log: "A man who released a dark god to end a war must now lead rebels to save the world — and his wife — from the corrupt order he unknowingly served.",
       fragLabel: "Prophecy Fragment",
       frag: "When the god is set free, the order will kneel in ash.",
     },
     {
       id: "inevitable", num: "World 04", title: "Inevitable", img: R.ipInevitable || "assets/ip/inevitable.jpg",
+      genres: ["Sci-Fi", "Cyberpunk", "Philosophical"],
       log: "The first human consciousness inside a cyborg body understands everything — except where we came from. So he ushers existence toward the singularity.",
       fragLabel: "Consciousness Architecture",
       frag: "Identity = pattern.  Pattern = data.  Data = eternal.",
@@ -67,6 +71,13 @@ function OriginalIP({ onExplore, onContact }) {
               <div className="ip-world__num">{w.num}</div>
               <h3 className="ip-world__title">{w.title}</h3>
               <div className="ip-world__rule" />
+              {w.genres && (
+                <div className="ip-world__genres">
+                  {w.genres.map((g) => (
+                    <span className="ip-world__genre" key={g}>{g}</span>
+                  ))}
+                </div>
+              )}
               <p className="ip-world__log">{w.log}</p>
             </div>
 

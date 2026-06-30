@@ -66,6 +66,19 @@ const COMPASS_TINTS = {
   shots:    ["#6A5230", "#281D0E"],
 };
 
+// Real stills for each destination preview — pulled from the project's own
+// photography so the flipping previews read as the actual body of work.
+const COMPASS_IMG = {
+  plots:    "assets/heroes/cinematographer.jpg",  // Original Films
+  props:    "assets/ted-cinematic.jpg",           // Acting Portfolio
+  thoughts: "assets/heroes/philosopher.jpg",       // Philosophy & Poetry
+  crops:    "assets/gallery/g2.jpg",               // Hair / Style Design
+  unlocks:  "assets/teddy-hero.jpg",               // Men’s Coaching
+  bots:     "assets/video-editing.png",            // Software Engineering
+  drops:    "assets/heroes/musician.jpg",          // Music & DJing
+  shots:    "assets/heroes/photographer.jpg",      // Photography
+};
+
 function CompassOrrery({ onActivate }) {
   const rootRef = useCoRef(null);
   const rotorRef = useCoRef(null);    // SVG group that visibly rotates (spokes/ticks)
@@ -194,7 +207,7 @@ function CompassOrrery({ onActivate }) {
               </div>
               <div className="compass-active__name">{node.name}</div>
               <div className="compass-active__preview">
-                <img src={compassPreview(node.key, node.name, COMPASS_TINTS[node.key], node.disc)} alt={node.name + " preview"} />
+                <img src={COMPASS_IMG[node.key] || compassPreview(node.key, node.name, COMPASS_TINTS[node.key], node.disc)} alt={node.name + " preview"} />
                 <span className="compass-active__previewedge" />
               </div>
               <p className="compass-active__desc">{node.panel}</p>

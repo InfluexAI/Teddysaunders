@@ -10,7 +10,7 @@ function Director({ onReadMore }) {
 
       <div className="copy">
         <div className="eyebrow">The Visionary Director</div>
-        <h2>The Boy Who Brought<br />The Worlds He Imagined<br />To Life</h2>
+        <h2>The Boy Who Brought The Worlds He Imagined To Life</h2>
         <p>
           Ted was six when he asked an innocent question that would unknowingly
           shape his entire life and career: &ldquo;What does that button do, Daddy?&rdquo;

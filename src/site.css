@@ -735,12 +735,44 @@ body::before {
 }
 .tk-btn:active { transform: scale(0.97); }
 
-/* Butter → Bronze vertical — primary hero CTA, black text */
+/* Butter → Bronze vertical — primary hero CTA, black text.
+   Enhanced: luminous 3-stop fill, warm glow, metallic shimmer sweep
+   so the primary CTA reads as the page's most clickable element. */
 .tk-btn--bronze {
-  background: linear-gradient(180deg, #FFF2C6 0%, #BD8332 100%);
-  color: #000;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FFF6DC 0%, #F8C98E 40%, #BD8332 100%);
+  color: #1A0E03;
+  box-shadow:
+    0 5px 20px rgba(191,135,83,0.45),
+    inset 0 0 0 1px rgba(255,234,190,0.55);
+  transition: transform 80ms ease, filter .35s ease, box-shadow .35s ease;
 }
-.tk-btn--bronze:hover { filter: brightness(0.94); }
+.tk-btn--bronze:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    0 7px 30px rgba(232,170,101,0.70),
+    inset 0 0 0 1px rgba(255,242,198,0.85);
+}
+/* Shimmer sweep — a light raking across the button to prompt a click */
+.tk-btn--bronze::after {
+  content: ""; position: absolute; top: 0; left: 0; z-index: 1;
+  width: 55%; height: 100%; pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,255,255,0) 100%);
+  transform: translateX(-180%) skewX(-18deg);
+  animation: bronzeShimmer 4.2s ease-in-out infinite;
+}
+@keyframes bronzeShimmer {
+  0%   { transform: translateX(-180%) skewX(-18deg); }
+  58%  { transform: translateX(320%)  skewX(-18deg); }
+  100% { transform: translateX(320%)  skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tk-btn--bronze::after { animation: none; opacity: 0; }
+}
 
 /* Turquoise → Stormy Blue — header top-right CTA, white text */
 .tk-btn--turquoise {

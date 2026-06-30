@@ -185,36 +185,14 @@ function Reticles() {
 // scripts only share scope within their own set.
 const CT_NAV_R = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
 const CT_PORTFOLIO_MEGA = [
-  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png", items: [
-    { label: "Festival & Narrative Projects", href: "portfolio/films-festival-narrative.html" },
-    { label: "Commercial Clients", href: "portfolio/films-commercial-clients.html" },
-    { label: "Featured Experimental & Music Video Work", href: "portfolio/films-experimental-music-video.html" },
-    { label: "Tedflix - Viewing Experience", href: "portfolio/films-tedflix.html" },
-    { label: "The Library - Full Archive of Ted's Videos", href: "portfolio/films-library.html" },
-    { label: "Original Scripts & IP", href: "portfolio/films-scripts-ip.html" },
-  ]},
-  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png", items: [
-    { label: "Portraits", href: "portfolio/photography-portraits.html" },
-    { label: "Headshots", href: "portfolio/photography-headshots.html" },
-    { label: "Stock Photography", href: "portfolio/photography-stock.html" },
-    { label: "Advertisements", href: "portfolio/photography-advertisements.html" },
-    { label: "VFX Composites / Commercial", href: "portfolio/photography-vfx-composites.html" },
-    { label: "Wizard Light Painting", href: "portfolio/photography-wizard-light-painting.html" },
-    { label: "Events", href: "portfolio/photography-events.html" },
-    { label: "Weddings", href: "portfolio/photography-weddings.html" },
-    { label: "Experimental and Abstract", href: "portfolio/photography-experimental-abstract.html" },
-  ]},
-  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png", items: [
-    { label: "TedDrops & Mastercodes DJ Sets", href: "portfolio/music-teddrops-mastercodes.html" },
-    { label: "Original Music", href: "portfolio/music-original.html" },
-  ]},
-  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png", items: [
-    { label: "The Book of Ignorance", href: "portfolio/literature-book-of-ignorance.html" },
-    { label: "Poetry", href: "portfolio/literature-poetry.html" },
-    { label: "Articles", href: "portfolio/literature-articles.html" },
-    { label: "TedThoughts Tweets / Epiphanies", href: "portfolio/literature-tedthoughts.html" },
-    { label: "Worldbuilding", href: "portfolio/literature-worldbuilding.html" },
-  ]},
+  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png",
+    desc: "Festival narratives, brand films, and original cinematic worlds." },
+  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png",
+    desc: "Portraits, light-painting, and beauty found in imperfection." },
+  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png",
+    desc: "TedDrops DJ sets and original scores made to move you." },
+  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
+    desc: "Poetry, essays, and worldbuilding for minds that wander." },
 ];
 const CT_MEGA = { Portfolio: CT_PORTFOLIO_MEGA };
 
@@ -231,16 +209,21 @@ function CtMegaPanel() {
     <div className="tk-dropdown tk-mega">
       <div className="tk-mega__grid">
         {CT_PORTFOLIO_MEGA.map((cat) => (
-          <div className="tk-cat" key={cat.label}>
-            <a className="tk-cat__card" href={cat.href}>
+          <a className="tk-cat" key={cat.label} href={cat.href}>
+            <span className="tk-cat__card">
               <img src={CT_NAV_R(cat.res, cat.img)} alt={cat.label} />
               <span className="tk-cat__title">{cat.label}</span>
-            </a>
-            <div className="tk-cat__list">
-              {cat.items.map((s) => (<a key={s.label} href={s.href}>{s.label}</a>))}
-            </div>
-          </div>
+            </span>
+            <span className="tk-cat__desc">{cat.desc}</span>
+          </a>
         ))}
+      </div>
+      <div className="tk-mega__foot">
+        <span className="tk-mega__foot-note">The full body of work — film, photography, music &amp; word.</span>
+        <a className="tk-mega__btn" href="Portfolio.html">
+          View Portfolio
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </a>
       </div>
     </div>
   );
@@ -295,7 +278,7 @@ function Header({ active = "Contact" }) {
                 {CT_MEGA[label].map((cat) => (
                   <React.Fragment key={cat.label}>
                     <a href={cat.href} className="tk-mobile-cat" onClick={() => setOpen(false)}>{cat.label}</a>
-                    {cat.items.map((s) => (<a key={s.label} href={s.href} className="tk-mobile-subitem" onClick={() => setOpen(false)}>{s.label}</a>))}
+                    <span className="tk-mobile-catdesc">{cat.desc}</span>
                   </React.Fragment>
                 ))}
               </div>

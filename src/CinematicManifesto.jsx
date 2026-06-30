@@ -49,7 +49,7 @@ function CinematicManifesto({ onCta }) {
         copy.style.filter = `blur(${(1 - rev) * 5}px)`;
       }
       if (photo) {
-        photo.style.opacity = String(ss(0.28, 0.60, p));
+        photo.style.opacity = String(ss(0.28, 0.60, p) * 0.3);
       }
     };
 
@@ -91,8 +91,8 @@ function CinematicManifesto({ onCta }) {
         <div className="cine-grid" aria-hidden="true" />
 
         <div className="cine-intro" ref={introRef} style={{ letterSpacing: "0.5px" }}>
-          <h2 className="cine-line cine-line--1">Imperfection</h2>
-          <h2 className="cine-line cine-line--2">is the story.</h2>
+          <h2 className="cine-line cine-line--1" style={{ fontSize: "clamp(26px, 3.4vw, 56px)" }}>The fragility and resilience</h2>
+          <h2 className="cine-line cine-line--2" style={{ fontSize: "clamp(26px, 3.4vw, 56px)" }}>of humanity is beautiful</h2>
         </div>
         <div className="cine-scrollcue" ref={cueRef} aria-hidden="true">
           <span>SCROLL</span>
@@ -107,7 +107,7 @@ function CinematicManifesto({ onCta }) {
           </div>
           <div className="cine-card__copy" ref={copyRef}>
             <div className="cine-eyebrow">The Manifesto</div>
-            <h3 className="cine-card__head">Producing it perfectly is the art.</h3>
+            <h3 className="cine-card__head">Celebrating this human experience is the art.</h3>
             <p>Every story is an invitation to feel something deeper. To open your aperture, remember who you were before the world told you who to be. To celebrate the truth, the shadows, and the beauty of what it means to be human.</p>
             <p>I tell stories for the people who are brave enough to see the world differently.</p>
             <div className="cine-card__cta">
