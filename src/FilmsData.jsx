@@ -181,13 +181,13 @@ const FILM_BY_ID = FILM_LIBRARY.reduce((m, f) => { m[f.id] = f; return m; }, {})
 // ---- Section rails (Festival / Commercial / Experimental) reference library ids ----
 const FILM_RAILS = {
   festival: {
-    eyebrow: "Festival & Narrative", title: "The Festival Canon",
+    eyebrow: "Festival & Narrative", title: "Film for The People",
     blurb: "The films made for the dark of a theater — narratives, documentaries, and experiments that have travelled the festival circuit.",
     cta: "Explore the Festival Film Library", filter: "Festival Films", bg: "railFestival",
     ids: ["great-synthesis", "places-burning-man", "eudaimonia", "when-i-grow-up", "waldos-journal"],
   },
   commercial: {
-    eyebrow: "Commercial Clients", title: "Brand Cinema",
+    eyebrow: "Commercial Clients", title: "Film for Brands",
     blurb: "Campaign films for the brands brave enough to tell the truth — Salesforce, Ancestry, Varian, and Comcast among them.",
     cta: "Explore the Corporate Film Library", filter: "Corporate Films", bg: "railCommercial",
     ids: ["salesforce", "ancestry", "varian", "comcast"],

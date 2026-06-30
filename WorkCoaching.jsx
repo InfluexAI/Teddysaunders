@@ -27,10 +27,10 @@ const WK_COACH_TESTIMONIALS = [
 // Map node positions, in panel-percent (x across, y down). Career N, Relationships W,
 // Health E, Finance S — matching the treasure-map reference.
 const WK_MAP_POS = {
-  king:     { x: 50, y: 13 },  // Career — top
-  lover:    { x: 15, y: 49 },  // Relationships — left
-  warrior:  { x: 85, y: 49 },  // Health — right
-  magician: { x: 50, y: 87 },  // Finance — bottom
+  king:     { x: 50, y: 17 },  // Career — top
+  lover:    { x: 17, y: 49 },  // Relationships — left
+  warrior:  { x: 83, y: 49 },  // Health — right
+  magician: { x: 50, y: 83 },  // Finance — bottom
 };
 // SVG uses viewBox 0 0 100 75 (4:3); convert panel-percent y → svg y.
 function wkSvgPath(p) {
@@ -95,18 +95,23 @@ function WorkCoaching({ onApply, onActivate }) {
       <div className="wk-inner">
         <WkIntro
           num="01"
-          eyebrow="Compass Coaching — Individuals"
+          eyebrow="Compass Coaching — For Individuals"
           title="Mentorship for Modern Men"
           titleClass="wk-textured"
           sub="Full Spectrum transformation for men building meaningful lives."
-          imgSrc="assets/pathways/individuals.jpg"
+          imgSrc="assets/work-mentorship.jpg"
           imgId="wk-intro-coaching"
           imgPlaceholder="Ted in mentorship / coaching session"
           body={<React.Fragment>
-            <p>Ted works with filmmakers, creatives, founders, and visionaries navigating identity, creativity, alignment, storytelling, and transformation.</p>
+            <p>Ted works with creatives, founders, and visionaries navigating identity, creativity, alignment, storytelling, and transformation.</p>
             <p>The work blends philosophy, practical strategy, emotional clarity, and creative direction.</p>
           </React.Fragment>}
         />
+
+        <div className="wk-balance wk-reveal">
+          <h2 className="wk-balance__title wk-textured">Your life. In Balance.</h2>
+          <p className="wk-balance__sub">For the ship of your life to sail smoothly, all four major aspects of it must be functioning optimally.</p>
+        </div>
 
         <div className="wk-coach__grid">
           {/* the treasure map */}
@@ -134,7 +139,7 @@ function WorkCoaching({ onApply, onActivate }) {
                   className={"wk-mnode wk-mnode--" + q.key + (i === active ? " is-active" : "")}
                   style={{ left: p.x + "%", top: p.y + "%" }}
                   onClick={() => pick(i)} aria-label={q.cat + " — " + q.arch}>
-                  <span className="wk-mnode__disc"><ArchetypeGlyph name={q.key} size={30} /></span>
+                  <span className="wk-mnode__disc"><ArchetypeGlyph name={q.key} size={42} /></span>
                   <span className="wk-mnode__label">{q.cat}</span>
                   <span className="wk-mnode__arch">{q.arch}</span>
                 </button>
@@ -184,7 +189,7 @@ function WorkCoaching({ onApply, onActivate }) {
           <div className="wk-map wk-reveal">
             <span className="wk-map__corner tl" aria-hidden="true"></span>
             <span className="wk-map__corner br" aria-hidden="true"></span>
-            <image-slot id="wk-path-map" shape="rect" placeholder="Map of one's path — relationships · finance · career · health"></image-slot>
+            <img src="assets/pathways/individuals.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
           </div>
         </div>
       </div>

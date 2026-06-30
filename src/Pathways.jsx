@@ -30,7 +30,7 @@ function Pathways({ onPath, onConverge }) {
   return (
     <section className="tk-pathways">
       <div className="pathways-head">
-        <div className="pathways-eyebrow">Choose your entrance</div>
+        <div className="pathways-eyebrow">Choose your transformation</div>
         <h2 className="pathways-title">There is a path here for you.</h2>
         <p className="pathways-sub">
           Whether you need a director, a collaborator, a guide or a return on
@@ -49,6 +49,10 @@ function Pathways({ onPath, onConverge }) {
             <div className="pathway__atmos" aria-hidden="true" />
             <div className="pathway__scrim" aria-hidden="true" />
             <div className="pathway__index" aria-hidden="true">{p.index}</div>
+            <div className="pathway__hint" aria-hidden="true">
+              <span>Hover</span>
+              <i>+</i>
+            </div>
 
             <div className="pathway__content">
               <div className="pathway__category">{p.label}</div>

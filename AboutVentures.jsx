@@ -38,7 +38,7 @@ function BroOracleLogo() {
           <rect x="12" y="5" width="20" height="9" rx="2" />
         </g>
       </g>
-      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#1A1209">BRO·ORACLE</text>
+      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#F5EDE3">BRO·ORACLE</text>
     </svg>
   );
 }
@@ -48,7 +48,7 @@ function BroOracleLogo() {
 function InfinitStudiosLogo() {
   return (
     <svg className="ab-vcard__infinitsvg" viewBox="0 0 250 40" fill="none" role="img" aria-label="Infinit Studios">
-      <text x="1" y="30" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="30" letterSpacing="0" fill="#0A0A0A">Infinit Studios</text>
+      <text x="1" y="30" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="30" letterSpacing="0" fill="#F5EDE3">Infinit Studios</text>
     </svg>
   );
 }
@@ -108,7 +108,7 @@ function AboutVentures({ onVisit, onFollow }) {
       <section className="ab-ventures ab-ventures--light">
         <div className="ab-ventures__head">
           <p className="ab-eyebrow">Ventures &amp; Entrepreneurship</p>
-          <h2 className="ab-ventures__title ab-textured">Worlds Ted is building.</h2>
+          <h2 className="ab-ventures__title ab-textured">Brands and Technology</h2>
           <p>The same imagination, channeled into companies, tools, and platforms — each one another point on the compass made real.</p>
         </div>
 
@@ -116,7 +116,7 @@ function AboutVentures({ onVisit, onFollow }) {
           {VENTURES.map((v) => (
             <article className="ab-vcard" key={v.title}>
               <div className="ab-vcard__logo"><VentureLogo v={v} /></div>
-              <h3 className="ab-vcard__title">{v.title}</h3>
+              <h3 className="ab-vcard__title ab-textured">{v.title}</h3>
               <p className="ab-vcard__desc">{v.desc}</p>
               <a className="ab-vcard__btn" href={v.href}
                  target={v.href.startsWith("http") ? "_blank" : undefined}
@@ -130,20 +130,7 @@ function AboutVentures({ onVisit, onFollow }) {
         </div>
       </section>
 
-      <section className="ab-follow">
-        <div className="ab-follow__rule" aria-hidden="true"></div>
-        <h2 className="ab-textured">Follow Ted</h2>
-        <p>Behind the films, the music, and the philosophy — follow the work as it unfolds.</p>
-        <div className="ab-social-rail">
-          {SOCIALS.map((s) => (
-            <a className="ab-social" href="#" key={s} aria-label={"Follow Ted on " + s}
-               onClick={(e) => { e.preventDefault(); onFollow && onFollow(s); }}>
-              <SocialGlyph name={s} />
-              {s}
-            </a>
-          ))}
-        </div>
-      </section>
+
     </React.Fragment>
   );
 }

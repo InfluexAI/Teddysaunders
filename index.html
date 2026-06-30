@@ -13,8 +13,9 @@
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
   <meta name="ext-resource-dependency" content="assets/logo-mark.png" data-resource-id="logoMark" />
   <meta name="ext-resource-dependency" content="assets/hero-bg.mp4" data-resource-id="heroVideo" />
+  <meta name="ext-resource-dependency" content="assets/finance-chest-v2.mp4" data-resource-id="financeChest" />
   <meta name="ext-resource-dependency" content="assets/opt/director-2026.jpg" data-resource-id="directorImg" />
-  <meta name="ext-resource-dependency" content="assets/opt/ted-cinematic-r.png" data-resource-id="tedCinematic" />
+  <meta name="ext-resource-dependency" content="assets/opt/ted-manifesto.png" data-resource-id="tedCinematic" />
   <meta name="ext-resource-dependency" content="assets/word-tedflix.png" data-resource-id="tedflix" />
   <meta name="ext-resource-dependency" content="assets/word-tedshots.png" data-resource-id="wordShots" />
   <meta name="ext-resource-dependency" content="assets/word-teddrops.png" data-resource-id="wordDrops" />
@@ -47,11 +48,18 @@
   <meta name="ext-resource-dependency" content="assets/film/photo-6.jpg" data-resource-id="film6" />
   <meta name="ext-resource-dependency" content="assets/film/photo-7.jpg" data-resource-id="film7" />
   <meta name="ext-resource-dependency" content="assets/film/photo-8.jpg" data-resource-id="film8" />
+  <meta name="ext-resource-dependency" content="assets/heroes/photographer.jpg" data-resource-id="heroPhotographer" />
+  <meta name="ext-resource-dependency" content="assets/heroes/cinematographer.jpg" data-resource-id="heroCinematographer" />
+  <meta name="ext-resource-dependency" content="assets/heroes/musician.jpg" data-resource-id="heroMusician" />
+  <meta name="ext-resource-dependency" content="assets/heroes/philosopher.jpg" data-resource-id="heroPhilosopher" />
+  <meta name="ext-resource-dependency" content="assets/gallery/g3.jpg" data-resource-id="gal3" />
+  <meta name="ext-resource-dependency" content="assets/gallery/g5.jpg" data-resource-id="gal5" />
   <meta name="ext-resource-dependency" content="assets/press/logos-row.png" data-resource-id="logosRow" />
 
-  <link rel="stylesheet" href="src/site.css?v=130">
-  <link rel="stylesheet" href="src/sections.css?v=133">
-  <link rel="stylesheet" href="src/finance-vault.css?v=11">
+  <link rel="stylesheet" href="src/site.css?v=131">
+  <link rel="stylesheet" href="src/sections.css?v=138">
+  <link rel="stylesheet" href="src/finance-vault.css?v=18">
+  <link rel="stylesheet" href="src/archive.css?v=4">
 
   <template id="__bundler_thumbnail" data-bg-color="#060402">
     <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +90,7 @@
       logoMark:     "assets/logo-mark.png",
       heroVideo:    "assets/hero-bg.mp4",
       directorImg:  "assets/opt/director-2026.jpg",
-      tedCinematic: "assets/opt/ted-cinematic-r.png",
+      tedCinematic: "assets/opt/ted-manifesto.png",
       tedflix:      "assets/word-tedflix.png",
       wordShots:    "assets/word-tedshots.png",
       wordDrops:    "assets/word-teddrops.png",
@@ -115,6 +123,12 @@
       film6: "assets/film/photo-6.jpg",
       film7: "assets/film/photo-7.jpg",
       film8: "assets/film/photo-8.jpg",
+      heroPhotographer: "assets/heroes/photographer.jpg",
+      heroCinematographer: "assets/heroes/cinematographer.jpg",
+      heroMusician: "assets/heroes/musician.jpg",
+      heroPhilosopher: "assets/heroes/philosopher.jpg",
+      gal3: "assets/gallery/g3.jpg",
+      gal5: "assets/gallery/g5.jpg",
       logosRow:     "assets/press/logos-row.png"
     }, window.__resources || {});
   </script>
@@ -129,24 +143,24 @@
   <script type="text/babel" src="src/TypewriterMedium.jsx?v=125"></script>
   <script type="text/babel" src="src/Header.jsx?v=125"></script>
   <script type="text/babel" src="src/StatRow.jsx?v=124"></script>
-  <script type="text/babel" src="src/Hero.jsx?v=124"></script>
+  <script type="text/babel" src="src/Hero.jsx?v=125"></script>
   <script type="text/babel" src="src/PressStrip.jsx?v=124"></script>
   <script type="text/babel" src="src/Sparkles.jsx?v=124"></script>
   <script type="text/babel" src="src/Director.jsx?v=124"></script>
   <script type="text/babel" src="src/Testimonials.jsx?v=124"></script>
   <script type="text/babel" src="src/Laurel.jsx?v=125"></script>
   <script type="text/babel" src="src/FeatureScroll.jsx?v=127"></script>
-  <script type="text/babel" src="src/FocusRail.jsx?v=124"></script>
+  <script type="text/babel" src="src/FocusRail.jsx?v=125"></script>
   <script type="text/babel" src="src/CinematicManifesto.jsx?v=124"></script>
   <script type="text/babel" src="src/CompassIcons.jsx?v=124"></script>
   <script type="text/babel" src="src/CompassOrrery.jsx?v=126"></script>
-  <script type="text/babel" src="src/Pathways.jsx?v=124"></script>
-  <script type="text/babel" src="src/FinancialStrategy.jsx?v=131"></script>
+  <script type="text/babel" src="src/Pathways.jsx?v=125"></script>
+  <script type="text/babel" src="src/FinancialStrategy.jsx?v=134"></script>
   <script type="text/babel" src="src/OriginalIP.jsx?v=124"></script>
   <script type="text/babel" src="src/InsightsCTA.jsx?v=124"></script>
-  <script type="text/babel" src="src/Portfolio.jsx?v=125"></script>
+  <script type="text/babel" src="src/ArchiveExperience.jsx?v=2"></script>
   <script type="text/babel" src="src/FilmStrip.jsx?v=124"></script>
-  <script type="text/babel" src="src/Footer.jsx?v=125"></script>
-  <script type="text/babel" src="src/App.jsx?v=124"></script>
+  <script type="text/babel" src="src/Footer.jsx?v=127"></script>
+  <script type="text/babel" src="src/App.jsx?v=125"></script>
 </body>
 </html>

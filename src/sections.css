@@ -49,6 +49,91 @@
 }
 @keyframes frAmbIn { from { opacity: 0; } to { opacity: 1; } }
 
+/* ---------- PER-DISCIPLINE ATMOSPHERE ----------
+   A cinematic environment behind the rail that changes with the tab:
+   theatre · gallery · concert · study. Sits above the blurred poster
+   backdrop (fr-amb, z0) and below the cards (fr-stage, z10). */
+.fr-atmos {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+  animation: frAtmosIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes frAtmosIn {
+  from { opacity: 0; filter: blur(14px); transform: scale(1.04); }
+  to   { opacity: 1; filter: blur(0);   transform: scale(1); }
+}
+.fr-atmos__bloom, .fr-atmos__haze { position: absolute; inset: 0; }
+.fr-atmos__grain {
+  position: absolute; inset: -40%;
+  background-image: url("../assets/heading-texture.jpg");
+  background-size: 380px; opacity: 0.05; mix-blend-mode: overlay;
+  animation: frGrain 1.6s steps(3) infinite;
+}
+@keyframes frGrain {
+  0% { transform: translate(0,0); } 33% { transform: translate(-2%, 1.5%); }
+  66% { transform: translate(1.5%, -1%); } 100% { transform: translate(0,0); }
+}
+
+/* THEATRE — dark screening room: projector bloom from above, warm haze */
+.fr-atmos--theatre .fr-atmos__bloom {
+  background:
+    radial-gradient(60% 42% at 50% -6%, rgba(244,213,142,0.20) 0%, rgba(244,213,142,0) 60%),
+    radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 60%);
+}
+.fr-atmos--theatre .fr-atmos__haze {
+  background: linear-gradient(180deg, rgba(20,12,5,0.5) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 70%, rgba(8,5,2,0.7) 100%);
+}
+
+/* GALLERY — museum lighting: soft spotlight pools on a cool-neutral wall */
+.fr-atmos--gallery .fr-atmos__bloom {
+  background:
+    radial-gradient(34% 60% at 24% 14%, rgba(245,237,227,0.16) 0%, rgba(245,237,227,0) 58%),
+    radial-gradient(34% 60% at 76% 14%, rgba(245,237,227,0.12) 0%, rgba(245,237,227,0) 58%),
+    radial-gradient(80% 70% at 50% 120%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%);
+}
+.fr-atmos--gallery .fr-atmos__haze {
+  background: linear-gradient(180deg, rgba(29,37,45,0.32) 0%, rgba(0,0,0,0) 36%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.6) 100%);
+}
+
+/* CONCERT — stage lighting: amber beams, fog, an animated equalizer */
+.fr-atmos--concert .fr-atmos__bloom {
+  background:
+    radial-gradient(28% 90% at 30% -10%, rgba(217,95,16,0.20) 0%, rgba(217,95,16,0) 60%),
+    radial-gradient(28% 90% at 70% -10%, rgba(244,213,142,0.18) 0%, rgba(244,213,142,0) 60%),
+    radial-gradient(40% 60% at 50% 116%, rgba(82,170,165,0.10) 0%, rgba(82,170,165,0) 60%);
+}
+.fr-atmos--concert .fr-atmos__haze {
+  background: linear-gradient(180deg, rgba(12,8,4,0.45) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 64%, rgba(6,4,2,0.8) 100%);
+  animation: frFog 9s ease-in-out infinite alternate;
+}
+@keyframes frFog { from { opacity: 0.8; } to { opacity: 1; } }
+.fr-atmos__eq {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+  display: flex; align-items: flex-end; justify-content: center; gap: 10px;
+  opacity: 0.5; mask: linear-gradient(180deg, transparent, #000);
+  -webkit-mask: linear-gradient(180deg, transparent, #000);
+}
+.fr-atmos__eq i {
+  width: 5px; height: 20px; border-radius: 3px;
+  background: linear-gradient(180deg, #F4D58E, #C9913F);
+  animation: frEq 1.1s ease-in-out infinite alternate;
+}
+@keyframes frEq { from { height: 12px; opacity: 0.5; } to { height: 92px; opacity: 0.95; } }
+
+/* STUDY — philosopher's room: warm candlelight, parchment, deep shadow */
+.fr-atmos--study .fr-atmos__bloom {
+  background:
+    radial-gradient(46% 50% at 50% 8%, rgba(217,135,51,0.18) 0%, rgba(217,135,51,0) 62%),
+    radial-gradient(120% 90% at 50% 120%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0) 55%);
+}
+.fr-atmos--study .fr-atmos__haze {
+  background: linear-gradient(180deg, rgba(34,20,8,0.45) 0%, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 66%, rgba(10,6,2,0.78) 100%);
+}
+.fr-atmos--study .fr-atmos__grain { opacity: 0.09; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fr-atmos, .fr-atmos__grain, .fr-atmos__eq i, .fr-atmos--concert .fr-atmos__haze { animation: none; }
+}
+
 /* Section header (TEDFLIX divider + blurb) sits inside the rail, above the
    ambient blur, so the backdrop spans the whole section and fades at the top. */
 .fr-header {
@@ -59,11 +144,16 @@
 }
 /* TEDFLIX eyebrow — "Explore the [Archive / Library / Work]" with a flipping word */
 .tedflix-eyebrow {
-  display: inline-flex; align-items: baseline; gap: 10px;
+  display: inline-flex; align-items: baseline; justify-content: center; gap: 10px;
   font-family: var(--font-sans); font-weight: 700;
   font-size: 14px; letter-spacing: 0.26em; text-transform: uppercase;
 }
 .tedflix-eyebrow__lead { color: rgba(245,237,227,0.6); }
+.tedflix-eyebrow__word {
+  background: var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
 .tedflix-flip {
   position: relative; display: inline-block;
   height: 1.2em; overflow: hidden; vertical-align: bottom;
@@ -166,6 +256,27 @@
   box-shadow: 0 50px 120px rgba(0,0,0,0.7), 0 0 60px rgba(209,157,99,0.14);
   cursor: pointer;
 }
+.fr-card.is-center::after {
+  content: ""; position: absolute; inset: -2px; border-radius: 20px; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(232,201,138,0.55), 0 0 42px rgba(232,201,138,0.28);
+}
+/* Category icon badge + year tag on each card */
+.fr-card__badge {
+  position: absolute; top: 12px; left: 12px; z-index: 3;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(10,7,4,0.62); border: 1px solid rgba(232,201,138,0.5);
+  color: #F4D58E; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.fr-card__year {
+  position: absolute; top: 14px; right: 13px; z-index: 3;
+  font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em;
+  color: rgba(255,240,217,0.92); padding: 4px 8px; border-radius: 4px;
+  background: rgba(10,7,4,0.55); border: 1px solid rgba(232,201,138,0.32);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.fr-card:not(.is-center) .fr-card__badge,
+.fr-card:not(.is-center) .fr-card__year { opacity: 0; }
 .fr-card img {
   width: 100%; height: 100%; object-fit: cover;
   border-radius: 18px;
@@ -263,6 +374,21 @@
   letter-spacing: 0.22em; text-transform: uppercase;
   background: var(--grad-bronze);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* Category lockup (icon + label) for the active featured card */
+.fr-cat {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-sans); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: #E8C98A;
+}
+.fr-cat svg { color: #E8C98A; flex-shrink: 0; }
+/* Spec chips: year · medium · duration */
+.fr-specs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.fr-spec {
+  font-family: var(--font-sans); font-weight: 600; font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,237,227,0.82);
+  padding: 5px 11px; border: 1px solid rgba(201,162,75,0.4);
+  border-radius: 3px; background: rgba(20,13,7,0.4);
 }
 .fr-title {
   font-family: var(--font-display);
@@ -715,21 +841,16 @@
    No shell: no dark gradient, border, radius or shadow — content sits
    directly on the desk world and develops in. */
 .cine-card {
-  position: absolute; left: 43%; top: 50%; z-index: 4;
+  position: absolute; left: 50%; top: 50%; z-index: 4;
   transform: translate(-50%, -50%);
   width: min(1360px, 92vw); height: min(840px, 86vh);
-  display: grid; grid-template-columns: 1.5fr 0.92fr;
-  align-items: stretch; gap: 0px;
+  display: block;
   opacity: 0;
   will-change: transform, opacity;
 }
 .card-sheen { display: none; }
 .cine-card__photo {
-  position: relative; align-self: stretch;
-  filter: contrast(1.04) brightness(1.04);
-  mix-blend-mode: multiply;
-  -webkit-mask: linear-gradient(180deg, #000 84%, transparent 100%);
-          mask: linear-gradient(180deg, #000 84%, transparent 100%);
+  display: none;
 }
 .cine-card__photo img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
@@ -739,8 +860,10 @@
 .cine-card__photo-veil { display: none; }
 .cine-card__copy {
   position: relative; z-index: 4;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 56px 28px 56px 8px; margin-left: -150px; will-change: transform, opacity;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  height: 100%; max-width: 1040px; margin: 0 auto;
+  padding: 32px; will-change: transform, opacity;
 }
 /* Warm lamplight pooling on the parchment behind the copy — lifts the
    ink off the page and sells the "magically illuminated manuscript" feel. */
@@ -754,20 +877,28 @@
   font-family: var(--font-sans); font-weight: 700; font-size: 15px;
   letter-spacing: 0.24em; text-transform: uppercase;
   color: #7a531f;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 .cine-card__head {
   font-family: var(--font-display);
-  font-size: clamp(30px, 2.7vw, 50px); line-height: 1.04; text-transform: uppercase; letter-spacing: 0.01em;
-  margin: 0 0 26px;
+  font-size: clamp(28px, 2.5vw, 46px); line-height: 1.04; text-transform: uppercase; letter-spacing: 0.01em;
+  margin: 0 0 18px; max-width: 680px;
   color: #241606;
   text-shadow: 0 1px 0 rgba(255,250,236,0.5);
 }
 .cine-card__copy p {
-  font-family: var(--font-body); font-size: clamp(15px, 1.05vw, 20px); line-height: 1.6;
-  color: #3a2814; opacity: 0.96; margin: 0 0 18px; max-width: 420px;
+  font-family: var(--font-body); font-size: clamp(15px, 1.05vw, 20px); line-height: 1.55;
+  color: #3a2814; opacity: 0.96; margin: 0 0 14px; max-width: 760px;
 }
-.cine-card__cta { margin-top: 20px; }
+.cine-card__cta { margin-top: 14px; }
+
+/* Short viewports — tighten the manifesto copy so it never overflows the card */
+@media (max-height: 800px) {
+  .cine-eyebrow { margin-bottom: 10px; }
+  .cine-card__head { font-size: clamp(24px, 2.1vw, 34px); margin-bottom: 12px; }
+  .cine-card__copy p { font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
+  .cine-card__cta { margin-top: 10px; }
+}
 
 /* Mobile (this section is outside the scaled stage → its own breakpoint) */
 @media (max-width: 768px) {
@@ -828,6 +959,12 @@
 .fintro-awards {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 54px;
   margin: 34px auto 0;
+}
+/* On wide viewports keep all three wins on a single line */
+@media (min-width: 1080px) {
+  .fintro-awards { flex-wrap: nowrap; gap: clamp(24px, 2.6vw, 48px); }
+  .award { gap: 10px; }
+  .award__laurel { height: 56px; }
 }
 .award {
   display: flex; align-items: center; gap: 14px;
@@ -983,6 +1120,7 @@
 .compass-vignette {
   position: absolute; inset: 0;
   background:
+    linear-gradient(180deg, #060402 0%, rgba(6,4,2,0.85) 6%, rgba(6,4,2,0) 20%),
     radial-gradient(70% 60% at 72% 42%, rgba(232,201,138,0.10) 0%, rgba(0,0,0,0) 60%),
     radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
 }
@@ -1386,15 +1524,37 @@
 }
 
 .pathway__content {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
+  position: absolute; left: 0; right: 0; top: 30%; bottom: 0; z-index: 4;
   padding: 0 34px 40px; pointer-events: none;
+  display: flex; flex-direction: column; justify-content: flex-start;
   transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 /* All text shows by default; when a card is hovered, the OTHER cards' text
    fades away so focus lands on the chosen world. */
-.pathways-row:hover .pathway:not(:hover) .pathway__content {
-  opacity: 0; transform: translateY(12px);
+.pathways-row:hover .pathway:not(:hover) .pathway__copy,
+.pathways-row:hover .pathway:not(:hover) .pathway__cta {
+  opacity: 0; transform: translateY(12px); pointer-events: none;
 }
+/* Hover affordance — small bronze "+" badge on each condensed card; fades
+   out on the one being hovered (its full copy takes over). */
+.pathway__hint {
+  position: absolute; bottom: 34px; right: 28px; z-index: 5;
+  display: inline-flex; align-items: center; gap: 10px;
+  opacity: 1; transition: opacity 0.5s ease;
+}
+.pathway__hint span {
+  font-family: var(--font-sans); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(245,237,227,0.82); text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+}
+.pathway__hint i {
+  width: 26px; height: 26px; border-radius: 50%; flex: 0 0 auto;
+  border: 1px solid rgba(201,162,75,0.55);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #CBA14C; font-style: normal; font-size: 15px; line-height: 1;
+  background: rgba(8,5,3,0.38);
+}
+.pathway:hover .pathway__hint { opacity: 0; }
 .pathways-row:hover .pathway:not(:hover) .pathway__index { opacity: 0; }
 .pathway__index { transition: opacity 0.4s ease; }
 .pathway__category {
@@ -1493,7 +1653,8 @@
   width: 116vw; height: 196px;
   transform: translateY(-50%) rotate(-4.5deg);
   overflow: hidden;
-  background: #1c140d;
+  /* Solid film-brown body so no black shows behind images anywhere. */
+  background: #34230f;
   box-shadow: 0 26px 70px rgba(0,0,0,0.6), inset 0 0 60px rgba(0,0,0,0.4);
   -webkit-mask: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
           mask: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
@@ -1501,9 +1662,9 @@
 .film-track {
   position: relative;
   display: flex; height: 100%; width: max-content;
-  /* Solid film-brown stock — no baked-in frames or bright sprocket squares,
-     so images float in continuous brown with even spacing around them. */
-  background: linear-gradient(180deg, #34230f 0%, #29190c 50%, #34230f 100%);
+  /* Fully solid film-brown stock — no gradient, so images float in continuous
+     brown with even spacing and zero black space behind them. */
+  background: #34230f;
   animation: filmScroll 48s linear infinite;
 }
 /* Subtle perforations punched into the top & bottom edge bands only —
@@ -1512,16 +1673,16 @@
 .film-track::after {
   content: "";
   position: absolute; left: 0; right: 0;
-  height: 13px;
+  height: 11px;
   background: repeating-linear-gradient(90deg,
-    rgba(0,0,0,0.5) 0 13px,
+    rgba(0,0,0,0.45) 0 13px,
     transparent 13px 31px);
   border-radius: 3px;
   pointer-events: none;
   z-index: 1;
 }
-.film-track::before { top: 10px; }
-.film-track::after  { bottom: 10px; }
+.film-track::before { top: 7px; }
+.film-track::after  { bottom: 7px; }
 @keyframes filmScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -1529,19 +1690,22 @@
 .film-cell {
   flex: 0 0 auto;
   width: 232px; height: 100%;
-  /* Tighter top/bottom so images fill more of the strip height. */
-  padding: 26px 18px;
+  /* Extra top/bottom clearance so images sit well clear of the
+     perforation edge bands, and a touch more side gap. */
+  padding: 40px 22px;
   box-sizing: border-box;
 }
 .film-photo {
   width: 100%; height: 100%; overflow: hidden;
-  background: #29190c;
-  border-radius: 6px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.45);
+  background: #34230f;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.4);
 }
 .film-photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  border-radius: 6px;
+  border-radius: 12px;
+  /* Slight zoom crops any black letterbox bars baked into source frames. */
+  transform: scale(1.07);
   filter: grayscale(1) sepia(0.32) brightness(0.92) contrast(1.02);
 }
 
@@ -1630,7 +1794,7 @@
 /* ---- Light / gallery variant (concept-art prints framed on warm ivory) ---- */
 .tk-ip--light {
   background:
-    url("../assets/ip-lens-bg.jpg") center / cover no-repeat,
+    url("../assets/ip-camera-bg.jpg") center / cover no-repeat,
     #EFE7D7;
 }
 .tk-ip--light .tk-section-head .eyebrow {
@@ -1664,7 +1828,7 @@
   max-width: 1500px; margin: 0 auto; padding: 0 40px;
 }
 .ip-world {
-  position: relative; aspect-ratio: 16 / 11; overflow: hidden;
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
   border: 1px solid rgba(247,219,160,0.16);
   background: #0b0805;
   box-shadow: 0 40px 100px -40px rgba(0,0,0,0.9);
@@ -1701,6 +1865,14 @@
   filter: drop-shadow(0 4px 18px rgba(0,0,0,0.6));
 }
 .ip-world__rule { width: 46px; height: 2px; margin: 18px 0; background: linear-gradient(90deg, #D7A64C, rgba(215,166,76,0)); }
+.ip-world__genres { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.ip-world__genre {
+  font-family: var(--font-sans); font-weight: 600; font-size: 10.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,234,202,0.92);
+  padding: 5px 11px; border: 1px solid rgba(215,166,76,0.55);
+  border-radius: 3px; background: rgba(20,12,4,0.32);
+  backdrop-filter: blur(2px);
+}
 .ip-world__log {
   font-family: var(--font-body); font-size: clamp(13px, 0.95vw, 16px); line-height: 1.6;
   color: var(--c-cream); opacity: 0.9; margin: 0; max-width: 420px;
@@ -2256,6 +2428,12 @@
 /* ============================================================
  *  FOOTER — opt-in finale (full-width scene, opt-in L / connect R)
  * ============================================================ */
+/* FooterStage — full-bleed wrapper that breaks the footer out of any
+   constrained column to viewport width, then scales a 1920-design stage
+   to fit (matches homepage rendering on standalone pages). */
+.ft-scaler { position: relative; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; }
+.ft-stage { transform-origin: top left; }
+.ft-scaler .tk-footer2 { width: 100%; left: auto; transform: none; }
 .tk-footer2 {
   position: relative; overflow: hidden;
   background: #050302;
@@ -2264,13 +2442,13 @@
 /* Full-width centerpiece scene, faded to black on all edges (strong top fade) */
 .ft-bg {
   position: absolute; top: 0; left: 0;
-  width: 100%; height: 880px; z-index: 0; pointer-events: none;
+  width: 100%; height: 720px; z-index: 0; pointer-events: none;
 }
-.ft-bg__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+.ft-bg__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
 .ft-bg__fade {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, #050302 0%, rgba(5,3,2,0.7) 12%, rgba(5,3,2,0.05) 36%, rgba(5,3,2,0.5) 80%, #050302 100%),
+    linear-gradient(180deg, #050302 0%, rgba(5,3,2,0.7) 12%, rgba(5,3,2,0.05) 34%, rgba(5,3,2,0.62) 78%, #050302 96%),
     linear-gradient(90deg, #050302 0%, rgba(5,3,2,0.35) 14%, rgba(5,3,2,0) 38%, rgba(5,3,2,0) 62%, rgba(5,3,2,0.35) 86%, #050302 100%);
 }
 
@@ -2337,7 +2515,7 @@
 .ft-social:hover .ft-social__rune { color: #F4B97A; }
 
 /* ---- BASE: wordmark divider + nav ---- */
-.ft-base { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 30px 64px 0; }
+.ft-base { position: relative; z-index: 2; max-width: 1400px; margin: 90px auto 0; padding: 30px 64px 0; }
 .ft-mark { display: flex; align-items: center; gap: 30px; }
 .ft-mark__rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(201,162,75,0) 0%, rgba(201,162,75,0.6) 50%, rgba(201,162,75,0) 100%); }
 .ft-mark__center { display: flex; align-items: center; gap: 16px; }

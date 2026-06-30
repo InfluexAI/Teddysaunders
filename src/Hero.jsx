@@ -41,7 +41,7 @@ function Hero({ active, onNav, onCta, onPrimary, onSecondary }) {
 
           <p className="subhead">
             From cinematic brand campaigns to original sci-fi universes, Ted&rsquo;s
-            magic delivers work that is rich in story and alive with myth, at the
+            magic delivers work that is rich in story and alive with emotion, at the
             intersection of technology, emotion and transformation.
           </p>
 

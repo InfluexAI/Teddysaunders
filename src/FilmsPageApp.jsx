@@ -14,6 +14,16 @@ const FP_TWEAKS = /*EDITMODE-BEGIN*/{
   "accent": "Bronze Sheen"
 }/*EDITMODE-END*/;
 
+// category badge → Library filter tag (so the popup badge can deep-link into the archive)
+const FP_CAT_TO_TAG = {
+  "Corporate": "Corporate Films",
+  "Narrative": "Narrative",
+  "Documentary": "Documentary",
+  "Experimental": "Experimental Films",
+  "Music Video": "Music Videos",
+  "Motion Graphics": "Motion Graphics",
+};
+
 const FP_ACCENTS = {
   "Bronze Sheen": "linear-gradient(132deg, #FFE6C6 0%, #F8CB92 32%, #E9A968 64%, #C9803F 100%)",
   "Harvest Gold": "linear-gradient(132deg, #FBE9B6 0%, #ECC163 34%, #D89733 66%, #A9711F 100%)",
@@ -59,6 +69,7 @@ function FilmsPageApp() {
   const [popup, setPopup] = useFpState(null);      // library popup film id
   const [tflix, setTflix] = useFpState(null);      // {shuffle, startId} or null
   const [filter, setFilter] = useFpState("All");
+  const [client, setClient] = useFpState(null);   // active client (e.g. "Salesforce")
   const [t, setTweak] = useTweaks(FP_TWEAKS);
   const { wrapRef, stageRef } = useFpStageScale(1920);
   const rootRef = useFpRef(null);
@@ -87,9 +98,22 @@ function FilmsPageApp() {
 
   const goLibrary = useFpCb((f) => {
     if (f) setFilter(f);
+    setClient(null);
     const el = libRef.current; if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY - 10;
     window.scrollTo({ top, behavior: "smooth" });
+  }, []);
+
+  // deep-link from the popup badge: a category or a client jumps into the Library filtered
+  const filterTo = useFpCb((opt) => {
+    setPopup(null);
+    if (opt && opt.cat) { setFilter(FP_CAT_TO_TAG[opt.cat] || "All"); setClient(null); }
+    else if (opt && opt.client) { setFilter("All"); setClient(opt.client); }
+    setTimeout(() => {
+      const el = libRef.current; if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 10;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 80);
   }, []);
 
   // 3D gallery hero — tilts in on scroll (mirrors Literature / Portfolio)
@@ -185,8 +209,9 @@ function FilmsPageApp() {
 
               <TedflixSection films={D} onPlay={(shuffle, startId) => setTflix({ shuffle, startId })} />
 
-              <FilmLibrary films={D} filters={window.FILM_FILTERS} active={filter}
-                onFilter={(f) => setFilter(f)} onOpen={(id) => setPopup(id)} libRef={libRef} />
+              <FilmLibrary films={D} filters={window.FILM_FILTERS} active={filter} client={client}
+                onFilter={(f) => { setFilter(f); }} onClearClient={() => setClient(null)}
+                onOpen={(id) => setPopup(id)} libRef={libRef} />
 
               <OriginalIP onExplore={() => fire("Explore the IP")} onContact={() => { window.location.href = "contact.html"; }} />
             </div>
@@ -199,7 +224,7 @@ function FilmsPageApp() {
       {/* overlays — above the scaled stage */}
       {reel ? <FilmLightbox item={reel} onClose={() => setReel(null)} /> : null}
       <TedflixPlayer open={!!tflix} films={D} shuffle={tflix && tflix.shuffle} startId={tflix && tflix.startId} onClose={() => setTflix(null)} />
-      {popup ? <FilmVideoModule film={BY[popup]} byId={BY} onClose={() => setPopup(null)} onOpen={(id) => setPopup(id)} /> : null}
+      {popup ? <FilmVideoModule film={BY[popup]} byId={BY} onClose={() => setPopup(null)} onOpen={(id) => setPopup(id)} onFilterTo={filterTo} /> : null}
 
       <ToastShelfFP events={events} onDismiss={dismiss} />
 

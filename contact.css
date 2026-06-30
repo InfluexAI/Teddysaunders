@@ -31,8 +31,11 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
 .cpage__aura {
   position: absolute; inset: 0;
   background:
-    radial-gradient(70% 55% at 50% 0%, rgba(90,52,25,0.70) 0%, rgba(90,52,25,0) 62%),
-    radial-gradient(55% 45% at 92% 72%, rgba(90,52,25,0.40) 0%, rgba(90,52,25,0) 60%);
+    radial-gradient(70% 55% at 50% 0%, rgba(90,52,25,0.70) 0%, rgba(90,52,25,0) 62%);
+}
+/* Soft warm light at the bottom of the Follow Ted In Real Time section. */
+.c-follow {
+  background: radial-gradient(70% 70% at 50% 100%, rgba(191,135,83,0.16) 0%, rgba(191,135,83,0) 62%);
 }
 .cpage__vignette {
   position: absolute; inset: 0;
@@ -48,13 +51,24 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
 }
 .cpage.no-grain .cpage__grain { display: none; }
 
-/* ---------- The big warm spotlight drifts full-width L→R ---------- */
-.cpage__sweep {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(56% 46% at 50% 28%, rgba(191,135,83,0.26) 0%, rgba(191,135,83,0) 62%);
-  mix-blend-mode: screen;
-  will-change: transform, opacity;
-  animation: cpage-sweep 18s ease-in-out infinite alternate;
+/* ---------- Rustic studio-macro background with a dark transition ---------- */
+/* ---------- Rustic studio-macro backdrop behind the whole Choose Your Path block ---------- */
+.c-choosepath {
+  position: relative;
+}
+/* Background breaks out to the full viewport width (no side letterboxing) and spans
+   the full height of the heading + tabs + form stacked on top of it. */
+.c-choosepath::before {
+  content: ""; position: absolute; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%); width: 100vw; z-index: 0; pointer-events: none;
+  background: #000 url("assets/choosepath-bg.jpg") center center / cover no-repeat;
+}
+.c-choosepath > * { position: relative; z-index: 1; }
+/* Dark gradient at the bottom so the backdrop flows evenly into the black below. */
+.c-choosepath::after {
+  content: ""; position: absolute; bottom: 0;
+  left: 50%; transform: translateX(-50%); width: 100vw; height: 32vw; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #000 90%);
 }
 .cpage.no-motion .cpage__sweep { animation: none; }
 @keyframes cpage-sweep {
@@ -564,8 +578,10 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
   border: 1px solid rgba(120,86,52,0.3); border-radius: var(--r-xl);
   padding: 56px 56px;
   background:
-    radial-gradient(120% 140% at 100% 0%, rgba(255,247,233,0.9) 0%, rgba(255,247,233,0) 55%),
-    linear-gradient(180deg, #F6EEE2 0%, #E7D8C2 100%);
+    radial-gradient(120% 140% at 100% 0%, rgba(255,247,233,0.6) 0%, rgba(255,247,233,0) 55%),
+    linear-gradient(180deg, rgba(246,238,226,0.72) 0%, rgba(231,216,194,0.77) 100%),
+    url("assets/rustic-texture.jpg") center / cover no-repeat,
+    #E7D8C2;
   box-shadow: 0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.5);
 }
 /* light-theme inner text overrides */
@@ -631,8 +647,12 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .c-footer a:hover { color: var(--c-cream); }
 
 /* ============================================================
- *  HOMEPAGE FOOTER (tk-footer2) — ported from src/sections.css
+ *  HOMEPAGE FOOTER (tk-footer2) — keep in sync with src/sections.css
  * ============================================================ */
+/* FooterStage — full-bleed wrapper + 1920-design scaled stage (matches homepage) */
+.ft-scaler { position: relative; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; }
+.ft-stage { transform-origin: top left; }
+.ft-scaler .tk-footer2 { width: 100%; left: auto; transform: none; }
 .tk-footer2 {
   position: relative; overflow: hidden;
   background: #050302;
@@ -640,13 +660,13 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 }
 .ft-bg {
   position: absolute; top: 0; left: 0;
-  width: 100%; height: 880px; z-index: 0; pointer-events: none;
+  width: 100%; height: 720px; z-index: 0; pointer-events: none;
 }
-.ft-bg__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+.ft-bg__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
 .ft-bg__fade {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, #050302 0%, rgba(5,3,2,0.7) 12%, rgba(5,3,2,0.05) 36%, rgba(5,3,2,0.5) 80%, #050302 100%),
+    linear-gradient(180deg, #050302 0%, rgba(5,3,2,0.7) 12%, rgba(5,3,2,0.05) 34%, rgba(5,3,2,0.62) 78%, #050302 96%),
     linear-gradient(90deg, #050302 0%, rgba(5,3,2,0.35) 14%, rgba(5,3,2,0) 38%, rgba(5,3,2,0) 62%, rgba(5,3,2,0.35) 86%, #050302 100%);
 }
 .ft-inner {
@@ -703,7 +723,7 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .ft-social__label { font-family: var(--font-sans); font-weight: 500; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #D8CCB6; }
 .ft-social__label strong { font-weight: 700; color: #F4E6C8; }
 .ft-social__rune { font-size: 22px; color: #D9824A; line-height: 1; min-width: 24px; text-align: center; }
-.ft-base { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 30px 64px 0; }
+.ft-base { position: relative; z-index: 2; max-width: 1400px; margin: 90px auto 0; padding: 30px 64px 0; }
 .ft-mark { display: flex; align-items: center; gap: 30px; }
 .ft-mark__rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(201,162,75,0) 0%, rgba(201,162,75,0.6) 50%, rgba(201,162,75,0) 100%); }
 .ft-mark__center { display: flex; align-items: center; gap: 16px; }

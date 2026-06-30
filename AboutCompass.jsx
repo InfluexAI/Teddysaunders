@@ -15,7 +15,7 @@ const AB_NODES = [
     desc: "Photography that celebrates the beauty of all people.", cta: "Explore Photography" },
   { key: "drops",    name: "TedDrops",    medium: "Music",        dir: "E",  angle: 90,
     desc: "Music built to melt your insides and awaken your mind.", cta: "Explore Music" },
-  { key: "bots",     name: "TedBots",     medium: "Technology",   dir: "SE", angle: 135,
+  { key: "bots",     name: "TedBots",     medium: "Technology and Digital Design",   dir: "SE", angle: 135,
     desc: "Technology in service of human storytelling.",        cta: "Explore Technology" },
   { key: "unlocks",  name: "TedUnlocks",  medium: "Coaching",     dir: "S",  angle: 180,
     desc: "Coaching for men ready to build a meaningful life.",   cta: "Explore Coaching" },
@@ -266,9 +266,9 @@ function AboutCompass({ onActivate }) {
               })}
             </div>
             <div className="ab-comp__core">
-              <div className="ab-comp__core-name">Ted<br />Saunders</div>
-              <div className="ab-comp__core-rule" />
-              <div className="ab-comp__core-sub">Storytelling</div>
+              <div className="ab-comp__core-inner">
+                <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.logoMark) || "assets/logo-mark.png"} alt="Ted Saunders" />
+              </div>
             </div>
           </div>
         </div>
@@ -315,9 +315,9 @@ function AboutCompass({ onActivate }) {
             ))}
           </div>
           <div className="ab-comp__core">
-            <div className="ab-comp__core-name">Ted<br />Saunders</div>
-            <div className="ab-comp__core-rule" />
-            <div className="ab-comp__core-sub">Storytelling</div>
+            <div className="ab-comp__core-inner">
+              <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.logoMark) || "assets/logo-mark.png"} alt="Ted Saunders" />
+            </div>
           </div>
           <div className="ab-comp__pointer" ref={pointerRef} aria-hidden="true">
             <svg viewBox="0 0 28 24" width="30" height="26"><path d="M28 12 L4 2 Q10 12 4 22 Z" fill="url(#abBrass)" stroke="#FBE6B8" strokeWidth="0.8" /></svg>

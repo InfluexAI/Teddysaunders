@@ -23,6 +23,14 @@ const WK_FILMS = [
 ];
 
 const WK_VENTURES = [
+  { id: "infinit", mono: "IS", title: "InfinitStudios.com", kind: "Venture",
+    desc: "Ted's full-stack creative agency — film, animation, web, and AI for ambitious brands.",
+    log: "Ted's full-stack creative agency — film, animation, web, and AI for ambitious brands.",
+    fragK: "Mandate", fragQ: "Make the impossible look inevitable." },
+  { id: "tedshots", mono: "TS", title: "TedShots.com", kind: "Venture",
+    desc: "Headshot photography company capturing people at their most alive.",
+    log: "Headshot photography company capturing people at their most alive.",
+    fragK: "Mandate", fragQ: "Every face has a frame that tells the truth." },
   { id: "dreambox",  mono: "PD", title: "Project Dreambox",   kind: "Venture",
     desc: "A platform built to help people's dreams come true.",
     log: "A platform built to help people's dreams come true.",
@@ -49,7 +57,7 @@ function BroOracleLogo() {
         <g transform="rotate(45 22 30)"><rect x="19" y="8" width="6" height="34" rx="1.5" /><rect x="12" y="5" width="20" height="9" rx="2" /></g>
         <g transform="rotate(-45 22 30)"><rect x="19" y="8" width="6" height="34" rx="1.5" /><rect x="12" y="5" width="20" height="9" rx="2" /></g>
       </g>
-      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#1A1209">BRO·ORACLE</text>
+      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#F5EDE3">BRO·ORACLE</text>
     </svg>
   );
 }
@@ -134,7 +142,7 @@ function WorkInvestors({ onTedcast }) {
 
         {/* ventures */}
         <div className="wk-vband wk-reveal">
-          <p className="wk-subtitle">Ventures</p>
+          <h2 className="wk-vtitle wk2-textured">Ventures</h2>
           <div className="wk-cardgrid">
             {WK_VENTURES.map((v) => (
               <article className="wk-vcard" key={v.id} onClick={() => setModal(v)} role="button" aria-label={"Open " + v.title}>
@@ -158,7 +166,7 @@ function WorkInvestors({ onTedcast }) {
             <h3 className="wk-tedcast__title wk-textured">Tedcast</h3>
             <p className="wk-tedcast__sub">Apply to be a guest on Ted's podcast — long-form conversations on story, craft, and the worlds we build.</p>
             <button className="wk-btn wk-btn--solid wk-tedcast__btn" onClick={onTedcast}>
-              Apply to Tedcast
+              Apply to be on tedcast
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </button>
           </div>

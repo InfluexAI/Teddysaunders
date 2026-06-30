@@ -19,21 +19,38 @@ const inquiryById = (id) => INQUIRIES.find((q) => q.id === id) || INQUIRIES[4];
 const PATHWAYS = [
   { n: "01", title: "Send Teddy a Simple Message", inquiry: "general", cta: "Send Message",
     desc: "For general thoughts, questions, introductions, or conversations." },
-  { n: "02", title: "Apply to Hire for a Creative Project", inquiry: "film", cta: "Start a Creative Project",
+  { n: "02", title: "Hire for a Creative Project", inquiry: "film", cta: "Start a Creative Project",
     desc: "Brand, web, video, photography, creative strategy, immersive storytelling, and visual direction." },
-  { n: "03", title: "Apply to Hire for Personal Coaching", inquiry: "coaching", cta: "Apply for Coaching",
+  { n: "03", title: "Hire For Personal Coaching", inquiry: "coaching", cta: "Apply for Coaching",
     desc: "Creative transformation, mentorship, philosophy, alignment, and Compass Coaching." },
-  { n: "04", title: "Subscribe to the Ted Saunders Newsletter", inquiry: null, cta: "Subscribe", action: "subscribe",
-    desc: "Receive philosophical insights, creative updates, future projects, and transmissions from The Book of Ignorance." },
-  { n: "05", title: "Follow Ted and His Brand Pages", inquiry: null, cta: "Follow", action: "follow",
-    desc: "Social platforms, creative ecosystems, ventures, films, music, and future worlds." },
+  { n: "04", title: "Subscribe to the newsletter", inquiry: null, cta: "Subscribe", action: "subscribe",
+    desc: "Receive philosophical insights, creative updates, future projects, and updates about Ted’s book release." },
+  { n: "05", title: "Follow Ted in Real Time", inquiry: null, cta: "Follow", action: "follow",
+    desc: "Get real-time updates from social platforms." },
 ];
 
 const SOCIALS = [
-  { label: "Instagram", href: "#", rune: "\u16D7" },
+  { label: "Instagram", href: "#", svg: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3.5" y1="4" x2="3.5" y2="20"/><line x1="20.5" y1="4" x2="20.5" y2="20"/>
+      <line x1="3.5" y1="4" x2="20.5" y2="13"/><line x1="20.5" y1="4" x2="3.5" y2="13"/>
+      <line x1="3.5" y1="20" x2="20.5" y2="20"/>
+      <circle cx="12" cy="13.5" r="1.05" fill="currentColor" stroke="none"/>
+    </svg>
+  ) },
   { label: "YouTube",   href: "#", rune: "\u16C9" },
-  { label: "Vimeo",     href: "#", rune: "\u16A2" },
-  { label: "X",         href: "#", rune: "\u2715" },
+  { label: "Vimeo",     href: "#", svg: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <g transform="translate(0,24) scale(1,-1)">
+        <line x1="6" y1="4" x2="6" y2="20"/><line x1="6" y1="4" x2="18" y2="8"/><line x1="18" y1="8" x2="18" y2="20"/>
+      </g>
+    </svg>
+  ) },
+  { label: "X",         href: "#", svg: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5.5 4 Q14 10 18.5 20"/><path d="M19 4.5 Q9 13 4.5 19.5"/>
+    </svg>
+  ) },
   { label: "Spotify",   href: "#", rune: "\u16DF" },
 ];
 
@@ -155,7 +172,6 @@ function BgStack({ plain }) {
     <div className="cpage__bg">
       {!plain ? <div className="cpage__cosmic"></div> : null}
       <div className="cpage__aura"></div>
-      <div className="cpage__sweep"></div>
       <div className="cpage__vignette"></div>
       <div className="cpage__grain"></div>
     </div>
@@ -169,36 +185,14 @@ function Reticles() {
 // scripts only share scope within their own set.
 const CT_NAV_R = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
 const CT_PORTFOLIO_MEGA = [
-  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png", items: [
-    { label: "Festival & Narrative Projects", href: "portfolio/films-festival-narrative.html" },
-    { label: "Commercial Clients", href: "portfolio/films-commercial-clients.html" },
-    { label: "Featured Experimental & Music Video Work", href: "portfolio/films-experimental-music-video.html" },
-    { label: "Tedflix - Viewing Experience", href: "portfolio/films-tedflix.html" },
-    { label: "The Library - Full Archive of Ted's Videos", href: "portfolio/films-library.html" },
-    { label: "Original Scripts & IP", href: "portfolio/films-scripts-ip.html" },
-  ]},
-  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png", items: [
-    { label: "Portraits", href: "portfolio/photography-portraits.html" },
-    { label: "Headshots", href: "portfolio/photography-headshots.html" },
-    { label: "Stock Photography", href: "portfolio/photography-stock.html" },
-    { label: "Advertisements", href: "portfolio/photography-advertisements.html" },
-    { label: "VFX Composites / Commercial", href: "portfolio/photography-vfx-composites.html" },
-    { label: "Wizard Light Painting", href: "portfolio/photography-wizard-light-painting.html" },
-    { label: "Events", href: "portfolio/photography-events.html" },
-    { label: "Weddings", href: "portfolio/photography-weddings.html" },
-    { label: "Experimental and Abstract", href: "portfolio/photography-experimental-abstract.html" },
-  ]},
-  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png", items: [
-    { label: "TedDrops & Mastercodes DJ Sets", href: "portfolio/music-teddrops-mastercodes.html" },
-    { label: "Original Music", href: "portfolio/music-original.html" },
-  ]},
-  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png", items: [
-    { label: "The Book of Ignorance", href: "portfolio/literature-book-of-ignorance.html" },
-    { label: "Poetry", href: "portfolio/literature-poetry.html" },
-    { label: "Articles", href: "portfolio/literature-articles.html" },
-    { label: "TedThoughts Tweets / Epiphanies", href: "portfolio/literature-tedthoughts.html" },
-    { label: "Worldbuilding", href: "portfolio/literature-worldbuilding.html" },
-  ]},
+  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png",
+    desc: "Festival narratives, brand films, and original cinematic worlds." },
+  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png",
+    desc: "Portraits, light-painting, and beauty found in imperfection." },
+  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png",
+    desc: "TedDrops DJ sets and original scores made to move you." },
+  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
+    desc: "Poetry, essays, and worldbuilding for minds that wander." },
 ];
 const CT_MEGA = { Portfolio: CT_PORTFOLIO_MEGA };
 
@@ -215,16 +209,21 @@ function CtMegaPanel() {
     <div className="tk-dropdown tk-mega">
       <div className="tk-mega__grid">
         {CT_PORTFOLIO_MEGA.map((cat) => (
-          <div className="tk-cat" key={cat.label}>
-            <a className="tk-cat__card" href={cat.href}>
+          <a className="tk-cat" key={cat.label} href={cat.href}>
+            <span className="tk-cat__card">
               <img src={CT_NAV_R(cat.res, cat.img)} alt={cat.label} />
               <span className="tk-cat__title">{cat.label}</span>
-            </a>
-            <div className="tk-cat__list">
-              {cat.items.map((s) => (<a key={s.label} href={s.href}>{s.label}</a>))}
-            </div>
-          </div>
+            </span>
+            <span className="tk-cat__desc">{cat.desc}</span>
+          </a>
         ))}
+      </div>
+      <div className="tk-mega__foot">
+        <span className="tk-mega__foot-note">The full body of work — film, photography, music &amp; word.</span>
+        <a className="tk-mega__btn" href="Portfolio.html">
+          View Portfolio
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </a>
       </div>
     </div>
   );
@@ -279,7 +278,7 @@ function Header({ active = "Contact" }) {
                 {CT_MEGA[label].map((cat) => (
                   <React.Fragment key={cat.label}>
                     <a href={cat.href} className="tk-mobile-cat" onClick={() => setOpen(false)}>{cat.label}</a>
-                    {cat.items.map((s) => (<a key={s.label} href={s.href} className="tk-mobile-subitem" onClick={() => setOpen(false)}>{s.label}</a>))}
+                    <span className="tk-mobile-catdesc">{cat.desc}</span>
                   </React.Fragment>
                 ))}
               </div>
@@ -388,10 +387,10 @@ function NewsletterModule({ split = false }) {
     return (
       <div className="c-news c-news--split reveal d4">
         <div className="c-news__left">
-          <Eyebrow gold>The Book of Ignorance</Eyebrow>
+          <Eyebrow gold>Newsletter</Eyebrow>
           <div className="c-display" style={{ fontSize: 38, marginTop: 18 }}>JOIN THE TRANSMISSION</div>
           <p className="c-body" style={{ marginTop: 14, fontSize: 18, maxWidth: 520 }}>
-            Receive philosophical insights, creative updates, future projects, and transmissions from The Book of Ignorance.
+            Receive philosophical insights, creative updates, future projects, and updates about Ted’s book release.
           </p>
         </div>
         <div className="c-news__right">
@@ -409,10 +408,10 @@ function NewsletterModule({ split = false }) {
   }
   return (
     <div className="c-news reveal d4">
-      <Eyebrow gold>The Book of Ignorance</Eyebrow>
+      <Eyebrow gold>Newsletter</Eyebrow>
       <div className="c-display" style={{ fontSize: 30, marginTop: 18 }}>JOIN THE TRANSMISSION</div>
       <p className="c-body" style={{ marginTop: 12, maxWidth: 560 }}>
-        Receive philosophical insights, creative updates, future projects, and transmissions from The Book of Ignorance.
+        Receive philosophical insights, creative updates, future projects, and updates about Ted’s book release.
       </p>
       {done ? (
         <p className="c-lead" style={{ marginTop: 22, fontSize: 18, color: "var(--c-butter)" }}>You're on the list. Watch the skies.</p>
@@ -433,7 +432,7 @@ function SocialRow() {
   return (
     <div className="c-social">
       {SOCIALS.map((s) => (
-        <a key={s.label} href={s.href}><span className="ic ic--rune" aria-hidden="true">{s.rune}</span>{s.label}</a>
+        <a key={s.label} href={s.href}><span className="ic ic--rune" aria-hidden="true">{s.svg || s.rune}</span>{s.label}</a>
       ))}
     </div>
   );

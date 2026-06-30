@@ -33,12 +33,13 @@ function useGridReveal(dep) {
   return ref;
 }
 
-function FilmLibrary({ films, filters, active, onFilter, onOpen, libRef }) {
-  // counts per filter
+function FilmLibrary({ films, filters, active, client, onFilter, onClearClient, onOpen, libRef }) {
+  // base set respects the active client filter; counts + grid read from it
+  const base = client ? films.filter((x) => x.sub === client) : films;
   const counts = {};
-  filters.forEach((f) => { counts[f] = f === "All" ? films.length : films.filter((x) => x.tags.indexOf(f) >= 0).length; });
-  const shown = active === "All" ? films : films.filter((f) => f.tags.indexOf(active) >= 0);
-  const gridRef = useGridReveal(active);
+  filters.forEach((f) => { counts[f] = f === "All" ? base.length : base.filter((x) => x.tags.indexOf(f) >= 0).length; });
+  const shown = active === "All" ? base : base.filter((f) => f.tags.indexOf(active) >= 0);
+  const gridRef = useGridReveal(active + "|" + (client || ""));
 
   return (
     <section className="flib lp-grain" id="library" data-screen-label="The Library" ref={libRef}>
@@ -50,6 +51,11 @@ function FilmLibrary({ films, filters, active, onFilter, onOpen, libRef }) {
       </div>
 
       <div className="flib__filters" role="tablist" aria-label="Filter films">
+        {client ? (
+          <button type="button" className="flib__chip flib__chip--client is-on" onClick={onClearClient}>
+            {client}<span className="flib__chip-x" aria-hidden="true">✕</span>
+          </button>
+        ) : null}
         {filters.map((f) => {
           const n = counts[f];
           const empty = n === 0;
@@ -64,7 +70,7 @@ function FilmLibrary({ films, filters, active, onFilter, onOpen, libRef }) {
         })}
       </div>
 
-      <div className="flib__count">Showing <b>{shown.length}</b> {shown.length === 1 ? "film" : "films"}{active !== "All" ? <span> in {active}</span> : null}</div>
+      <div className="flib__count">Showing <b>{shown.length}</b> {shown.length === 1 ? "film" : "films"}{client ? <span> from {client}</span> : null}{active !== "All" ? <span> in {active}</span> : null}</div>
 
       <div className="flib__grid" ref={gridRef}>
         {shown.length === 0 ? (
@@ -97,7 +103,7 @@ function SoundIcon() {
 function ArrowIcon() { return (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>); }
 function LinkIcon() { return (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1" strokeLinecap="round" strokeLinejoin="round" /></svg>); }
 
-function FilmVideoModule({ film, byId, onClose, onOpen }) {
+function FilmVideoModule({ film, byId, onClose, onOpen, onFilterTo }) {
   const scrollRef = useFlRef(null);
   useFlEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
@@ -135,7 +141,11 @@ function FilmVideoModule({ film, byId, onClose, onOpen }) {
         <div className="fvm__body">
           {/* main column */}
           <div className="fvm__main">
-            <div className="fvm__badge">{film.cat} · {film.sub}</div>
+            <div className="fvm__badge">
+              <button type="button" className="fvm__badge-link" onClick={() => onFilterTo && onFilterTo({ cat: film.cat })}>{film.cat}</button>
+              <span className="fvm__badge-dot"> · </span>
+              <button type="button" className="fvm__badge-link" onClick={() => onFilterTo && onFilterTo({ client: film.sub })}>{film.sub}</button>
+            </div>
             <h2 className="fvm__title">{film.title}</h2>
             <div className="fvm__facts">
               <div className="fvm__fact"><b>{film.year}</b><span>Released</span></div>

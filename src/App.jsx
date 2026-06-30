@@ -105,7 +105,7 @@ function App() {
 
       {/* TEDFLIX portfolio — pinned scroll-driven coverflow, OUTSIDE the scaled
           stage so the sticky pin works at true viewport scale. */}
-      <Portfolio onExplore={() => fire("Explore the Portfolio")} />
+      <Portfolio onExplore={(w) => { if (w && w.href) window.location.href = w.href; }} />
 
       {/* Slanted film-strip marquee bridging TEDFLIX → Imperfection. */}
       <FilmStrip />

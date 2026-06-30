@@ -169,10 +169,12 @@
 .flib__chip:hover { color: #fff; border-color: rgba(232,183,119,0.7); background: rgba(209,157,99,0.08); }
 .flib__chip.is-on { color: #1a1208; background: var(--lp-peach, #E9A968); border-color: rgba(232,183,119,0.95); }
 .flib__chip-n { font-size: 11px; opacity: 0.7; font-variant-numeric: tabular-nums; }
+.flib__chip-x { font-size: 11px; opacity: 0.85; margin-left: 2px; }
+.flib__chip--client { letter-spacing: 0.12em; }
 .flib__chip[data-empty] { opacity: 0.38; cursor: default; }
 .flib__chip[data-empty]:hover { color: rgba(245,237,227,0.72); border-color: rgba(209,157,99,0.32); background: rgba(255,255,255,0.03); }
 /* grid */
-.flib__grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 40px var(--fp-pad) 0; }
+.flib__grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 40px var(--fp-pad) 0; }
 .flib__count { position: relative; z-index: 2; padding: 30px var(--fp-pad) 0; font-family: var(--font-sans); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,237,227,0.46); }
 .flib__count b { color: #E8B777; }
 .flib__empty { grid-column: 1 / -1; text-align: center; padding: 80px 0; font-family: var(--font-serif); font-style: italic; font-size: 24px; color: rgba(245,237,227,0.5); }
@@ -238,6 +240,9 @@
 .fvm__body { display: grid; grid-template-columns: 1fr 360px; gap: 0; }
 .fvm__main { padding: 40px 44px 46px; border-right: 1px solid rgba(209,157,99,0.16); min-width: 0; }
 .fvm__badge { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,183,119,0.92); margin: 0 0 12px; }
+.fvm__badge-link { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; border-bottom: 1px solid transparent; transition: color .25s, border-color .25s; }
+.fvm__badge-link:hover { color: #FBE6B8; border-bottom-color: rgba(232,183,119,0.55); }
+.fvm__badge-dot { opacity: 0.7; }
 .fvm__title { font-family: var(--font-display); font-weight: 500; font-size: 48px; line-height: 1.02; letter-spacing: 0.01em; text-transform: uppercase; color: #f6efe4; margin: 0; }
 .fvm__facts { display: flex; flex-wrap: wrap; gap: 26px; margin: 22px 0 0; padding: 0 0 26px; border-bottom: 1px solid rgba(209,157,99,0.16); }
 .fvm__fact { display: flex; flex-direction: column; gap: 4px; }
