@@ -220,7 +220,7 @@ function PhotoPageApp() {
                 <p className="pg-statement__lead">Photography was never just about documenting reality.</p>
                 <p>For Ted Saunders, the camera became a tool for world-building — capturing emotion, mythology, personality, transformation, and atmosphere through light, texture, composition, and mood.</p>
                 <p>From cinematic portraits and headshots to surreal visual experiments, commercial composites, live events, and long-exposure light painting, each image is designed to feel like a moment from a larger story.</p>
-                <p>The work spans both polished commercial imagery and deeply personal experimentation — always guided by the same obsession:<br />creating images that people feel before they fully understand.</p>
+                <p>The work spans both polished commercial imagery and deeply personal experimentation — always guided by the same obsession: <strong>creating images that people feel before they fully understand.</strong></p>
               </div>
               <div className="pg-statement__bot-veil" aria-hidden="true" />
             </section>

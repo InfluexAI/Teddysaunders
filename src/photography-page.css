@@ -289,7 +289,7 @@
 .pg-statement__text p { font-family: var(--font-body); font-weight: 400; font-size: 21px; line-height: 1.74;
   color: rgba(245,237,227,0.72); margin: 0 0 1.35em; text-wrap: pretty; }
 .pg-statement__text p:last-child { margin-bottom: 0; }
-.pg-statement__lead { font-family: var(--font-serif) !important; font-style: italic;
+.pg-statement__lead { font-family: var(--font-serif) !important; font-style: normal;
   font-size: 32px !important; line-height: 1.36 !important;
   background: var(--grad-bronze); -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent !important;
