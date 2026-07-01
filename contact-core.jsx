@@ -346,7 +346,7 @@ function AdaptiveForm({ inquiry, setInquiry, selectMode = "chips", showDesc = fa
           <div className="c-field" style={{ marginBottom: 26 }}>
             <label className="c-label">Inquiry Type</label>
             <div className="c-selectwrap">
-              <select className="c-input c-iselect" defaultValue="" required>
+              <select className="c-input c-iselect" defaultValue="individuals" required>
                 <option value="" disabled>Select inquiry type…</option>
                 <option value="brands">Brands</option>
                 <option value="individuals">Individuals</option>
