@@ -61,7 +61,9 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
 .c-choosepath::before {
   content: ""; position: absolute; top: 0; bottom: 0;
   left: 50%; transform: translateX(-50%); width: 100vw; z-index: 0; pointer-events: none;
-  background: #000 url("assets/choosepath-bg.jpg") center center / cover no-repeat;
+  background:
+    linear-gradient(180deg, #000 0%, rgba(0,0,0,0.72) 24%, rgba(0,0,0,0.28) 52%, rgba(0,0,0,0) 100%) top center / 100vw 420px no-repeat,
+    #000 url("assets/choosepath-bg.jpg") center center / cover no-repeat;
 }
 .c-choosepath > * { position: relative; z-index: 1; }
 /* Dark gradient at the bottom so the backdrop flows evenly into the black below. */
@@ -575,34 +577,25 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
  * ============================================================ */
 .c-news {
   position: relative; overflow: hidden;
-  border: 1px solid rgba(120,86,52,0.3); border-radius: var(--r-xl);
+  border: 1px solid rgba(209,157,99,0.3); border-radius: var(--r-xl);
   padding: 56px 56px;
   background:
-    radial-gradient(120% 140% at 100% 0%, rgba(255,247,233,0.6) 0%, rgba(255,247,233,0) 55%),
-    linear-gradient(180deg, rgba(246,238,226,0.72) 0%, rgba(231,216,194,0.77) 100%),
+    radial-gradient(120% 140% at 100% 0%, rgba(217,151,51,0.22) 0%, rgba(217,151,51,0) 55%),
+    linear-gradient(180deg, rgba(48,28,17,0.86) 0%, rgba(22,13,8,0.92) 100%),
     url("assets/rustic-texture.jpg") center / cover no-repeat,
-    #E7D8C2;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.5);
+    #1C110A;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,235,204,0.08);
 }
-/* light-theme inner text overrides */
-.c-news .c-eyebrow, .c-news .c-eyebrow--gold {
-  background: none; -webkit-text-fill-color: #8A5A2B; color: #8A5A2B;
-}
-.c-news .c-eyebrow .tick { background: rgba(138,90,43,0.5); }
-.c-news .c-display {
-  background: none; -webkit-text-fill-color: #241608; color: #241608; filter: none;
-}
-.c-news .c-body { color: rgba(36,22,8,0.72); }
-.c-news .c-lead { color: #8A5A2B; }
+.c-news .c-eyebrow .tick { background: rgba(246,211,107,0.55); }
 .c-news__row { display: flex; gap: 12px; margin-top: 22px; }
 .c-news__input {
-  flex: 1; font-family: var(--font-body); font-size: 16px; color: #241608;
-  background: rgba(255,255,255,0.7); border: 1.5px solid rgba(120,86,52,0.35);
+  flex: 1; font-family: var(--font-body); font-size: 16px; color: #F5EDE3;
+  background: rgba(255,235,204,0.06); border: 1.5px solid rgba(209,157,99,0.32);
   border-radius: var(--r-sm); padding: 0 18px; height: 56px; outline: none;
   transition: border-color .3s;
 }
-.c-news__input::placeholder { color: rgba(36,22,8,0.42); }
-.c-news__input:focus { border-color: #B07F40; }
+.c-news__input::placeholder { color: rgba(245,237,227,0.4); }
+.c-news__input:focus { border-color: #D19D63; }
 
 /* split newsletter layout (Option A): copy left, field-over-button right */
 .c-news--split {
@@ -631,6 +624,9 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 }
 .c-social a:hover { color: #FBF3E4; border-color: rgba(209,157,99,0.55); background: rgba(209,157,99,0.07); transform: translateY(-2px); }
 .c-social a svg { width: 18px; height: 18px; flex-shrink: 0; }
+.c-social a .ic--lg svg { width: 25px; height: 25px; }
+.c-social a .ic--cloud svg { width: 21.6px; height: 21.6px; }
+.c-social a .ic--spotify svg { width: 23.4px; height: 23.4px; }
 .c-social a .ic { color: var(--c-bronze-2); display: inline-flex; }
 .c-social a .ic--rune { font-size: 18px; line-height: 1; min-width: 18px; align-items: center; justify-content: center; }
 
