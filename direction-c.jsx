@@ -94,7 +94,7 @@ function DirectionC() {
         {/* SOCIAL */}
         <section className="c-follow" style={{ padding: "96px 64px 60px", textAlign: "center" }}>
           <div ref={socialRef}>
-            <h3 className="c-display" style={{ fontSize: 38, margin: "0 0 16px" }}>Follow Ted in Real Time</h3>
+            <h3 className="c-display" style={{ fontSize: 38, margin: "0 0 16px" }}>Follow Ted</h3>
             <p className="c-body reveal d2" style={{ margin: "0 auto 26px", maxWidth: 880, whiteSpace: "nowrap" }}>
               Get real-time updates from social platforms.
             </p>

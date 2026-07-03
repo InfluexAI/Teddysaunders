@@ -62,7 +62,7 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
   content: ""; position: absolute; top: 0; bottom: 0;
   left: 50%; transform: translateX(-50%); width: 100vw; z-index: 0; pointer-events: none;
   background:
-    linear-gradient(180deg, #000 0%, rgba(0,0,0,0.72) 24%, rgba(0,0,0,0.28) 52%, rgba(0,0,0,0) 100%) top center / 100vw 420px no-repeat,
+    linear-gradient(180deg, #000 0%, rgba(0,0,0,0.72) 24%, rgba(0,0,0,0.28) 52%, rgba(0,0,0,0) 100%) top center / 100vw 460px no-repeat,
     #000 url("assets/choosepath-bg.jpg") center center / cover no-repeat;
 }
 .c-choosepath > * { position: relative; z-index: 1; }
@@ -584,7 +584,7 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
     linear-gradient(180deg, rgba(48,28,17,0.86) 0%, rgba(22,13,8,0.92) 100%),
     url("assets/rustic-texture.jpg") center / cover no-repeat,
     #1C110A;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,235,204,0.08);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 44px 90px -20px rgba(217,151,51,0.28), 0 0 0 1px rgba(209,157,99,0.12), inset 0 1px 0 rgba(255,235,204,0.1);
 }
 .c-news .c-eyebrow .tick { background: rgba(246,211,107,0.55); }
 .c-news__row { display: flex; gap: 12px; margin-top: 22px; }
@@ -727,9 +727,9 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .ft-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 56px; margin-top: 40px; }
 .ft-nav a {
   font-family: var(--font-sans); font-weight: 600; font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: #D8CCB6; text-decoration: none; transition: color 0.2s ease;
+  color: #E8C687; text-decoration: none; transition: color 0.2s ease;
 }
-.ft-nav a:hover { color: #F4D58E; }
+.ft-nav a:hover { color: #FFFFFF; }
 .ft-credit { text-align: center; margin-top: 40px; font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.1em; color: rgba(185,172,151,0.6); }
 .ft-credit strong { color: #C9A24B; font-weight: 800; letter-spacing: 0.12em; }
 .ft-legal { text-align: center; margin-top: 14px; font-family: var(--font-sans); font-size: 12px; letter-spacing: 0.05em; color: rgba(185,172,151,0.5); }

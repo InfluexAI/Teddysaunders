@@ -208,7 +208,7 @@ function LitPageApp() {
                 style={{ background: "url(" + AR("excerptBg", "assets/excerpt-bg.png") + ") right center / cover no-repeat" }}>
                 <span className="lp-excerpt__mark" aria-hidden="true">&ldquo;</span>
                 <blockquote className="lp-excerpt__q">
-                  &ldquo;No matter what I say, it can&rsquo;t possibly be true. So I have permission to say everything.&rdquo;
+                  &ldquo;Safety is the subconscious priority of all human behavior and knowing this can change how you see life.&rdquo;
                 </blockquote>
                 <span className="lp-excerpt__tick" aria-hidden="true"></span>
                 <cite className="lp-excerpt__by">From the Book of Ignorance</cite>

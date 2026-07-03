@@ -108,7 +108,6 @@ function FocusRail({ items, initialIndex = 0, loop = true, header = null, contro
         <div className={"fr-atmos fr-atmos--" + atmosphere} aria-hidden="true">
           <span className="fr-atmos__bloom" />
           <span className="fr-atmos__haze" />
-          <span className="fr-atmos__grain" />
           {atmosphere === "concert" && (
             <span className="fr-atmos__eq">
               {Array.from({ length: 13 }).map((_, i) => <i key={i} style={{ animationDelay: (i * 0.12) + "s" }} />)}
