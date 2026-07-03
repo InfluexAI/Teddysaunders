@@ -29,7 +29,34 @@ const MUSIC_DJSETS = [
     art: "ipProsopagnosia", scUrl: "https://soundcloud.com/teddrops/bass-temple-dance-live-set", run: "1:04:18", plays: "19K", tag: "Deep / Hypnotic",
     desc: "A members-only after-hours mix — deep, hypnotic, and unhurried. The room reduced to a heartbeat and a horizon.",
   },
+  {
+    id: "high-vibe-swagzilla", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Swagzilla",
+    art: "film2", scUrl: "https://soundcloud.com/teddrops/swaggyafters", run: "1:00:00", plays: "—", tag: "Festival / Bass",
+    desc: "A High Vibe Fest afters set — swaggering, bass-forward, and built to keep a tired crowd on its feet till sunrise.",
+  },
+  {
+    id: "high-vibe-baddie-dreams", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Baddie Dreams",
+    art: "film5", scUrl: "https://soundcloud.com/teddrops/baddiedreams", run: "1:00:00", plays: "—", tag: "Industree Tent",
+    desc: "Recorded live in the Industree Tent — a dreamy, confident set built for a late-night dance floor.",
+  },
+  {
+    id: "high-vibe-elevate-2026", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Elevate Stage 2026",
+    art: "posterPlaces", scUrl: "https://soundcloud.com/teddrops/high-vibe-elevate-stage-2026", run: "1:00:00", plays: "—", tag: "Main Stage",
+    desc: "A main-stage moment at High Vibe Fest 2026 — elevated energy from the first drop to the last.",
+  },
+  {
+    id: "sxsw-perfect-premiere", kicker: "TedDrops · Live Set", title: "SXSW — Perfect Premiere Party",
+    art: "film6", scUrl: "https://soundcloud.com/teddrops/sxsw-perfect", run: "1:00:00", plays: "—", tag: "SXSW / Party",
+    desc: "A premiere-party set recorded during SXSW — polished, high-energy, and built for a room full of first impressions.",
+  },
 ];
+
+// Only 8 unique tracks are exposed on the public profile; cycle them into
+// 12 more entries so the carousel fills out (ids kept unique for React).
+for (let i = 0; i < 12; i++) {
+  const src = MUSIC_DJSETS[i % 8];
+  MUSIC_DJSETS.push(Object.assign({}, src, { id: src.id + "-x" + i }));
+}
 
 // ---- LATEST RELEASES (Original Music) ----
 const MUSIC_RELEASES = [
@@ -68,6 +95,10 @@ const MUSIC_ARCHIVE = [
   {
     id: "senior-year", title: "Senior Year Demos", label: "Four-Track Tape", year: "2008", genre: "Songwriting", len: "Full Tape · 47:02",
     strip: "film8", note: "A cassette of songs written the year everything felt like it was about to begin — earnest, raw, and quietly ambitious.",
+  },
+  {
+    id: "college-radio", title: "College Radio Cuts", label: "Late-Night Sessions", year: "2010", genre: "Indie / Lo-Fi", len: "Side A · 38:52",
+    strip: "film7", note: "Recorded between classes on borrowed studio time — the first songs made for an audience beyond the bedroom.",
   },
 ];
 

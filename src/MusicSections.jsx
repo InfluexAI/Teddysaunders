@@ -94,6 +94,24 @@ function ScWave({ playing, progress }) {
   );
 }
 
+/* ---- resolve a track's live SoundCloud artwork via oEmbed (client-side, CORS-enabled) ---- */
+function useScArtwork(scUrl) {
+  const [art, setArt] = useMsState(null);
+  useMsEffect(() => {
+    if (!scUrl) return;
+    let cancelled = false;
+    fetch("https://soundcloud.com/oembed?format=json&url=" + encodeURIComponent(scUrl))
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelled || !d || !d.thumbnail_url) return;
+        setArt(d.thumbnail_url.replace("-large", "-t500x500"));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [scUrl]);
+  return art;
+}
+
 function ScPlayer({ item, playingId, onToggle }) {
   const playing = playingId === item.id;
   const [progress, setProgress] = useMsState(0);
@@ -125,7 +143,7 @@ function ScPlayer({ item, playingId, onToggle }) {
       <div className="mp-scplayer">
         <iframe className="mp-player__iframe" height="166" scrolling="no" frameBorder="no" loading="lazy"
           title={item.title}
-          src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(item.scUrl) + "&color=%23ffffff&inverse=true&auto_play=false&show_user=true&visual=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
+          src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(item.scUrl) + "&color=%23e8b777&inverse=true&auto_play=false&show_user=true&visual=false&show_artwork=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
       </div>
     );
   }
@@ -166,28 +184,58 @@ function OverviewSection({ worlds }) {
   );
 }
 
+/* ---- a single DJ-set card (owns its own oEmbed-cover hook) ---- */
+function DjSetCard({ s, playingId, onToggle }) {
+  const liveArt = useScArtwork(!s.cover ? s.scUrl : null);
+  return (
+    <div className={"mp-release lp-reveal" + (playingId === s.id ? " is-playing" : "")}>
+      <div className="mp-release__art">
+        <img src={s.cover || liveArt || MS_R(s.art, "assets/heroes/musician.jpg")} alt={s.title} loading="lazy" />
+      </div>
+      <div className="mp-release__meta">
+        <div className="mp-release__gy"><span>{s.kicker}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{s.tag}</span></div>
+        <h3 className="mp-release__title">{s.title}</h3>
+        <p className="mp-release__desc">{s.desc}</p>
+        <ScPlayer item={s} playingId={playingId} onToggle={onToggle} />
+      </div>
+    </div>
+  );
+}
+
 /* ===================== DJ SETS ===================== */
 function DjSetsSection({ sets, banner, onCta, playingId, onToggle }) {
   const ref = useMpReveal();
+  const perSlide = 4;
+  const slides = [];
+  for (let i = 0; i < sets.length; i += perSlide) slides.push(sets.slice(i, i + perSlide));
+  const [slide, setSlide] = useMsState(0);
+  const go = (n) => setSlide((n + slides.length) % slides.length);
   return (
     <section className="mp-djs lp-grain" data-screen-label="DJ Sets" ref={ref}>
       <div className="lp-seam-top" />
-      <MpBanner img={MS_R(banner.bg, "assets/heroes/musician.jpg")} side="TedDrops & Mastercodes"
+      <MpBanner img={MS_R(banner.bg, "assets/heroes/musician.jpg")}
         eyebrow="Live DJ Performances" title="TedDrops & Mastercodes" blurb={banner.blurb} />
-      <div className="mp-players">
-        {sets.map((s) => (
-          <div className={"mp-release lp-reveal" + (playingId === s.id ? " is-playing" : "")} key={s.id}>
-            <div className="mp-release__art">
-              <img src={s.cover || MS_R(s.art, "assets/heroes/musician.jpg")} alt={s.title} loading="lazy" />
+      <div className="mp-carousel">
+        <div className="mp-carousel__track" style={{ transform: "translateX(-" + (slide * 100) + "%)" }}>
+          {slides.map((group, gi) => (
+            <div className="mp-players mp-carousel__slide" key={gi}>
+              {group.map((s) => (<DjSetCard s={s} playingId={playingId} onToggle={onToggle} key={s.id} />))}
             </div>
-            <div className="mp-release__meta">
-              <div className="mp-release__gy"><span>{s.kicker}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{s.tag}</span></div>
-              <h3 className="mp-release__title">{s.title}</h3>
-              <p className="mp-release__desc">{s.desc}</p>
-              <ScPlayer item={s} playingId={playingId} onToggle={onToggle} />
+          ))}
+        </div>
+        {slides.length > 1 ? (
+          <div className="mp-carousel__nav">
+            <button className="mp-carousel__arrow" aria-label="Previous" onClick={() => go(slide - 1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+            <div className="mp-carousel__dots">
+              {slides.map((_, i) => (<button key={i} className={"mp-carousel__dot" + (i === slide ? " is-active" : "")} aria-label={"Slide " + (i + 1)} onClick={() => setSlide(i)} />))}
             </div>
+            <button className="mp-carousel__arrow" aria-label="Next" onClick={() => go(slide + 1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
           </div>
-        ))}
+        ) : null}
       </div>
       <div className="mp-rail-cta lp-reveal">
         <button className="lp-cta lp-cta--gold" onClick={onCta}>Follow TedDrops on SoundCloud<span className="arr">→</span></button>
@@ -205,7 +253,6 @@ function ReleasesSection({ releases, playingId, onToggle }) {
       <div className="mp-head lp-reveal">
         <div className="mp-eyebrow">Original Music · Latest Releases</div>
         <h2 className="mp-head__title mp-tex">Newest First</h2>
-        <p className="mp-head__blurb">Original productions, scores, and experiments — released as they're finished. The most recent transmissions from the studio.</p>
       </div>
       <div className="mp-relgrid">
         {releases.map((r) => (
@@ -239,25 +286,19 @@ function ArchiveSection({ tapes }) {
       <div className="mp-head lp-reveal">
         <div className="mp-eyebrow">Original Music · The Archives</div>
         <h2 className="mp-head__title mp-tex">High School &amp; Childhood</h2>
-        <p className="mp-head__blurb">Where it began — the bedroom loops, garage sessions, and four-track demos that taught a filmmaker to hear in stories. Preserved on tape, exactly as they were.</p>
       </div>
-      <div className="mp-archive__rule lp-reveal"><span /><b>Rewind</b><span /></div>
-      <div className="mp-cassettes">
+      <div className="mp-relgrid">
         {tapes.map((t) => (
-          <div className="mp-cass lp-reveal" key={t.id} role="button" tabIndex={0}>
-            <div className="mp-cass__yr">{t.year}</div>
-            <div className="mp-cass__label">{t.label}</div>
-            <h3 className="mp-cass__title">{t.title}</h3>
-            <div className="mp-cass__shell" aria-hidden="true">
-              <div className="mp-cass__strip"><img src={MS_R(t.strip, "assets/film/photo-4.jpg")} alt="" loading="lazy" /></div>
-              <div className="mp-cass__reels"><span className="mp-cass__reel" /><span className="mp-cass__reel" /></div>
-              <div className="mp-cass__window" />
+          <div className="mp-release lp-reveal" key={t.id}>
+            <div className="mp-release__art">
+              <img src={MS_R(t.strip, "assets/film/photo-4.jpg")} alt={t.title} loading="lazy" />
             </div>
-            <div className="mp-cass__foot">
-              <span className="mp-cass__genre">{t.genre}</span>
-              <span className="mp-cass__len">{t.len}</span>
+            <div className="mp-release__meta">
+              <div className="mp-release__gy"><span>{t.label}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{t.year}</span></div>
+              <h3 className="mp-release__title">{t.title}</h3>
+              <p className="mp-release__desc">{t.note}</p>
+              <div className="mp-release__foot"><span>{t.genre}</span><span>{t.len}</span></div>
             </div>
-            <p className="mp-cass__note">{t.note}</p>
           </div>
         ))}
       </div>

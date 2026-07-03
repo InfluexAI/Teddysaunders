@@ -120,9 +120,9 @@ function MusicPageApp() {
     return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); if (raf) cancelAnimationFrame(raf); clearTimeout(ht1); clearTimeout(ht2); };
   }, []);
 
-  // hero waveform bars
-  const heroWaves = [];
-  for (let i = 0; i < 96; i++) { heroWaves.push({ h: 14 + Math.abs(Math.sin(i * 0.42) * 62) + (i % 7) * 5, d: (i % 14) * 0.06 }); }
+  // hero CTA mini-wave bars
+  const heroCtaWaves = [];
+  for (let i = 0; i < 40; i++) { heroCtaWaves.push({ h: 8 + Math.abs(Math.sin(i * 0.55) * 30), d: (i % 10) * 0.08 }); }
 
   // hero frames — musician + album art + key art
   const heroCols = [
@@ -131,7 +131,7 @@ function MusicPageApp() {
     [AMR("film4"), AMR("ipJuiced"), AMR("film8"), AMR("musician"), AMR("posterSynthesis"), AMR("film6")],
   ];
 
-  const banner = { bg: "musician", blurb: "Bass-driven performances blending electronic music, cinematic textures, emotional buildups, and full festival energy — live recordings, exclusive mixes, and featured playlists." };
+  const banner = { bg: "musician", blurb: "" };
 
   return (
     <React.Fragment>
@@ -154,9 +154,6 @@ function MusicPageApp() {
                 <div className="lph-band" aria-hidden="true" />
                 <div className="lph-glow lph-glow--bl" aria-hidden="true" />
                 <div className="lph-glow lph-glow--tr" aria-hidden="true" />
-                <div className="mph-waves" aria-hidden="true">
-                  {heroWaves.map((w, i) => (<i key={i} style={{ height: w.h + "px", animationDelay: w.d + "s" }} />))}
-                </div>
                 <div className="mph-glowline" aria-hidden="true" />
                 <Header active="Portfolio" onNav={(label) => fire(`Nav → ${label}`)} onCta={() => scrollTo(djRef)} />
                 <div className="lph-copy">
@@ -164,7 +161,14 @@ function MusicPageApp() {
                   <h2 className="lph-title lp-title-fill">Music</h2>
                   <div className="lph-rule" />
                   <p className="lph-motto">Adding rhythm and harmony to life's vibrations.</p>
-                  <p className="lph-sub">Music is the pulse beneath Ted Saunders' universe — from bass-driven DJ sets and original productions to ambient sound design, cinematic scores, and soundtrack concepts for worlds not yet filmed.<br /><br />Some tracks are built for the dancefloor. Others are quiet transmissions — emotional storytelling told entirely through sound.</p>
+                  <div className="mp-cta__btns lp-reveal">
+                    <button className="lp-cta lp-cta--gold" onClick={() => scrollTo(djRef)}>Listen Now<span className="arr">→</span></button>
+                    <button className="lp-cta" onClick={() => scrollTo(djRef)}>Explore TedDrops<span className="arr">→</span></button>
+                    <button className="lp-cta" onClick={() => { window.open("https://soundcloud.com/teddrops", "_blank"); }}>Follow on SoundCloud<span className="arr">→</span></button>
+                  </div>
+                  <div className="mp-cta__mini-wave" aria-hidden="true">
+                    {heroCtaWaves.map((w, i) => (<i key={i} style={{ height: w.h + "px", animationDelay: w.d + "s" }} />))}
+                  </div>
                 </div>
                 <div className="lph-scrollcue"><span>Scroll</span><span className="bar" /></div>
               </div>
@@ -180,14 +184,6 @@ function MusicPageApp() {
               <ReleasesSection releases={window.MUSIC_RELEASES} playingId={playingId} onToggle={togglePlay} />
 
               <ArchiveSection tapes={window.MUSIC_ARCHIVE} />
-
-              <HighlightsSection items={window.MUSIC_HIGHLIGHTS} />
-
-              <MusicCta
-                onListen={() => scrollTo(djRef)}
-                onDrops={() => scrollTo(djRef)}
-                onFollow={() => { window.open("https://soundcloud.com/teddrops", "_blank"); }}
-              />
             </div>
 
             <Footer onSubscribe={(d) => fire(`Newsletter: ${(d && d.email) || ""}`)} />
