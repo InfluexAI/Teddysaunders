@@ -170,13 +170,35 @@
 .ab-compass {
   position: relative;
   background:
-    radial-gradient(70% 60% at 30% 40%, rgba(74,46,20,0.5) 0%, rgba(74,46,20,0) 60%),
+    radial-gradient(70% 60% at 30% 40%, rgba(74,46,20,0.4) 0%, rgba(74,46,20,0) 60%),
     #050301;
 }
 .ab-compass__stage {
   position: sticky; top: 0;
   height: 100vh;
   overflow: hidden;
+  background: #050301;
+}
+.ab-compass__video {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none;
+}
+.ab-compass__stage::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: rgba(5,3,1,0.5);
+}
+/* central radial darkening behind the compass while it's centered (JS-driven opacity) */
+.ab-compass__centershade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 1;
+  background: radial-gradient(60% 70% at 50% 50%, rgba(5,3,1,0.85) 0%, rgba(5,3,1,0.55) 35%, rgba(5,3,1,0) 70%);
+  transition: opacity .15s linear;
+}
+/* extra left-side shade that fades in as the compass docks left (JS-driven opacity) */
+.ab-compass__leftshade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, rgba(5,3,1,0.9) 0%, rgba(5,3,1,0.8) 35%, rgba(5,3,1,0.35) 55%, rgba(5,3,1,0) 72%);
+  transition: opacity .15s linear;
 }
 .ab-compass__grain {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -243,15 +265,16 @@
   transform: translate(-50%, -50%);
   z-index: 4;
   border-radius: 50%;
-  background: radial-gradient(circle at 42% 38%, #FBE6B8 0%, #C9A24B 44%, #5A4220 100%);
-  box-shadow: 0 0 40px rgba(201,162,75,0.5), inset 0 0 24px rgba(0,0,0,0.4);
+  background: radial-gradient(circle at 50% 45%, #050301 0%, #0C0704 45%, #2A1A0A 100%);
+  border: 1.5px solid rgba(201,162,75,0.55);
+  box-shadow: 0 0 46px rgba(201,162,75,0.42), inset 0 0 26px rgba(0,0,0,0.6);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center;
   animation: abCorePulse 5.5s ease-in-out infinite;
 }
 @keyframes abCorePulse {
-  0%,100% { box-shadow: 0 0 36px rgba(240,196,120,0.42), inset 0 0 24px rgba(0,0,0,0.4); }
-  50%     { box-shadow: 0 0 58px rgba(240,196,120,0.6), inset 0 0 24px rgba(0,0,0,0.4); }
+  0%,100% { box-shadow: 0 0 36px rgba(240,196,120,0.34), inset 0 0 26px rgba(0,0,0,0.6); }
+  50%     { box-shadow: 0 0 58px rgba(240,196,120,0.52), inset 0 0 26px rgba(0,0,0,0.6); }
 }
 @media (prefers-reduced-motion: reduce) { .ab-comp__core { animation: none; } }
 .ab-comp__core-name {
@@ -259,23 +282,22 @@
   font-weight: 700;
   font-size: clamp(14px, 1.25vw, 20px);
   line-height: 1.04; letter-spacing: 0.05em; text-transform: uppercase;
-  color: #2A1B08;
+  color: #F0C478;
 }
-.ab-comp__core-rule { width: 38%; height: 1px; background: rgba(42,27,8,0.5); margin: 7px 0; }
+.ab-comp__core-rule { width: 38%; height: 1px; background: rgba(240,196,120,0.4); margin: 7px 0; }
 .ab-comp__core-inner {
   width: 84%; height: 84%; border-radius: 50%;
-  border: 1px solid rgba(60,40,16,0.5);
+  border: 1px solid rgba(201,162,75,0.28);
   display: flex; align-items: center; justify-content: center;
 }
 .ab-comp__core-mark {
   width: 74%; height: 74%; object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(11%) sepia(40%) saturate(900%) hue-rotate(2deg) brightness(95%);
-  opacity: 0.9;
+  opacity: 0.98;
 }
 .ab-comp__core-sub {
   font-family: var(--font-sans); font-weight: 700;
   font-size: clamp(8px, 0.7vw, 11px); letter-spacing: 0.24em; text-transform: uppercase;
-  color: rgba(42,27,8,0.72);
+  color: rgba(240,196,120,0.72);
 }
 
 /* orbiting nodes — positioned on the dial, content counter-rotated upright */
@@ -547,6 +569,7 @@
 .ab-vcard__logoimg {
   height: 34px; width: auto; max-width: 72%; object-fit: contain; display: block;
 }
+.ab-ventures__title .ab-lc { text-transform: lowercase; }
 .ab-vcard__wordmark {
   font-family: "Inter", var(--font-sans);
   font-weight: 800; font-size: clamp(20px, 1.6vw, 25px); letter-spacing: -0.01em;
@@ -620,7 +643,7 @@
  * ============================================================ */
 .ab-ventures--light {
   background:
-    url("assets/ventures/cyber-bg.png") center / 100% 100% no-repeat,
+    url("assets/ventures/cyber-bg.png") center / cover no-repeat,
     #EFE7D7;
 }
 .ab-ventures--light .ab-eyebrow {
@@ -631,7 +654,12 @@
   font-size: clamp(40px, 4.6vw, 76px); line-height: 0.96;
   text-transform: uppercase; letter-spacing: 0.01em;
   margin: 16px 0 18px;
-  filter: none;
+  /* Dark espresso base with the gold texture reading through only as faint shimmer */
+  background:
+    linear-gradient(rgba(24,15,6,0.70), rgba(24,15,6,0.70)),
+    url("assets/heading-texture.jpg") center 38% / cover;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
 }
 .ab-ventures--light .ab-ventures__head p { color: rgba(58,36,16,0.72); }
 .ab-ventures--light .ab-vcard {
@@ -736,4 +764,49 @@
   .ab-vgrid { grid-template-columns: 1fr; }
   .ab-hero { min-height: auto; padding-top: 6vh; }
   .ab-social-rail { flex-wrap: wrap; }
+}
+
+/* ============================================================
+ *  ROLES MARQUEE — full-width dark credits reel after the hero
+ * ============================================================ */
+.ab-marquee {
+  position: relative;
+  height: 100px;
+  background: linear-gradient(180deg, #0A0704 0%, #140C05 50%, #0A0704 100%);
+  border-top: 1px solid rgba(201,162,75,0.28);
+  border-bottom: 1px solid rgba(201,162,75,0.28);
+  overflow: hidden;
+  display: flex; align-items: center;
+}
+.ab-marquee__viewport {
+  position: relative; z-index: 1;
+  display: flex; width: max-content;
+  animation: abMarqueeScroll 46s linear infinite;
+  will-change: transform;
+}
+.ab-marquee__sparkles {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; pointer-events: none;
+}
+.ab-marquee:hover .ab-marquee__viewport { animation-play-state: paused; }
+@keyframes abMarqueeScroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ab-marquee__viewport { animation: none; }
+}
+.ab-marquee__track { display: flex; align-items: center; flex: none; }
+.ab-marquee__item { display: inline-flex; align-items: center; }
+.ab-marquee__role {
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: clamp(12px, 1.08vw, 17.6px);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  white-space: nowrap;
+}
+.ab-marquee__dot {
+  color: rgba(201,162,75,0.6);
+  font-size: clamp(11px, 0.9vw, 15px);
+  margin: 0 clamp(24px, 2.6vw, 48px);
+  line-height: 1;
 }

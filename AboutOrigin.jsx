@@ -33,10 +33,6 @@ function AboutOriginTeaser() {
       <div className="ao-teaser__bg" aria-hidden="true"></div>
       <div className="ao-teaser__scrim" aria-hidden="true"></div>
       <div className="ao-teaser__flash" aria-hidden="true"></div>
-      <div className="ao-teaser__reticles" aria-hidden="true">
-        <span className="r tl"></span><span className="r tr"></span>
-        <span className="r bl"></span><span className="r br"></span>
-      </div>
       {videoOpen && ReactDOM.createPortal(
         <div className="ao-vmodal" role="dialog" aria-modal="true" onClick={() => setVideoOpen(false)}>
           <button className="ao-vmodal__x" aria-label="Close" onClick={() => setVideoOpen(false)}>×</button>
@@ -167,14 +163,41 @@ const AO_MILESTONES = [
     desc: "Ted partners with Influex to launch his personal website, showcasing the multiverse of creations that Ted has created in his lifetime. This website is an experiment in transparency as well as a digital legacy. Today Teddy is excited to explore new realms of innovation and creation and he is pleased that you can join him in his quest to beautify humanity by celebrating the raw truth and opportunity of the human experience." },
 ];
 
+// Map coordinates stamped on each chapter card (cartographic flavor).
+const AO_COORDS = [
+  "42.3370\u00B0 N / 71.2092\u00B0 W",
+  "42.3601\u00B0 N / 71.0589\u00B0 W",
+  "34.0928\u00B0 N / 118.3287\u00B0 W",
+  "34.0522\u00B0 N / 118.2437\u00B0 W",
+  "37.7749\u00B0 N / 122.4194\u00B0 W",
+  "40.7864\u00B0 N / 119.2065\u00B0 W",
+  "34.0522\u00B0 N / 118.2437\u00B0 W",
+  "42.3736\u00B0 N / 71.1097\u00B0 W",
+  "42.3601\u00B0 N / 71.0589\u00B0 W",
+  "30.2672\u00B0 N / 97.7431\u00B0 W",
+  "33.4484\u00B0 N / 112.0740\u00B0 W",
+  "30.2672\u00B0 N / 97.7431\u00B0 W",
+];
+
+// tiny compass-rose glyph that sits beside each chapter title
+function AoCompassMark() {
+  return (
+    <svg className="ao-frame__markicon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.1" />
+      <polygon points="12,5 14,12 12,11 10,12" fill="currentColor" />
+      <polygon points="12,19 10,12 12,13 14,12" fill="currentColor" opacity="0.55" />
+      <circle cx="12" cy="12" r="1.4" fill="currentColor" />
+    </svg>
+  );
+}
+
 function AboutOriginTimeline() {
   const N = AO_MILESTONES.length;
   const reelRef = useAoRef(null);
   const frameRefs = useAoRef([]);
   const activeRef = useAoRef(0);
-  const autoRef = useAoRef(null);
-  const pausedRef = useAoRef(false);
   const [active, setActive] = useAoState(0);
+  const [trail, setTrail] = useAoState(null);
 
   const centerFrame = (i) => {
     const reel = reelRef.current;
@@ -207,31 +230,90 @@ function AboutOriginTimeline() {
     reel.addEventListener("scroll", onScroll, { passive: true });
     compute();
 
-    // auto-advance through the chapters; pauses only while the pointer is over the strip
-    autoRef.current = setInterval(() => {
-      if (pausedRef.current) return;
-      centerFrame((activeRef.current + 1) % N);
-    }, 4200);
-    const wrap = reel.closest(".ao-reelwrap") || reel;
-    const onEnter = () => { pausedRef.current = true; };
-    const onLeave = () => { pausedRef.current = false; };
-    wrap.addEventListener("mouseenter", onEnter);
-    wrap.addEventListener("mouseleave", onLeave);
-
     return () => {
       reel.removeEventListener("scroll", onScroll);
-      wrap.removeEventListener("mouseenter", onEnter);
-      wrap.removeEventListener("mouseleave", onLeave);
-      if (autoRef.current) clearInterval(autoRef.current);
       if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // drag-to-scroll the reel (pointer drag anywhere on the strip)
+  useAoEffect(() => {
+    const reel = reelRef.current;
+    if (!reel) return;
+    let down = false, moved = false, startX = 0, startScroll = 0;
+    const onDown = (e) => {
+      if (e.button != null && e.button !== 0) return;
+      down = true; moved = false;
+      startX = e.clientX; startScroll = reel.scrollLeft;
+    };
+    const onMove = (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) { moved = true; reel.classList.add("is-dragging"); }
+      if (moved) reel.scrollLeft = startScroll - dx;
+    };
+    const end = () => {
+      if (moved) {
+        // swallow the click that follows a drag so a card link isn't triggered
+        const swallow = (ev) => { ev.stopPropagation(); ev.preventDefault(); };
+        reel.addEventListener("click", swallow, { capture: true, once: true });
+        setTimeout(() => reel.removeEventListener("click", swallow, { capture: true }), 0);
+      }
+      down = false; moved = false; reel.classList.remove("is-dragging");
+    };
+    reel.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerup", end);
+    return () => {
+      reel.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", end);
     };
   }, []);
 
   const step = (dir) => { centerFrame(Math.max(0, Math.min(N - 1, active + dir))); };
 
+  // the map-travel trail — a winding dashed line + glowing waypoints threaded
+  // across the image/text seam of every card (purely decorative, scrolls with the reel)
+  useAoEffect(() => {
+    const compute = () => {
+      const frames = frameRefs.current;
+      if (!frames.length || !frames[0]) return;
+      const firstEl = frames[0], lastEl = frames[frames.length - 1];
+      const pic = firstEl.querySelector(".ao-frame__pic");
+      if (!pic) return;
+      const EXT = firstEl.offsetWidth * 0.1;          // start the trail ~10% left of the first card
+      const left = firstEl.offsetLeft - EXT;
+      const totalW = (lastEl.offsetLeft + lastEl.offsetWidth) - left;
+      const seamY = pic.offsetHeight;
+      const AMP = 34, PAD = 22;
+      const centers = frames.map((f) => (f.offsetLeft + f.offsetWidth / 2) - left);
+      const points = [];
+      centers.forEach((c, i) => {
+        points.push(c);
+        if (i < centers.length - 1) points.push((c + centers[i + 1]) / 2);
+      });
+      const period = totalW / Math.max(1, centers.length);
+      const waveY = (x) => AMP * Math.sin((x / period) * Math.PI * 2);
+      let d = "";
+      const steps = 240;
+      for (let s = 0; s <= steps; s++) {
+        const x = (s / steps) * totalW;
+        const y = PAD + AMP + waveY(x);
+        d += (s === 0 ? "M" : "L") + x.toFixed(1) + " " + y.toFixed(1) + " ";
+      }
+      const dots = points.map((x) => ({ x, y: PAD + AMP + waveY(x) }));
+      setTrail({ left, top: seamY - AMP - PAD, width: totalW, height: 2 * (AMP + PAD), d, dots });
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
   return (
     <section className="ao-timeline">
-      <div className="ao-timeline__glow" aria-hidden="true"></div>
+      <div className="ao-timeline__grain" aria-hidden="true"></div>
+
       <div className="ao-timeline__head">
         <h2 className="ao-timeline__title ab-textured">The Road Here</h2>
         <p className="ao-timeline__sub">A life built frame by frame.</p>
@@ -243,21 +325,38 @@ function AboutOriginTimeline() {
         </p>
       </div>
 
-      <div className="ao-axis">
-        <div className="ao-axis__track">
-          <span className="ao-axis__line" aria-hidden="true"></span>
-          {AO_MILESTONES.map((m, i) => (
-            <button key={m.year} className={"ao-tick" + (i === active ? " is-active" : "")}
-              onClick={() => { centerFrame(i); }}>
-              <span className="ao-tick__dot"></span>
-              {m.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* the journey — a straight glowing star line; solid where travelled, dashed ahead */}
+      {(() => {
+        const activeFrac = N > 1 ? active / (N - 1) : 0;
+        return (
+          <div className="ao-route">
+            <div className="ao-route__track">
+              <span className="ao-route__line ao-route__line--solid" aria-hidden="true"
+                style={{ width: (activeFrac * 100) + "%" }}></span>
+              <span className="ao-route__line ao-route__line--dashed" aria-hidden="true"
+                style={{ left: (activeFrac * 100) + "%" }}></span>
+              {AO_MILESTONES.map((m, i) => {
+                const t = N > 1 ? i / (N - 1) : 0;
+                return (
+                  <button key={m.year}
+                    className={"ao-tick" + (i === active ? " is-active" : "") + (i < active ? " is-visited" : "")}
+                    onClick={() => { centerFrame(i); }}
+                    aria-label={m.label}
+                    style={{ left: (t * 100) + "%" }}>
+                    <span className="ao-tick__star" aria-hidden="true">
+                      <span className="ao-tick__glow"></span>
+                      <svg viewBox="0 0 100 100"><path d="M50 0 L54.2 45.8 L100 50 L54.2 54.2 L50 100 L45.8 54.2 L0 50 L45.8 45.8 Z" /></svg>
+                    </span>
+                    <span className="ao-tick__label">{m.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
 
       <div className="ao-reelwrap">
-        <div className="ao-reel-sprocket ao-reel-sprocket--top" aria-hidden="true"></div>
         <div className="ao-reel" ref={reelRef}>
           {AO_MILESTONES.map((m, i) => (
             <div className={"ao-frame" + (i === active ? " is-active" : "")} key={m.year} ref={(el) => (frameRefs.current[i] = el)}>
@@ -267,19 +366,40 @@ function AboutOriginTimeline() {
                   <span className="ao-frame__year">{m.label}</span>
                   <span className="ao-frame__pic-vig"></span>
                 </div>
-                <p className="ao-frame__cap">{m.cap}</p>
-                {m.desc && <p className="ao-frame__desc">{m.desc}{m.href && <> <a className="ao-frame__link" href={m.href} target="_blank" rel="noopener noreferrer">{m.hrefLabel || "(Watch \u2192)"}</a></>}</p>}
+                <span className="ao-frame__seam" aria-hidden="true"></span>
+                <div className="ao-frame__body">
+                  <h3 className="ao-frame__cap"><span className="ao-frame__mark"><svg viewBox="0 0 100 100"><path d="M50 0 L54.2 45.8 L100 50 L54.2 54.2 L50 100 L45.8 54.2 L0 50 L45.8 45.8 Z" /></svg></span>{m.cap}</h3>
+                  {m.desc && <p className="ao-frame__desc">{m.desc}{m.href && <> <a className="ao-frame__link" href={m.href} target="_blank" rel="noopener noreferrer">{m.hrefLabel || "(Watch \u2192)"}</a></>}</p>}
+                </div>
               </div>
             </div>
           ))}
+          {trail && (
+            <div className="ao-trail" aria-hidden="true"
+              style={{ left: trail.left + "px", top: trail.top + "px", width: trail.width + "px", height: trail.height + "px" }}>
+              <svg width={trail.width} height={trail.height} viewBox={"0 0 " + trail.width + " " + trail.height}>
+                <path d={trail.d} className="ao-trail__path" />
+              </svg>
+              {trail.dots.map((d, i) => (
+                <span key={i} className="ao-trail__dot" style={{ left: d.x + "px", top: d.y + "px" }}>
+                  <span className="ao-trail__dot-glow"></span>
+                  <span className="ao-trail__dot-core"></span>
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-        <div className="ao-reel-sprocket ao-reel-sprocket--bot" aria-hidden="true"></div>
         <button className="ao-arrow ao-arrow--prev" aria-label="Previous chapter" onClick={() => step(-1)}>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M15 6l-6 6 6 6" /></svg>
         </button>
         <button className="ao-arrow ao-arrow--next" aria-label="Next chapter" onClick={() => step(1)}>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M9 6l6 6-6 6" /></svg>
         </button>
+        <div className="ao-dots" aria-hidden="true">
+          {AO_MILESTONES.map((m, i) => (
+            <span key={m.year} className={"ao-dot" + (i === active ? " is-active" : "")}></span>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -289,6 +409,7 @@ function AboutOrigin() {
   return (
     <React.Fragment>
       <AboutOriginTeaser />
+      {window.AboutRolesMarquee ? <AboutRolesMarquee /> : null}
       <AboutOriginStory />
       <AboutOriginTimeline />
     </React.Fragment>

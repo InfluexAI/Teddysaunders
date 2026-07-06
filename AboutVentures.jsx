@@ -1,17 +1,17 @@
 // AboutVentures.jsx — "Ventures & Entrepreneurship" cards + the "Follow Ted" rail.
 // Titles + descriptions follow the source copy verbatim.
 const VENTURES = [
-  { key: "infinit", logo: "infinit", title: "InfinitStudios.com", href: "https://infinitstudios.com",
+  { key: "infinit", logo: "img", res: "infinit", img: "assets/ventures/infinit-studios.png", title: "InfinitStudios.com", href: "https://infinitstudios.com",
     desc: "Full stack creative agency owned by Ted" },
   { key: "tedshots", logo: "img", res: "tedshots", img: "assets/ventures/tedshots.png", title: "TedShots.com", href: "https://tedshots.com",
     desc: "Headshot Photography company" },
   { key: "speech", logo: "box", mono: "SB", title: "SpeechToBook.com", href: "https://speechtobook.com",
     desc: "Write your book with your voice with step-by-step guidance" },
-  { key: "bro", logo: "bro", title: "BroOracle.com", href: "https://brooracle.com",
+  { key: "bro", logo: "img", res: "bro", img: "assets/ventures/bro-oracle.png", title: "BroOracle.com", href: "https://brooracle.com",
     desc: "Draw a card. Forge your Manhood." },
   { key: "celestial", logo: "placeholder", glyph: "compass", name: "Celestial Compass", title: "Celestial Compass", href: "#",
     desc: "Use your birthday to discover who you are and get AI guidance from the stars on every decision." },
-  { key: "dreambox", logo: "placeholder", glyph: "box", name: "ProjectDreambox", title: "ProjectDreambox.com", href: "https://projectdreambox.com",
+  { key: "dreambox", logo: "img", res: "dreambox", img: "assets/ventures/project-dreambox.png", title: "ProjectDreambox.com", href: "https://projectdreambox.com",
     desc: "Platform to help peoples dreams come true." },
 ];
 
@@ -21,36 +21,6 @@ function PlaceholderGlyph({ glyph }) {
     return <svg {...c}><circle cx="12" cy="12" r="9" /><polygon points="15.5,8.5 11,11 8.5,15.5 13,13" fill="currentColor" stroke="none" /></svg>;
   }
   return <svg {...c}><path d="M3 8l9-5 9 5-9 5-9-5z" /><path d="M3 8v8l9 5 9-5V8" /><path d="M12 13v8" /></svg>;
-}
-
-// BroOracle wordmark, rebuilt as SVG (Syne, the typeface they use) with a
-// gold crossed-hammers mark. Dark text to sit on the light card.
-function BroOracleLogo() {
-  return (
-    <svg className="ab-vcard__brosvg" viewBox="0 0 500 56" fill="none" role="img" aria-label="BRO·ORACLE">
-      <g fill="#D6A24A">
-        <g transform="rotate(45 22 30)">
-          <rect x="19" y="8" width="6" height="34" rx="1.5" />
-          <rect x="12" y="5" width="20" height="9" rx="2" />
-        </g>
-        <g transform="rotate(-45 22 30)">
-          <rect x="19" y="8" width="6" height="34" rx="1.5" />
-          <rect x="12" y="5" width="20" height="9" rx="2" />
-        </g>
-      </g>
-      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#F5EDE3">BRO·ORACLE</text>
-    </svg>
-  );
-}
-
-// InfinitStudios wordmark, rebuilt as SVG (Inter, the typeface on their site,
-// regular weight) in black.
-function InfinitStudiosLogo() {
-  return (
-    <svg className="ab-vcard__infinitsvg" viewBox="0 0 250 40" fill="none" role="img" aria-label="Infinit Studios">
-      <text x="1" y="30" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="30" letterSpacing="0" fill="#F5EDE3">Infinit Studios</text>
-    </svg>
-  );
 }
 
 // Site favicon, shown alone (unboxed); falls back to a monogram if it can't load.
@@ -65,17 +35,11 @@ function FaviconLogo({ domain, mono }) {
 }
 
 function VentureLogo({ v }) {
-  if (v.logo === "infinit") {
-    return <InfinitStudiosLogo />;
-  }
   if (v.logo === "img") {
     return <img className="ab-vcard__logoimg" src={(window.__resources && window.__resources[v.res]) || v.img} alt={v.title} />;
   }
   if (v.logo === "box") {
     return <span className="ab-vcard__logobox"><span className="ab-vcard__mono">{v.mono}</span></span>;
-  }
-  if (v.logo === "bro") {
-    return <BroOracleLogo />;
   }
   return (
     <span className="ab-vcard__placeholder">
@@ -108,7 +72,7 @@ function AboutVentures({ onVisit, onFollow }) {
       <section className="ab-ventures ab-ventures--light">
         <div className="ab-ventures__head">
           <p className="ab-eyebrow">Ventures &amp; Entrepreneurship</p>
-          <h2 className="ab-ventures__title ab-textured">Brands and Technology</h2>
+          <h2 className="ab-ventures__title ab-textured">Ted&rsquo;<span className="ab-lc">s</span> Personal Brands</h2>
           <p>The same imagination, channeled into companies, tools, and platforms — each one another point on the compass made real.</p>
         </div>
 

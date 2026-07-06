@@ -95,6 +95,8 @@ function AboutCompass({ onActivate }) {
   const dotsRef = useAcRef(null);
   const pointerRef = useAcRef(null);
   const panelRef = useAcRef(null);
+  const leftShadeRef = useAcRef(null);
+  const centerShadeRef = useAcRef(null);
   const activeRef = useAcRef(-1);
   const [mobile, setMobile] = useAcState(
     typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
@@ -174,6 +176,10 @@ function AboutCompass({ onActivate }) {
 
       // panel fades in with the dock
       if (panelRef.current) panelRef.current.style.opacity = String(dock);
+      // extra left-side vignette fades in as the compass docks left (keeps it readable)
+      if (leftShadeRef.current) leftShadeRef.current.style.opacity = String(dock);
+      // central radial darkening is strongest while centered, fades out as it docks
+      if (centerShadeRef.current) centerShadeRef.current.style.opacity = String(1 - dock);
       // pointer only appears once the compass has docked left
       if (pointerRef.current) pointerRef.current.style.opacity = String(dock);
       // progress dots only appear once the compass has docked left
@@ -296,6 +302,11 @@ function AboutCompass({ onActivate }) {
   return (
     <section className="ab-compass" ref={sectionRef} style={{ height: "calc(100vh * 9.5)" }}>
       <div className="ab-compass__stage">
+        <video className="ab-compass__video" aria-hidden="true"
+          src="assets/about/compass-hall.mp4"
+          autoPlay loop muted playsInline preload="auto"></video>
+        <div className="ab-compass__leftshade" ref={leftShadeRef} aria-hidden="true" />
+        <div className="ab-compass__centershade" ref={centerShadeRef} aria-hidden="true" />
         <div className="ab-compass__glow" aria-hidden="true" />
         <div className="ab-compass__grain" aria-hidden="true" />
         <div className="ab-compass__vignette" aria-hidden="true" />
