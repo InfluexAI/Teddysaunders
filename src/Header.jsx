@@ -16,6 +16,8 @@ const PORTFOLIO_MEGA = [
     desc: "TedDrops DJ sets and original scores made to move you." },
   { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
     desc: "Poetry, essays, and worldbuilding for minds that wander." },
+  { label: "Web & Graphic Design", href: "web-graphic-design.html", res: "navWebDesign", img: "assets/nav/web-design.png",
+    desc: "Websites, brand identity, UI/UX, and AI-driven digital ecosystems." },
 ];
 const HDR_MEGA = { Portfolio: PORTFOLIO_MEGA };
 

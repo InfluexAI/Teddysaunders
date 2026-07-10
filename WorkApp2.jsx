@@ -24,7 +24,7 @@ function WkToasts2({ events, onDismiss }) {
 function wk2ScrollToId(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  const target = el.getBoundingClientRect().top + window.scrollY - 20;
+  const target = el.getBoundingClientRect().top + window.scrollY - 116;
   const start = window.scrollY, dist = target - start;
   if (Math.abs(dist) < 2) return;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -66,7 +66,7 @@ function WorkApp2() {
       <WkPaths onJump={wk2ScrollToId} />
       <WorkCoaching onApply={toContact} onActivate={() => {}} />
       <WorkBrand onStart={toContact} onStudios={() => fire("Go to Infinit Studios")} />
-      <WorkInvestors onTedcast={() => fire("Apply to Tedcast")} />
+      <WorkInvestors onTedcast={() => fire("Apply to Tedcast")} onInquire={toContact} />
       <WkClosing onBegin={toContact} onPortfolio={() => { window.location.href = "Portfolio.html"; }} />
       <Footer onSubscribe={(d) => fire("Newsletter: " + ((d && d.email) || ""))} />
       <WkToasts2 events={events} onDismiss={dismiss} />

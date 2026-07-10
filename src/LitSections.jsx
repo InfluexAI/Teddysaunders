@@ -642,8 +642,8 @@ function WorldModal({ world, onClose }) {
   return ReactDOM.createPortal(
     <div className="lp-wmodal" role="dialog" aria-modal="true" onClick={onClose}>
       <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
-      <div className="lp-wmodal__scroll" onClick={(e) => e.stopPropagation()}>
-        <div className="lp-wmodal__card">
+      <div className="lp-wmodal__scroll">
+        <div className="lp-wmodal__card" onClick={(e) => e.stopPropagation()}>
           <div className="lp-wmodal__hero" style={{ backgroundImage: `url(${world.imgSrc})` }}>
             <div className="lp-wmodal__hero-veil" />
             <div className="lp-wmodal__hero-label">

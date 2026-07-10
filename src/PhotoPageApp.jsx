@@ -213,7 +213,7 @@ function PhotoPageApp() {
             {/* STATEMENT — Minolta lens + editorial body (copy moved from hero) */}
             <section className="pg-statement lp-grain" data-screen-label="Photography Statement">
               <div className="pg-statement__media">
-                <img src={APR("assets/heroes/photographer-macro.jpg")} alt="Vintage Minolta rangefinder lens" />
+                <img src={APR("assets/heroes/minolta-lens-macro.jpg")} alt="Vintage Minolta rangefinder lens" />
                 <div className="pg-statement__veil" aria-hidden="true" />
               </div>
               <div className="pg-statement__text">
@@ -239,7 +239,7 @@ function PhotoPageApp() {
                 <img src={APR("assets/photography/ted-with-camera.jpg")} alt="" />
               </div>
               <div className="pg-finale__inner">
-                <h2 className="pg-finale__title">Let's Make<br />Something Real</h2>
+                <h2 className="pg-finale__title">Capture your essence</h2>
                 <div className="pg-finale__rule" />
                 <p className="pg-finale__sub">Every great image starts with a conversation. Reach out to book a shoot — or explore the full TedShots portfolio at TedShots.com.</p>
                 <div className="pg-finale__btns">

@@ -102,35 +102,36 @@ function PortfolioPageApp() {
       { src: R("posterPlaces", "assets/portfolio/poster-places.png"), title: "Oh, The Places You’ll Go", year: "2014", cat: "Documentary", desc: "A psychedelic odyssey through the dust and devotion of the playa." },
       { src: R("posterSynthesis", "assets/portfolio/poster-synthesis.png"), title: "The Great Synthesis", year: "2023", cat: "Experimental", desc: "There is no light without shadow — a meditation on duality." },
       { src: R("posterEudaimonia", "assets/portfolio/poster-eudaimonia.png"), title: "The Crossroads to Eudaimonia", year: "2021", cat: "Short Film", desc: "A seeker chooses between comfort and meaning at the edge of a new world." },
-      { src: R("posterBubbles", "assets/portfolio/poster-bubbles.png"), title: "Lovers of the Playa", year: "2020", cat: "Documentary", desc: "Two souls, one horizon, and the ephemeral magic of Black Rock City." },
+      { src: R("posterBubbles", "assets/portfolio/poster-bubbles.png"), title: "When I Grow Up", year: "2020", cat: "Documentary", desc: "Two souls, one horizon, and the ephemeral magic of Black Rock City." },
     ],
   };
   const galleryData = { env: R("heroPhoto", "assets/heroes/photographer.jpg"), featured: R("ipFated", "assets/ip/fated.jpg"), second: R("film2", "assets/film/photo-2.jpg") };
   const galleryPhotos = [
-    { src: R("tedCinematic", "assets/ted-cinematic.jpg"), label: "Cinematic Portrait" },
-    { src: R("film4", "assets/film/photo-4.jpg"), label: "Surreal Experiment" }, { src: R("film8", "assets/film/photo-8.jpg"), label: "Light Painting" },
-    { src: R("film5", "assets/film/photo-5.jpg"), label: "Commercial Composite" }, { src: R("film6", "assets/film/photo-6.jpg"), label: "The Wedding" },
-    { src: R("film7", "assets/film/photo-7.jpg"), label: "Headshot" }, { src: R("film3", "assets/film/photo-3.jpg"), label: "Long Exposure" },
+    { src: R("tedCinematic", "assets/ted-cinematic.jpg"), label: "Artist Portrait" },
+    { src: R("film4", "assets/film/photo-4.jpg"), label: "Thought Leaders" }, { src: R("film8", "assets/film/photo-8.jpg"), label: "Headshots" },
+    { src: R("film5", "assets/film/photo-5.jpg"), label: "Wizard Photography" }, { src: R("film6", "assets/film/photo-6.jpg"), label: "Art & Experimental" },
+    { src: R("film7", "assets/film/photo-7.jpg"), label: "Weddings" }, { src: R("film3", "assets/film/photo-3.jpg"), label: "Composites & Editorial" },
   ];
   const musicData = { reel: R("heroMusic", "assets/heroes/musician.jpg") };
   const musicClips = [
-    { src: R("film1", "assets/film/photo-1.jpg"), label: "Music Video", placeholder: "Drop a music video" },
-    { src: R("film8", "assets/film/photo-8.jpg"), label: "Live Set", placeholder: "Drop performance footage" },
-    { src: R("film3", "assets/film/photo-3.jpg"), label: "Studio Session", placeholder: "Drop a studio session" },
-    { src: R("film2", "assets/film/photo-2.jpg"), label: "Behind the Scenes", placeholder: "Drop a BTS montage" },
+    { src: R("film1", "assets/film/photo-1.jpg"), label: "DJ Sets", placeholder: "Drop a music video" },
+    { src: R("film8", "assets/film/photo-8.jpg"), label: "Original Sets", placeholder: "Drop performance footage" },
+    { src: R("film3", "assets/film/photo-3.jpg"), label: "Movie Sets", placeholder: "Drop a studio session" },
+    { src: R("film2", "assets/film/photo-2.jpg"), label: "Music Videos", placeholder: "Drop a BTS montage" },
     { src: R("film6", "assets/film/photo-6.jpg"), label: "Soundscape", placeholder: "Drop a soundscape visual" },
     { src: R("film7", "assets/film/photo-7.jpg"), label: "Archive", placeholder: "Drop an archive clip" },
   ];
-  const journalData = { spread: R("heroPhil", "assets/heroes/philosopher.jpg") };
+  const journalData = { spread: R("bookOfIgnorance", "assets/book-of-ignorance.jpg") };
   const heroCols = [
-    [R("posterPlaces"), R("film1"), R("ipFated"), R("film4"), R("posterBubbles"), R("film7")],
-    [R("ipInevitable"), R("film2"), R("posterSynthesis"), R("film6"), R("ipProsopagnosia"), R("tedCinematic")],
-    [R("posterEudaimonia"), R("film3"), R("ipJuiced"), R("film5"), R("burningMan"), R("film8")],
+    [R("posterPlaces"), R("heroFilm"), R("ipFated"), R("heroMusic"), R("posterBubbles"), R("heroPhoto")],
+    [R("ipInevitable"), R("storyBridge"), R("posterSynthesis"), R("hyperlapse"), R("ipProsopagnosia"), R("tedCinematic")],
+    [R("posterEudaimonia"), R("heroPhil"), R("ipJuiced"), R("teddyHero"), R("burningMan"), R("hyperlapseBts")],
   ];
   const excerpts = [
-    { cat: "The Nature of Ignorance", quote: "The greatest frontier is not out there, it is within." },
-    { cat: "Creativity & Consciousness", quote: "Creation is a conversation between the seen and unseen." },
-    { cat: "The Human Experience", quote: "We are stories becoming aware of themselves." },
+    { cat: "Thoughts", quote: "Short aphorisms on ignorance, ego, and attention.", href: "Literature.html#tedthoughts" },
+    { cat: "Poems", quote: "Verses on longing, transformation, and the unseen.", href: "Literature.html#poetry" },
+    { cat: "Articles", quote: "Essays unpacking the Book of Ignorance, one idea at a time.", href: "Literature.html#essays" },
+    { cat: "Song Lyrics", quote: "Words written to be sung — rhythm, ache, and refrain.", href: "Literature.html#poetry" },
   ];
   return (
     <React.Fragment>
@@ -152,7 +153,7 @@ function PortfolioPageApp() {
                 <div className="pp-hero__wash" />
                 <Header active="Portfolio" onNav={(label) => fire(`Nav → ${label}`)} onCta={() => fire("Explore the work")} />
                 <div className="pp-hero__copy">
-                  <div className="pp-hero__kicker">A Cinematic Archive</div>
+                  <div className="pp-hero__kicker">A Creator’s Archive</div>
                   <h1 className="pp-hero__title">Portfolio</h1>
                   <div className="pp-hero__rule" />
                   <p className="pp-hero__motto">Four disciplines. One obsession.</p>

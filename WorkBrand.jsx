@@ -2,13 +2,20 @@
 // Take your Business to new levels: services grid, accolade, testimonial
 // slider, media-ideas strip, and dual CTAs (Start a Project / Infinit Studios).
 const WK_SERVICES = [
-  { n: "01", title: "Film & Video Production",       id: "wk-svc-film",  icon: "film",    img: "assets/film/photo-1.jpg" },
-  { n: "02", title: "Photography",                   id: "wk-svc-photo", icon: "camera",  img: "assets/film/photo-2.jpg" },
-  { n: "03", title: "Branding",                       id: "wk-svc-brand", icon: "badge",   img: "assets/film/photo-3.jpg" },
-  { n: "04", title: "Creative Strategy",              id: "wk-svc-strat", icon: "compass", img: "assets/film/photo-4.jpg" },
-  { n: "05", title: "AI Systems Design",              id: "wk-svc-ai",    icon: "chip",    img: "assets/film/photo-5.jpg" },
-  { n: "06", title: "Web Direction & Development",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg" },
-  { n: "07", title: "Speaking & Podcasting",          id: "wk-svc-speak", icon: "mic",     img: "assets/film/photo-7.jpg" },
+  { n: "01", title: "Film & Video Production",       id: "wk-svc-film",  icon: "film",    img: "assets/film/photo-1.jpg",
+    sub: ["Fiction", "Non-Fiction", "Documentary"] },
+  { n: "02", title: "Photography",                   id: "wk-svc-photo", icon: "camera",  img: "assets/film/photo-2.jpg",
+    sub: ["Product", "Stock Photo"] },
+  { n: "03", title: "Branding",                       id: "wk-svc-brand", icon: "badge",   img: "assets/film/photo-3.jpg",
+    sub: ["Brand Identity", "Logo Design", "Website", "AI Systems", "Photoshoots", "Story Video"] },
+  { n: "04", title: "Creative Strategy",              id: "wk-svc-strat", icon: "compass", img: "assets/film/photo-4.jpg",
+    sub: ["Team Management", "Brand Alignment", "Social Media Consultation"] },
+  { n: "05", title: "AI Systems Design",              id: "wk-svc-ai",    icon: "chip",    img: "assets/film/photo-5.jpg",
+    sub: ["Application", "Dashboard", "Product", "Team Management", "CRM", "CMS", "Brand Identity", "Web Development"] },
+  { n: "06", title: "Web Direction & Development",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg",
+    sub: ["Domain & Hosting", "Framer", "WordPress", "Webflow", "Shopify", "WooCommerce", "Squarespace", "Creative Strategy", "Brand Voice", "System Design", "UI/UX Design"] },
+  { n: "07", title: "Speaking & Podcasting",          id: "wk-svc-speak", icon: "mic",     img: "assets/film/photo-7.jpg",
+    sub: ["Keynote Speaker", "Guest Appearances", "Podcast Host"] },
 ];
 
 // Light line glyphs (bronze stroke) for each creative service.
@@ -55,6 +62,31 @@ function WorkBrand({ onStart, onStudios }) {
           body={<React.Fragment>
             <p>Ted can be hired for film direction, photography, branding, creative strategy, immersive storytelling, speaking engagements, and collaborative future projects.</p>
           </React.Fragment>}
+          extra={<div className="wk-accolades">
+            <div className="wk-accolades__head">
+              <span className="wk-accolades__rule" aria-hidden="true"></span>
+              <span className="wk-accolades__label">Accolades</span>
+              <span className="wk-accolades__rule" aria-hidden="true"></span>
+            </div>
+            <p className="wk-accolades__lead">Three client companies have gone on to be acquired.</p>
+            <ul className="wk-accolades__list">
+              <li className="wk-accolade">
+                <span className="wk-accolade__name">Glint</span>
+                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+                <span className="wk-accolade__note">Acquired by LinkedIn after Ted helped grow the company from 25 employees to 1,500.</span>
+              </li>
+              <li className="wk-accolade">
+                <span className="wk-accolade__name">5th Kind</span>
+                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+                <span className="wk-accolade__note">Acquired by Sohonet after Ted redesigned their website and the UI/UX of their digital product suite.</span>
+              </li>
+              <li className="wk-accolade">
+                <span className="wk-accolade__name">Toolchain</span>
+                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+                <span className="wk-accolade__note">Acquired following brand and creative direction work.</span>
+              </li>
+            </ul>
+          </div>}
           cta={{ label: "Watch the Reel", variant: "wk-btn--ghost", onClick: () => window.open("https://vimeo.com/405296100", "_blank", "noopener") }}
         />
         {/* creative services — full-bleed cinematic grid */}
@@ -70,6 +102,11 @@ function WorkBrand({ onStart, onStudios }) {
                 <span className="wk-vcard__num">{s.n}</span>
               </div>
               <h3 className="wk-vcard__title">{s.title}</h3>
+              {s.sub ? (
+                <ul className="wk-vcard__list">
+                  {s.sub.map((x, i) => <li key={i}>{x}</li>)}
+                </ul>
+              ) : null}
             </article>
           ))}
           {/* CTA card */}

@@ -120,7 +120,7 @@ function WkHero2({ onJump }) {
       <span className="wk2-ret br" aria-hidden="true"></span>
 
       <div className="wk2-hero__inner">
-        <p className="wk2-eyebrow">Mentor<span className="sep">·</span>Director<span className="sep">·</span>Founder</p>
+        <p className="wk2-eyebrow">Director<span className="sep">·</span>Artist<span className="sep">·</span>Mentor<span className="sep">·</span>Founder</p>
         <h1 className="wk2-wordmark wk2-textured">Work With Ted</h1>
         <p className="wk2-promise">Three doors. One fire.</p>
         <p className="wk2-lede">

@@ -77,6 +77,15 @@
 /* tone each rail's banner backdrop a touch */
 .lp-sec--filmrail { background: #050505; }
 .lp-sec--filmrail .lp-env { display: none; }
+/* the textured rail title was clipping at the top — give it full glyph height
+   and stop the black card from cropping the ascenders */
+.lp-sec--filmrail .lp-banner__card { overflow: visible; padding-top: 46px; }
+.lp-sec--filmrail .lp-banner__title { line-height: 1.06; padding-top: 0.04em; }
+/* rail banner photos were cropping the subject's head (default center crop);
+   anchor to the top, add headroom, and ease the overlap so heads stay in frame */
+.lp-sec--filmrail .lp-banner { margin-top: -50px; }
+.lp-sec--filmrail .lp-banner__media { height: 600px; }
+.lp-sec--filmrail .lp-banner__media img { object-position: center top; }
 
 /* ============================================================
  *  TEDFLIX — the viewing experience

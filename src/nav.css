@@ -9,6 +9,35 @@
   padding: 32px 64px 0 64px;
   gap: 40px;
 }
+
+/* ===== STICKY NAV (scroll-activated, cloned to <body> by sticky-nav.js) ===== */
+.tk-stickynav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9990;
+  background: rgba(6,4,2,0.92);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid rgba(201,162,75,0.22);
+  box-shadow: 0 14px 40px -12px rgba(0,0,0,0.7);
+  opacity: 0; visibility: hidden;
+  transition: opacity .28s ease, visibility .28s ease;
+  will-change: opacity;
+}
+.tk-stickynav.is-visible { opacity: 1; visibility: visible; }
+/* Compact the cloned header inside the bar */
+.tk-stickynav .tk-header {
+  padding: 14px 64px; gap: 40px;
+}
+.tk-stickynav .tk-brand .logo {
+  height: 48px;
+  filter: drop-shadow(0 1px 8px rgba(232,170,101,0.18));
+}
+.tk-stickynav .tk-nav a { font-size: 17px; }
+/* Dropdown bridge sits right under the compact bar */
+.tk-stickynav .tk-dropdown::before { top: -28px; height: 30px; }
+@media (max-width: 900px) {
+  .tk-stickynav .tk-header { padding: 12px 20px; }
+  .tk-stickynav .tk-brand .logo { height: 40px; }
+}
 .tk-brand {
   display: flex; align-items: center;
   text-decoration: none; cursor: pointer;
@@ -59,7 +88,7 @@
 /* mega panel — 4 category columns */
 .tk-mega {
   left: 50%; transform: translate(-50%, 6px);
-  width: min(1340px, 96vw);
+  width: min(1560px, 97vw);
   padding: 0;
   background: linear-gradient(180deg, rgba(18,12,7,0.985), rgba(7,4,2,0.985));
   border: 1px solid rgba(201,162,75,0.32);
@@ -74,7 +103,7 @@
 }
 /* 4 image-card categories, flush (no gaps); alternating column tones */
 .tk-mega__grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 0; align-items: stretch;
   border-radius: 16px 16px 0 0; overflow: hidden;
 }

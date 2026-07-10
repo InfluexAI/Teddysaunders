@@ -31,22 +31,32 @@ const WK_VENTURES = [
     desc: "Headshot photography company capturing people at their most alive.",
     log: "Headshot photography company capturing people at their most alive.",
     fragK: "Mandate", fragQ: "Every face has a frame that tells the truth." },
-  { id: "dreambox",  mono: "PD", title: "Project Dreambox",   kind: "Venture",
-    desc: "A platform built to help people's dreams come true.",
-    log: "A platform built to help people's dreams come true.",
-    fragK: "Mandate", fragQ: "Make the dream the most practical thing you own." },
-  { id: "speechtobook", mono: "SB", title: "SpeechtoBook",     kind: "Venture",
-    desc: "Write your book with your voice, with step-by-step guidance from idea to manuscript.",
-    log: "Write your book with your voice, with step-by-step guidance from idea to manuscript.",
-    fragK: "Mandate", fragQ: "Every voice is already a book — waiting to be heard." },
   { id: "brooracle", mono: "BO", title: "BroOracle",           kind: "Venture",
     desc: "Draw a card. Forge your manhood. Guidance and ritual for the modern man.",
     log: "Draw a card. Forge your manhood. Guidance and ritual for the modern man.",
     fragK: "Mandate", fragQ: "Draw a card. Forge your manhood." },
+  { id: "speechtobook", mono: "SB", title: "SpeechtoBook",     kind: "Venture",
+    desc: "Write your book with your voice, with step-by-step guidance from idea to manuscript.",
+    log: "Write your book with your voice, with step-by-step guidance from idea to manuscript.",
+    fragK: "Mandate", fragQ: "Every voice is already a book — waiting to be heard." },
   { id: "celestial", mono: "CC", title: "The Celestial Compass", kind: "Venture",
     desc: "Use your birthday to discover who you are, and get AI guidance from the stars on every decision.",
     log: "Use your birthday to discover who you are, and get AI guidance from the stars on every decision.",
     fragK: "Mandate", fragQ: "The stars were always a map. Now they answer back." },
+  { id: "dreambox",  mono: "PD", title: "Project Dreambox",   kind: "Venture",
+    desc: "A platform built to help people's dreams come true.",
+    log: "A platform built to help people's dreams come true.",
+    fragK: "Mandate", fragQ: "Make the dream the most practical thing you own." },
+];
+
+// Brands Ted has built — outbound links to the live sites.
+const WK_BRANDS = [
+  { id: "infinit",   mono: "IS", title: "InfinitStudios.com",   desc: "Full-stack creative agency \u2014 film, animation, web, and AI for ambitious brands.", url: "https://infinitstudios.com/" },
+  { id: "tedshots",  mono: "TS", title: "TedShots.com",         desc: "Headshot photography company capturing people at their most alive.", url: "https://tedshots.com/" },
+  { id: "dreambox",  mono: "PD", title: "Project Dream Box",    desc: "A platform built to help people's dreams come true.", url: "https://www.facebook.com/ProjectDreamBox/", temp: true },
+  { id: "speech",    mono: "SB", title: "Speech to Book",       desc: "Write your book with your voice, with step-by-step guidance from idea to manuscript.", url: null },
+  { id: "brooracle", mono: "BO", title: "BroOracle",            desc: "Draw a card. Forge your manhood. Guidance and ritual for the modern man.", url: null },
+  { id: "celestial", mono: "CC", title: "The Celestial Compass", desc: "Use your birthday to discover who you are, and get AI guidance from the stars.", url: null },
 ];
 
 // BroOracle wordmark SVG (matches about page)
@@ -67,7 +77,8 @@ function VentureMark({ v }) {
   return <div className="wk-vcard__mark">{v.mono}</div>;
 }
 
-function WorkModal({ item, onClose }) {
+function WorkModal({ item, onClose, onInquire }) {
+  const isFilm = !!(item && item.num);
   const open = !!item;
   return (
     <div className={"wk-modal" + (open ? " is-open" : "")} onClick={onClose} aria-hidden={!open}>
@@ -90,6 +101,12 @@ function WorkModal({ item, onClose }) {
               <div className="wk-modal__frag-k">{item.fragK}</div>
               <p className="wk-modal__frag-q">{item.fragQ}</p>
             </div>
+            {isFilm && (
+              <button className="wk-btn wk-btn--solid wk-modal__cta" onClick={() => { onClose && onClose(); onInquire && onInquire(); }}>
+                Inquire to See The Deck
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -97,7 +114,7 @@ function WorkModal({ item, onClose }) {
   );
 }
 
-function WorkInvestors({ onTedcast }) {
+function WorkInvestors({ onTedcast, onInquire }) {
   const [modal, setModal] = useInvState(null);
 
   useInvState && null;
@@ -142,7 +159,7 @@ function WorkInvestors({ onTedcast }) {
 
         {/* ventures */}
         <div className="wk-vband wk-reveal">
-          <h2 className="wk-vtitle wk2-textured">Ventures</h2>
+          <h2 className="wk-vtitle wk2-textured">Personal Ventures</h2>
           <div className="wk-cardgrid">
             {WK_VENTURES.map((v) => (
               <article className="wk-vcard" key={v.id} onClick={() => setModal(v)} role="button" aria-label={"Open " + v.title}>
@@ -155,6 +172,32 @@ function WorkInvestors({ onTedcast }) {
                 </span>
               </article>
             ))}
+          </div>
+
+          <p className="wk-subtitle wk-brands-sub">Brands Built for Others</p>
+          <div className="wk-cardgrid">
+            {WK_BRANDS.map((b) => {
+              const inner = (
+                <React.Fragment>
+                  <div className="wk-vcard__mark">{b.mono}</div>
+                  <div className="wk-vcard__rule"></div>
+                  <h3 className="wk-vcard__title">{b.title}</h3>
+                  <p className="wk-vcard__desc">{b.desc}</p>
+                  {b.url ? (
+                    <span className="wk-vcard__go">{b.temp ? "Visit (temporary)" : "Visit site"}
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                    </span>
+                  ) : (
+                    <span className="wk-vcard__go wk-vcard__go--soon">Coming soon</span>
+                  )}
+                </React.Fragment>
+              );
+              return b.url ? (
+                <a className="wk-vcard" key={b.id} href={b.url} target="_blank" rel="noopener noreferrer" aria-label={"Visit " + b.title}>{inner}</a>
+              ) : (
+                <article className="wk-vcard wk-vcard--soon" key={b.id} aria-label={b.title}>{inner}</article>
+              );
+            })}
           </div>
         </div>
 
@@ -173,7 +216,7 @@ function WorkInvestors({ onTedcast }) {
         </section>
       </div>
 
-      <WorkModal item={modal} onClose={() => setModal(null)} />
+      <WorkModal item={modal} onClose={() => setModal(null)} onInquire={onInquire} />
     </section>
   );
 }

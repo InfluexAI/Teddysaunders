@@ -21,6 +21,12 @@ const PHOTO_CATS = [
     key: "portraits", title: "Portraits", side: "left",
     banner: "assets/photography/portraits/individuals/aijia-grammer/aijia-grammer-0004.jpg",
     blurb: "The face, unguarded. Artists, executives, and everyday individuals lit like film stills — the beauty of humanity in a single frame.",
+    covers: [
+      "assets/photography/experimental-abstract/art/solstice-canyon-ruins/solstice-canyon-ruins-90.jpg",
+      "assets/photography/portraits/individuals/preston-smiles/preston-smiles-0002.jpg",
+      "assets/photography/portraits/individuals/mariya-kriv/mariya-kriv-0181.jpg",
+      "assets/photography/portraits/individuals/ron-smoorenburg/ron-smoorenburg-gallery-0801.jpg",
+    ],
     subs: [{ key: "individuals", label: "Individuals" }, { key: "artists", label: "Artists" }, { key: "executives", label: "Executives" }],
   },
   {
@@ -30,7 +36,7 @@ const PHOTO_CATS = [
     covers: [
       "assets/photography/headshots/andrew-milne/andrew-milne-headshot2-bw-16.jpg",
       "assets/photography/headshots/annie-guadioz/annie-guadioz-headshot-portrait2-6671.jpg",
-      "assets/photography/headshots/jarrett-worley/jarrett-worley-headshot-portrait1-166.jpg",
+      "assets/photography/headshots/ezra-kemp/ezra-kemp-headshot-portrait2-3343.jpg",
       "assets/photography/headshots/lisa-glouner/lisa-glouner-headshot-portrait3-155.jpg",
     ],
   },
@@ -39,25 +45,14 @@ const PHOTO_CATS = [
     banner: "assets/photography/events/odesza/odesza-0117.jpg",
     blurb: "Celebrations meant to be timeless. Festivals, parties, and gatherings shot like scenes, not snapshots.",
     covers: [
-      "assets/photography/events/odesza/odesza-0117.jpg",
+      "assets/photography/events/odesza/odesza-0298.jpg",
       "assets/photography/events/uber4th/uber4th-0566.jpg",
       "assets/photography/events/odesza/odesza-0147.jpg",
       "assets/photography/events/uber4th/uber4th-0612.jpg",
     ],
   },
   {
-    key: "light", title: "Wizard Light Painting", side: "right", compact: true,
-    banner: "assets/photography/wizard-light-painting/light-art/light-art-0028.jpg",
-    blurb: "Bending light without VFX. Long exposures painted by hand in the dark.",
-    covers: [
-      "assets/photography/wizard-light-painting/af-lightbulb/af-lightbulb.jpg",
-      "assets/photography/wizard-light-painting/light-art/light-art-0028.jpg",
-      "assets/photography/wizard-light-painting/light-art/light-art-0031.jpg",
-      "assets/photography/wizard-light-painting/light-art/light-art-0033.jpg",
-    ],
-  },
-  {
-    key: "ads", title: "Advertisements", side: "left", compact: true,
+    key: "ads", title: "Advertisements", side: "right", compact: true,
     banner: "assets/photography/advertisement/halloween-stormtroopers.jpg",
     blurb: "Get the word out. Hero images built to stop the scroll and hold the eye.",
     covers: [
@@ -65,6 +60,17 @@ const PHOTO_CATS = [
       "assets/photography/advertisement/jeremy-robinson-corporate.jpg",
       "assets/photography/advertisement/jubilee-light-painting.jpg",
       "assets/photography/advertisement/pacifica-services-swear-in.jpg",
+    ],
+  },
+  {
+    key: "light", title: "Wizard Light-Painting", side: "left", compact: true,
+    banner: "assets/photography/wizard-light-painting/light-art/light-art-0028.jpg",
+    blurb: "Bending light without VFX. Long exposures painted by hand in the dark.",
+    covers: [
+      "assets/photography/wizard-light-painting/af-lightbulb/af-lightbulb.jpg",
+      "assets/photography/wizard-light-painting/light-art/light-art-0028.jpg",
+      "assets/photography/wizard-light-painting/light-art/light-art-0031.jpg",
+      "assets/photography/wizard-light-painting/light-art/light-art-0033.jpg",
     ],
   },
   {
