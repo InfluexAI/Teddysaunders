@@ -1,0 +1,220 @@
+/* ============================================================
+ * Web & Graphic Design — Ted Saunders
+ * Page-specific styling on top of src/site.css tokens.
+ * Cinematic bronze-on-black, true viewport scale.
+ * ============================================================ */
+
+.wgd-page {
+  background: #060402;
+  color: #fff;
+  overflow-x: clip;
+}
+
+/* Brand heading treatments (self-contained; mirrors the About page). */
+.wgd-page .ab-eyebrow {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: clamp(12px, 0.95vw, 15px);
+  letter-spacing: 0.34em; text-transform: uppercase;
+  background: var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin: 0;
+}
+.wgd-page .ab-textured {
+  background: url("assets/heading-texture.jpg") center 38% / cover, var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55));
+}
+
+/* Header at true scale, overlaid on the hero aura (matches About). */
+.wgd-page .tk-header {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+  padding: 1.667vw 3.333vw 0;
+  background: transparent;
+}
+.wgd-page .tk-brand .logo { height: 4.1667vw; }
+.wgd-page .tk-nav { gap: 3.75vw; }
+.wgd-page .tk-nav a { font-size: 1.0417vw; }
+
+/* ---------- HERO ---------- */
+.wgd-hero {
+  position: relative;
+  min-height: 62vh;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  padding: 20vh clamp(24px, 6vw, 120px) 8vh;
+  background:
+    radial-gradient(120% 100% at 50% -8%, rgba(90,52,25,0.55) 0%, rgba(90,52,25,0) 58%),
+    #060402;
+  overflow: hidden;
+}
+.wgd-hero__aura {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 70% at 78% 30%, rgba(201,145,92,0.22) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, rgba(201,162,75,0.045) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(0deg, rgba(201,162,75,0.045) 0 1px, transparent 1px 96px);
+  -webkit-mask: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+          mask: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+}
+.wgd-hero__inner { position: relative; z-index: 2; max-width: 1100px; text-align: center; margin: 0 auto; }
+.wgd-hero .ab-eyebrow { margin-bottom: 18px; }
+.wgd-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(46px, 6.5vw, 118px); line-height: 0.94;
+  text-transform: uppercase; letter-spacing: 0.01em;
+  margin: 0 0 22px;
+}
+.wgd-hero__sub {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(19px, 2vw, 32px); line-height: 1.3;
+  color: var(--c-cream); max-width: 900px; margin: 0 auto;
+}
+.wgd-hero__fade {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 22vh; z-index: 1;
+  background: linear-gradient(180deg, transparent, #060402);
+}
+
+/* ---------- INTRO ---------- */
+.wgd-intro {
+  position: relative;
+  max-width: 980px; margin: 0 auto;
+  padding: clamp(40px, 7vh, 96px) clamp(24px, 6vw, 40px) clamp(30px, 5vh, 60px);
+  text-align: center;
+}
+.wgd-intro__mark {
+  display: block; width: 64px; height: 2px; margin: 0 auto 34px;
+  background: var(--grad-bronze);
+  box-shadow: 0 0 14px rgba(240,196,120,0.5);
+}
+.wgd-intro__body p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: clamp(17px, 1.35vw, 23px); line-height: 1.7;
+  color: rgba(255,255,255,0.82); margin: 0 auto 22px; max-width: 860px;
+  text-wrap: pretty;
+}
+.wgd-intro__body p:last-child { color: var(--c-cream); margin-bottom: 0; }
+
+/* ---------- CATEGORIES ---------- */
+.wgd-cats {
+  max-width: 1560px; margin: 0 auto;
+  padding: clamp(20px, 4vh, 56px) clamp(24px, 5vw, 80px) clamp(60px, 10vh, 130px);
+  display: flex; flex-direction: column; gap: clamp(60px, 9vh, 120px);
+}
+.wgd-cat__head {
+  display: flex; align-items: baseline; gap: clamp(16px, 2vw, 30px);
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+.wgd-cat__n {
+  font-family: var(--font-body); font-weight: 200;
+  font-size: clamp(30px, 3.4vw, 58px); line-height: 1;
+  background: var(--grad-bronze);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  flex: none;
+}
+.wgd-cat__headtext { flex: 0 1 auto; }
+.wgd-cat__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 52px); line-height: 1;
+  text-transform: uppercase; letter-spacing: 0.01em; margin: 0;
+}
+.wgd-cat__blurb {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: clamp(13px, 1vw, 17px); line-height: 1.4;
+  color: rgba(255,234,202,0.68); margin: 10px 0 0;
+}
+.wgd-cat__rule {
+  flex: 1 1 auto; height: 1px; align-self: center;
+  background: linear-gradient(90deg, rgba(201,162,75,0.5), transparent);
+}
+
+/* card grid */
+.wgd-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 1.8vw, 34px);
+}
+
+/* ---------- CARD ---------- */
+.wgd-card { display: flex; flex-direction: column; }
+.wgd-card__device {
+  position: relative;
+  background: linear-gradient(180deg, #14100b 0%, #0a0705 100%);
+  border: 1px solid rgba(201,162,75,0.28);
+  border-radius: 12px;
+  box-shadow: 0 26px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .4s ease;
+}
+.wgd-card:hover .wgd-card__device {
+  transform: translateY(-6px);
+  border-color: rgba(240,196,120,0.6);
+  box-shadow: 0 40px 84px rgba(0,0,0,0.6), 0 0 54px rgba(201,162,75,0.16);
+}
+.wgd-card__slotwrap { position: relative; width: 100%; }
+.wgd-card__slotwrap image-slot {
+  display: block; width: 100%; height: 100%;
+}
+
+/* browser frame */
+.wgd-card--browser .wgd-card__slotwrap { aspect-ratio: 16 / 10; }
+.wgd-chrome {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 7px;
+  height: 34px; padding: 0 14px;
+  background: linear-gradient(180deg, #1a130c, #120c07);
+  border-bottom: 1px solid rgba(201,162,75,0.2);
+}
+.wgd-chrome__dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(232,183,119,0.55); flex: none; }
+.wgd-chrome__bar {
+  flex: 1 1 auto; height: 12px; margin-left: 10px; border-radius: 3px;
+  background: rgba(232,183,119,0.12);
+}
+
+/* phone frame */
+.wgd-card--phone .wgd-card__device {
+  border-radius: 26px; padding: 12px;
+  background: linear-gradient(180deg, #191209 0%, #0a0705 100%);
+}
+.wgd-card--phone .wgd-card__slotwrap { aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; }
+.wgd-notch {
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  width: 42%; height: 16px; z-index: 3;
+  background: #0a0705; border-radius: 0 0 12px 12px;
+}
+
+/* brand plaque */
+.wgd-card--plaque .wgd-card__device {
+  padding: clamp(16px, 1.6vw, 28px);
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(90,52,25,0.35) 0%, transparent 60%),
+    linear-gradient(180deg, #14100b 0%, #0a0705 100%);
+}
+.wgd-card--plaque .wgd-card__slotwrap { aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; }
+
+/* meta line */
+.wgd-card__meta {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 4px 0;
+}
+.wgd-card__title {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: clamp(13px, 0.95vw, 16px); letter-spacing: 0.02em;
+  color: rgba(255,234,202,0.55);
+}
+.wgd-card__tag {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #E8B769; padding: 5px 11px;
+  border: 1px solid rgba(201,162,75,0.4); border-radius: 999px;
+  flex: none;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px) {
+  .wgd-grid { grid-template-columns: repeat(2, 1fr); }
+  .wgd-page .tk-nav a { font-size: 15px; }
+}
+@media (max-width: 560px) {
+  .wgd-grid { grid-template-columns: 1fr; }
+  .wgd-cat__head { flex-wrap: wrap; }
+  .wgd-cat__rule { flex-basis: 100%; }
+}
