@@ -39,7 +39,6 @@ function DirectionC() {
         <section className="c-hero c-hero--c">
           <div className="c-hero__photo"><img src={TEDDY} alt="Ted Saunders"/></div>
           <div className="c-hero__shade"></div>
-          <Reticles/>
           <div className="c-hero__top"><Header active="Contact"/></div>
           <div className="c-hero__content" style={{ padding: "0 64px" }}>
             <div style={{ maxWidth: 820 }}>

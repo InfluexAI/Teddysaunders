@@ -53,9 +53,11 @@ const SOCIALS = [
   ) },
   { label: "Spotify",   href: "#", svgClass: "ic--spotify", svg: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 7 Q12 9 15 7"/>
-      <path d="M7.5 12 Q12 15 16.5 12"/>
-      <path d="M6 17 Q12 21 18 17"/>
+      <g transform="translate(0,24) scale(1,-1)">
+        <path d="M9 7 Q12 9 15 7"/>
+        <path d="M7.5 12 Q12 15 16.5 12"/>
+        <path d="M6 17 Q12 21 18 17"/>
+      </g>
     </svg>
   ) },
   { label: "TikTok",     href: "#", svgClass: "ic--lg", svg: (
@@ -67,13 +69,11 @@ const SOCIALS = [
   ) },
   { label: "SoundCloud", href: "#", svgClass: "ic--cloud", svg: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <g transform="translate(0,24) scale(1,-1)">
-        <path d="M4.5 16.6 A3.2 3.2 0 0 1 7.6 10.4"/>
-        <path d="M8.2 9.7 A4.3 4.3 0 0 1 15.8 9.9"/>
-        <path d="M16.4 10.8 A3.2 3.2 0 0 1 19.5 16.6"/>
-        <path d="M5 16.8 H9.6"/>
-        <path d="M14.4 16.8 H19"/>
-      </g>
+      <path d="M4.5 16.6 A3.2 3.2 0 0 1 7.6 10.4"/>
+      <path d="M8.2 9.7 A4.3 4.3 0 0 1 15.8 9.9"/>
+      <path d="M16.4 10.8 A3.2 3.2 0 0 1 19.5 16.6"/>
+      <path d="M5 16.8 H9.6"/>
+      <path d="M14.4 16.8 H19"/>
     </svg>
   ) },
 ];

@@ -2491,8 +2491,9 @@
 /* ---- RIGHT: connect ---- */
 .ft-connect { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
 .ft-connect__head {
-  font-family: var(--font-display); font-weight: 500; font-size: clamp(26px, 2.2vw, 40px);
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 1.6vw, 32px);
   line-height: 0.98; text-transform: uppercase; margin: 0 0 26px; color: #EFE2C8; letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 .ft-connect__head strong {
   font-weight: 700;

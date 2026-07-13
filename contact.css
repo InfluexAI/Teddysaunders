@@ -33,10 +33,7 @@ body.v2-standalone .cpage__bg { left: calc(50% - 50vw); width: 100vw; right: aut
   background:
     radial-gradient(70% 55% at 50% 0%, rgba(90,52,25,0.70) 0%, rgba(90,52,25,0) 62%);
 }
-/* Soft warm light at the bottom of the Follow Ted In Real Time section. */
-.c-follow {
-  background: radial-gradient(70% 70% at 50% 100%, rgba(191,135,83,0.16) 0%, rgba(191,135,83,0) 62%);
-}
+/* Follow Ted section: no bottom glow, so it blends smoothly into the footer below. */
 .cpage__vignette {
   position: absolute; inset: 0;
   background:
@@ -699,8 +696,9 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .ft-spacer { pointer-events: none; }
 .ft-connect { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
 .ft-connect__head {
-  font-family: var(--font-display); font-weight: 500; font-size: clamp(26px, 2.2vw, 40px);
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 1.6vw, 32px);
   line-height: 0.98; text-transform: uppercase; margin: 0 0 26px; color: #EFE2C8; letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 .ft-connect__head strong {
   font-weight: 700;

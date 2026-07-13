@@ -273,7 +273,7 @@ function AboutCompass({ onActivate }) {
             </div>
             <div className="ab-comp__core">
               <div className="ab-comp__core-inner">
-                <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.logoMark) || "assets/logo-mark.png"} alt="Ted Saunders" />
+                <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.compassEmblem) || "assets/TedEmblem-updated.png"} alt="Ted Saunders" />
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@ function AboutCompass({ onActivate }) {
           </div>
           <div className="ab-comp__core">
             <div className="ab-comp__core-inner">
-              <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.logoMark) || "assets/logo-mark.png"} alt="Ted Saunders" />
+              <img className="ab-comp__core-mark" src={(window.__resources && window.__resources.compassEmblem) || "assets/TedEmblem-updated.png"} alt="Ted Saunders" />
             </div>
           </div>
           <div className="ab-comp__pointer" ref={pointerRef} aria-hidden="true">

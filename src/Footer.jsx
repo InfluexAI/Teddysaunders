@@ -59,7 +59,7 @@ function Footer({ onSubscribe }) {
 
         {/* RIGHT — connect */}
         <div className="ft-connect">
-          <h2 className="ft-connect__head">Connect<br />with <strong>Ted</strong></h2>
+          <h2 className="ft-connect__head">Connect with <strong>Ted</strong></h2>
           <div className="ft-connect__rail">
             {socials.map((s) => (
               <a className="ft-social" href={s.href} key={s.label} aria-label={"Follow on " + s.label}>
