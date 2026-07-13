@@ -10,7 +10,6 @@ function NotFound() {
       <BgStack plain/>
       <div className="cpage__inner">
         <section className="c-hero" style={{ minHeight: "100vh", flexDirection: "column", justifyContent: "center", paddingBottom: "120px" }}>
-          <Reticles/>
           <div className="c-hero__top"><Header active=""/></div>
 
           <div className="c-hero__content" style={{ padding: "140px 64px 0" }}>
