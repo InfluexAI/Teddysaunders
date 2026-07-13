@@ -8,12 +8,12 @@ const FD_R = (k, fallback) => (window.__resources && window.__resources[k]) || f
 // ---- The two showreels (hero of the "Watch the Reels" section) ----
 const FILM_REELS = [
   {
-    id: "reel-live", kicker: "Live-Action Reel", title: "The Director's Reel",
+    id: "reel-live", kicker: "The Director's Reel", title: "Live-Action Reel",
     line: "Three minutes of fire, faces, and feeling — the moving image at full voltage.",
     thumb: "reelLive", videoUrl: "", run: "3:12",
   },
   {
-    id: "reel-motion", kicker: "Motion Graphics Reel", title: "Frames in Motion",
+    id: "reel-motion", kicker: "Frames in Motion", title: "Motion Graphics Reel",
     line: "Design that breathes — type, light, and geometry choreographed to a pulse.",
     thumb: "reelMotion", videoUrl: "", run: "1:48",
   },
@@ -193,7 +193,7 @@ const FILM_RAILS = {
     ids: ["salesforce", "ancestry", "varian", "comcast"],
   },
   experimental: {
-    eyebrow: "Experimental & Music Video", title: "Fever Dreams",
+    eyebrow: "Fever Dreams", title: "Experimental & Music Video",
     blurb: "Where the rules come off — music videos and experimental work made to bypass the intellect and hit you somewhere older.",
     cta: "Explore the Experimental Library", filter: "Experimental Films", bg: "railExperimental",
     ids: ["destiny-now", "whipped-cream", "honey-money"],

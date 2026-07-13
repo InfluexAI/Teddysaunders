@@ -138,7 +138,7 @@ function PhotoSection({ data, onCta, photos }) {
       </div>
       <div className="pp-wall">
         <div className="pp-wall__light" />
-        <Copy num="02" title="Photography" tagline="Atmosphere captured in a single frame."
+        <Copy num="02" title="Photography" tagline="Stories captured in a single frame."
           body={["Photography became another tool for world-building. From cinematic portraits and headshots to surreal visual experiments, commercial composites, weddings, and long-exposure light painting, each image is designed to feel like a moment from a larger story."]}
           cta="Explore the Photography" onCta={onCta} />
       </div>
@@ -160,8 +160,6 @@ function PhotoSection({ data, onCta, photos }) {
 /* ===================== MUSIC · the performance space ============== */
 function MusicSection({ data, onCta, onPlay, clips }) {
   const ref = useReveal();
-  const bars = [];
-  for (let i = 0; i < 110; i++) bars.push(<span key={i} style={{ animationDuration: (0.9 + (i % 7) * 0.16) + "s", animationDelay: (-(i % 11) * 0.13) + "s" }} />);
   return (
     <section className="pp-sec pp-sec--music pp-grain" id="music" data-screen-label="Music" ref={ref}>
       <div className="pp-env">
@@ -176,7 +174,6 @@ function MusicSection({ data, onCta, onPlay, clips }) {
           cta="Explore the Music" onCta={onCta} />
       </div>
       <div className="pp-playpos pp-reveal"><div className="pp-play" onClick={() => onPlay()} role="button" aria-label="Play the set"><PlayGlyph /></div></div>
-      <div className="pp-waveline" aria-hidden="true">{bars}</div>
       <Drawer>
         {clips.map((c, i) => (
           <div className="pp-clipcard" key={i} onClick={() => onPlay(c.label)} role="button" aria-label={"Play " + c.label}>
@@ -208,12 +205,12 @@ function JournalSection({ data, onCta, excerpts }) {
       </div>
       <div className="pp-slips pp-reveal">
         {excerpts.map((x, i) => (
-          <div className="pp-slip" key={i}>
+          <a className="pp-slip" href={x.href} key={i}>
             <div className="pp-slip__tab" />
-            <div className="pp-slip__no">{String(i + 1).padStart(2, "0")}</div>
             <div className="pp-slip__cat">{x.cat}</div>
             <p className="pp-slip__q">{x.quote}</p>
-          </div>
+            <span className="pp-slip__go">Read {x.cat}<span className="arr">→</span></span>
+          </a>
         ))}
       </div>
     </section>

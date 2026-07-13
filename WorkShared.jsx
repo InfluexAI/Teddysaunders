@@ -141,7 +141,7 @@ function TestimonialSlider({ title, items }) {
 // Full-screen section intro: number + eyebrow + title + italic subheader +
 // body on the left, a full-bleed cinematic image on the right (homepage
 // "FILMS" category treatment). `body` and `title` are JSX nodes.
-function WkIntro({ num, eyebrow, title, titleClass, titleStyle, sub, body, imgId, imgPlaceholder, imgSrc, cta }) {
+function WkIntro({ num, eyebrow, title, titleClass, titleStyle, sub, body, extra, imgId, imgPlaceholder, imgSrc, cta }) {
   return (
     <div className="wk-intro wk-reveal">
       <div className="wk-intro__bg">
@@ -167,6 +167,7 @@ function WkIntro({ num, eyebrow, title, titleClass, titleStyle, sub, body, imgId
               </button>
             </div>
           ) : null}
+          {extra || null}
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@
 /* mega panel — 4 category columns */
 .tk-mega {
   left: 50%; transform: translate(-50%, 6px);
-  width: min(1340px, 96vw);
+  width: min(1560px, 97vw);
   padding: 0;
   background: linear-gradient(180deg, rgba(18,12,7,0.985), rgba(7,4,2,0.985));
   border: 1px solid rgba(201,162,75,0.32);
@@ -103,7 +103,7 @@
 }
 /* 4 image-card categories, flush (no gaps); alternating column tones */
 .tk-mega__grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 0; align-items: stretch;
   border-radius: 16px 16px 0 0; overflow: hidden;
 }

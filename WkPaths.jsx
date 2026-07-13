@@ -68,7 +68,7 @@ const WK2_PATHS = [
     id: "invest", index: "03", to: "wk-investors", glyph: "gem",
     kicker: "For Investors", label: "Original IP",
     copy: "Back high-impact original visions — cinematic worlds and platforms designed to transform, touch, and uplift humanity.",
-    cta: "Explore the Vault", img: "assets/pathways/investors.jpg",
+    cta: "Explore the Vault", img: "assets/ip/fated.jpg",
   },
 ];
 

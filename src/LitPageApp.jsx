@@ -118,34 +118,23 @@ function LitPageApp() {
     return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(raf); clearTimeout(t1); clearTimeout(t2); };
   }, [t.motion]);
 
-  // 3D gallery hero — tilts in on scroll (mirrors the Portfolio hero). Pin math
-  // runs in JS so it stays correct inside the scaled (transform:scale) stage.
+  // 2D gallery hero — a flat, slanted wall of screenshots (influex-style) that
+  // stays fixed in plane; columns drift vertically via CSS. Pin math runs in JS
+  // so it stays correct inside the scaled (transform:scale) stage.
   const heroRef = useApRef(null);
   const stickyRef = useApRef(null);
   const galleryRef = useApRef(null);
   useApEffect(() => {
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const track = heroRef.current, sticky = stickyRef.current, gal = galleryRef.current;
     if (!track || !sticky || !gal) return;
-    const cols = Array.prototype.slice.call(gal.querySelectorAll(".lph-col"));
     let raf = 0;
     const run = () => {
       raf = 0;
       const mobile = window.innerWidth < 768;
-      if (mobile) { sticky.style.transform = ""; gal.style.transform = "none"; cols.forEach((c) => { c.style.transform = ""; }); return; }
-      const s = window.innerWidth / 1920;
-      const vh = window.innerHeight;
-      const r = track.getBoundingClientRect();
-      const pinReal = Math.max(1, r.height - vh);
-      const scrolled = Math.min(pinReal, Math.max(0, -r.top));
-      sticky.style.transform = "translateY(" + (scrolled / s).toFixed(1) + "px)";
-      const p = scrolled / pinReal;
-      if (reduce) { gal.style.transform = "rotateX(0deg) scale(1)"; return; }
-      const rot = 75 * (1 - Math.min(1, p / 0.5));
-      const scl = 1.2 - 0.2 * Math.min(1, Math.max(0, (p - 0.5) / 0.4));
-      gal.style.transform = "rotateX(" + rot.toFixed(2) + "deg) scale(" + scl.toFixed(3) + ")";
-      const pp = Math.min(1, Math.max(0, (p - 0.5) / 0.5));
-      cols.forEach((c, i) => { const range = i === 1 ? 80 : -52; c.style.transform = "translateY(" + (range * pp).toFixed(1) + "px)"; });
+      if (mobile) { sticky.style.transform = ""; gal.style.transform = "none"; return; }
+      // no scroll-pin: the hero is a single static viewport that scrolls away naturally
+      sticky.style.transform = "";
+      gal.style.transform = "rotate(-12deg) scale(1.28)";
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(run); };
     run();
@@ -174,9 +163,11 @@ function LitPageApp() {
                 <div className="lph-gallery" aria-hidden="true" ref={galleryRef}>
                   {heroCols.map((col, ci) => (
                     <div className={"lph-col" + (ci === 1 ? " lph-col--mid" : "")} key={ci}>
-                      {col.map((src, ti) => (
-                        <div className="lph-tile" key={ti}><img src={src} alt="" /></div>
-                      ))}
+                      <div className={"lph-col__track" + (ci === 1 ? " lph-col__track--down" : "")}>
+                        {col.concat(col).map((src, ti) => (
+                          <div className="lph-tile" key={ti}><img src={src} alt="" /></div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>

@@ -71,13 +71,19 @@
 .lp-hero__ctas { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 44px; }
 
 /* ---------- 3D gallery hero (tilts in on scroll — mirrors Portfolio) ---------- */
-.lph-scroll { position: relative; width: 1920px; height: 2500px; background: #070502; }
-.lph-sticky { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; isolation: isolate;
-  perspective: 1300px; perspective-origin: 50% 4%; will-change: transform; }
-.lph-gallery { position: absolute; inset: -6% -2% -2%; z-index: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  transform-style: preserve-3d; transform-origin: 50% 8%; transform: rotateX(75deg) scale(1.2); will-change: transform; }
+.lph-scroll { position: relative; width: 1920px; height: 1080px; background: #070502; }
+.lph-sticky { position: relative; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; isolation: isolate;
+  will-change: transform; }
+.lph-gallery { position: absolute; inset: -28% -20%; z-index: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+  transform-origin: 50% 50%; transform: rotate(-12deg) scale(1.28); will-change: transform; }
 .lph-col { display: flex; flex-direction: column; gap: 20px; will-change: transform; }
-.lph-col--mid { margin-top: -38%; }
+/* influex-style continuous vertical drift — each column loops forever; middle reversed */
+.lph-col__track { display: flex; flex-direction: column; will-change: transform; animation: lphDrift 40s linear infinite; }
+.lph-col__track--down { animation-name: lphDriftDown; animation-duration: 52s; }
+.lph-col__track > .lph-tile { margin-bottom: 20px; }
+@keyframes lphDrift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes lphDriftDown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+.lph-col--mid { margin-top: -46%; }
 .lph-tile { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 8px; background: #0c0a08;
   box-shadow: 0 30px 70px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(209,157,99,0.08); }
 .lph-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.97) brightness(0.92); }
@@ -93,8 +99,7 @@
   background: rgba(0,0,0,0.8); }
 .lph-glow { position: absolute; z-index: 2; pointer-events: none; width: 1180px; height: 980px; }
 .lph-glow--bl { left: -240px; bottom: 230px;
-  background: radial-gradient(ellipse 50% 50% at 27% 68%,
-    rgba(232,176,86,0.5) 0%, rgba(201,145,60,0.24) 30%, rgba(140,94,38,0.09) 58%, rgba(7,5,2,0) 100%); }
+  background: none; }
 .lph-glow--tr { right: -240px; top: -240px;
   background: radial-gradient(ellipse 50% 50% at 80% 20%,
     rgba(232,176,86,0.66) 0%, rgba(201,145,60,0.32) 30%, rgba(140,94,38,0.12) 58%, rgba(7,5,2,0) 100%); }
@@ -119,7 +124,7 @@
   font-family: var(--font-sans); font-weight: 600; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,237,227,0.5); }
 .lph-scrollcue .bar { width: 1px; height: 46px; background: linear-gradient(180deg, rgba(232,183,119,0.9), rgba(232,183,119,0)); animation: lphCue 2.2s ease-in-out infinite; transform-origin: top; }
 @keyframes lphCue { 0%,100% { transform: scaleY(0.4); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .lph-copy > * { animation: none; } .lph-gallery { transform: rotateX(0) scale(1) !important; } .lph-scrollcue .bar { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .lph-copy > * { animation: none; } .lph-gallery { transform: rotate(-12deg) scale(1.28) !important; } .lph-scrollcue .bar { animation: none; } .lph-col__track { animation: none !important; } }
 /* Mobile */
 .tk-stage.is-mobile .lph-scroll { width: 100%; height: auto; }
 .tk-stage.is-mobile .lph-sticky { position: relative; width: 100%; height: auto; min-height: 620px; transform: none !important; }
