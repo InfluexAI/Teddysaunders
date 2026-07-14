@@ -517,7 +517,7 @@
 .ao-frame:not(.is-active) .ao-frame__cap { color: var(--c-cream); }
 
 /* map-travel trail threaded across the image/text seam of the reel */
-.ao-trail { position: absolute; z-index: 5; pointer-events: none; }
+.ao-trail { position: absolute; z-index: 5; pointer-events: none; display: none; }
 .ao-trail svg { position: absolute; inset: 0; overflow: visible; }
 .ao-trail__path {
   fill: none; stroke: #F2C57C; stroke-width: 2;

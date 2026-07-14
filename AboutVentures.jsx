@@ -72,7 +72,7 @@ function AboutVentures({ onVisit, onFollow }) {
       <section className="ab-ventures ab-ventures--light">
         <div className="ab-ventures__head">
           <p className="ab-eyebrow">Ventures &amp; Entrepreneurship</p>
-          <h2 className="ab-ventures__title ab-textured">Ted&rsquo;<span className="ab-lc">s</span> Personal Brands</h2>
+          <h2 className="ab-ventures__title ab-textured">Ted&rsquo;S Personal Brands</h2>
           <p>The same imagination, channeled into companies, tools, and platforms — each one another point on the compass made real.</p>
         </div>
 
