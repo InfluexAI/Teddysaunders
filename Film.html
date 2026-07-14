@@ -2,22 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Ted Saunders — Music · A Sonic Archive</title>
+  <title>Ted Saunders — Films · A Cinematic Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Page lives one folder deep (portfolio/). Compute the real site root from the
-       URL and set <base> before any asset loads — robust on Vercel whether the page
-       is served as /portfolio/music.html, /portfolio/music, or .../music/. -->
-  <script>
-    (function () {
-      var p = location.pathname;
-      var i = p.indexOf('/portfolio/');
-      var root = i >= 0 ? p.slice(0, i + 1) : '/';
-      var b = document.createElement('base');
-      b.href = location.origin + root;
-      document.head.insertBefore(b, document.head.firstChild);
-    })();
-  </script>
+
 
   <!-- Offline-bundle resource dependencies (referenced as strings in JSX). -->
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
@@ -27,18 +15,26 @@
   <meta name="ext-resource-dependency" content="assets/nav/photography.png" data-resource-id="navPhotography" />
   <meta name="ext-resource-dependency" content="assets/nav/music.png" data-resource-id="navMusic" />
   <meta name="ext-resource-dependency" content="assets/nav/literature.png" data-resource-id="navLiterature" />
-  <meta name="ext-resource-dependency" content="assets/heroes/musician.jpg" data-resource-id="musician" />
-  <meta name="ext-resource-dependency" content="assets/heroes/musician-c.jpg" data-resource-id="musicianC" />
-  <meta name="ext-resource-dependency" content="assets/word-teddrops.png" data-resource-id="wordDrops" />
-  <meta name="ext-resource-dependency" content="assets/portfolio/poster-places.png" data-resource-id="posterPlaces" />
-  <meta name="ext-resource-dependency" content="assets/portfolio/poster-synthesis.png" data-resource-id="posterSynthesis" />
-  <meta name="ext-resource-dependency" content="assets/portfolio/poster-eudaimonia.png" data-resource-id="posterEudaimonia" />
-  <meta name="ext-resource-dependency" content="assets/portfolio/poster-bubbles.png" data-resource-id="posterBubbles" />
+  <meta name="ext-resource-dependency" content="assets/heroes/cinematographer-c.jpg" data-resource-id="reelLive" />
+  <meta name="ext-resource-dependency" content="assets/animated-explainer.jpg" data-resource-id="reelMotion" />
+  <meta name="ext-resource-dependency" content="assets/heroes/cinematographer-c.jpg" data-resource-id="railFestival" />
+  <meta name="ext-resource-dependency" content="assets/story-bridge.jpg" data-resource-id="railCommercial" />
+  <meta name="ext-resource-dependency" content="assets/ip-lens-bg.jpg" data-resource-id="railExperimental" />
+  <meta name="ext-resource-dependency" content="assets/tedcastbg.jpg" data-resource-id="tflixBg" />
+  <meta name="ext-resource-dependency" content="assets/tedflix-logo.png" data-resource-id="tedflixLogo" />
+  <meta name="ext-resource-dependency" content="assets/opt/film-still.jpg" data-resource-id="filmStill" />
+  <meta name="ext-resource-dependency" content="assets/burning-man-poster.jpg" data-resource-id="burningMan" />
   <meta name="ext-resource-dependency" content="assets/ip/fated.jpg" data-resource-id="ipFated" />
   <meta name="ext-resource-dependency" content="assets/ip/inevitable.jpg" data-resource-id="ipInevitable" />
   <meta name="ext-resource-dependency" content="assets/ip/prosopagnosia.jpg" data-resource-id="ipProsopagnosia" />
   <meta name="ext-resource-dependency" content="assets/ip/juiced.jpg" data-resource-id="ipJuiced" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-places.png" data-resource-id="posterPlaces" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-synthesis.png" data-resource-id="posterSynthesis" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-eudaimonia.png" data-resource-id="posterEudaimonia" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-bubbles.png" data-resource-id="posterBubbles" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-1.jpg" data-resource-id="film1" />
   <meta name="ext-resource-dependency" content="assets/film/photo-2.jpg" data-resource-id="film2" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-3.jpg" data-resource-id="film3" />
   <meta name="ext-resource-dependency" content="assets/film/photo-4.jpg" data-resource-id="film4" />
   <meta name="ext-resource-dependency" content="assets/film/photo-5.jpg" data-resource-id="film5" />
   <meta name="ext-resource-dependency" content="assets/film/photo-6.jpg" data-resource-id="film6" />
@@ -46,30 +42,24 @@
   <meta name="ext-resource-dependency" content="assets/film/photo-8.jpg" data-resource-id="film8" />
 
   <link rel="stylesheet" href="src/site.css?v=140">
-  <link rel="stylesheet" href="src/sections.css?v=139">
+  <link rel="stylesheet" href="src/sections.css?v=138">
   <link rel="stylesheet" href="src/lit-page.css?v=124">
-  <link rel="stylesheet" href="src/music-page.css?v=12">
+  <link rel="stylesheet" href="src/films-page.css?v=1">
 
   <template id="__bundler_thumbnail" data-bg-color="#060402">
     <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
       <rect width="1200" height="800" fill="#060402"/>
-      <g transform="translate(600,360)">
-        <circle r="150" fill="none" stroke="#C9A24B" stroke-width="3"/>
-        <circle r="46" fill="none" stroke="#C9A24B" stroke-width="2"/>
-        <circle r="12" fill="#E8C98A"/>
-        <g stroke="#E8C98A" stroke-width="10" stroke-linecap="round">
-          <line x1="-250" y1="0" x2="-250" y2="0" opacity="0"/>
-        </g>
+      <g transform="translate(600,350)">
+        <rect x="-220" y="-150" width="440" height="300" rx="14" fill="none" stroke="#C9A24B" stroke-width="3"/>
+        <rect x="-220" y="-150" width="44" height="300" fill="#C9A24B" opacity="0.5"/>
+        <rect x="176" y="-150" width="44" height="300" fill="#C9A24B" opacity="0.5"/>
+        <circle cx="-198" cy="-110" r="9" fill="#060402"/><circle cx="-198" cy="-30" r="9" fill="#060402"/>
+        <circle cx="-198" cy="50" r="9" fill="#060402"/><circle cx="-198" cy="120" r="9" fill="#060402"/>
+        <circle cx="198" cy="-110" r="9" fill="#060402"/><circle cx="198" cy="-30" r="9" fill="#060402"/>
+        <circle cx="198" cy="50" r="9" fill="#060402"/><circle cx="198" cy="120" r="9" fill="#060402"/>
+        <path d="M-46,-66 L74,0 L-46,66 Z" fill="#E8C98A"/>
       </g>
-      <g transform="translate(600,360)" stroke="#E8C98A" stroke-width="9" stroke-linecap="round" opacity="0.9">
-        <line x1="-260" y1="-30" x2="-260" y2="30"/>
-        <line x1="-220" y1="-70" x2="-220" y2="70"/>
-        <line x1="-180" y1="-46" x2="-180" y2="46"/>
-        <line x1="200" y1="-52" x2="200" y2="52"/>
-        <line x1="240" y1="-80" x2="240" y2="80"/>
-        <line x1="280" y1="-34" x2="280" y2="34"/>
-      </g>
-      <text x="600" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="52" letter-spacing="11" fill="#E8C98A">MUSIC</text>
+      <text x="600" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="52" letter-spacing="11" fill="#E8C98A">FILMS</text>
     </svg>
   </template>
 </head>
@@ -85,18 +75,26 @@
       navPhotography:  "assets/nav/photography.png",
       navMusic:        "assets/nav/music.png",
       navLiterature:   "assets/nav/literature.png",
-      musician:        "assets/heroes/musician.jpg",
-      musicianC:       "assets/heroes/musician-c.jpg",
-      wordDrops:       "assets/word-teddrops.png",
-      posterPlaces:    "assets/portfolio/poster-places.png",
-      posterSynthesis: "assets/portfolio/poster-synthesis.png",
-      posterEudaimonia:"assets/portfolio/poster-eudaimonia.png",
-      posterBubbles:   "assets/portfolio/poster-bubbles.png",
+      reelLive:        "assets/heroes/cinematographer-c.jpg",
+      reelMotion:      "assets/animated-explainer.jpg",
+      railFestival:    "assets/heroes/cinematographer-c.jpg",
+      railCommercial:  "assets/story-bridge.jpg",
+      railExperimental:"assets/ip-lens-bg.jpg",
+      tflixBg:         "assets/tedcastbg.jpg",
+      tedflixLogo:     "assets/tedflix-logo.png",
+      filmStill:       "assets/opt/film-still.jpg",
+      burningMan:      "assets/burning-man-poster.jpg",
       ipFated:         "assets/ip/fated.jpg",
       ipInevitable:    "assets/ip/inevitable.jpg",
       ipProsopagnosia: "assets/ip/prosopagnosia.jpg",
       ipJuiced:        "assets/ip/juiced.jpg",
+      posterPlaces:    "assets/portfolio/poster-places.png",
+      posterSynthesis: "assets/portfolio/poster-synthesis.png",
+      posterEudaimonia:"assets/portfolio/poster-eudaimonia.png",
+      posterBubbles:   "assets/portfolio/poster-bubbles.png",
+      film1: "assets/film/photo-1.jpg",
       film2: "assets/film/photo-2.jpg",
+      film3: "assets/film/photo-3.jpg",
       film4: "assets/film/photo-4.jpg",
       film5: "assets/film/photo-5.jpg",
       film6: "assets/film/photo-6.jpg",
@@ -113,9 +111,11 @@
   <script type="text/babel" src="src/Button.jsx?v=118"></script>
   <script type="text/babel" src="src/Header.jsx?v=118"></script>
   <script type="text/babel" src="src/Footer.jsx?v=127"></script>
-  <script type="text/babel" src="src/MusicData.jsx?v=4"></script>
-  <script type="text/babel" src="src/MusicSections.jsx?v=13"></script>
-  <script type="text/babel" src="src/MusicPageApp.jsx?v=5"></script>
+  <script type="text/babel" src="src/OriginalIP.jsx?v=1"></script>
+  <script type="text/babel" src="src/FilmsData.jsx?v=1"></script>
+  <script type="text/babel" src="src/FilmsSections.jsx?v=1"></script>
+  <script type="text/babel" src="src/FilmLibrary.jsx?v=1"></script>
+  <script type="text/babel" src="src/FilmsPageApp.jsx?v=1"></script>
   <script src="src/sticky-nav.js?v=3"></script>
 </body>
 </html>

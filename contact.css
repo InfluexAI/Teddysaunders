@@ -105,7 +105,7 @@ body.v2-standalone .cpage { width: 100%; overflow: visible; }
 body.v2-standalone .c-hero { width: 100vw; margin-left: calc(50% - 50vw); }
 
 /* ---------- Corner reticles ---------- */
-.c-reticles { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.c-reticles { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: none; }
 .c-reticles .r { position: absolute; width: 46px; height: 46px; opacity: 0.55; }
 .c-reticles .tl { top: 30px; left: 30px; border-top: 1.5px solid #fff; border-left: 1.5px solid #fff; }
 .c-reticles .tr { top: 30px; right: 30px; border-top: 1.5px solid #fff; border-right: 1.5px solid #fff; }
