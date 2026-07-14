@@ -45,8 +45,8 @@ function FilmLibrary({ films, filters, active, client, onFilter, onClearClient, 
     <section className="flib lp-grain" id="library" data-screen-label="The Library" ref={libRef}>
       <div className="flib__seam" />
       <div className="flib__head">
-        <div className="fp-eyebrow">The Full Archive</div>
-        <h2 className="flib__title">The Library</h2>
+        <div className="fp-eyebrow">A Lifetime Legacy</div>
+        <h2 className="flib__title">The Full Library</h2>
         <p className="flib__blurb">Every film, organized by category. Filter the archive, hover a card to preview, and click to open the film in full.</p>
       </div>
 

@@ -157,7 +157,7 @@ function ProjectRail({ rail, films, onOpen, onCta, screenLabel }) {
 function TedflixSection({ films, onPlay }) {
   const ref = useFpReveal();
   const [shuffle, setShuffle] = useFsState(false);
-  const strip = films.slice(0, 7);
+  const strip = films.slice(0, 8);
   return (
     <section className="tflix lp-grain" data-screen-label="Tedflix" id="tedflix" ref={ref}>
       <div className="tflix__seam" />
