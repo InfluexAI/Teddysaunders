@@ -114,11 +114,6 @@ function WkHero2({ onJump }) {
       <div className="wk-dust" aria-hidden="true"></div>
       <div className="wk2-grain" aria-hidden="true"></div>
 
-      <span className="wk2-ret tl" aria-hidden="true"></span>
-      <span className="wk2-ret tr" aria-hidden="true"></span>
-      <span className="wk2-ret bl" aria-hidden="true"></span>
-      <span className="wk2-ret br" aria-hidden="true"></span>
-
       <div className="wk2-hero__inner">
         <p className="wk2-eyebrow">Director<span className="sep">·</span>Artist<span className="sep">·</span>Mentor<span className="sep">·</span>Founder</p>
         <h1 className="wk2-wordmark wk2-textured">Work With Ted</h1>
