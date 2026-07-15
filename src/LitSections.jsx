@@ -68,7 +68,7 @@ function useLpReveal() {
 }
 
 // Horizontal browse row with ‹ › arrows (transform-driven).
-function LpRow({ children, par }) {
+function LpRow({ children, par, wrap }) {
   const viewRef = useLsRef(null);
   const trackRef = useLsRef(null);
   const [x, setX] = useLsState(0);
@@ -84,9 +84,26 @@ function LpRow({ children, par }) {
     t.style.transform = "translateX(" + nx + "px)";
   };
   const step = (dir) => {
-    const v = viewRef.current; if (!v) return;
+    const v = viewRef.current, t = trackRef.current; if (!v || !t) return;
     const min = measure(); setLim(min);
-    setX((cur) => { const nx = Math.max(min, Math.min(0, cur + dir * -v.clientWidth * 0.7)); apply(nx, true); return nx; });
+    const kids = t.children;
+    let stride = v.clientWidth;
+    if (kids.length > 1) stride = kids[1].offsetLeft - kids[0].offsetLeft;
+    else if (kids.length === 1) stride = kids[0].offsetWidth;
+    const perPage = Math.max(1, Math.floor(v.clientWidth / stride));
+    const maxIdx = Math.max(0, kids.length - perPage);
+    setX((cur) => {
+      const curIdx = Math.round(-cur / stride);
+      let nextIdx = curIdx + dir * perPage;
+      if (wrap) {
+        if (nextIdx > maxIdx) nextIdx = 0;          // past the end → back to first page
+        else if (nextIdx < 0) nextIdx = maxIdx;     // before the start → jump to last page
+      } else {
+        nextIdx = Math.max(0, Math.min(maxIdx, nextIdx));
+      }
+      const nx = -nextIdx * stride;
+      apply(nx, true); return nx;
+    });
   };
   useLsEffect(() => {
     const onResize = () => { const min = measure(); setLim(min); setX((cur) => { const nx = Math.max(min, Math.min(0, cur)); apply(nx, false); return nx; }); };
@@ -97,11 +114,11 @@ function LpRow({ children, par }) {
   }, []);
   return (
     <div className="lp-row lp-reveal" data-par={par}>
-      <button className="lp-row__arrow lp-row__arrow--prev" aria-label="Previous" data-dim={x >= 0 ? "" : undefined} onClick={() => step(-1)}><LpArrowL /></button>
+      <button className="lp-row__arrow lp-row__arrow--prev" aria-label="Previous" data-dim={wrap ? undefined : (x >= 0 ? "" : undefined)} onClick={() => step(-1)}><LpArrowL /></button>
       <div className="lp-row__view" ref={viewRef}>
         <div className="lp-row__track" ref={trackRef}>{children}</div>
       </div>
-      <button className="lp-row__arrow lp-row__arrow--next" aria-label="Next" data-dim={x <= lim ? "" : undefined} onClick={() => step(1)}><LpArrowR /></button>
+      <button className="lp-row__arrow lp-row__arrow--next" aria-label="Next" data-dim={wrap ? undefined : (x <= lim ? "" : undefined)} onClick={() => step(1)}><LpArrowR /></button>
     </div>
   );
 }
@@ -195,15 +212,16 @@ function BookChapterModal({ chapter, idx, onClose }) {
 
   return ReactDOM.createPortal(
     <div className="lp-bmodal" role="dialog" aria-modal="true" onClick={onClose}>
-      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={onClose}>×</button>
       <div className="lp-bmodal__scroll" onClick={(e) => e.stopPropagation()}>
         <div className="lp-bmodal__card">
           <div className="lp-bmodal__eyebrow">Chapter {chapter.no} · The Book of Ignorance</div>
           <h2 className="lp-bmodal__title">{chapter.title}</h2>
-          <div className="lp-ttmodal__divider" style={{ marginBottom: 32 }} />
 
           <div className="lp-bmodal__preview-wrap">
-            <p className="lp-bmodal__preview-text">{CHAPTER_PREVIEWS[idx]}</p>
+            {CHAPTER_PREVIEWS[idx].split("\n\n").map((para, i) => (
+              <p key={i} className="lp-bmodal__preview-text">{para}</p>
+            ))}
             <div className="lp-bmodal__preview-fade" aria-hidden="true" />
           </div>
 
@@ -270,7 +288,7 @@ function BookOfIgnorance({ virtues, bg, onCta }) {
               <div className="lp-chapter__no" aria-hidden="true">{c.no}</div>
               <div className="lp-chapter__tag">Chapter {c.no}</div>
               <h3 className="lp-chapter__title">{c.title}</h3>
-              <span className="lp-chapter__read">Read Preview<span aria-hidden="true">→</span></span>
+              <span className="lp-chapter__read">Read Excerpt<span aria-hidden="true">→</span></span>
             </div>
           </div>
         ))}
@@ -339,7 +357,7 @@ function PoetryRow({ thoughts }) {
         
       </LpBanner>
       <div className="lp-ttwrap">
-        <LpRow par="0.04">
+        <LpRow par="0.04" wrap>
           {items.map((t, i) => (
             <div className="lp-tt" key={i}>
               <p className="lp-tt__quote">{typeof t === "object" ? t.title : t}</p>
@@ -451,7 +469,7 @@ function EssayModal({ essays, idx, onClose, onNav }) {
 
   return ReactDOM.createPortal(
     <div className="lp-emodal" role="dialog" aria-modal="true" onClick={onClose}>
-      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={onClose}>×</button>
       {hasPrev && (
         <button type="button" className="lp-emodal__nav lp-emodal__nav--prev" aria-label="Previous article"
           onClick={(e) => { e.stopPropagation(); onNav(idx - 1); }}>‹</button>
@@ -508,8 +526,8 @@ function EssaysSection({ essays, onOpen }) {
               onKeyDown={(ev) => { if (ev.key === "Enter") { onOpen(e.title); setOpenIdx(i); } }}>
               {e.img && <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(e.imgKey || '', e.img)})`}} />}
               <div className="lp-essay__meta">
-                <h3 className="lp-essay__title">{e.title}</h3>
                 <div className="lp-essay__date">{e.date}</div>
+                <h3 className="lp-essay__title">{e.title}</h3>
               </div>
             </div>
           );
@@ -641,7 +659,7 @@ function WorldModal({ world, onClose }) {
   }, [onClose]);
   return ReactDOM.createPortal(
     <div className="lp-wmodal" role="dialog" aria-modal="true" onClick={onClose}>
-      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={onClose}>×</button>
       <div className="lp-wmodal__scroll">
         <div className="lp-wmodal__card" onClick={(e) => e.stopPropagation()}>
           <div className="lp-wmodal__hero" style={{ backgroundImage: `url(${world.imgSrc})` }}>
@@ -701,18 +719,16 @@ function Worldbuilding({ worlds, bg, onOpen }) {
       <div className="lp-seam-top" />
       <LpBanner img={bg}
         eyebrow="Unfinished Universes"
-        title="Worldbuilding"
+        title="Visionary Universes"
         blurb={<span>A drawer of symbolic systems, archetypes, and maps — cosmologies still being drawn. Each card is the seed of a world Ted is building toward.</span>} />
       <LpRow par="0.04">
         {worlds.map((w, i) => (
-          <div className="lp-world" key={i} onClick={() => { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); }} role="button" tabIndex={0}
+          <div className="lp-world lp-essay" key={i} onClick={() => { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); }} role="button" tabIndex={0}
             onKeyDown={(e) => { if (e.key === "Enter") { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); } }}>
-            <div className="lp-world__art">
-              <img src={LR(w.img, "assets/cosmic-bg.png")} alt={w.title} />
-              <div className="lp-world__inner">
-                <h3 className="lp-world__title">{w.title}</h3>
-                <span className="lp-world__kind">{w.kind}</span>
-              </div>
+            <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(w.img, "assets/cosmic-bg.png")})`}} />
+            <div className="lp-essay__meta">
+              <div className="lp-essay__date">{w.kind}</div>
+              <h3 className="lp-essay__title">{w.title}</h3>
             </div>
           </div>
         ))}

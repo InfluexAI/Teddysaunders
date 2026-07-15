@@ -469,11 +469,10 @@ Unless you fuck with me. And then I'll change the guy I once was, see.`,
 
   // ---- Worldbuilding — a drawer of unfinished universes ----
   const WORLDS = [
+    { img: "ipJuiced", title: "Juiced", kind: "Field Sketch", note: "Appetite as a religion. A neon parable about the hunger that eats its own god." },
+    { img: "ipProsopagnosia", title: "Prosopagnosia", kind: "A World Without Faces", note: "A society that recognizes souls by their weather, not their features." },
     { img: "ipFated", title: "The Fated", kind: "Cosmology", note: "A civilization that can see every outcome but one — its own choosing." },
     { img: "ipInevitable", title: "Inevitable", kind: "Architecture of Time", note: "What if the future already happened, and memory is just the echo running backward?" },
-    { img: "ipProsopagnosia", title: "Prosopagnosia", kind: "A World Without Faces", note: "A society that recognizes souls by their weather, not their features." },
-    { img: "ipJuiced", title: "Juiced", kind: "Field Sketch", note: "Appetite as a religion. A neon parable about the hunger that eats its own god." },
-    { img: "filmStill", title: "The Bestiary of Virtues", kind: "Symbolic System", note: "Eight archetypal creatures, each the living embodiment of a virtue to attune to." },
   ];
 
   // ---- Films ----

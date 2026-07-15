@@ -103,7 +103,7 @@
 }
 /* 4 image-card categories, flush (no gaps); alternating column tones */
 .tk-mega__grid {
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 0; align-items: stretch;
   border-radius: 16px 16px 0 0; overflow: hidden;
 }
@@ -117,8 +117,9 @@
 }
 .tk-cat__card img {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1);
+  object-fit: cover; object-position: center 50%; transition: transform .7s cubic-bezier(.16,1,.3,1);
 }
+.tk-cat:nth-child(5) .tk-cat__card img { object-position: center 30%; }
 .tk-cat__card::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(5,3,1,0.05) 0%, rgba(5,3,1,0.42) 52%, rgba(5,3,1,0.92) 100%);
