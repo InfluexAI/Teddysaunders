@@ -12,8 +12,8 @@ const WK_SERVICES = [
     sub: ["Team Management", "Brand Alignment", "Social Media Consultation"] },
   { n: "05", title: "AI Systems Design",              id: "wk-svc-ai",    icon: "chip",    img: "assets/film/photo-5.jpg",
     sub: ["Application", "Dashboard", "Product", "Team Management", "CRM", "CMS", "Brand Identity", "Web Development"] },
-  { n: "06", title: "Web Direction & Development",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg",
-    sub: ["Domain & Hosting", "Framer", "WordPress", "Webflow", "Shopify", "WooCommerce", "Squarespace", "Creative Strategy", "Brand Voice", "System Design", "UI/UX Design"] },
+  { n: "06", title: "Web & App",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg",
+    sub: ["Traditional web design", "AI web design", "UI", "UX", "Systems Design"] },
   { n: "07", title: "Speaking & Podcasting",          id: "wk-svc-speak", icon: "mic",     img: "assets/film/photo-7.jpg",
     sub: ["Keynote Speaker", "Guest Appearances", "Podcast Host"] },
 ];
@@ -62,31 +62,6 @@ function WorkBrand({ onStart, onStudios }) {
           body={<React.Fragment>
             <p>Ted can be hired for film direction, photography, branding, creative strategy, immersive storytelling, speaking engagements, and collaborative future projects.</p>
           </React.Fragment>}
-          extra={<div className="wk-accolades">
-            <div className="wk-accolades__head">
-              <span className="wk-accolades__rule" aria-hidden="true"></span>
-              <span className="wk-accolades__label">Accolades</span>
-              <span className="wk-accolades__rule" aria-hidden="true"></span>
-            </div>
-            <p className="wk-accolades__lead">Three client companies have gone on to be acquired.</p>
-            <ul className="wk-accolades__list">
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">Glint</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired by LinkedIn after Ted helped grow the company from 25 employees to 1,500.</span>
-              </li>
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">5th Kind</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired by Sohonet after Ted redesigned their website and the UI/UX of their digital product suite.</span>
-              </li>
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">Toolchain</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired following brand and creative direction work.</span>
-              </li>
-            </ul>
-          </div>}
           cta={{ label: "Watch the Reel", variant: "wk-btn--ghost", onClick: () => window.open("https://vimeo.com/405296100", "_blank", "noopener") }}
         />
         {/* creative services — full-bleed cinematic grid */}
@@ -125,6 +100,33 @@ function WorkBrand({ onStart, onStudios }) {
               </button>
             </div>
           </article>
+        </div>
+      </div>
+      <div className="wk-inner">
+        <div className="wk-accolades wk-accolades--after wk-reveal">
+          <div className="wk-accolades__head">
+            <span className="wk-accolades__rule" aria-hidden="true"></span>
+            <span className="wk-accolades__label">Accolades</span>
+            <span className="wk-accolades__rule" aria-hidden="true"></span>
+          </div>
+          <p className="wk-accolades__lead">Three client companies have gone on to be acquired.</p>
+          <ul className="wk-accolades__list">
+            <li className="wk-accolade">
+              <span className="wk-accolade__name">Glint</span>
+              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+              <span className="wk-accolade__note">Acquired by LinkedIn after Ted helped grow the company from 25 employees to 1,500.</span>
+            </li>
+            <li className="wk-accolade">
+              <span className="wk-accolade__name">5th Kind</span>
+              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+              <span className="wk-accolade__note">Acquired by Sohonet after Ted redesigned their website and the UI/UX of their digital product suite.</span>
+            </li>
+            <li className="wk-accolade">
+              <span className="wk-accolade__name">Gatsby.js</span>
+              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
+              <span className="wk-accolade__note">Acquired by Microsoft after Ted helped create their main product videos.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

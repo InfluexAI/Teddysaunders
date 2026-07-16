@@ -11,7 +11,7 @@ const WK2_TABS = [
 
 const WK2_STATS = [
   { to: 20, suffix: "+", lbl: "Years Directing" },
-  { to: 100, suffix: "+", lbl: "Clients Served" },
+  { to: 1000, suffix: "+", lbl: "Clients Served" },
   { to: 10, suffix: "M+", lbl: "Collective Views" },
   { to: 3, suffix: "", lbl: "Client Acquisitions" },
 ];
@@ -115,7 +115,7 @@ function WkHero2({ onJump }) {
       <div className="wk2-grain" aria-hidden="true"></div>
 
       <div className="wk2-hero__inner">
-        <p className="wk2-eyebrow">Director<span className="sep">·</span>Artist<span className="sep">·</span>Mentor<span className="sep">·</span>Founder</p>
+        <p className="wk2-eyebrow">Director<span className="sep">·</span>Artist<span className="sep">·</span>Mentor</p>
         <h1 className="wk2-wordmark wk2-textured">Work With Ted</h1>
         <p className="wk2-promise">Three doors. One fire.</p>
         <p className="wk2-lede">

@@ -47,16 +47,26 @@ const WK_VENTURES = [
     desc: "A platform built to help people's dreams come true.",
     log: "A platform built to help people's dreams come true.",
     fragK: "Mandate", fragQ: "Make the dream the most practical thing you own." },
+  { id: "instudios", mono: "IS", title: "InStudios.net",      kind: "Venture",
+    desc: "Virtual Studio to manage clients, projects, employees and hours.",
+    log: "Virtual Studio to manage clients, projects, employees and hours.",
+    fragK: "Mandate", fragQ: "One studio to run every client, project, and hour." },
 ];
 
 // Brands Ted has built — outbound links to the live sites.
 const WK_BRANDS = [
-  { id: "infinit",   mono: "IS", title: "InfinitStudios.com",   desc: "Full-stack creative agency \u2014 film, animation, web, and AI for ambitious brands.", url: "https://infinitstudios.com/" },
-  { id: "tedshots",  mono: "TS", title: "TedShots.com",         desc: "Headshot photography company capturing people at their most alive.", url: "https://tedshots.com/" },
-  { id: "dreambox",  mono: "PD", title: "Project Dream Box",    desc: "A platform built to help people's dreams come true.", url: "https://www.facebook.com/ProjectDreamBox/", temp: true },
-  { id: "speech",    mono: "SB", title: "Speech to Book",       desc: "Write your book with your voice, with step-by-step guidance from idea to manuscript.", url: null },
-  { id: "brooracle", mono: "BO", title: "BroOracle",            desc: "Draw a card. Forge your manhood. Guidance and ritual for the modern man.", url: null },
-  { id: "celestial", mono: "CC", title: "The Celestial Compass", desc: "Use your birthday to discover who you are, and get AI guidance from the stars.", url: null },
+  { id: "trustedcmo",  mono: "TC", title: "trustedcmo.com",                  desc: "Fractional CMO leadership and marketing strategy for growing companies.", url: "https://trustedcmo.com/" },
+  { id: "hatchers",    mono: "HP", title: "Hatcherspearls.com",             desc: "Luxury pearl jewelry brand \u2014 timeless pieces, crafted to last.", url: "https://hatcherspearls.com/" },
+  { id: "goodplanet",  mono: "GP", title: "goodplanet.green",               desc: "Sustainability platform for a greener, more conscious planet.", url: "https://goodplanet.green/" },
+  { id: "cannect",     mono: "CW", title: "cannectwellness.com",            desc: "Wellness brand connecting people to healthier, more balanced living.", url: "https://cannectwellness.com/" },
+  { id: "fifthkind",   mono: "5K", title: "5thkind.webflow.io",             desc: "Enterprise content and media management platform.", url: "https://5thkind.webflow.io/" },
+  { id: "acton",       mono: "AO", title: "act-on.com",                     desc: "Marketing automation platform for growth-focused teams.", url: "https://act-on.com/" },
+  { id: "tchain",      mono: "TC", title: "tchain.webflow.io",              desc: "Blockchain platform bringing trust and transparency to the chain.", url: "https://tchain.webflow.io/" },
+  { id: "edr",         mono: "ED", title: "englishfordisputeresolution.com", desc: "Specialized English training for legal and dispute-resolution professionals.", url: "https://englishfordisputeresolution.com/" },
+  { id: "raiinmaker",  mono: "RM", title: "raiinmaker1.webflow.io",         desc: "Decentralized platform rewarding creators for their influence.", url: "https://raiinmaker1.webflow.io/" },
+  { id: "infinit",     mono: "IS", title: "infinitstudios.com",             desc: "Full-stack creative agency \u2014 film, animation, web, and AI for ambitious brands.", url: "https://infinitstudios.com/" },
+  { id: "darvish",     mono: "DV", title: "darvish.webflow.io",             desc: "Brand and portfolio site built for a modern visionary.", url: "https://darvish.webflow.io/" },
+  { id: "genesisgems", mono: "GG", title: "genesis-gems.webflow.io",        desc: "Premium gemstone brand \u2014 rare stones, timeless design.", url: "https://genesis-gems.webflow.io/" },
 ];
 
 // BroOracle wordmark SVG (matches about page)

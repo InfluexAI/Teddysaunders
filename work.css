@@ -104,7 +104,7 @@
 /* growing centered underline accent */
 .wk-tab::after {
   content: ""; position: absolute; left: 50%; bottom: 0; height: 2px; width: 0;
-  background: var(--grad-bronze); box-shadow: 0 0 14px rgba(201,162,75,0.6);
+  background: linear-gradient(90deg, rgba(201,162,75,0) 0%, #C9915C 18%, #FAC288 50%, #C9915C 82%, rgba(201,162,75,0) 100%); box-shadow: 0 0 14px rgba(201,162,75,0.6);
   transform: translateX(-50%); transition: width .5s cubic-bezier(0.16,1,0.3,1);
 }
 /* warm wash + faint top glow on hover */
@@ -221,7 +221,7 @@
 .wk-sec--dark .wk-intro__body p { color: rgba(255,255,255,0.86); }
 .wk-sec--light .wk-intro__body p { color: rgba(46,28,12,0.78); }
 .wk-intro .wk-cta-row { margin-top: 32px; }
-.wk-intro__reticle { position: absolute; width: 34px; height: 34px; z-index: 2; border-color: rgba(255,234,202,0.7); }
+.wk-intro__reticle { display: none; position: absolute; width: 34px; height: 34px; z-index: 2; border-color: rgba(255,234,202,0.7); }
 .wk-sec--light .wk-intro__reticle { border-color: rgba(90,52,25,0.55); }
 .wk-intro__reticle.tl { top: 22px; left: 22px; border-top: 2px solid; border-left: 2px solid; }
 .wk-intro__reticle.br { bottom: 22px; right: 22px; border-bottom: 2px solid; border-right: 2px solid; }
@@ -348,8 +348,8 @@
 /* keep the disc a positioning context for the ripple */
 .wk-mnode__disc { position: relative; }
 /* nudge labels so they sit clear of the disc per position */
-.wk-mnode--king { flex-direction: column-reverse; }      /* Career (top): label above */
-.wk-mnode--magician .wk-mnode__label { order: 2; }       /* Finance (bottom): label below (default) */
+.wk-mnode--king .wk-mnode__disc { order: 3; }            /* Career (top): CAREER, The King, then disc */
+/* Finance (bottom): disc, FINANCE, The Magician (default DOM order) */
 
 .wk-compass { position: relative; width: 100%; aspect-ratio: 1; max-width: 620px; margin: 0 auto; }
 .wk-compass__glow { position: absolute; inset: -12%; border-radius: 50%; background: radial-gradient(circle, rgba(201,162,75,0.22) 0%, rgba(201,162,75,0) 62%); animation: wkPulse 5.5s ease-in-out infinite; }
@@ -471,6 +471,27 @@
 .wk-btn--solid:hover { box-shadow: 0 18px 46px rgba(201,162,75,0.45); }
 .wk-btn--ghost { background: rgba(255,255,255,0.03); color: #F0DCB0; border-color: rgba(209,157,99,0.5); }
 .wk-btn--ghost:hover { border-color: #FBE6B8; color: #fff; background: rgba(209,157,99,0.1); }
+
+/* Compass Coaching modal */
+.wkcc-modal { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center;
+  padding: 40px; background: rgba(4,3,1,0.82); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: wkccFade .3s ease; }
+@keyframes wkccFade { from { opacity: 0; } to { opacity: 1; } }
+.wkcc-modal__box { position: relative; width: 100%; max-width: 620px;
+  background: linear-gradient(165deg, #16100a 0%, #0b0805 100%);
+  border: 1px solid rgba(201,162,75,0.55); border-radius: 6px;
+  padding: 64px 68px 60px; text-align: center;
+  box-shadow: 0 48px 120px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,236,184,0.08); }
+.wkcc-modal__x { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  background: rgba(20,13,6,0.95); border: 1.5px solid rgba(246,211,107,0.9); color: #F6D36B;
+  font-size: 26px; line-height: 1; transition: background .2s ease, transform .2s ease; }
+.wkcc-modal__x:hover { background: rgba(40,26,12,0.95); transform: scale(1.06); }
+.wkcc-modal__title { font-family: var(--font-display); font-size: clamp(30px, 3vw, 48px); line-height: 1.04;
+  text-transform: uppercase; letter-spacing: 0.01em; margin: 0 0 22px; }
+.wkcc-modal__body { font-family: var(--font-body); font-weight: 300; font-size: clamp(15px, 1.1vw, 18px);
+  line-height: 1.7; color: rgba(255,255,255,0.82); margin: 0 0 34px; text-wrap: pretty; }
+.wkcc-modal__box .wk-btn { margin: 0 auto; }
 .wk-sec--light .wk-btn--ghost { color: #5A3419; border-color: rgba(90,52,25,0.45); background: transparent; }
 .wk-sec--light .wk-btn--ghost:hover { background: #5A3419; border-color: #5A3419; color: #FFF3E2; }
 
@@ -774,14 +795,15 @@
 
 /* ===== Round-2 fixes (brand center, investors, ventures text) ===== */
 /* Item 3 — Brand intro: centered, widened, tighter top + tighter gap to cards */
-#wk-brand .wk-intro__copy { text-align: center; display: flex; justify-content: center; padding-top: clamp(70px, 10vh, 120px); }
-#wk-brand .wk-intro__copy-inner { margin: 0 auto; max-width: 980px; }
-#wk-brand .wk-intro__body { display: flex; flex-direction: column; align-items: center; }
-#wk-brand .wk-intro__body p { max-width: 720px; }
-#wk-brand .wk-intro .wk-cta-row { justify-content: center; }
+#wk-brand .wk-intro__copy { text-align: left; display: block; padding-top: clamp(70px, 10vh, 120px); }
+#wk-brand .wk-intro__copy-inner { margin: 0; max-width: 880px; }
+#wk-brand .wk-intro__body { display: block; }
+#wk-brand .wk-intro__body p { max-width: 620px; }
+#wk-brand .wk-intro .wk-cta-row { justify-content: flex-start; }
 
 /* Accolades — client-acquisition record, centered under the brand intro */
 .wk-accolades { width: 100%; max-width: 760px; margin: clamp(30px, 4vh, 52px) auto 0; }
+.wk-accolades--after { padding-bottom: clamp(60px, 9vh, 120px); }
 .wk-accolades__head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
 .wk-accolades__rule { flex: 1 1 auto; height: 1px; background: linear-gradient(90deg, transparent, rgba(90,52,25,0.4)); }
 .wk-accolades__head .wk-accolades__rule:last-child { background: linear-gradient(90deg, rgba(90,52,25,0.4), transparent); }

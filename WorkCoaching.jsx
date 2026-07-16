@@ -71,6 +71,7 @@ function MapCompassRose() {
 
 function WorkCoaching({ onApply, onActivate }) {
   const [active, setActive] = useCoState(0);
+  const [modalOpen, setModalOpen] = useCoState(false);
   const N = WK_QUADRANTS.length;
   const timer = useCoRef(null);
   const lockRef = useCoRef(false);
@@ -165,6 +166,12 @@ function WorkCoaching({ onApply, onActivate }) {
                 <i key={q.key} className={i === active ? "on" : ""} onClick={() => pick(i)} role="button" aria-label={q.cat} />
               ))}
             </div>
+            <div className="wk-cta-row" style={{ marginTop: 28 }}>
+              <button type="button" className="wk-btn wk-btn--solid" onClick={() => setModalOpen(true)}>
+                Explore Compass Coaching
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -193,6 +200,20 @@ function WorkCoaching({ onApply, onActivate }) {
           </div>
         </div>
       </div>
+
+      {modalOpen && (
+        <div className="wkcc-modal" role="dialog" aria-modal="true" onClick={() => setModalOpen(false)}>
+          <div className="wkcc-modal__box" onClick={(e) => e.stopPropagation()}>
+            <button type="button" className="wkcc-modal__x" aria-label="Close" onClick={() => setModalOpen(false)}>×</button>
+            <h3 className="wkcc-modal__title wk-textured">Find Your True North</h3>
+            <p className="wkcc-modal__body">Your life is more than one dimension. Compass Coaching helps you create alignment across career, relationships, finances, and health—so every part of your life moves in the same direction.</p>
+            <a className="wk-btn wk-btn--solid" href="#">
+              Explore Compass Coaching
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

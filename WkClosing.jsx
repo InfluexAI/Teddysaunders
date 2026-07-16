@@ -48,11 +48,6 @@ function WkClosing({ onBegin, onPortfolio }) {
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M7 17 17 7M9 7h8v8" /></svg>
           </button>
         </div>
-        <div className="wk2-close__divider" aria-hidden="true">
-          <div className="rule"></div>
-          <img className="wk2-close__disc" src="assets/logo-mark.png" alt="" />
-          <div className="rule"></div>
-        </div>
       </div>
     </section>
   );
