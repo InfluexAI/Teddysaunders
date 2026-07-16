@@ -116,22 +116,20 @@ function PortfolioPageApp() {
   const musicClips = [
     { src: R("film1", "assets/film/photo-1.jpg"), label: "DJ Sets", placeholder: "Drop a music video" },
     { src: R("film8", "assets/film/photo-8.jpg"), label: "Original Sets", placeholder: "Drop performance footage" },
-    { src: R("film3", "assets/film/photo-3.jpg"), label: "Movie Sets", placeholder: "Drop a studio session" },
+    { src: R("film3", "assets/film/photo-3.jpg"), label: "Soundtracks", placeholder: "Drop a studio session" },
     { src: R("film2", "assets/film/photo-2.jpg"), label: "Music Videos", placeholder: "Drop a BTS montage" },
-    { src: R("film6", "assets/film/photo-6.jpg"), label: "Soundscape", placeholder: "Drop a soundscape visual" },
-    { src: R("film7", "assets/film/photo-7.jpg"), label: "Archive", placeholder: "Drop an archive clip" },
   ];
   const journalData = { spread: R("bookOfIgnorance", "assets/book-of-ignorance.jpg") };
   const heroCols = [
-    [R("posterPlaces"), R("heroFilm"), R("ipFated"), R("heroMusic"), R("posterBubbles"), R("heroPhoto")],
+    [R("posterPlaces"), R("whenIGrowUp", "assets/when-i-grow-up.jpg"), R("ipFated"), R("heroMusic"), R("posterBubbles"), R("heroPhoto")],
     [R("ipInevitable"), R("storyBridge"), R("posterSynthesis"), R("hyperlapse"), R("ipProsopagnosia"), R("tedCinematic")],
-    [R("posterEudaimonia"), R("heroPhil"), R("ipJuiced"), R("teddyHero"), R("burningMan"), R("hyperlapseBts")],
+    [R("posterEudaimonia"), R("editingDesk", "assets/editing-desk.jpg"), R("ipJuiced"), R("teddyHero"), R("burningMan"), R("hyperlapseBts")],
   ];
   const excerpts = [
     { cat: "Thoughts", quote: "Short aphorisms on ignorance, ego, and attention.", href: "Literature.html#tedthoughts" },
     { cat: "Poems", quote: "Verses on longing, transformation, and the unseen.", href: "Literature.html#poetry" },
     { cat: "Articles", quote: "Essays unpacking the Book of Ignorance, one idea at a time.", href: "Literature.html#essays" },
-    { cat: "Song Lyrics", quote: "Words written to be sung — rhythm, ache, and refrain.", href: "Literature.html#poetry" },
+    { cat: "Book", quote: "The Book of Ignorance — a living work on what we don't know.", href: "Literature.html#book-of-ignorance" },
   ];
   return (
     <React.Fragment>

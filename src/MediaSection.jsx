@@ -201,7 +201,7 @@ function JournalSection({ data, onCta, excerpts }) {
       <div className="pp-copyzone">
         <Copy num="04" title={<span>Literature &amp;<br />Philosophy</span>} tagline="Thoughts that refused to stay quiet."
           body={["Ted Saunders’ literary work explores philosophy, spirituality, creativity, mythology, consciousness, and the beauty of uncertainty.", <span key="b">At the center of this universe is <em>The Book of Ignorance</em> — an evolving philosophical framework built around the idea that truth cannot be fully possessed, only experienced.</span>]}
-          cta="Explore the Philosophy" onCta={onCta} />
+          cta="Explore all Literature" onCta={onCta} />
       </div>
       <div className="pp-slips pp-reveal">
         {excerpts.map((x, i) => (
