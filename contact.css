@@ -498,7 +498,7 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .c-ptabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; text-align: center; }
 .c-ptab {
   position: relative; overflow: visible; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg, rgba(28,22,16,0.6) 0%, rgba(10,8,5,0.6) 100%);
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), #1a1a1c url("assets/gunmetal-texture.jpg") center / cover no-repeat;
   border: 1px solid rgba(209,157,99,0.18); border-radius: var(--r-lg);
   padding: 18px 20px; cursor: pointer; min-height: 78px; text-decoration: none;
   transition: transform .45s cubic-bezier(.2,.7,.3,1), border-color .45s, box-shadow .45s, background .45s;
@@ -512,7 +512,7 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 .c-ptab:hover { transform: translateY(-4px); border-color: rgba(209,157,99,0.5); box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 1px 14px rgba(240,170,64,0.08); }
 .c-ptab:hover::before, .c-ptab.is-on::before { transform: scaleX(1); }
 .c-ptab.is-on {
-  background: linear-gradient(180deg, rgba(42,32,21,0.85) 0%, rgba(14,10,7,0.85) 100%);
+  background: linear-gradient(rgba(30,22,12,0.34), rgba(30,22,12,0.34)), #202024 url("assets/gunmetal-texture.jpg") center / cover no-repeat;
   border-color: rgba(209,157,99,0.6); box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 1px 14px rgba(240,170,64,0.1);
 }
 .c-ptab .pt-title {
