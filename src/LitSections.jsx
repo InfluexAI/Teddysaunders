@@ -286,9 +286,9 @@ function BookOfIgnorance({ virtues, bg, onCta }) {
             onKeyDown={(e) => { if (e.key === "Enter") setOpenIdx(i); }}>
             <div className="lp-chapter__content">
               <div className="lp-chapter__no" aria-hidden="true">{c.no}</div>
-              <div className="lp-chapter__tag">Chapter {c.no}</div>
-              <h3 className="lp-chapter__title">{c.title}</h3>
-              <span className="lp-chapter__read">Read Excerpt<span aria-hidden="true">→</span></span>
+              <div className="lp-chapter__tag" style={{marginTop: "-20px"}}>Chapter {c.no}</div>
+              <h3 className="lp-chapter__title" style={{margin: "0"}}>{c.title}</h3>
+              <span className="lp-chapter__read" style={{marginTop: "0", paddingBottom: "0"}}>Read Excerpt<span aria-hidden="true">→</span></span>
             </div>
           </div>
         ))}
@@ -526,8 +526,12 @@ function EssaysSection({ essays, onOpen }) {
               onKeyDown={(ev) => { if (ev.key === "Enter") { onOpen(e.title); setOpenIdx(i); } }}>
               {e.img && <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(e.imgKey || '', e.img)})`}} />}
               <div className="lp-essay__meta">
-                <div className="lp-essay__date">{e.date}</div>
                 <h3 className="lp-essay__title">{e.title}</h3>
+                <p className="lp-essay__excerpt">{(ESSAY_BODY[e.title] || "").split("\n")[0]}</p>
+                <div className="lp-essay__foot">
+                  <span className="lp-essay__more">Load more</span>
+                  <div className="lp-essay__date">{e.date}</div>
+                </div>
               </div>
             </div>
           );
@@ -723,12 +727,14 @@ function Worldbuilding({ worlds, bg, onOpen }) {
         blurb={<span>A drawer of symbolic systems, archetypes, and maps — cosmologies still being drawn. Each card is the seed of a world Ted is building toward.</span>} />
       <LpRow par="0.04">
         {worlds.map((w, i) => (
-          <div className="lp-world lp-essay" key={i} onClick={() => { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); }} role="button" tabIndex={0}
+          <div className="lp-world" key={i} onClick={() => { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); }} role="button" tabIndex={0}
             onKeyDown={(e) => { if (e.key === "Enter") { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); } }}>
-            <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(w.img, "assets/cosmic-bg.png")})`}} />
-            <div className="lp-essay__meta">
-              <div className="lp-essay__date">{w.kind}</div>
-              <h3 className="lp-essay__title">{w.title}</h3>
+            <div className="lp-world__art">
+              <img src={LR(w.img, "assets/cosmic-bg.png")} alt={w.title} />
+              <div className="lp-world__inner">
+                <span className="lp-world__kind">{w.kind}</span>
+                <h3 className="lp-world__title">{w.title}</h3>
+              </div>
             </div>
           </div>
         ))}
