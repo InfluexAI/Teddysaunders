@@ -443,6 +443,7 @@
   background: #0A0705;
 }
 .ab-panel__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ab-panel__thumb img[src*="g2"], .ab-panel__thumb img[src*="ted-cinematic"] { object-position: center top; }
 .ab-panel__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: 70px; height: 70px; border-radius: 50%;
@@ -522,6 +523,7 @@
 .ab-mcard__medium { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-hairline); margin: 0 0 14px; }
 .ab-mcard__thumb { aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
 .ab-mcard__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.ab-mcard__thumb img[src*="g2"], .ab-mcard__thumb img[src*="ted-cinematic"] { object-position: center top; }
 .ab-mcard__desc { font-family: var(--font-body); font-weight: 300; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,0.82); margin: 0 0 18px; }
 
 /* ============================================================

@@ -34,6 +34,20 @@ const AB_TINTS = {
   thoughts: ["#3E3A5A", "#161426"], props:   ["#5E2E2A", "#241010"],
 };
 
+// Real stills for each expression — mirrored from the homepage compass so the
+// About compass shows the actual body of work (TedDrops uses the DJ still).
+const AB_IMG = {
+  plots:    "assets/heroes/cinematographer.jpg",
+  props:    "assets/ted-cinematic.jpg",
+  thoughts: "assets/heroes/philosopher.jpg",
+  crops:    "assets/gallery/g2.jpg",
+  unlocks:  "assets/teddy-hero.jpg",
+  bots:     "assets/video-editing.png",
+  drops:    "assets/heroes/dj-drops.webp",
+  shots:    "assets/heroes/photographer.jpg",
+};
+const abImg = (key, name, medium, tint) => (window.__resources && window.__resources["abImg_" + key]) || AB_IMG[key] || abPreview(name, medium, tint);
+
 // Cinematic preview placeholder per destination (swap src for a real still later).
 function abPreview(name, medium, tint) {
   const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -70,8 +84,7 @@ function PanelSlide({ node, idx, onCta, slideRef }) {
       <h3 className="ab-panel__name ab-textured">{node.name}</h3>
       <p className="ab-panel__medium">{node.medium}</p>
       <div className="ab-panel__thumb">
-        <img src={abPreview(node.name, node.medium, AB_TINTS[node.key])} alt={node.name + " preview"} />
-        <span className="ab-panel__play"><PlayTriangle size={26} id={"abp-" + node.key} /></span>
+        <img src={abImg(node.key, node.name, node.medium, AB_TINTS[node.key])} alt={node.name + " preview"} />
       </div>
       <p className="ab-panel__desc">{node.desc}</p>
       <button className="ab-panel__cta" onClick={() => onCta && onCta(node)}>
@@ -294,7 +307,7 @@ function AboutCompass({ onActivate }) {
             </div>
             <h3 className="ab-mcard__name ab-textured">{nd.name}</h3>
             <p className="ab-mcard__medium">{nd.medium}</p>
-            <div className="ab-mcard__thumb"><img src={abPreview(nd.name, nd.medium, AB_TINTS[nd.key])} alt="" /></div>
+            <div className="ab-mcard__thumb"><img src={abImg(nd.key, nd.name, nd.medium, AB_TINTS[nd.key])} alt="" /></div>
             <p className="ab-mcard__desc">{nd.desc}</p>
             <button className="ab-panel__cta" onClick={() => onActivate && onActivate(nd)}>
               {nd.cta}
