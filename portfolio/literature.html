@@ -5,6 +5,19 @@
   <title>Ted Saunders — Literature &amp; Philosophy · A Cinematic Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Page lives one folder deep (portfolio/). Compute the real site root from the
+       URL and set <base> before any asset loads. -->
+  <script>
+    (function () {
+      var p = location.pathname;
+      var i = p.indexOf('/portfolio/');
+      var root = i >= 0 ? p.slice(0, i + 1) : '/';
+      var b = document.createElement('base');
+      b.href = location.origin + root;
+      document.head.insertBefore(b, document.head.firstChild);
+    })();
+  </script>
+
   <!-- Offline-bundle resource dependencies (referenced as strings in JSX). -->
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
   <meta name="ext-resource-dependency" content="assets/logo-mark.png" data-resource-id="logoMark" />
@@ -118,6 +131,7 @@
   <script type="text/babel" src="src/LitSections.jsx?v=72"></script>
   <script type="text/babel" src="src/LitReader.jsx?v=1"></script>
   <script type="text/babel" src="src/LitPageApp.jsx?v=35"></script>
+  <script src="src/sparkle-cursor.js?v=2"></script>
   <script src="src/sticky-nav.js?v=4"></script>
 </body>
 </html>
