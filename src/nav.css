@@ -103,7 +103,7 @@
 }
 /* 4 image-card categories, flush (no gaps); alternating column tones */
 .tk-mega__grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 0; align-items: stretch;
   border-radius: 16px 16px 0 0; overflow: hidden;
 }

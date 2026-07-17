@@ -14,8 +14,10 @@ const PORTFOLIO_MEGA = [
     desc: "Portraits, light-painting, and beauty found in imperfection." },
   { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png",
     desc: "TedDrops DJ sets and original scores made to move you." },
-  { label: "Literature, Web, AI & Graphic", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
+  { label: "Literature", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
     desc: "Poetry, essays, and worldbuilding for minds that wander." },
+  { label: "Web, AI & Graphic", href: "web-graphic-design.html", res: "navWebDesign", img: "assets/nav/web-design.png",
+    desc: "Cinematic websites, AI systems, and brand identity design." },
 ];
 const HDR_MEGA = { Portfolio: PORTFOLIO_MEGA };
 
