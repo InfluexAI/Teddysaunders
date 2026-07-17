@@ -191,13 +191,18 @@ function AboutCompass({ onActivate }) {
         dotsRef.current.style.pointerEvents = dock > 0.5 ? "auto" : "none";
       }
 
-      // per-slide cross-fade
+      // slot-machine reel: the whole slide (card + all its text) rolls vertically
+      // as one block, fading toward the top/bottom of the masked window so only
+      // the centered expression reads crisply.
       slideRefs.current.forEach((el, i) => {
         if (!el) return;
-        const d = indexFloat - i;
-        const op = clamp(1 - Math.abs(d) * 1.5, 0, 1) * dock;
+        const d = indexFloat - i;              // signed distance from the pointer
+        const ad = Math.abs(d);
+        const op = clamp(1 - ad * ad * 1.15, 0, 1) * dock;
         el.style.opacity = String(op);
-        el.style.transform = `translateY(${d * 30}px)`;
+        el.style.zIndex = String(100 - Math.round(ad * 10));
+        el.style.pointerEvents = op > 0.6 ? "auto" : "none";
+        el.style.transform = `translateY(${d * 108}%)`;
         el.classList.toggle("is-on", op > 0.6);
       });
 

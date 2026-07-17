@@ -126,7 +126,7 @@ const AO_MILESTONES = [
     cap: "Little Teddy is Born",
     desc: "Growing up in the safe suburbs of Newton Massachusetts, Teddy's father would always have a camcorder around to archive the family. By the age of 6 Teddy was using the camera to make stop-motion animations of chess pieces, and create digital-magic tricks to show his friends on TV. With a passion for sci-fi and fantasy, Teddy has a huge imagination and hunger to explore and innovate, as he would build his own computers and push the limits of technology." },
   { year: "1990s", label: "1990s–2000s",
-    cap: "A Rebellious Creator",
+    cap: "A Childhood of Creating",
     desc: "In middle school and high school, when other students went on to play football after school, Ted would gather his friends to direct action films. Using fake blood packets and fireworks as special effects, he would go on to become an award-winning creator for his local TV station. In college he then studied TV production, excelling as the teachers pet in all film and TV related classes. All while producing hip-hop music on the side. Immediately upon graduating college at Boston University, Ted then moves to Hollywood to become the personal assistant for his favorite actor on his favorite TV show, after Steve Martin's masseuse tells him to pretend to be a celebrity assistant and introduces him to Jeremy Piven." },
   { year: "2007", label: "2007", imgSrc: "assets/slots/ao-tl-2007.png",
     cap: "Assistant to Jeremy Piven",

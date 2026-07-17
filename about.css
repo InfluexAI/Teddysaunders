@@ -44,6 +44,7 @@
 /* Textured-gold display heading (matches hero wordmark treatment) */
 .ab-textured {
   background: url("assets/heading-texture.jpg") center 38% / cover, var(--grad-bronze);
+  background-blend-mode: lighten;
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
   filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55));
@@ -389,13 +390,16 @@
 /* ---- editorial panel on the right (active expression) ---- */
 .ab-panel {
   position: absolute; z-index: 3;
-  top: 50%; left: 46vw; right: auto;
-  transform: translateY(-50%);
+  top: 8vh; left: 46vw; right: auto;
+  transform: none;
   width: min(42vw, 580px);
 }
-.ab-panel__card { position: relative; height: clamp(500px, 74vh, 640px); }
+.ab-panel__card { position: relative; height: 84vh; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 4%, #000 99.5%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 4%, #000 99.5%, transparent 100%); }
 .ab-panel__slide {
-  position: absolute; inset: 0;
+  position: absolute; top: 0; left: 0; right: 0;
+  height: clamp(500px, 74vh, 640px);
   display: flex; flex-direction: column;
   pointer-events: none;
   opacity: 0;
@@ -631,19 +635,39 @@
   margin: 0 0 28px; flex: 1;
 }
 .ab-vcard__btn {
+  position: relative;
   align-self: flex-start;
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--font-sans); font-weight: 700;
-  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--c-cream);
-  background: transparent;
-  border: 1.4px solid rgba(209,157,99,0.6);
-  border-radius: 4px; padding: 13px 22px;
+  font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: #F1D9A8;
+  background: linear-gradient(180deg, rgba(58,44,24,0.4), rgba(20,14,7,0.4));
+  border: 1px solid rgba(209,157,99,0.6);
+  border-radius: 0;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  padding: 14px 26px;
   cursor: pointer; text-decoration: none;
-  transition: background .25s ease, border-color .25s ease, color .25s ease;
+  box-shadow: inset 0 0 12px rgba(201,145,92,0.14), 0 0 0 1px rgba(201,145,92,0.08);
+  transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
 }
+/* circuit ticks — top-left + lower-right for the tech/cyber feel */
+.ab-vcard__btn::before,
+.ab-vcard__btn::after {
+  content: ""; position: absolute; width: 16px; height: 6px; pointer-events: none;
+  background:
+    linear-gradient(#D19D63, #D19D63) left top / 10px 1px no-repeat,
+    radial-gradient(circle, #FBE6B8 0 1.4px, transparent 1.6px) right top / 3px 3px no-repeat;
+  opacity: 0.75;
+}
+.ab-vcard__btn::before { top: 5px; left: 6px; transform: scaleX(-1); }
+.ab-vcard__btn::after  { bottom: 5px; right: 6px; transform: scaleY(-1); }
 .ab-vcard__btn svg { transition: transform .25s ease; }
-.ab-vcard__btn:hover { background: rgba(209,157,99,0.12); border-color: #FBE6B8; color: #fff; }
+.ab-vcard__btn:hover {
+  background: linear-gradient(180deg, rgba(201,145,92,0.3), rgba(60,42,20,0.3));
+  border-color: #FBE6B8; color: #FFF3DC;
+  box-shadow: inset 0 0 16px rgba(201,145,92,0.3), 0 0 22px rgba(201,145,92,0.32);
+}
+.ab-vcard__btn:hover::before, .ab-vcard__btn:hover::after { opacity: 1; }
 .ab-vcard__btn:hover svg { transform: translateX(4px); }
 
 /* ============================================================
@@ -712,10 +736,11 @@
 .ab-ventures--light .ab-vcard__title { filter: none; }
 .ab-ventures--light .ab-vcard__desc { color: rgba(245,237,227,0.72); }
 .ab-ventures--light .ab-vcard__btn {
-  color: #E8C98A; border-color: rgba(214,162,74,0.5);
+  color: #F1D9A8; border-color: rgba(209,157,99,0.6);
 }
 .ab-ventures--light .ab-vcard__btn:hover {
-  background: linear-gradient(135deg, #BF8753, #FAC288, #C9915C); border-color: transparent; color: #1A1206;
+  background: linear-gradient(180deg, rgba(201,145,92,0.3), rgba(60,42,20,0.3));
+  border-color: #FBE6B8; color: #FFF3DC;
 }
 
 /* ============================================================
@@ -797,7 +822,7 @@
   position: absolute; inset: 0; z-index: 0;
   width: 100%; height: 100%; pointer-events: none;
 }
-.ab-marquee:hover .ab-marquee__viewport { animation-play-state: paused; }
+.ab-marquee__viewport { animation-play-state: running; }
 @keyframes abMarqueeScroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .ab-marquee__viewport { animation: none; }
