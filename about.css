@@ -399,8 +399,9 @@
   mask-image: linear-gradient(180deg, transparent 0%, #000 4%, #000 99.5%, transparent 100%); }
 .ab-panel__slide {
   position: absolute; top: 0; left: 0; right: 0;
-  height: clamp(500px, 74vh, 640px);
-  display: flex; flex-direction: column;
+  height: 84vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6vh 0;
   pointer-events: none;
   opacity: 0;
   will-change: opacity, transform;

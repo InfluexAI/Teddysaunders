@@ -215,7 +215,7 @@ function AboutCompass({ onActivate }) {
         el.style.opacity = String(op);
         el.style.zIndex = String(100 - Math.round(ad * 10));
         el.style.pointerEvents = op > 0.6 ? "auto" : "none";
-        el.style.transform = `translateY(${d * 108}%)`;
+        el.style.transform = `translateY(${d * -108}%)`;
         el.classList.toggle("is-on", op > 0.6);
       });
 
