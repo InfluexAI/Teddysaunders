@@ -1,12 +1,17 @@
 // PressStrip.jsx — looping marquee with bundler-friendly resource lookup.
 const _R = (typeof window !== "undefined" && window.__resources) || {};
 const LOGO_FILES = [
-  { k: "netflix", src: _R.logoNetflix || "assets/press/netflix2.png" },
-  { k: "bi",      src: _R.logoBI || "assets/press/business-insider.png" },
-  { k: "nyt",     src: _R.logoNYT || "assets/press/nyt.png" },
-  { k: "gma",     src: _R.logoGMA || "assets/press/gma.png" },
-  { k: "abc",     src: _R.logoABC || "assets/press/abc2.png" },
-  { k: "drew",    src: _R.logoDrew || "assets/press/drew.png" },
+  { k: "salesforce", src: _R.logoSalesforce || "assets/press/logos/salesforce.svg" },
+  { k: "linkedin",   src: _R.logoLinkedIn   || "assets/press/logos/linkedin.svg" },
+  { k: "verizon",    src: _R.logoVerizon    || "assets/press/logos/verizon.svg" },
+  { k: "toyota",     src: _R.logoToyota     || "assets/press/logos/toyota.svg" },
+  { k: "microsoft",  src: _R.logoMicrosoft  || "assets/press/logos/microsoft.svg" },
+  { k: "dolab",      src: _R.logoDoLab      || "assets/press/logos/dolab.png?v=2" },
+  { k: "lucidity",   src: _R.logoLucidity   || "assets/press/logos/lucidity.png?v=3" },
+  { k: "aptible",    src: _R.logoAptible    || "assets/press/logos/aptible.svg" },
+  { k: "gatsby",     src: _R.logoGatsby     || "assets/press/logos/gatsby.svg" },
+  { k: "kia",        src: _R.logoKia        || "assets/press/logos/kia.svg" },
+  { k: "burningman", src: _R.logoBurningMan || "assets/press/logos/burningman.png?v=3" },
 ];
 function PressStrip() {
   const map = (window.__resources) || {};
