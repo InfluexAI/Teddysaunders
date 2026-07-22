@@ -294,19 +294,26 @@ html { scroll-snap-type: y proximity; }
     url("../assets/finance-bg.png") center / cover no-repeat;
 }
 .finv-scrub {
-  position: absolute; inset: 0; z-index: 2;
+  position: absolute; inset: 0; z-index: 4;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: clamp(10px, 2.4vh, 28px); padding: clamp(60px,9vh,120px) 24px;
   text-align: center;
-  will-change: opacity;
+  transform-origin: 50% 50%;
+  will-change: opacity, transform;
 }
-.finv-cap { text-align: center; }
+.finv-cap { text-align: center; will-change: opacity; }
 .finv-cap .fin2-eyebrow { margin-bottom: 12px; }
 .finv-cap .vault-title { margin: 0; }
 .finv-canvas {
   width: min(560px, 64vw); height: auto; aspect-ratio: 864 / 496; display: block;
   margin: 0 auto;
   filter: drop-shadow(0 30px 56px rgba(0,0,0,0.55));
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+                linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+                linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+          mask-composite: intersect;
 }
 .finv-reveal {
   position: absolute; inset: 0; z-index: 3;

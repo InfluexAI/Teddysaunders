@@ -13,10 +13,11 @@ function FinancialStrategy({ onApply, onCoaching }) {
   const canvasRef = useFvRef(null);
   const scrubRef = useFvRef(null);
   const revealRef = useFvRef(null);
+  const capRef = useFvRef(null);
 
   useFvEffect(() => {
     const root = rootRef.current, canvas = canvasRef.current,
-          scrub = scrubRef.current, reveal = revealRef.current;
+          scrub = scrubRef.current, reveal = revealRef.current, cap = capRef.current;
     if (!root || !canvas) return;
 
     const CW = 864, CH = 496;            // canvas keying resolution (matches the video)
@@ -70,11 +71,17 @@ function FinancialStrategy({ onApply, onCoaching }) {
       if (ready && !pending) { pending = true; requestAnimationFrame(tick); }
 
       const out = ss(SCRUB_END, FADE_END, p);
-      if (scrub) scrub.style.opacity = String(1 - out);
+      // Keep the chest visible — shrink it ~50% and lift it above the copy
+      // (instead of fading it out) so it stays perched over "New money".
+      if (scrub) {
+        scrub.style.opacity = "1";
+        scrub.style.transform = "translateY(" + (-out * 26) + "vh) scale(" + (1 - 0.4 * out) + ")";
+      }
+      if (cap) cap.style.opacity = String(1 - ss(SCRUB_END, SCRUB_END + 0.06, p));
       const rev = ss(SCRUB_END + 0.02, FADE_END + 0.05, p);
       if (reveal) {
         reveal.style.opacity = String(rev);
-        reveal.style.transform = "translateY(" + ((1 - rev) * 28) + "px)";
+        reveal.style.transform = "translateY(" + ((1 - rev) * 28 + out * 130) + "px)";
         reveal.style.pointerEvents = rev > 0.92 ? "auto" : "none";
       }
     };
@@ -104,7 +111,7 @@ function FinancialStrategy({ onApply, onCoaching }) {
 
         {/* ---- scrubbed chest ---- */}
         <div className="finv-scrub" ref={scrubRef}>
-          <div className="finv-cap">
+          <div className="finv-cap" ref={capRef}>
             <div className="fin2-eyebrow">Financial Strategy</div>
             <h2 className="vault-title">The Treasure</h2>
           </div>
