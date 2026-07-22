@@ -90,9 +90,9 @@ function CinematicManifesto({ onCta }) {
         <div className="cine-grain" aria-hidden="true" />
         <div className="cine-grid" aria-hidden="true" />
 
-        <div className="cine-intro" ref={introRef} style={{ letterSpacing: "0.5px" }}>
-          <h2 className="cine-line cine-line--1" style={{ fontSize: "clamp(26px, 3.4vw, 56px)" }}>The fragility and resilience</h2>
-          <h2 className="cine-line cine-line--2" style={{ fontSize: "clamp(26px, 3.4vw, 56px)" }}>of humanity is beautiful</h2>
+        <div className="cine-intro" ref={introRef}>
+          <h2 className="cine-line cine-line--1" style={{ fontFamily: "'Caveat', cursive", fontWeight: 700, fontSize: "clamp(44px, 6vw, 104px)", lineHeight: 1.02 }}>The fragility and resilience</h2>
+          <h2 className="cine-line cine-line--2" style={{ fontFamily: "'Caveat', cursive", fontWeight: 700, fontSize: "clamp(44px, 6vw, 104px)", lineHeight: 1.02 }}>of humanity is beautiful</h2>
         </div>
         <div className="cine-scrollcue" ref={cueRef} aria-hidden="true">
           <span>SCROLL</span>
