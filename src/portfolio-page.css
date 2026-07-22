@@ -22,7 +22,7 @@
  *  you scroll through; columns parallax. Pin math is JS-driven so it
  *  stays correct inside the scaled stage.
  * ============================================================ */
-.pp-scroll { position: relative; width: 1920px; height: 1890px; background: #000; }
+.pp-scroll { position: relative; width: 1920px; height: 1900px; background: #000; }
 .pp-sticky { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; isolation: isolate;
   perspective: 1300px; perspective-origin: 50% 4%; will-change: transform; }
 
@@ -37,7 +37,7 @@
 /* veil — atmospheric + keeps the centered copy legible over the gallery */
 .pp-hero__veil { position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(6,4,3,0.94) 0%, rgba(6,4,3,0.58) 26%, rgba(6,4,3,0.34) 50%, rgba(6,4,3,0.64) 70%, #000 88%),
+    linear-gradient(180deg, #000 0%, rgba(6,4,3,0.96) 8%, rgba(6,4,3,0.58) 20%, rgba(6,4,3,0.4) 38%, rgba(6,4,3,0.62) 50%, rgba(6,4,3,0.86) 62%, #000 74%, #000 100%),
     radial-gradient(72% 46% at 50% 22%, rgba(6,4,3,0.72) 0%, rgba(6,4,3,0) 72%),
     radial-gradient(130% 120% at 50% 50%, rgba(6,4,3,0.14) 40%, rgba(6,4,3,0.68) 100%); }
 .pp-hero__wash { position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -64,7 +64,7 @@
 .pp-hero__motto { font-family: var(--font-sans); font-weight: 600; font-size: 19px; letter-spacing: 0.32em; text-transform: uppercase; margin: 0 0 18px;
   background: var(--grad-bronze); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pp-hero__sub { font-family: var(--font-serif); font-style: italic; font-size: 27px; line-height: 1.45; color: rgba(245,237,227,0.88); margin: 0 auto; max-width: 760px; }
-.pp-hero__scrollcue { position: absolute; z-index: 3; left: 50%; bottom: 54px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px;
+.pp-hero__scrollcue { position: absolute; z-index: 3; left: 50%; bottom: 360px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px;
   font-family: var(--font-sans); font-weight: 600; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,237,227,0.5); }
 .pp-hero__scrollcue .bar { width: 1px; height: 46px; background: linear-gradient(180deg, rgba(232,183,119,0.9), rgba(232,183,119,0)); animation: ppCue 2.2s ease-in-out infinite; transform-origin: top; }
 @keyframes ppCue { 0%,100% { transform: scaleY(0.4); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
@@ -79,7 +79,9 @@
 }
 
 /* ---------- SHARED COPY VOICE ---------- */
-.pp-sections { background: #000; width: 1920px; }
+.pp-sections { background: #000; width: 1920px; margin-top: -1092px; position: relative; z-index: 2; }
+.pp-sections::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 340px; z-index: 5; pointer-events: none;
+  background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.45) 62%, rgba(0,0,0,0) 100%); }
 .pp-num { font-family: var(--font-display); font-size: 30px; letter-spacing: 0.1em; margin: 0 0 18px;
   background: var(--grad-bronze); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pp-title { font-family: var(--font-display); font-weight: 500; font-size: 68px; line-height: 1.0; letter-spacing: 0.035em; text-transform: uppercase; margin: 0;
@@ -132,16 +134,16 @@
 .pp-sec--films .pp-env .pp-poster { object-position: 72% 20%; }
 .pp-sec--films .pp-env__veil {
   background:
-    linear-gradient(90deg, #020202 0%, rgba(2,2,2,0.96) 26%, rgba(2,2,2,0.35) 52%, rgba(2,2,2,0.12) 72%, rgba(2,2,2,0.45) 100%),
-    linear-gradient(0deg, #020202 6%, rgba(2,2,2,0.78) 32%, rgba(2,2,2,0) 60%),
-    linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(2,2,2,0) 22%),
+    linear-gradient(90deg, #020202 0%, rgba(2,2,2,0.82) 24%, rgba(2,2,2,0.14) 50%, rgba(2,2,2,0) 72%, rgba(2,2,2,0.2) 100%),
+    linear-gradient(0deg, #020202 3%, rgba(2,2,2,0.4) 26%, rgba(2,2,2,0) 54%),
+    linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(2,2,2,0) 22%),
     radial-gradient(46% 38% at 68% 36%, rgba(214,151,51,0.18) 0%, rgba(214,151,51,0) 70%);
 }
 .pp-sec--films .pp-playpos { left: 65%; top: 290px; }
 
 /* ---------- MUSIC · the performance space ---------- */
 .pp-sec--music { background: #010103; padding-bottom: 140px; }
-.pp-sec--music .pp-env .pp-poster { object-position: 70% 30%; filter: saturate(1.1) brightness(0.96); }
+.pp-sec--music .pp-env .pp-poster { object-position: 50% 60%; filter: saturate(1.1) brightness(0.96); }
 .pp-sec--music .pp-env__veil {
   background:
     linear-gradient(90deg, #010103 0%, rgba(1,1,3,0.95) 26%, rgba(1,1,3,0.3) 54%, rgba(1,1,3,0.1) 74%, rgba(1,1,3,0.5) 100%),
@@ -159,7 +161,7 @@
 }
 @keyframes ppBeams { from { opacity: 0.55; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .pp-beams { animation: none; } }
-.pp-sec--music .pp-playpos { left: 66%; top: 300px; }
+.pp-sec--music .pp-playpos { left: 61%; top: 300px; }
 /* waveform woven through the scene */
 .pp-waveline { position: relative; z-index: 2; display: flex; align-items: flex-end; gap: 5px; height: 34px; margin: 30px 120px 64px; opacity: 0.4;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%); }
@@ -294,6 +296,10 @@
 .pp-thumb__win image-slot { z-index: 1; } .pp-thumb__win .pp-poster { object-fit: cover; transition: transform .9s; filter: saturate(0.92); }
 .pp-thumb:hover { transform: translateY(-8px); box-shadow: 0 44px 84px rgba(0,0,0,0.65), 0 8px 20px rgba(0,0,0,0.45); }
 .pp-thumb:hover .pp-poster { transform: scale(1.05); filter: none; }
+.pp-thumb-cell { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
+.pp-thumb-cell .pp-thumb { width: 252px; }
+.pp-thumb__cap { margin: 16px 2px 0; font-family: var(--font-display); font-weight: 600;
+  font-size: 21px; letter-spacing: 0.01em; color: var(--c-cream); text-transform: uppercase; }
 .pp-thumb__label { position: absolute; z-index: 2; left: 4px; right: 4px; bottom: 4px; padding: 30px 16px 12px;
   font-family: var(--font-sans); font-weight: 600; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   background: linear-gradient(0deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.32) 56%, rgba(0,0,0,0) 100%); pointer-events: none; }

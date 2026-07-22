@@ -2267,8 +2267,8 @@
 }
 /* top fade so this closing chapter blends into the section above */
 .tk-insights::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 220px;
-  background: linear-gradient(180deg, #060402 0%, rgba(6,4,2,0) 100%);
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 340px;
+  background: linear-gradient(180deg, #050302 0%, #050302 24%, rgba(6,4,2,0) 100%);
   z-index: 1; pointer-events: none;
 }
 /* bottom fade so it blends into the footer below */
