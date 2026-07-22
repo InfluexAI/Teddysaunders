@@ -37,14 +37,14 @@ const AB_TINTS = {
 // Real stills for each expression — mirrored from the homepage compass so the
 // About compass shows the actual body of work (TedDrops uses the DJ still).
 const AB_IMG = {
-  plots:    "assets/heroes/cinematographer.jpg",
-  props:    "assets/ted-cinematic.jpg",
-  thoughts: "assets/heroes/philosopher.jpg",
-  crops:    "assets/gallery/g2.jpg",
-  unlocks:  "assets/teddy-hero.jpg",
-  bots:     "assets/video-editing.png",
-  drops:    "assets/heroes/dj-drops.webp",
-  shots:    "assets/heroes/photographer.jpg",
+  plots:    "assets/heroes/tedplots.jpg",
+  props:    "assets/heroes/tedprops.jpg",
+  thoughts: "assets/heroes/tedthoughts.jpg",
+  crops:    "assets/heroes/tedcrops.jpg",
+  unlocks:  "assets/heroes/tedunlocks.jpg",
+  bots:     "assets/heroes/tedbots.jpg",
+  drops:    "assets/heroes/teddrops.jpg",
+  shots:    "assets/heroes/tedshots.jpg",
 };
 const abImg = (key, name, medium, tint) => (window.__resources && window.__resources["abImg_" + key]) || AB_IMG[key] || abPreview(name, medium, tint);
 

@@ -145,7 +145,7 @@ function Portfolio({ onExplore }) {
                 {(() => {
                   const R2 = window.__resources || {};
                   const WORD = {
-                    film:        { src: R2.tedflix      || "assets/word-tedflix.png",      alt: "TEDFLIX" },
+                    film:        { src: R2.tedplots     || "assets/word-tedplots.png?v=2",  alt: "TedPlots" },
                     photography: { src: R2.wordShots    || "assets/word-tedshots.png",     alt: "TedShots" },
                     music:       { src: R2.wordDrops    || "assets/word-teddrops.png",     alt: "TedDrops" },
                     literature:  { src: R2.wordThoughts || "assets/word-tedthoughts.png",  alt: "TedThoughts" },
@@ -165,7 +165,6 @@ function Portfolio({ onExplore }) {
                   >{c.label}</button>
                 ))}
               </div>
-              <p className="tedflix-tabsub">{cat.blurb}</p>
             </React.Fragment>
           }
         />

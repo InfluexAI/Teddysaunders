@@ -69,14 +69,14 @@ const COMPASS_TINTS = {
 // Real stills for each destination preview — pulled from the project's own
 // photography so the flipping previews read as the actual body of work.
 const COMPASS_IMG = {
-  plots:    "assets/heroes/cinematographer.jpg",  // Original Films
-  props:    "assets/ted-cinematic.jpg",           // Acting Portfolio
-  thoughts: "assets/heroes/philosopher.jpg",       // Philosophy & Poetry
-  crops:    "assets/gallery/g2.jpg",               // Hair / Style Design
-  unlocks:  "assets/teddy-hero.jpg",               // Men’s Coaching
-  bots:     "assets/video-editing.png",            // Software Engineering
-  drops:    "assets/heroes/musician.jpg",          // Music & DJing
-  shots:    "assets/heroes/photographer.jpg",      // Photography
+  plots:    "assets/heroes/tedplots.jpg",  // Original Films
+  props:    "assets/heroes/tedprops.jpg",         // Acting Portfolio
+  thoughts: "assets/heroes/tedthoughts.jpg",       // Philosophy & Poetry
+  crops:    "assets/heroes/tedcrops.jpg",          // Hair / Style Design
+  unlocks:  "assets/heroes/tedunlocks.jpg",        // Men’s Coaching
+  bots:     "assets/heroes/tedbots.jpg",           // Software Engineering
+  drops:    "assets/heroes/teddrops.jpg",          // Music & DJing
+  shots:    "assets/heroes/tedshots.jpg",          // Photography
 };
 
 function CompassOrrery({ onActivate }) {
@@ -206,7 +206,7 @@ function CompassOrrery({ onActivate }) {
                 <span className="compass-active__num">Expression {String(active + 1).padStart(2, "0")} &middot; {node.dir}</span>
               </div>
               <div className="compass-active__name">{node.name}</div>
-              <div className="compass-active__preview">
+              <div className="compass-active__preview" data-key={node.key}>
                 <img src={COMPASS_IMG[node.key] || compassPreview(node.key, node.name, COMPASS_TINTS[node.key], node.disc)} alt={node.name + " preview"} />
                 <span className="compass-active__previewedge" />
               </div>

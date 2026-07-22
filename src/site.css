@@ -485,10 +485,10 @@ body::before {
   left: 8%; right: 8%;
   top: 500px;
   height: 600px;
-  background: radial-gradient(ellipse at center,
+  background: radial-gradient(ellipse closest-side at center,
               rgba(0,0,0,0.55) 0%,
               rgba(0,0,0,0.30) 50%,
-              rgba(0,0,0,0)    82%);
+              rgba(0,0,0,0)    100%);
   pointer-events: none;
 }
 
@@ -633,7 +633,7 @@ body::before {
   color: #fff;
   text-align: center;
   max-width: 880px;
-  margin: 42px auto 0;
+  margin: 68px auto 0;
   text-shadow: 0 1px 12px rgba(0,0,0,0.6);
 }
 
@@ -641,7 +641,7 @@ body::before {
 .tk-hero .actions {
   display: flex; gap: 28px;
   justify-content: center;
-  margin: 56px 0 0;
+  margin: 30px 0 0;
 }
 
 /* ----- STATS ROW (left-aligned 4 cols, inside the hero) ----- */
@@ -741,7 +741,9 @@ body::before {
 .tk-btn--bronze {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #FFF6DC 0%, #F8C98E 40%, #BD8332 100%);
+  background:
+    linear-gradient(180deg, rgba(255,246,220,0.7) 0%, rgba(248,201,142,0.7) 40%, rgba(189,131,50,0.72) 100%),
+    url("../assets/heading-texture.jpg") center / cover;
   color: #1A0E03;
   box-shadow:
     0 5px 20px rgba(191,135,83,0.45),
@@ -1044,11 +1046,11 @@ body::before {
 /* Logo variant — TEDFLIX wordmark flanked by gold rules */
 .tk-tedivider--logo { gap: 40px; }
 .tk-tedivider--logo .tk-tedflix {
-  height: clamp(58px, 9vh, 120px); width: auto; flex-shrink: 0;
+  height: clamp(62px, 9.6vh, 128px); width: auto; flex-shrink: 0;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
 }
 .tk-stage.is-mobile .tk-tedivider--logo { gap: 18px; }
-.tk-stage.is-mobile .tk-tedivider--logo .tk-tedflix { height: 52px; }
+.tk-stage.is-mobile .tk-tedivider--logo .tk-tedflix { height: 56px; }
 
 /* Per-category wordmark lockup — echoes the TEDFLIX logo (heavy gold + 3D
    extrude) for the non-film archive categories (TedShots / TedDrops / …). */

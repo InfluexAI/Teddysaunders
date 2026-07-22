@@ -41,8 +41,8 @@ function Hero({ active, onNav, onCta, onPrimary, onSecondary }) {
 
           <p className="subhead">
             From cinematic brand campaigns to original sci-fi universes, Ted&rsquo;s
-            magic delivers work that is rich in story and alive with emotion, at the
-            intersection of technology, emotion and transformation.
+            magic delivers work that is rich in story and alive with emotion, Ted's work lives at the
+            intersection of technology and transformation.
           </p>
 
           <div className="actions">
@@ -60,7 +60,7 @@ function Hero({ active, onNav, onCta, onPrimary, onSecondary }) {
         <div className="tk-hero__stats">
           <Stat num="20+"  lbl="Years directing" />
           <Stat num="10m+" lbl="Collective video views" />
-          <Stat num="100+" lbl="Clients serviced" />
+          <Stat num="1000+" lbl="Clients serviced" />
           <Stat num="3"    lbl="Client acquisitions" />
         </div>
 
