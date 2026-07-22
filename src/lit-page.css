@@ -513,7 +513,7 @@
 /* ---------- Book of Ignorance — cinematic numbered chapter panels (Pathways style) ---------- */
 .lp-chapter { flex: 0 0 auto; width: 420px; cursor: pointer; position: relative;
   display: flex; flex-direction: column;
-  background: url("../assets/chapter-card-bg.png") center / 100% 100% no-repeat;
+  background: url("../assets/chapter-card-bg.png?v=2") center / 100% 100% no-repeat;
   border: 0; border-radius: 0; overflow: visible;
   filter: drop-shadow(0 26px 46px rgba(0,0,0,0.55));
   transition: transform .6s cubic-bezier(.16,1,.3,1), filter .6s cubic-bezier(.16,1,.3,1); }
@@ -545,11 +545,11 @@
 .lp-essay { flex: 0 0 auto; width: 360px; cursor: pointer; position: relative;
   display: flex; flex-direction: column; align-items: stretch;
   border-radius: 4px; overflow: hidden;
-  background: url("../assets/vintage-card41.png") center / 100% 100% no-repeat;
+  background: url("../assets/vintage-card41.png?v=7") center / 100% 100% no-repeat;
   box-shadow: 0 14px 30px rgba(0,0,0,0.4);
   transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease; }
-.lp-essay:nth-child(3n+2) { background: url("../assets/vintage-card42.png") center / 100% 100% no-repeat; }
-.lp-essay:nth-child(3n+3) { background: url("../assets/vintage-card43.png") center / 100% 100% no-repeat; }
+.lp-essay:nth-child(3n+2) { background: url("../assets/vintage-card42.png?v=7") center / 100% 100% no-repeat; }
+.lp-essay:nth-child(3n+3) { background: url("../assets/vintage-card43.png?v=7") center / 100% 100% no-repeat; }
 /* worn corner-fold, like a lifted photo corner */
 .lp-essay::after {
   content: ""; position: absolute; top: 0; right: 0; width: 26px; height: 26px; pointer-events: none;
@@ -558,7 +558,7 @@
   clip-path: polygon(100% 0, 0 0, 100% 100%);
   opacity: 0.85;
 }
-.lp-essay__thumb { width: calc(100% - 40px); margin: 20px 20px 0; aspect-ratio: 16/9; background-size: cover; background-position: center; flex-shrink: 0; border-radius: 12px;
+.lp-essay__thumb { width: calc(100% - 50px); margin: 25px 25px 0; aspect-ratio: 16/9; background-size: cover; background-position: center; flex-shrink: 0; border-radius: 12px;
   filter: sepia(0.55) saturate(0.8) contrast(1.02) brightness(0.95);
   mix-blend-mode: multiply;
   -webkit-mask-image: radial-gradient(120% 120% at 50% 45%, #000 45%, rgba(0,0,0,0.5) 72%, transparent 100%);
@@ -588,10 +588,10 @@
 .lp-emodal__scroll::-webkit-scrollbar { width: 4px; }
 .lp-emodal__scroll::-webkit-scrollbar-thumb { background: rgba(180,130,60,0.35); border-radius: 2px; }
 .lp-emodal__card { width: 100%; max-width: 720px;
-  background: url("../assets/vintage-card2.png") center / 100% 100% no-repeat;
+  background: url("../assets/essay-modal-paper.png") center / 100% 100% no-repeat;
   border: 0; border-radius: 4px;
   overflow: hidden; box-shadow: 0 48px 110px rgba(0,0,0,0.8); }
-.lp-emodal__hero { width: calc(100% - 56px); margin: 44px 28px 0; aspect-ratio: 16/9; background-size: cover; background-position: center top; flex-shrink: 0;
+.lp-emodal__hero { width: calc(100% - 80px); margin: 44px 40px 0; aspect-ratio: 16/9; background-size: cover; background-position: center top; flex-shrink: 0;
   filter: sepia(0.55) saturate(0.8) contrast(1.02) brightness(0.97); mix-blend-mode: multiply;
   -webkit-mask-image: radial-gradient(120% 120% at 50% 45%, #000 45%, rgba(0,0,0,0.5) 72%, transparent 100%);
   mask-image: radial-gradient(120% 120% at 50% 45%, #000 45%, rgba(0,0,0,0.5) 72%, transparent 100%); }
