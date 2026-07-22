@@ -610,7 +610,7 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
 /* ============================================================
  *  SOCIAL ROW
  * ============================================================ */
-.c-social { display: flex; flex-wrap: wrap; gap: 12px; }
+.c-social { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .c-social a {
   display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--font-sans); font-weight: 600; font-size: 12px;
