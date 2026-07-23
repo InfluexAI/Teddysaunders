@@ -1792,13 +1792,14 @@
 @keyframes logoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .tk-stage.is-mobile .tk-logobar__track { gap: 56px; }
 .tk-stage.is-mobile .tk-logobar__track img { height: 25px; }
-.tk-logobar__track img.logo-salesforce { height: 68px; }
+.tk-logobar__track img.logo-salesforce { height: 78px; }
 .tk-logobar__track img.logo-dolab { height: 24px; }
-.tk-logobar__track img.logo-lucidity { height: 53px; }
-.tk-logobar__track img.logo-burningman { height: 62px; }
+.tk-logobar__track img.logo-lucidity { height: 27px; }
+.tk-logobar__track img.logo-burningman { height: 36px; }
 .tk-stage.is-mobile .tk-logobar__track img.logo-salesforce { height: 50px; }
 .tk-stage.is-mobile .tk-logobar__track img.logo-dolab { height: 18px; }
-.tk-stage.is-mobile .tk-logobar__track img.logo-lucidity { height: 33px; }
+.tk-stage.is-mobile .tk-logobar__track img.logo-lucidity { height: 17px; }
+.tk-stage.is-mobile .tk-logobar__track img.logo-burningman { height: 16px; }
 
 
 /* ============================================================

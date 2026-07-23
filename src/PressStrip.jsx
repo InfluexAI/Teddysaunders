@@ -1,17 +1,17 @@
 // PressStrip.jsx — looping marquee with bundler-friendly resource lookup.
 const _R = (typeof window !== "undefined" && window.__resources) || {};
 const LOGO_FILES = [
-  { k: "salesforce", src: _R.logoSalesforce || "assets/press/logos/salesforce.svg" },
+  { k: "salesforce", src: _R.logoSalesforce || "assets/press/logos/salesforce.svg?v=4" },
   { k: "linkedin",   src: _R.logoLinkedIn   || "assets/press/logos/linkedin.svg" },
   { k: "verizon",    src: _R.logoVerizon    || "assets/press/logos/verizon.svg" },
-  { k: "toyota",     src: _R.logoToyota     || "assets/press/logos/toyota.svg" },
-  { k: "microsoft",  src: _R.logoMicrosoft  || "assets/press/logos/microsoft.svg" },
   { k: "dolab",      src: _R.logoDoLab      || "assets/press/logos/dolab.png?v=2" },
-  { k: "lucidity",   src: _R.logoLucidity   || "assets/press/logos/lucidity.png?v=3" },
+  { k: "toyota",     src: _R.logoToyota     || "assets/press/logos/toyota.svg" },
+  { k: "lucidity",   src: _R.logoLucidity   || "assets/press/logos/lucidity.png?v=4" },
   { k: "aptible",    src: _R.logoAptible    || "assets/press/logos/aptible.svg" },
+  { k: "microsoft",  src: _R.logoMicrosoft  || "assets/press/logos/microsoft.svg" },
   { k: "gatsby",     src: _R.logoGatsby     || "assets/press/logos/gatsby.svg" },
   { k: "kia",        src: _R.logoKia        || "assets/press/logos/kia.svg" },
-  { k: "burningman", src: _R.logoBurningMan || "assets/press/logos/burningman.png?v=3" },
+  { k: "burningman", src: _R.logoBurningMan || "assets/press/logos/burningman.png?v=4" },
 ];
 function PressStrip() {
   const map = (window.__resources) || {};
