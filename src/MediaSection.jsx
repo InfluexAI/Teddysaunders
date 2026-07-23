@@ -144,12 +144,14 @@ function PhotoSection({ data, onCta, photos }) {
       </div>
       <Drawer>
         {photos.map((s, i) => (
-          <div className="pp-thumb" key={i}>
-            <div className="pp-thumb__win">
-              <img className="pp-poster" src={s.src} alt="" aria-hidden="true" />
-              <image-slot id={"pp-photo-" + i} src={s.src} fit="cover" radius="0" placeholder="Drop a photograph"></image-slot>
+          <div className="pp-thumb-cell" key={i}>
+            <div className="pp-thumb">
+              <div className="pp-thumb__win">
+                <img className="pp-poster" src={s.src} alt="" aria-hidden="true" />
+                <image-slot id={"pp-photo-" + i} src={s.src} fit="cover" radius="0" placeholder="Drop a photograph"></image-slot>
+              </div>
             </div>
-            {s.label ? <div className="pp-thumb__label">{s.label}</div> : null}
+            {s.label ? <h3 className="pp-thumb__cap">{s.label}</h3> : null}
           </div>
         ))}
       </Drawer>
