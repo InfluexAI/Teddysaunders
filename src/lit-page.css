@@ -290,6 +290,17 @@
   background: linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0) 100%);
   z-index: 4; }
 .lp-sec--book .lp-row__arrow { z-index: 6; }
+/* Book of Ignorance: move prev/next arrows beneath the cards, aligned left;
+   keep the disabled prev arrow visible in a muted gray stroke. */
+.lp-sec--book .lp-row { padding-bottom: 68px; }
+.lp-sec--book .lp-row__arrow { top: auto; bottom: 0; transform: none; }
+.lp-sec--book .lp-row__arrow--prev { left: var(--lp-pad); right: auto; }
+.lp-sec--book .lp-row__arrow--next { left: calc(var(--lp-pad) + 68px); right: auto; }
+.lp-sec--book .lp-row__arrow[data-dim] { opacity: 1; border-color: rgba(150,150,150,0.5); color: rgba(150,150,150,0.6); cursor: default; }
+.lp-sec--book .lp-row__arrow[data-dim]:hover { background: rgba(0,0,0,0.46); border-color: rgba(150,150,150,0.5); }
+/* the left-edge black shade was sized for a mid-height arrow; drop it now that
+   the arrows sit below the cards */
+.lp-sec--book .lp-row::before { display: none; }
 
 /* ============================================================
  *  THE BOOK OF IGNORANCE — the centerpiece artifact
@@ -540,7 +551,13 @@
  *  ESSAYS — philosophical transmissions
  * ============================================================ */
 .lp-sec--essays { background: #050505; }
-.lp-sec--essays .lp-row { margin-top: 46px; }
+.lp-sec--essays .lp-row { margin-top: 46px; padding-bottom: 80px; }
+/* Essays: move the prev/next arrows underneath the cards, centered */
+.lp-sec--essays .lp-row__arrow { top: auto; bottom: 0; transform: none; }
+.lp-sec--essays .lp-row__arrow--prev { left: calc(50% - 64px); right: auto; }
+.lp-sec--essays .lp-row__arrow--next { left: calc(50% + 8px); right: auto; }
+/* keep the disabled prev arrow visible, but in a muted gray stroke */
+.lp-sec--essays .lp-row__arrow[data-dim] { opacity: 1; border-color: rgba(150,150,150,0.5); color: rgba(150,150,150,0.6); cursor: default; }
 /* Article list-item card — title + date left, quill icon right, thin gold border */
 .lp-essay { flex: 0 0 auto; width: 360px; cursor: pointer; position: relative;
   display: flex; flex-direction: column; align-items: stretch;

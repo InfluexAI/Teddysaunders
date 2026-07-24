@@ -294,7 +294,7 @@ function BookOfIgnorance({ virtues, bg, onCta }) {
         ))}
       </LpRow>
       <div className="lp-book__cta-wrap lp-reveal">
-        <button className="lp-cta lp-cta--gold" onClick={onCta}>Explore The Book of Ignorance<span className="arr">→</span></button>
+        <button className="lp-cta lp-cta--gold" onClick={onCta}>Sign Up to Get Notified When Released<span className="arr">→</span></button>
       </div>
     </section>
   );
@@ -479,7 +479,7 @@ function EssayModal({ essays, idx, onClose, onNav }) {
           onClick={(e) => { e.stopPropagation(); onNav(idx + 1); }}>›</button>
       )}
       <div className="lp-emodal__scroll" onClick={(e) => e.stopPropagation()}>
-        <div className="lp-emodal__card">
+        <div className="lp-emodal__card" style={{ backgroundImage: `url(${["assets/essay-modal-paper.png","assets/essay-modal-paper2.png","assets/essay-modal-paper3.png"][idx % 3]})`, backgroundSize: "100% 100%", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
           {heroImg && <div className="lp-emodal__hero" style={{ backgroundImage: `url(${heroImg})` }} />}
           <div className="lp-emodal__body">
             <div className="lp-emodal__date">{essay.date}</div>
