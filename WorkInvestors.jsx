@@ -215,11 +215,11 @@ function WorkInvestors({ onTedcast, onInquire }) {
         <section className="wk-tedcast wk-reveal" aria-label="Tedcast">
           <div className="wk-tedcast__veil"></div>
           <div className="wk-tedcast__inner">
-            <span className="wk-tedcast__eyebrow">The Podcast</span>
+            <span className="wk-tedcast__eyebrow">Coming Soon</span>
             <h3 className="wk-tedcast__title wk-textured">Tedcast</h3>
             <p className="wk-tedcast__sub">Apply to be a guest on Ted's podcast — long-form conversations on story, craft, and the worlds we build.</p>
             <button className="wk-btn wk-btn--solid wk-tedcast__btn" onClick={onTedcast}>
-              Apply to be on tedcast
+              Apply to be a Season 1 Guest
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </button>
           </div>

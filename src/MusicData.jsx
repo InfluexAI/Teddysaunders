@@ -100,6 +100,26 @@ const MUSIC_ARCHIVE = [
     id: "college-radio", title: "College Radio Cuts", label: "Late-Night Sessions", year: "2010", genre: "Indie / Lo-Fi", len: "Side A · 38:52",
     strip: "film7", note: "Recorded between classes on borrowed studio time — the first songs made for an audience beyond the bedroom.",
   },
+  {
+    id: "first-samplers", title: "First Samplers", label: "Bedroom Recordings", year: "2005", genre: "Beat Sketches", len: "Side B · 28:44",
+    strip: "film2", note: "An afternoon spent chopping records into something new — the first time a loop felt like it belonged to him.",
+  },
+  {
+    id: "battle-of-bands", title: "Battle of the Bands", label: "High School", year: "2006", genre: "Rock / Live", len: "Full Set · 22:15",
+    strip: "film5", note: "One loud night in a gymnasium — three chords, no fear, and the first taste of a crowd counting on the downbeat.",
+  },
+  {
+    id: "winter-tapes", title: "Winter Tapes", label: "Four-Track Tape", year: "2009", genre: "Ambient / Folk", len: "Side A · 35:30",
+    strip: "film8", note: "Quiet songs recorded through a long cold season — a guitar, a cheap mic, and a lot of patience.",
+  },
+  {
+    id: "dorm-sessions", title: "Dorm Sessions", label: "Late-Night Sessions", year: "2011", genre: "Lo-Fi / Electronic", len: "Side B · 44:18",
+    strip: "film6", note: "Made after midnight on a laptop and headphones — the sound of a curfew that only existed for everyone else.",
+  },
+  {
+    id: "summer-eps", title: "Summer EPs", label: "Home Studio", year: "2012", genre: "Indie / Electronic", len: "Full Tape · 51:07",
+    strip: "film4", note: "Three short EPs recorded across one long summer — the moment the bedroom producer started thinking like a composer.",
+  },
 ];
 
 // ---- FEATURED HIGHLIGHTS (large layered cards) ----

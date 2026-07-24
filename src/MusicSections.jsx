@@ -143,6 +143,7 @@ function ScPlayer({ item, playingId, onToggle }) {
       <div className="mp-scplayer">
         <iframe className="mp-player__iframe" height="166" scrolling="no" frameBorder="no" loading="lazy"
           title={item.title}
+          allow="autoplay; encrypted-media; fullscreen"
           src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(item.scUrl) + "&color=%23e8b777&inverse=true&auto_play=false&show_user=true&visual=false&show_artwork=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
       </div>
     );
@@ -251,8 +252,8 @@ function ReleasesSection({ releases, playingId, onToggle }) {
     <section className="mp-releases lp-grain" data-screen-label="Latest Releases" ref={ref}>
       <div className="mp-releases__seam" />
       <div className="mp-head lp-reveal">
-        <div className="mp-eyebrow">Original Music · Latest Releases</div>
-        <h2 className="mp-head__title mp-tex">Newest First</h2>
+        <div className="mp-eyebrow">Latest Releases</div>
+        <h2 className="mp-head__title mp-tex">Original Music</h2>
       </div>
       <div className="mp-relgrid">
         {releases.map((r) => (
@@ -280,6 +281,10 @@ function ReleasesSection({ releases, playingId, onToggle }) {
 /* ===================== CHILDHOOD ARCHIVE (cassettes) ===================== */
 function ArchiveSection({ tapes }) {
   const ref = useMpReveal();
+  const STEP = 4;
+  const [visible, setVisible] = useMsState(STEP);
+  const shown = tapes.slice(0, visible);
+  const hasMore = visible < tapes.length;
   return (
     <section className="mp-archive lp-grain" data-screen-label="Childhood Archive" ref={ref}>
       <div className="lp-seam-top" />
@@ -288,7 +293,7 @@ function ArchiveSection({ tapes }) {
         <h2 className="mp-head__title mp-tex">High School &amp; Childhood</h2>
       </div>
       <div className="mp-relgrid">
-        {tapes.map((t) => (
+        {shown.map((t) => (
           <div className="mp-release lp-reveal" key={t.id}>
             <div className="mp-release__art">
               <img src={MS_R(t.strip, "assets/film/photo-4.jpg")} alt={t.title} loading="lazy" />
@@ -302,6 +307,11 @@ function ArchiveSection({ tapes }) {
           </div>
         ))}
       </div>
+      {hasMore ? (
+        <div className="mp-archive__cta lp-reveal" style={{ display: "flex", justifyContent: "center", marginTop: "clamp(40px,6vh,72px)" }}>
+          <button className="lp-cta lp-cta--gold" onClick={() => setVisible((v) => v + STEP)}>View All Childhood Music<span className="arr">→</span></button>
+        </div>
+      ) : null}
     </section>
   );
 }

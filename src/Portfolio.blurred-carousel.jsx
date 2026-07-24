@@ -3,7 +3,7 @@
 // changes the whole featured experience — its atmosphere, its curated works,
 // and the dynamic CTA. The center card is the active featured work; clicking a
 // neighbour glides it to center. Powered by the FocusRail coverflow.
-const { useState: usePfState, useRef: usePfRef } = React;
+const { useState: usePfState } = React;
 
 function Portfolio({ onExplore }) {
   const R = (typeof window !== "undefined" && window.__resources) || {};
@@ -123,83 +123,51 @@ function Portfolio({ onExplore }) {
 
   const [tab, setTab] = usePfState(0);
   const cat = CATEGORIES[tab];
-  const railRef = usePfRef(null);
-  const scrollRail = (dir) => {
-    const v = railRef.current; if (!v) return;
-    const card = v.querySelector(".bc-card");
-    const step = card ? card.getBoundingClientRect().width + 28 : v.clientWidth * 0.8;
-    v.scrollBy({ left: dir * step, behavior: "smooth" });
-  };
-  const exploreLabel = { film: "Explore all Films", photography: "Explore all Photography",
-    music: "Explore all Music", literature: "Explore all Literature" }[cat.id];
 
   return (
     <section className="tk-ip-section">
       <div className="ip-pin">
-        <div className="bc-header">
-          <div className="tedflix-eyebrow" aria-label="Explore the Library">
-            <span className="tedflix-eyebrow__lead">Explore the</span>
-            <span className="tedflix-eyebrow__word">Library</span>
-          </div>
-          <div className="tk-tedivider tk-tedivider--logo">
-            <div className="rule" />
-            {(() => {
-              const R2 = window.__resources || {};
-              const WORD = {
-                film:        { src: R2.tedplots     || "assets/word-tedplots.png?v=2",  alt: "TedPlots" },
-                photography: { src: R2.wordShots    || "assets/word-tedshots.png",     alt: "TedShots" },
-                music:       { src: R2.wordDrops    || "assets/word-teddrops.png",     alt: "TedDrops" },
-                literature:  { src: R2.wordThoughts || "assets/word-tedthoughts.png",  alt: "TedThoughts" },
-              }[cat.id];
-              return <img className="tk-tedflix" src={WORD.src} alt={WORD.alt} />;
-            })()}
-            <div className="rule" />
-          </div>
-          <div className="tedflix-tabs" role="tablist" aria-label="Browse the archive">
-            {CATEGORIES.map((c, i) => (
-              <button
-                key={c.id}
-                role="tab"
-                aria-selected={i === tab}
-                className={"tedflix-tab" + (i === tab ? " is-active" : "")}
-                onClick={() => setTab(i)}
-              >{c.label}</button>
-            ))}
-          </div>
-        </div>
-
-        <div className="bc-rail" key={cat.id}>
-          {cat.items.length > 4 && (
-            <button className="bc-arrow bc-arrow--prev" aria-label="Previous" onClick={() => scrollRail(-1)}>
-              <svg viewBox="0 0 24 24"><polyline points="15,5 8,12 15,19" /></svg>
-            </button>
-          )}
-          <div className="bc-viewport" ref={railRef}>
-            <div className="bc-track">
-              {cat.items.map((it) => (
-                <button key={it.id} className="bc-card" onClick={() => onExplore && onExplore(it)}>
-                  <div className="bc-card__art">
-                    <img src={it.imageSrc} alt={it.title} loading="lazy" />
-                    <span className="bc-card__play" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" /></svg>
-                    </span>
-                  </div>
-                  <h3 className="bc-card__title">{it.title}</h3>
-                  <div className="bc-card__meta">{it.year}<span className="bc-card__dot">·</span>{it.medium}</div>
-                </button>
-              ))}
-            </div>
-          </div>
-          <button className="bc-arrow bc-arrow--next" aria-label="Next" onClick={() => scrollRail(1)} style={cat.items.length > 4 ? null : {display:"none"}}>
-            <svg viewBox="0 0 24 24"><polyline points="9,5 16,12 9,19" /></svg>
-          </button>
-        </div>
-
-        <div className="bc-cta">
-          <button className="bc-explore" onClick={() => onExplore && onExplore(cat.items[0])}>
-            {exploreLabel}<span aria-hidden="true">&nbsp;&rarr;</span>
-          </button>
-        </div>
+        <FocusRail
+          key={cat.id}
+          items={cat.items}
+          loop={true}
+          arrows={true}
+          atmosphere={cat.atmosphere}
+          onExplore={onExplore}
+          header={
+            <React.Fragment>
+              <div className="tedflix-eyebrow" aria-label="Explore the Library">
+                <span className="tedflix-eyebrow__lead">Explore the</span>
+                <span className="tedflix-eyebrow__word">Library</span>
+              </div>
+              <div className="tk-tedivider tk-tedivider--logo">
+                <div className="rule" />
+                {(() => {
+                  const R2 = window.__resources || {};
+                  const WORD = {
+                    film:        { src: R2.tedplots     || "assets/word-tedplots.png?v=2",  alt: "TedPlots" },
+                    photography: { src: R2.wordShots    || "assets/word-tedshots.png",     alt: "TedShots" },
+                    music:       { src: R2.wordDrops    || "assets/word-teddrops.png",     alt: "TedDrops" },
+                    literature:  { src: R2.wordThoughts || "assets/word-tedthoughts.png",  alt: "TedThoughts" },
+                  }[cat.id];
+                  return <img className="tk-tedflix" src={WORD.src} alt={WORD.alt} />;
+                })()}
+                <div className="rule" />
+              </div>
+              <div className="tedflix-tabs" role="tablist" aria-label="Browse the archive">
+                {CATEGORIES.map((c, i) => (
+                  <button
+                    key={c.id}
+                    role="tab"
+                    aria-selected={i === tab}
+                    className={"tedflix-tab" + (i === tab ? " is-active" : "")}
+                    onClick={() => setTab(i)}
+                  >{c.label}</button>
+                ))}
+              </div>
+            </React.Fragment>
+          }
+        />
       </div>
     </section>
   );
