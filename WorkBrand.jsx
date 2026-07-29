@@ -114,7 +114,6 @@ function WorkBrand({ onStart, onStudios }) {
       <div className="wk-inner">
         <div className="wk-accolades wk-accolades--after wk-reveal">
           <div className="wk-accolades__head">
-<<<<<<< HEAD
             <p className="wk-accolades__label">Accolades</p>
             <h3 className="wk-accolades__title wk-textured">Three clients. Three acquisitions.</h3>
           </div>
@@ -133,29 +132,6 @@ function WorkBrand({ onStart, onStudios }) {
                 <p className="wk-accolade__note">{a.note}</p>
               </li>
             ))}
-=======
-            <span className="wk-accolades__rule" aria-hidden="true"></span>
-            <span className="wk-accolades__label">Accolades</span>
-            <span className="wk-accolades__rule" aria-hidden="true"></span>
-          </div>
-          <p className="wk-accolades__lead">Three client companies have gone on to be acquired.</p>
-          <ul className="wk-accolades__list">
-            <li className="wk-accolade">
-              <span className="wk-accolade__name">Glint</span>
-              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-              <span className="wk-accolade__note">Acquired by LinkedIn after Ted helped grow the company from 25 employees to 1,500.</span>
-            </li>
-            <li className="wk-accolade">
-              <span className="wk-accolade__name">5th Kind</span>
-              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-              <span className="wk-accolade__note">Acquired by Sohonet after Ted redesigned their website and the UI/UX of their digital product suite.</span>
-            </li>
-            <li className="wk-accolade">
-              <span className="wk-accolade__name">Gatsby.js</span>
-              <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-              <span className="wk-accolade__note">Acquired by Microsoft after Ted helped create their main product videos.</span>
-            </li>
->>>>>>> 3ca678a8c54b24353d8558ebf7acdf94d8d6945d
           </ul>
         </div>
       </div>

@@ -25,7 +25,7 @@ const PATHWAYS = [
     desc: "Creative transformation, mentorship, philosophy, alignment, and Compass Coaching." },
   { n: "04", title: "Subscribe to the newsletter", inquiry: null, cta: "Subscribe", action: "subscribe",
     desc: "Receive philosophical insights, creative updates, future projects, and updates about Ted’s book release." },
-  { n: "05", title: "Follow Ted in Real Time", inquiry: null, cta: "Follow", action: "follow",
+  { n: "05", title: "Follow Ted", inquiry: null, cta: "Follow", action: "follow",
     desc: "Get real-time updates from social platforms." },
 ];
 
@@ -51,7 +51,6 @@ const SOCIALS = [
       <path d="M5.5 4 Q14 10 18.5 20"/><path d="M19 4.5 Q9 13 4.5 19.5"/>
     </svg>
   ) },
-<<<<<<< HEAD
   { label: "Spotify",   href: "#", svgClass: "ic--spotify", svg: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
       <g transform="translate(0,24) scale(1,-1)">
@@ -77,9 +76,6 @@ const SOCIALS = [
       <path d="M14.4 16.8 H19"/>
     </svg>
   ) },
-=======
-  { label: "Spotify",   href: "#", rune: "\u16DF" },
->>>>>>> 3ca678a8c54b24353d8558ebf7acdf94d8d6945d
 ];
 
 const LOGO = (window.__resources && window.__resources.logo) || "assets/logo.png";
@@ -372,7 +368,7 @@ function AdaptiveForm({ inquiry, setInquiry, selectMode = "chips", showDesc = fa
       ) : null}
 
       <div className="c-formfields">
-        {(q.id === "general" || q.id === "film" || q.id === "coaching") ? (
+        {(q.id === "film" || q.id === "coaching") ? (
           <div className="c-field" style={{ marginBottom: 26 }}>
             <label className="c-label">Inquiry Type</label>
             <div className="c-selectwrap">
@@ -462,7 +458,7 @@ function SocialRow() {
   return (
     <div className="c-social">
       {SOCIALS.map((s) => (
-        <a key={s.label} href={s.href}><span className="ic ic--rune" aria-hidden="true">{s.svg || s.rune}</span>{s.label}</a>
+        <a key={s.label} href={s.href}><span className={"ic ic--rune" + (s.svgClass ? " " + s.svgClass : "")} aria-hidden="true">{s.svg || s.rune}</span>{s.label}</a>
       ))}
     </div>
   );

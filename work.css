@@ -822,19 +822,10 @@
 #wk-brand .wk-intro__body p { max-width: 620px; }
 #wk-brand .wk-intro .wk-cta-row { justify-content: flex-start; }
 
-<<<<<<< HEAD
 /* Accolades — the acquisition record, as festival-laurel award plates */
 .wk-accolades { width: 100%; max-width: 1140px; margin: clamp(40px, 5.5vh, 78px) auto 0; }
 .wk-accolades--after { padding-bottom: clamp(60px, 9vh, 120px); }
 .wk-accolades__head { text-align: center; margin-bottom: clamp(30px, 4vh, 48px); }
-=======
-/* Accolades — client-acquisition record, centered under the brand intro */
-.wk-accolades { width: 100%; max-width: 760px; margin: clamp(30px, 4vh, 52px) auto 0; }
-.wk-accolades--after { padding-bottom: clamp(60px, 9vh, 120px); }
-.wk-accolades__head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.wk-accolades__rule { flex: 1 1 auto; height: 1px; background: linear-gradient(90deg, transparent, rgba(90,52,25,0.4)); }
-.wk-accolades__head .wk-accolades__rule:last-child { background: linear-gradient(90deg, rgba(90,52,25,0.4), transparent); }
->>>>>>> 3ca678a8c54b24353d8558ebf7acdf94d8d6945d
 .wk-accolades__label {
   font-family: var(--font-sans); font-weight: 700;
   font-size: clamp(11px, 0.85vw, 13px); letter-spacing: 0.32em; text-transform: uppercase;

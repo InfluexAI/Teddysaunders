@@ -92,10 +92,6 @@ function WkPaths({ onJump }) {
             <div className="wk2-portal__atmos" aria-hidden="true"></div>
             <div className="wk2-portal__scrim" aria-hidden="true"></div>
             <div className="wk2-portal__num" aria-hidden="true">{p.index}</div>
-<<<<<<< HEAD
-=======
-            <div className="wk2-portal__glyph" aria-hidden="true">{WK2_GLYPHS[p.glyph]}</div>
->>>>>>> 3ca678a8c54b24353d8558ebf7acdf94d8d6945d
             <div className="wk2-portal__content">
               <p className="wk2-portal__kicker">{p.kicker}</p>
               <h3 className="wk2-portal__label">{p.label}</h3>

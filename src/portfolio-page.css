@@ -232,19 +232,8 @@
 .pp-sec--photo { background: #020202; padding: 0 0 140px; }
 .pp-sec--photo .pp-env { right: auto; width: 68%;
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 66%, transparent 100%); mask-image: linear-gradient(90deg, #000 0%, #000 66%, transparent 100%); }
-<<<<<<< HEAD
 .pp-sec--photo .pp-env .pp-poster { object-position: 50% 40%; filter: saturate(1.02) brightness(1.02); }
 .pp-sec--photo .pp-env__veil { background: linear-gradient(90deg, rgba(2,2,2,0) 82%, #020202 100%); }
-=======
-.pp-sec--photo .pp-env .pp-poster { object-position: 50% 22%; filter: saturate(1.02) brightness(0.94); }
-.pp-sec--photo .pp-env__veil {
-  background:
-    linear-gradient(90deg, rgba(2,2,2,0.16) 0%, rgba(2,2,2,0.04) 30%, rgba(2,2,2,0.3) 64%, #020202 100%),
-    linear-gradient(0deg, #020202 4%, rgba(2,2,2,0.5) 28%, rgba(2,2,2,0) 58%),
-    linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(2,2,2,0) 22%),
-    radial-gradient(56% 46% at 36% 36%, rgba(214,151,51,0.16) 0%, rgba(214,151,51,0) 70%);
-}
->>>>>>> 3ca678a8c54b24353d8558ebf7acdf94d8d6945d
 .pp-wall { position: relative; z-index: 2; min-height: 700px; display: flex; align-items: center; justify-content: flex-end; padding: 96px 120px 60px; }
 /* picture lights washing down the wall */
 .pp-wall__light { position: absolute; inset: 0; z-index: 0; pointer-events: none;
