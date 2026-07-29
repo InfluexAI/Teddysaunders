@@ -16,9 +16,10 @@
 
 /* shared eyebrow (bracketed) */
 .mp-eyebrow { display: inline-flex; align-items: center; gap: 16px; margin: 0 0 22px;
-  font-family: var(--font-sans); font-weight: 700; font-size: 15px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(232,183,119,0.92); }
+  font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(232,183,119,0.92); }
 .mp-eyebrow::before, .mp-eyebrow::after { content: ""; width: 44px; height: 1px; background: var(--grad-bronze); }
 .mp-eyebrow--solo::before { display: none; }
+.mp-root .lp-banner__eyebrow { font-size: 19px; }
 
 /* textured display heading helper */
 .mp-tex { background: url("../assets/heading-texture.jpg") center / cover;

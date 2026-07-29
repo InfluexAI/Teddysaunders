@@ -1,0 +1,230 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "src/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Cinzel|Castoro|Montserrat|Poppins))/i]",
+        "message": "Font not provided by the design system. Available: Cinzel, Castoro, Montserrat, Poppins."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--bg",
+      "--bg-deep",
+      "--bg-elev",
+      "--bg-light",
+      "--bg-warm",
+      "--border",
+      "--border-warm",
+      "--c-black",
+      "--c-bronze-1",
+      "--c-bronze-2",
+      "--c-bronze-3",
+      "--c-bronze-4",
+      "--c-bronze-5",
+      "--c-butter",
+      "--c-cream",
+      "--c-cream-deep",
+      "--c-espresso",
+      "--c-espresso-deep",
+      "--c-hairline",
+      "--c-hairline-soft",
+      "--c-harvest-gold",
+      "--c-linen",
+      "--c-midnight-slate",
+      "--c-orange",
+      "--c-soft-turquoise",
+      "--c-stormy-blue",
+      "--fg",
+      "--fg-dim",
+      "--fg-muted",
+      "--fg-on-light",
+      "--font-body",
+      "--font-display",
+      "--font-sans",
+      "--font-serif",
+      "--glow-hue",
+      "--glow-spot",
+      "--goo-1",
+      "--goo-2",
+      "--goo-3",
+      "--goo-4",
+      "--goo-5",
+      "--goo-blend",
+      "--goo-pointer",
+      "--goo-size",
+      "--grad-bronze",
+      "--grad-butter-bronze",
+      "--grad-espresso-aura",
+      "--grad-vignette-bottom",
+      "--grad-vignette-top",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--r-xs",
+      "--s-1",
+      "--s-10",
+      "--s-2",
+      "--s-3",
+      "--s-4",
+      "--s-5",
+      "--s-6",
+      "--s-7",
+      "--s-8",
+      "--s-9",
+      "--shadow-card",
+      "--shadow-display",
+      "--shadow-glow-gold",
+      "--shadow-stat-gold",
+      "--t-body",
+      "--t-button",
+      "--t-display-1",
+      "--t-display-2",
+      "--t-eyebrow",
+      "--t-h1",
+      "--t-h2",
+      "--t-hero",
+      "--t-meta",
+      "--t-stat",
+      "--track-display",
+      "--track-display-body",
+      "--track-eyebrow"
+    ],
+    "tokenKinds": {
+      "--c-black": "color",
+      "--c-midnight-slate": "color",
+      "--c-stormy-blue": "color",
+      "--c-linen": "color",
+      "--c-soft-turquoise": "color",
+      "--c-espresso": "color",
+      "--c-espresso-deep": "color",
+      "--c-orange": "color",
+      "--c-harvest-gold": "color",
+      "--c-butter": "color",
+      "--c-cream": "color",
+      "--c-cream-deep": "color",
+      "--c-bronze-1": "color",
+      "--c-bronze-2": "color",
+      "--c-bronze-3": "color",
+      "--c-bronze-4": "color",
+      "--c-bronze-5": "color",
+      "--c-hairline": "color",
+      "--c-hairline-soft": "color",
+      "--bg": "color",
+      "--bg-elev": "shadow",
+      "--bg-deep": "color",
+      "--bg-light": "color",
+      "--bg-warm": "color",
+      "--fg": "color",
+      "--fg-muted": "color",
+      "--fg-dim": "color",
+      "--fg-on-light": "color",
+      "--border": "color",
+      "--border-warm": "color",
+      "--grad-bronze": "other",
+      "--grad-butter-bronze": "other",
+      "--grad-espresso-aura": "other",
+      "--grad-vignette-bottom": "other",
+      "--grad-vignette-top": "other",
+      "--font-display": "font",
+      "--font-sans": "font",
+      "--font-body": "font",
+      "--font-serif": "font",
+      "--t-hero": "spacing",
+      "--t-display-1": "spacing",
+      "--t-display-2": "spacing",
+      "--t-stat": "spacing",
+      "--t-h1": "spacing",
+      "--t-h2": "spacing",
+      "--t-eyebrow": "spacing",
+      "--t-body": "spacing",
+      "--t-button": "spacing",
+      "--t-meta": "spacing",
+      "--track-display": "spacing",
+      "--track-eyebrow": "spacing",
+      "--track-display-body": "spacing",
+      "--s-1": "spacing",
+      "--s-2": "spacing",
+      "--s-3": "spacing",
+      "--s-4": "spacing",
+      "--s-5": "spacing",
+      "--s-6": "spacing",
+      "--s-7": "spacing",
+      "--s-8": "spacing",
+      "--s-9": "spacing",
+      "--s-10": "spacing",
+      "--r-xs": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-xl": "spacing",
+      "--r-pill": "spacing",
+      "--shadow-card": "shadow",
+      "--shadow-glow-gold": "shadow",
+      "--shadow-stat-gold": "shadow",
+      "--shadow-display": "shadow",
+      "--goo-size": "spacing",
+      "--goo-1": "other",
+      "--goo-2": "other",
+      "--goo-3": "other",
+      "--goo-4": "other",
+      "--goo-5": "other",
+      "--goo-pointer": "other",
+      "--goo-blend": "other",
+      "--glow-spot": "spacing",
+      "--glow-hue": "color"
+    },
+    "fontFamilies": [
+      "Castoro",
+      "Cinzel",
+      "Montserrat",
+      "Poppins"
+    ]
+  }
+}

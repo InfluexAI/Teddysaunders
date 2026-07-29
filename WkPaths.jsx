@@ -76,7 +76,6 @@ function WkPaths({ onJump }) {
   return (
     <section className="wk2-paths" id="wk2-paths">
       <div className="wk-dust" aria-hidden="true"></div>
-      <Wk2Rings />
       <div className="wk2-paths__head wk-reveal">
         <p className="wk2-paths__eyebrow">Choose your entrance</p>
         <h2 className="wk2-paths__title wk2-textured">Three ways in</h2>
@@ -93,8 +92,6 @@ function WkPaths({ onJump }) {
             <div className="wk2-portal__atmos" aria-hidden="true"></div>
             <div className="wk2-portal__scrim" aria-hidden="true"></div>
             <div className="wk2-portal__num" aria-hidden="true">{p.index}</div>
-            <div className="wk2-portal__glyph" aria-hidden="true">{WK2_GLYPHS[p.glyph]}</div>
-            <div className="wk2-portal__hint" aria-hidden="true"><span>Open</span><i>+</i></div>
             <div className="wk2-portal__content">
               <p className="wk2-portal__kicker">{p.kicker}</p>
               <h3 className="wk2-portal__label">{p.label}</h3>

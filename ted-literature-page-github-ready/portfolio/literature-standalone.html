@@ -1,0 +1,3720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ted Saunders — Literature &amp; Philosophy · A Cinematic Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Offline-bundle resource dependencies (referenced as strings in JSX). -->
+  <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
+  <meta name="ext-resource-dependency" content="assets/footer-scene.jpg" data-resource-id="footerScene" />
+  <meta name="ext-resource-dependency" content="assets/opt/parchment-desk.jpg" data-resource-id="parchmentDesk" />
+  <meta name="ext-resource-dependency" content="assets/poetry-bg.jpg" data-resource-id="poetryBg" />
+  <meta name="ext-resource-dependency" content="assets/excerpt-bg.png" data-resource-id="excerptBg" />
+  <meta name="ext-resource-dependency" content="assets/essays-bg.jpg" data-resource-id="essaysBg" />
+  <meta name="ext-resource-dependency" content="assets/worldbuilding-bg.jpg" data-resource-id="worldBg" />
+  <meta name="ext-resource-dependency" content="assets/tedthoughts-bg-v4.png" data-resource-id="thoughtsBg" />
+  <meta name="ext-resource-dependency" content="assets/heroes/literature-macro.jpg" data-resource-id="heroPhil" />
+  <meta name="ext-resource-dependency" content="assets/book-of-ignorance.jpg" data-resource-id="bookOfIgnorance" />
+  <meta name="ext-resource-dependency" content="assets/cosmic-bg-c.jpg" data-resource-id="cosmicBg" />
+  <meta name="ext-resource-dependency" content="assets/ted-cinematic-c.jpg" data-resource-id="tedCinematic" />
+  <meta name="ext-resource-dependency" content="assets/opt/film-still.jpg" data-resource-id="filmStill" />
+  <meta name="ext-resource-dependency" content="assets/ip/fated.jpg" data-resource-id="ipFated" />
+  <meta name="ext-resource-dependency" content="assets/ip/inevitable.jpg" data-resource-id="ipInevitable" />
+  <meta name="ext-resource-dependency" content="assets/ip/prosopagnosia.jpg" data-resource-id="ipProsopagnosia" />
+  <meta name="ext-resource-dependency" content="assets/ip/juiced.jpg" data-resource-id="ipJuiced" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-places.png" data-resource-id="posterPlaces" />
+  <meta name="ext-resource-dependency" content="assets/portfolio/poster-synthesis.png" data-resource-id="posterSynthesis" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-1.jpg" data-resource-id="film1" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-2.jpg" data-resource-id="film2" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-3.jpg" data-resource-id="film3" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-4.jpg" data-resource-id="film4" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-5.jpg" data-resource-id="film5" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-6.jpg" data-resource-id="film6" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-7.jpg" data-resource-id="film7" />
+  <meta name="ext-resource-dependency" content="assets/film/photo-8.jpg" data-resource-id="film8" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile1.png" data-resource-id="litTile1" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile2.png" data-resource-id="litTile2" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile3.png" data-resource-id="litTile3" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile4.png" data-resource-id="litTile4" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile5.png" data-resource-id="litTile5" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile6.png" data-resource-id="litTile6" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile7.png" data-resource-id="litTile7" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile8.png" data-resource-id="litTile8" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile9.png" data-resource-id="litTile9" />
+  <meta name="ext-resource-dependency" content="assets/lit-hero/tile10.png" data-resource-id="litTile10" />
+
+  <link rel="stylesheet" href="src/site.css?v=119">
+  <link rel="stylesheet" href="src/sections.css?v=118">
+  <link rel="stylesheet" href="src/lit-page.css?v=120">
+
+  <template id="__bundler_thumbnail" data-bg-color="#070502">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#070502"/>
+      <g transform="translate(600,360)">
+        <rect x="-150" y="-190" width="300" height="380" rx="6" fill="none" stroke="#C9A24B" stroke-width="3"/>
+        <line x1="0" y1="-190" x2="0" y2="190" stroke="#C9A24B" stroke-width="3" opacity="0.7"/>
+        <path d="M0,-70 L18,0 L0,70 L-18,0 Z" fill="#E8C98A"/>
+        <circle r="10" fill="#FBE6B8"/>
+      </g>
+      <text x="600" y="660" text-anchor="middle" font-family="Georgia, serif" font-size="46" letter-spacing="7" fill="#E8C98A">LITERATURE</text>
+    </svg>
+  </template>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    window.__resources = Object.assign({
+      logo:            "assets/logo.png",
+      footerScene:     "assets/footer-scene.jpg",
+      parchmentDesk:   "assets/opt/parchment-desk.jpg",
+      poetryBg:        "assets/poetry-bg.jpg",
+      excerptBg:       "assets/excerpt-bg.png",
+      essaysBg:        "assets/essays-bg.jpg",
+      worldBg:         "assets/worldbuilding-bg.jpg",
+      thoughtsBg:      "assets/tedthoughts-bg-v4.png",
+      heroPhil:        "assets/heroes/literature-macro.jpg",
+      bookOfIgnorance: "assets/book-of-ignorance.jpg",
+      cosmicBg:        "assets/cosmic-bg.png",
+      tedCinematic:    "assets/ted-cinematic.jpg",
+      filmStill:       "assets/opt/film-still.jpg",
+      ipFated:         "assets/ip/fated.jpg",
+      ipInevitable:    "assets/ip/inevitable.jpg",
+      ipProsopagnosia: "assets/ip/prosopagnosia.jpg",
+      ipJuiced:        "assets/ip/juiced.jpg",
+      posterPlaces:    "assets/portfolio/poster-places.png",
+      posterSynthesis: "assets/portfolio/poster-synthesis.png",
+      litTile1:        "assets/lit-hero/tile1.png",
+      litTile2:        "assets/lit-hero/tile2.png",
+      litTile3:        "assets/lit-hero/tile3.png",
+      litTile4:        "assets/lit-hero/tile4.png",
+      litTile5:        "assets/lit-hero/tile5.png",
+      litTile6:        "assets/lit-hero/tile6.png",
+      litTile7:        "assets/lit-hero/tile7.png",
+      litTile8:        "assets/lit-hero/tile8.png",
+      litTile9:        "assets/lit-hero/tile9.png",
+      litTile10:       "assets/lit-hero/tile10.png"
+    }, window.__resources || {});
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+
+  <script>
+/* ===== src/image-slot.js ===== */
+// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+/* BEGIN USAGE */
+/**
+ * <image-slot> — user-fillable image placeholder.
+ *
+ * Drop this into a deck, mockup, or page wherever you want the user to
+ * supply an image. You control the slot's shape and size; the user fills it
+ * by dragging an image file onto it (or clicking to browse). The dropped
+ * image persists across reloads via a .image-slots.state.json sidecar —
+ * same read-via-fetch / write-via-window.omelette pattern as
+ * design_canvas.jsx, so the filled slot shows on share links, downloaded
+ * zips, and PPTX export. Outside the omelette runtime the slot is read-only.
+ *
+ * The host bridge only allows sidecar writes at the project root, so the
+ * HTML that uses this component is assumed to live at the project root too
+ * (same constraint as design_canvas.jsx).
+ *
+ * Attributes:
+ *   id           Persistence key. REQUIRED for the drop to survive reload —
+ *                every slot on the page needs a distinct id.
+ *   shape        'rect' | 'rounded' | 'circle' | 'pill'   (default 'rounded')
+ *                'circle' applies 50% border-radius; on a non-square slot
+ *                that's an ellipse — set equal width and height for a true
+ *                circle.
+ *   radius       Corner radius in px for 'rounded'.       (default 12)
+ *   mask         Any CSS clip-path value. Overrides `shape` — use this for
+ *                hexagons, blobs, arbitrary polygons.
+ *   fit          object-fit: cover | contain | fill.       (default 'cover')
+ *                With cover (the default) double-clicking the filled slot
+ *                enters a reframe mode: the whole image spills past the mask
+ *                (translucent outside, opaque inside), drag to reposition,
+ *                corner-drag to scale. The crop persists alongside the image
+ *                in the sidecar. contain/fill stay static.
+ *   position     object-position for fit=contain|fill.     (default '50% 50%')
+ *   placeholder  Empty-state caption.                      (default 'Drop an image')
+ *   src          Optional initial/fallback image URL. A user drop overrides
+ *                it; clearing the drop reveals src again.
+ *
+ * Size and layout come from ordinary CSS on the element — width/height
+ * inline or from a parent grid — so it composes with any layout.
+ *
+ * Usage:
+ *   <image-slot id="hero"   style="width:800px;height:450px" shape="rounded" radius="20"
+ *               placeholder="Drop a hero image"></image-slot>
+ *   <image-slot id="avatar" style="width:120px;height:120px" shape="circle"></image-slot>
+ *   <image-slot id="kite"   style="width:300px;height:300px"
+ *               mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)"></image-slot>
+ */
+/* END USAGE */
+
+(() => {
+  const STATE_FILE = '.image-slots.state.json';
+  // 2× a ~600px slot in a 1920-wide deck — retina-sharp without making the
+  // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
+  const MAX_DIM = 1200;
+  // Raster formats only. SVG is excluded (can carry script; createImageBitmap
+  // on SVG blobs is inconsistent). GIF is excluded because the canvas
+  // re-encode keeps only the first frame, so an animated GIF would silently
+  // go still — better to reject than surprise.
+  const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
+
+  // ── Shared sidecar store ────────────────────────────────────────────────
+  // One fetch + immediate write-on-change for every <image-slot> on the
+  // page. Reads via fetch() so viewing works anywhere the HTML and sidecar
+  // are served together; writes go through window.omelette.writeFile, which
+  // the host allowlists to *.state.json basenames only.
+  const subs = new Set();
+  let slots = {};
+  // ids explicitly cleared before the sidecar fetch resolved — otherwise
+  // the merge below can't tell "never set" from "just deleted" and would
+  // resurrect the sidecar's stale value.
+  const tombstones = new Set();
+  let loaded = false;
+  let loadP = null;
+
+  function load() {
+    if (loadP) return loadP;
+    loadP = fetch(STATE_FILE)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        // Merge: sidecar loses to any in-memory change that raced ahead of
+        // the fetch (drop or clear) so neither is clobbered by hydration.
+        if (j && typeof j === 'object') {
+          const merged = Object.assign({}, j, slots);
+          // A framing-only write that raced ahead of hydration must not
+          // drop a user image that's only on disk — inherit u from the
+          // sidecar for any in-memory entry that lacks one.
+          for (const k in slots) {
+            if (merged[k] && !merged[k].u && j[k]) {
+              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+            }
+          }
+          for (const id of tombstones) delete merged[id];
+          slots = merged;
+        }
+        tombstones.clear();
+      })
+      .catch(() => {})
+      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+    return loadP;
+  }
+
+  // Serialize writes so two near-simultaneous drops on different slots
+  // can't reorder at the backend and leave the sidecar with only the
+  // first. A save requested mid-flight just marks dirty and re-fires on
+  // completion with the then-current slots.
+  let saving = false;
+  let saveDirty = false;
+  function save() {
+    if (saving) { saveDirty = true; return; }
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    saving = true;
+    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+      .catch(() => {})
+      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
+
+  const S_MAX = 5;
+  const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
+
+  // Normalize a stored slot value. Pre-reframe sidecars stored a bare
+  // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
+  function getSlot(id) {
+    const v = slots[id];
+    if (!v) return null;
+    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+  }
+
+  function setSlot(id, val) {
+    if (!id) return;
+    if (val) { slots[id] = val; tombstones.delete(id); }
+    else { delete slots[id]; if (!loaded) tombstones.add(id); }
+    subs.forEach((fn) => fn());
+    // A drop is rare + high-value — write immediately so nav-away can't lose
+    // it. Gate on the initial read so we don't overwrite a sidecar we haven't
+    // merged yet; the merge in load() keeps this change once the read lands.
+    if (loaded) save(); else load().then(save);
+  }
+
+  // ── Image downscale ─────────────────────────────────────────────────────
+  // Encode through a canvas so the sidecar carries resized bytes, not the
+  // raw upload. Longest side is capped at 2× the slot's rendered width
+  // (retina) and at MAX_DIM. WebP keeps alpha and is ~10× smaller than PNG
+  // for photos, so there's no need for per-image format picking.
+  async function toDataUrl(file, targetW) {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+      const w = Math.max(1, Math.round(bitmap.width * scale));
+      const h = Math.max(1, Math.round(bitmap.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+      return canvas.toDataURL('image/webp', 0.85);
+    } finally {
+      bitmap.close && bitmap.close();
+    }
+  }
+
+  // ── Custom element ──────────────────────────────────────────────────────
+  const stylesheet =
+    ':host{display:inline-block;position:relative;vertical-align:top;' +
+    '  font:13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(0,0,0,.55);width:240px;height:160px}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(0,0,0,.04)}' +
+    // .frame img (clipped) and .spill (unclipped ghost + handles) share the
+    // same left/top/width/height in frame-%, computed by _applyView(), so the
+    // inside-mask crop and the outside-mask spill stay pixel-aligned.
+    '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
+    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    // Reframe mode (double-click): the full image spills past the mask. The
+    // spill layer is sized to the IMAGE bounds so its corners are where the
+    // resize handles belong. The ghost <img> inside is translucent; the real
+    // clipped <img> underneath shows the opaque in-mask crop.
+    '.spill{position:absolute;transform:translate(-50%,-50%);display:none;z-index:1;' +
+    '  cursor:grab;touch-action:none}' +
+    ':host([data-panning]) .spill{cursor:grabbing}' +
+    '.spill .ghost{position:absolute;inset:0;width:100%;height:100%;opacity:.35;' +
+    '  pointer-events:none;-webkit-user-drag:none;user-select:none;' +
+    '  box-shadow:0 0 0 1px rgba(0,0,0,.2),0 12px 32px rgba(0,0,0,.2)}' +
+    '.spill .handle{position:absolute;width:12px;height:12px;border-radius:50%;' +
+    '  background:#fff;box-shadow:0 0 0 1.5px #c96442,0 1px 3px rgba(0,0,0,.3);' +
+    '  transform:translate(-50%,-50%)}' +
+    '.spill .handle[data-c=nw]{left:0;top:0;cursor:nwse-resize}' +
+    '.spill .handle[data-c=ne]{left:100%;top:0;cursor:nesw-resize}' +
+    '.spill .handle[data-c=sw]{left:0;top:100%;cursor:nesw-resize}' +
+    '.spill .handle[data-c=se]{left:100%;top:100%;cursor:nwse-resize}' +
+    ':host([data-reframe]){z-index:10}' +
+    ':host([data-reframe]) .spill{display:block}' +
+    ':host([data-reframe]) .frame{box-shadow:0 0 0 2px #c96442}' +
+    '.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  cursor:pointer;user-select:none}' +
+    '.empty svg{opacity:.45}' +
+    '.empty .cap{max-width:90%;font-weight:500;letter-spacing:.01em}' +
+    '.empty .sub{font-size:11px}' +
+    '.empty .sub u{text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.25)}' +
+    '.empty:hover .sub u{color:rgba(0,0,0,.75);text-decoration-color:currentColor}' +
+    ':host([data-over]) .frame{outline:2px solid #c96442;outline-offset:-2px;' +
+    '  background:rgba(201,100,66,.10)}' +
+    '.ring{position:absolute;inset:0;pointer-events:none;border:1.5px dashed rgba(0,0,0,.25);' +
+    '  transition:border-color .12s}' +
+    ':host([data-over]) .ring{border-color:#c96442}' +
+    ':host([data-filled]) .ring{display:none}' +
+    // Controls sit BELOW the mask (top:100%), absolutely positioned so the
+    // author-declared slot height is unaffected. The gap is padding, not a
+    // top offset, so the hover target stays contiguous with the frame.
+    '.ctl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    '  white-space:nowrap}' +
+    ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
+    '  {opacity:1;pointer-events:auto}' +
+    '.ctl button{appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;' +
+    '  background:rgba(0,0,0,.65);color:#fff;font:11px/1 system-ui,-apple-system,sans-serif;' +
+    '  backdrop-filter:blur(6px)}' +
+    '.ctl button:hover{background:rgba(0,0,0,.8)}' +
+    '.err{position:absolute;left:8px;bottom:8px;right:8px;color:#b3261e;font-size:11px;' +
+    '  background:rgba(255,255,255,.85);padding:4px 6px;border-radius:5px;pointer-events:none}';
+
+  const icon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>' +
+    '<path d="m21 15-5-5L5 21"/></svg>';
+
+  class ImageSlot extends HTMLElement {
+    static get observedAttributes() {
+      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id'];
+    }
+
+    constructor() {
+      super();
+      const root = this.attachShadow({ mode: 'open' });
+      // .spill and .ctl sit OUTSIDE .frame so overflow:hidden + border-radius
+      // on the frame (circle, pill, rounded) can't clip them.
+      root.innerHTML =
+        '<style>' + stylesheet + '</style>' +
+        '<div class="frame" part="frame">' +
+        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <div class="empty" part="empty">' + icon +
+        '    <div class="cap"></div>' +
+        '    <div class="sub">or <u>browse files</u></div></div>' +
+        '  <div class="ring" part="ring"></div>' +
+        '</div>' +
+        '<div class="spill">' +
+        '  <img class="ghost" alt="" draggable="false">' +
+        '  <div class="handle" data-c="nw"></div><div class="handle" data-c="ne"></div>' +
+        '  <div class="handle" data-c="sw"></div><div class="handle" data-c="se"></div>' +
+        '</div>' +
+        '<div class="ctl"><button data-act="replace" title="Replace image">Replace</button>' +
+        '  <button data-act="clear" title="Remove image">Remove</button></div>' +
+        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+      this._frame = root.querySelector('.frame');
+      this._ring = root.querySelector('.ring');
+      this._img = root.querySelector('.frame img');
+      this._empty = root.querySelector('.empty');
+      this._cap = root.querySelector('.cap');
+      this._sub = root.querySelector('.sub');
+      this._spill = root.querySelector('.spill');
+      this._ghost = root.querySelector('.ghost');
+      this._err = null;
+      this._input = root.querySelector('input');
+      this._depth = 0;
+      this._gen = 0;
+      this._view = { s: 1, x: 0, y: 0 };
+      this._subFn = () => this._render();
+      // Shadow-DOM listeners live with the shadow DOM — bound once here so
+      // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
+      this._empty.addEventListener('click', () => this._input.click());
+      root.addEventListener('click', (e) => {
+        const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
+        if (act === 'replace') { this._exitReframe(true); this._input.click(); }
+        if (act === 'clear') {
+          this._exitReframe(false);
+          this._gen++;
+          this._local = null;
+          if (this.id) setSlot(this.id, null); else this._render();
+        }
+      });
+      this._input.addEventListener('change', () => {
+        const f = this._input.files && this._input.files[0];
+        if (f) this._ingest(f);
+        this._input.value = '';
+      });
+      // naturalWidth/Height aren't known until load — re-apply so the cover
+      // baseline is computed from real dimensions, not the 100%×100% fallback.
+      this._img.addEventListener('load', () => this._applyView());
+      // Gated on editable + fit=cover so share links and contain/fill slots
+      // stay static.
+      this.addEventListener('dblclick', (e) => {
+        if (!this.hasAttribute('data-editable') || !this._reframes()) return;
+        e.preventDefault();
+        if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+        else this._enterReframe();
+      });
+      // Pan + resize both originate on the spill layer. A handle pointerdown
+      // drives an aspect-locked resize anchored at the opposite corner; any
+      // other pointerdown on the spill pans. Offsets are frame-% so a
+      // reframed slot survives responsive resize / PPTX export.
+      this._spill.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        this._spill.setPointerCapture(e.pointerId);
+        const rect = this.getBoundingClientRect();
+        const fw = rect.width || 1, fh = rect.height || 1;
+        const corner = e.target.getAttribute && e.target.getAttribute('data-c');
+        let move;
+        if (corner) {
+          // Resize about the OPPOSITE corner. Viewport-px throughout (rect
+          // fw/fh, not clientWidth) so the math survives a transform:scale()
+          // ancestor — deck_stage renders slides scaled-to-fit.
+          const iw = this._img.naturalWidth || 1, ih = this._img.naturalHeight || 1;
+          const base = Math.max(fw / iw, fh / ih);
+          const sx = corner.includes('e') ? 1 : -1;
+          const sy = corner.includes('s') ? 1 : -1;
+          const s0 = this._view.s;
+          const w0 = iw * base * s0, h0 = ih * base * s0;
+          const cx0 = (50 + this._view.x) / 100 * fw;
+          const cy0 = (50 + this._view.y) / 100 * fh;
+          const ox = cx0 - sx * w0 / 2, oy = cy0 - sy * h0 / 2;
+          const diag0 = Math.hypot(w0, h0);
+          const ux = sx * w0 / diag0, uy = sy * h0 / diag0;
+          move = (ev) => {
+            const proj = (ev.clientX - rect.left - ox) * ux +
+                         (ev.clientY - rect.top - oy) * uy;
+            const s = clampS(s0 * proj / diag0);
+            const d = diag0 * s / s0;
+            this._view.s = s;
+            this._view.x = (ox + ux * d / 2) / fw * 100 - 50;
+            this._view.y = (oy + uy * d / 2) / fh * 100 - 50;
+            this._clampView();
+            this._applyView();
+          };
+        } else {
+          this.setAttribute('data-panning', '');
+          const start = { px: e.clientX, py: e.clientY, x: this._view.x, y: this._view.y };
+          move = (ev) => {
+            this._view.x = start.x + (ev.clientX - start.px) / fw * 100;
+            this._view.y = start.y + (ev.clientY - start.py) / fh * 100;
+            this._clampView();
+            this._applyView();
+          };
+        }
+        const up = () => {
+          try { this._spill.releasePointerCapture(e.pointerId); } catch {}
+          this._spill.removeEventListener('pointermove', move);
+          this._spill.removeEventListener('pointerup', up);
+          this._spill.removeEventListener('pointercancel', up);
+          this.removeAttribute('data-panning');
+          this._dragUp = null;
+        };
+        // Stashed so _exitReframe (Escape / outside-click mid-drag) can
+        // tear the capture + listeners down synchronously.
+        this._dragUp = up;
+        this._spill.addEventListener('pointermove', move);
+        this._spill.addEventListener('pointerup', up);
+        this._spill.addEventListener('pointercancel', up);
+      });
+      // Wheel zoom stays available inside reframe mode as a trackpad nicety —
+      // zooms toward the cursor (offset' = cursor·(1-k) + offset·k).
+      this.addEventListener('wheel', (e) => {
+        if (!this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        const r = this.getBoundingClientRect();
+        const cx = (e.clientX - r.left) / r.width * 100 - 50;
+        const cy = (e.clientY - r.top) / r.height * 100 - 50;
+        const prev = this._view.s;
+        const next = clampS(prev * Math.pow(1.0015, -e.deltaY));
+        if (next === prev) return;
+        const k = next / prev;
+        this._view.s = next;
+        this._view.x = cx * (1 - k) + this._view.x * k;
+        this._view.y = cy * (1 - k) + this._view.y * k;
+        this._clampView();
+        this._applyView();
+      }, { passive: false });
+    }
+
+    connectedCallback() {
+      // Warn once per page — an id-less slot works for the session but
+      // cannot persist, and two id-less slots would share nothing.
+      if (!this.id && !ImageSlot._warned) {
+        ImageSlot._warned = true;
+        console.warn('<image-slot> without an id will not persist its dropped image.');
+      }
+      this.addEventListener('dragenter', this);
+      this.addEventListener('dragover', this);
+      this.addEventListener('dragleave', this);
+      this.addEventListener('drop', this);
+      subs.add(this._subFn);
+      // width%/height% in _applyView encode the frame aspect at call time —
+      // a host resize (responsive grid, pane divider) would stretch the
+      // image until the next _render. Re-render on size change: _render()
+      // re-seeds _view from stored before clamp/apply, so a shrink→grow
+      // cycle round-trips instead of ratcheting x/y toward the narrower
+      // frame's clamp range.
+      this._ro = new ResizeObserver(() => this._render());
+      this._ro.observe(this);
+      load();
+      this._render();
+    }
+
+    disconnectedCallback() {
+      subs.delete(this._subFn);
+      this.removeEventListener('dragenter', this);
+      this.removeEventListener('dragover', this);
+      this.removeEventListener('dragleave', this);
+      this.removeEventListener('drop', this);
+      if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      this._exitReframe(false);
+    }
+
+    _enterReframe() {
+      if (this.hasAttribute('data-reframe')) return;
+      this.setAttribute('data-reframe', '');
+      this._applyView();
+      // Close on click outside (the spill handler stopPropagation()s so
+      // in-image drags don't reach this) and on Escape. Listeners are held
+      // on the instance so _exitReframe / disconnectedCallback can detach
+      // exactly what was attached.
+      this._outside = (e) => {
+        if (e.composedPath && e.composedPath().includes(this)) return;
+        this._exitReframe(true);
+      };
+      this._esc = (e) => { if (e.key === 'Escape') this._exitReframe(true); };
+      document.addEventListener('pointerdown', this._outside, true);
+      document.addEventListener('keydown', this._esc, true);
+    }
+
+    _exitReframe(commit) {
+      if (!this.hasAttribute('data-reframe')) return;
+      if (this._dragUp) this._dragUp();
+      this.removeAttribute('data-reframe');
+      this.removeAttribute('data-panning');
+      if (this._outside) document.removeEventListener('pointerdown', this._outside, true);
+      if (this._esc) document.removeEventListener('keydown', this._esc, true);
+      this._outside = this._esc = null;
+      if (commit) this._commitView();
+    }
+
+    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
+
+    // handleEvent — one listener object for all four drag events keeps the
+    // add/remove symmetric and the depth counter correct.
+    handleEvent(e) {
+      if (e.type === 'dragenter' || e.type === 'dragover') {
+        // Without preventDefault the browser never fires 'drop'.
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        if (e.type === 'dragenter') this._depth++;
+        this.setAttribute('data-over', '');
+      } else if (e.type === 'dragleave') {
+        // dragenter/leave fire for every descendant crossing — count depth
+        // so hovering the icon inside the empty state doesn't flicker.
+        if (--this._depth <= 0) { this._depth = 0; this.removeAttribute('data-over'); }
+      } else if (e.type === 'drop') {
+        e.preventDefault();
+        e.stopPropagation();
+        this._depth = 0;
+        this.removeAttribute('data-over');
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) this._ingest(f);
+      }
+    }
+
+    async _ingest(file) {
+      this._setError(null);
+      if (!file || ACCEPT.indexOf(file.type) < 0) {
+        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+        return;
+      }
+      // toDataUrl can take hundreds of ms on a large photo. A Clear or a
+      // newer drop during that window would be clobbered when this await
+      // resumes — bump + capture a generation so stale encodes bail.
+      const gen = ++this._gen;
+      try {
+        const w = this.clientWidth || this.offsetWidth || MAX_DIM;
+        const url = await toDataUrl(file, w);
+        if (gen !== this._gen) return;
+        // Only exit reframe once the new image is in hand — a rejected type
+        // or decode failure leaves the in-progress crop untouched.
+        this._exitReframe(false);
+        const val = { u: url, s: 1, x: 0, y: 0 };
+        setSlot(this.id || '', val);
+        // Keep a session-local copy for id-less slots so the drop still
+        // shows, even though it cannot persist.
+        if (!this.id) { this._local = val; this._render(); }
+      } catch (err) {
+        if (gen !== this._gen) return;
+        this._setError('Could not read that image.');
+        console.warn('<image-slot> ingest failed:', err);
+      }
+    }
+
+    _setError(msg) {
+      if (this._err) { this._err.remove(); this._err = null; }
+      if (!msg) return;
+      const d = document.createElement('div');
+      d.className = 'err'; d.textContent = msg;
+      this.shadowRoot.appendChild(d);
+      this._err = d;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+    }
+
+    // Reframing (pan/resize) is only meaningful for fit=cover — contain/fill
+    // keep the old object-fit path and double-click is a no-op.
+    _reframes() {
+      return this.hasAttribute('data-filled') &&
+        (this.getAttribute('fit') || 'cover') === 'cover';
+    }
+
+    // Cover-baseline geometry, shared by clamp/apply/resize. Null until the
+    // img has loaded (naturalWidth is 0 before that) or when the slot has no
+    // layout box — ResizeObserver fires with a 0×0 rect under display:none,
+    // and clamping against a degenerate 1×1 frame would silently pull the
+    // stored pan toward zero.
+    _geom() {
+      const iw = this._img.naturalWidth, ih = this._img.naturalHeight;
+      const fw = this.clientWidth, fh = this.clientHeight;
+      if (!iw || !ih || !fw || !fh) return null;
+      return { iw, ih, fw, fh, base: Math.max(fw / iw, fh / ih) };
+    }
+
+    _clampView() {
+      // Pan range on each axis is half the overflow past the frame edge.
+      const g = this._geom();
+      if (!g) return;
+      const mx = Math.max(0, (g.iw * g.base * this._view.s / g.fw - 1) * 50);
+      const my = Math.max(0, (g.ih * g.base * this._view.s / g.fh - 1) * 50);
+      this._view.x = Math.max(-mx, Math.min(mx, this._view.x));
+      this._view.y = Math.max(-my, Math.min(my, this._view.y));
+    }
+
+    _applyView() {
+      const g = this._geom();
+      const fit = this.getAttribute('fit') || 'cover';
+      if (fit !== 'cover' || !g) {
+        // Non-cover, or dimensions not known yet (before img load).
+        this._img.style.width = '100%';
+        this._img.style.height = '100%';
+        this._img.style.left = '50%';
+        this._img.style.top = '50%';
+        this._img.style.objectFit = fit;
+        this._img.style.objectPosition = this.getAttribute('position') || '50% 50%';
+        return;
+      }
+      // Cover baseline: img fills the frame on its tighter axis at s=1, so
+      // pan works immediately on the overflowing axis without zooming first.
+      // Width/height and left/top are all frame-% — depends only on the
+      // frame aspect ratio, so a responsive resize keeps the same crop. The
+      // spill layer mirrors the same box so its corners = image corners.
+      const k = g.base * this._view.s;
+      const w = (g.iw * k / g.fw * 100) + '%';
+      const h = (g.ih * k / g.fh * 100) + '%';
+      const l = (50 + this._view.x) + '%';
+      const t = (50 + this._view.y) + '%';
+      this._img.style.width = w; this._img.style.height = h;
+      this._img.style.left = l; this._img.style.top = t;
+      this._img.style.objectFit = '';
+      this._spill.style.width = w; this._spill.style.height = h;
+      this._spill.style.left = l; this._spill.style.top = t;
+    }
+
+    _commitView() {
+      const v = { s: this._view.s, x: this._view.x, y: this._view.y };
+      if (this._userUrl) v.u = this._userUrl;
+      // Framing-only (no u) persists too so an author-src slot remembers its
+      // crop; clearing the sidecar still falls through to src=.
+      if (this.id) setSlot(this.id, v);
+      else { this._local = v; }
+    }
+
+    _render() {
+      // Shape / mask. Presets use border-radius so the dashed ring can
+      // follow the rounded outline; clip-path is only applied for an
+      // explicit `mask` (the ring is hidden there since a rectangle
+      // dashed border chopped by an arbitrary polygon looks broken).
+      const mask = this.getAttribute('mask');
+      const shape = (this.getAttribute('shape') || 'rounded').toLowerCase();
+      let radius = '';
+      if (shape === 'circle') radius = '50%';
+      else if (shape === 'pill') radius = '9999px';
+      else if (shape === 'rounded') {
+        const n = parseFloat(this.getAttribute('radius'));
+        radius = (Number.isFinite(n) ? n : 12) + 'px';
+      }
+      this._frame.style.borderRadius = mask ? '' : radius;
+      this._frame.style.clipPath = mask || '';
+      this._ring.style.borderRadius = mask ? '' : radius;
+      this._ring.style.display = mask ? 'none' : '';
+
+      // Controls and reframe entry gate on this so share links stay read-only.
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      this.toggleAttribute('data-editable', editable);
+      this._sub.style.display = editable ? '' : 'none';
+
+      // Content. The sidecar is also writable by the agent's write_file
+      // tool, so its value isn't guaranteed canvas-originated — only accept
+      // data:image/ URLs from it. The `src` attribute is author-controlled
+      // (Claude wrote it into the HTML) so it passes through unchanged.
+      let stored = this.id ? getSlot(this.id) : this._local;
+      if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
+      const srcAttr = this.getAttribute('src') || '';
+      this._userUrl = (stored && stored.u) || null;
+      const url = this._userUrl || srcAttr;
+      // Don't clobber an in-flight reframe with a store-triggered re-render.
+      if (!this.hasAttribute('data-reframe')) {
+        this._view = {
+          s: stored && Number.isFinite(stored.s) ? clampS(stored.s) : 1,
+          x: stored && Number.isFinite(stored.x) ? stored.x : 0,
+          y: stored && Number.isFinite(stored.y) ? stored.y : 0,
+        };
+      }
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      // Toggle via style.display — the [hidden] attribute alone loses to
+      // the display:flex / display:block rules in the stylesheet above.
+      if (url) {
+        if (this._img.getAttribute('src') !== url) {
+          this._img.src = url;
+          this._ghost.src = url;
+        }
+        this._img.style.display = 'block';
+        this._empty.style.display = 'none';
+        this.setAttribute('data-filled', '');
+        this._clampView();
+        this._applyView();
+      } else {
+        this._img.style.display = 'none';
+        this._img.removeAttribute('src');
+        this._ghost.removeAttribute('src');
+        this._empty.style.display = 'flex';
+        this.removeAttribute('data-filled');
+      }
+    }
+  }
+
+  if (!customElements.get('image-slot')) {
+    customElements.define('image-slot', ImageSlot);
+  }
+})();
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/tweaks-panel.jsx ===== */
+// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+
+/* BEGIN USAGE */
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+// Exports (to window): useTweaks, TweaksPanel, TweakSection, TweakRow, TweakSlider,
+//   TweakToggle, TweakRadio, TweakSelect, TweakText, TweakNumber, TweakColor, TweakButton.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// TweakRadio is the segmented control for 2–3 short options (auto-falls-back to
+// TweakSelect past ~16/~10 chars per label); reach for TweakSelect directly when
+// options are many or long. For color tweaks always curate 3-4 options rather than
+// a free picker; an option can also be a whole 2–5 color palette (the stored value
+// is the array). The Tweak* controls are a floor, not a ceiling — build custom
+// controls inside the panel if a tweak calls for UI they don't cover.
+/* END USAGE */
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/Button.jsx ===== */
+// Button.jsx — bronze / bronze-strong / outline
+function Button({ variant = "bronze", children, onClick, type = "button" }) {
+  const cls = "tk-btn tk-btn--" + variant;
+  return (
+    <button type={type} className={cls} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+// PlayTriangle — bronze-gradient triangle inside a circle.
+// Used inside .tk-video .play and in iconography previews.
+function PlayTriangle({ size = 38, id = "pg" }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stopColor="#BF8753" />
+          <stop offset="35%"  stopColor="#FAC288" />
+          <stop offset="70%"  stopColor="#C9915C" />
+          <stop offset="100%" stopColor="#AB7442" />
+        </linearGradient>
+      </defs>
+      <polygon points="7,4 21,12 7,20" fill={`url(#${id})`} />
+    </svg>
+  );
+}
+
+window.Button = Button;
+window.PlayTriangle = PlayTriangle;
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/FocusRail.jsx ===== */
+// FocusRail.jsx — cinematic 3D coverflow, ported from the 21st.dev
+// "Focus Rail" (framer-motion/next) to dependency-free React + CSS,
+// restyled into the Ted Saunders bronze-on-black vibe.
+const { useState, useRef, useCallback, useEffect } = React;
+
+function frWrap(min, max, v) {
+  const range = max - min;
+  return ((((v - min) % range) + range) % range) + min;
+}
+
+// Striped poster placeholder — warm dark field, hairline stripes, and a
+// monospace note marking where real concept art should be dropped.
+function frPoster(title, i) {
+  const hues = ["#2A1C10", "#241A12", "#2E1E11", "#201611"];
+  const bg = hues[i % hues.length];
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='800' viewBox='0 0 600 800'>
+    <defs>
+      <linearGradient id='g' x1='0' y1='0' x2='0' y2='1'>
+        <stop offset='0%' stop-color='${bg}'/>
+        <stop offset='100%' stop-color='#000000'/>
+      </linearGradient>
+      <pattern id='s' width='26' height='26' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'>
+        <rect width='26' height='26' fill='transparent'/>
+        <line x1='0' y1='0' x2='0' y2='26' stroke='rgba(209,157,99,0.10)' stroke-width='1'/>
+      </pattern>
+    </defs>
+    <rect width='600' height='800' fill='url(#g)'/>
+    <rect width='600' height='800' fill='url(#s)'/>
+    <text x='44' y='720' font-family='ui-monospace, monospace' font-size='17' letter-spacing='2' fill='rgba(209,157,99,0.55)'>CONCEPT ART</text>
+    <text x='44' y='748' font-family='ui-monospace, monospace' font-size='14' letter-spacing='1' fill='rgba(255,234,202,0.30)'>${title.toUpperCase()}</text>
+  </svg>`;
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
+function FocusRail({ items, initialIndex = 0, loop = true, header = null, controlledActive = null, onStep = null, controlsCta = null, arrows = false }) {
+  const [internalActive, setInternalActive] = useState(initialIndex);
+  const [playing, setPlaying] = useState(null);
+  const drag = useRef(null);
+  const frRef = useRef(null);
+  const lastWheel = useRef(0);
+  const count = items.length;
+  const controlled = controlledActive != null;
+  const active = controlled ? controlledActive : internalActive;
+  const activeIndex = frWrap(0, count, active);
+  const activeItem = items[activeIndex];
+
+  const prev = useCallback(() => { controlled ? (onStep && onStep(-1)) : setInternalActive((p) => (!loop && p === 0) ? p : p - 1); }, [controlled, onStep, loop]);
+  const next = useCallback(() => { controlled ? (onStep && onStep(1)) : setInternalActive((p) => (!loop && p === count - 1) ? p : p + 1); }, [controlled, onStep, loop, count]);
+  const stepBy = (d) => { controlled ? (onStep && onStep(d)) : setInternalActive((p) => p + d); };
+
+  // Horizontal-only wheel/trackpad navigation (only when NOT scroll-controlled;
+  // in pinned/controlled mode the page scroll drives the active card).
+  useEffect(() => {
+    if (controlled) return;
+    const el = frRef.current;
+    if (!el) return;
+    const onWheelNative = (e) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheel.current < 240) return;
+      if (Math.abs(e.deltaX) > 10) { e.deltaX > 0 ? next() : prev(); lastWheel.current = now; }
+    };
+    el.addEventListener("wheel", onWheelNative, { passive: false });
+    return () => el.removeEventListener("wheel", onWheelNative);
+  }, [next, prev, controlled]);
+
+  const onKey = (e) => { if (e.key === "ArrowLeft") prev(); if (e.key === "ArrowRight") next(); };
+
+  const onPointerDown = (e) => { if (controlled) return; drag.current = { x: e.clientX, moved: false }; };
+  const onPointerUp = (e) => {
+    if (controlled || !drag.current) return;
+    const dx = e.clientX - drag.current.x;
+    if (Math.abs(dx) > 60) dx < 0 ? next() : prev();
+    drag.current = null;
+  };
+
+  const visible = [-2, -1, 0, 1, 2];
+
+  return (
+    <div className="fr" tabIndex={0} onKeyDown={onKey} ref={frRef}>
+      {/* Ambient blurred backdrop of the active poster — spans the whole
+          section (incl. the header) and fades to black top + bottom. */}
+      <div className="fr-amb" key={"amb-" + activeItem.id}>
+        <img src={activeItem.imageSrc} alt="" />
+        <div className="fr-amb__veil" />
+      </div>
+
+      {header && <div className="fr-header">{header}</div>}
+
+      <div className="fr-stage">
+        {arrows && (
+          <button className="fr-arrow fr-arrow--prev" aria-label="Previous" onClick={prev}>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+        )}
+        {arrows && (
+          <button className="fr-arrow fr-arrow--next" aria-label="Next" onClick={next}>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        )}
+        <div className="fr-rail" onPointerDown={onPointerDown} onPointerUp={onPointerUp}>
+          {visible.map((offset) => {
+            const abs = active + offset;
+            const index = frWrap(0, count, abs);
+            const item = items[index];
+            if (!loop && (abs < 0 || abs >= count)) return null;
+            const isCenter = offset === 0;
+            const dist = Math.abs(offset);
+            const style = {
+              transform: `translate(-50%, -50%) translateX(${offset * 300}px) translateZ(${-dist * 180}px) rotateY(${offset * -20}deg) scale(${isCenter ? 1 : 0.85})`,
+              opacity: isCenter ? 1 : Math.max(0.12, 1 - dist * 0.5),
+              filter: `blur(${isCenter ? 0 : dist * 5}px) brightness(${isCenter ? 1 : 0.5})`,
+              zIndex: 20 - dist,
+            };
+            return (
+              <div key={abs} className={"fr-card" + (isCenter ? " is-center" : "")} style={style}
+                   onClick={() => { offset !== 0 ? stepBy(offset) : setPlaying(item); }}>
+                <img src={item.imageSrc} alt={item.title} draggable="false" />
+                <div className="fr-card__sheen" />
+                {isCenter && (
+                  <button className="fr-play" aria-label={"Play " + item.title}
+                          onClick={(e) => { e.stopPropagation(); setPlaying(item); }}>
+                    <PlayTriangle size={30} id="frPlay" />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="fr-info">
+          <div className="fr-info__text" key={"t-" + activeItem.id}>
+            {activeItem.meta && <span className="fr-meta">{activeItem.meta}</span>}
+            <h3 className="fr-title">{activeItem.title}</h3>
+            {activeItem.description && <p className="fr-desc">{activeItem.description}</p>}
+          </div>
+
+          <div className="fr-controls">
+            {arrows && (
+              <div className="fr-dots" role="tablist" aria-label="Select work">
+                {items.map((it, i) => (
+                  <button key={it.id || i}
+                          className={"fr-dot" + (i === activeIndex ? " is-active" : "")}
+                          aria-label={it.title}
+                          aria-selected={i === activeIndex}
+                          onClick={() => stepBy(i - active)} />
+                ))}
+              </div>
+            )}
+            {controlsCta}
+          </div>
+        </div>
+      </div>
+
+      {playing && <FRLightbox item={playing} onClose={() => setPlaying(null)} />}
+    </div>
+  );
+}
+
+// Fullscreen video lightbox. Renders a YouTube/Vimeo embed when item.videoUrl
+// is set; otherwise a placeholder frame marking where the embed will live.
+function FRLightbox({ item, onClose }) {
+  useEffect(() => {
+    const onEsc = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onEsc);
+    return () => window.removeEventListener("keydown", onEsc);
+  }, [onClose]);
+  return (
+    <div className="fr-lb" onClick={onClose}>
+      <button className="fr-lb__close" onClick={onClose} aria-label="Close">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <div className="fr-lb__frame" onClick={(e) => e.stopPropagation()}>
+        {item.videoUrl ? (
+          <iframe src={item.videoUrl} title={item.title} frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+        ) : (
+          <div className="fr-lb__placeholder">
+            <PlayTriangle size={56} id="frLbPlay" />
+            <div className="fr-lb__meta">{item.meta}</div>
+            <div className="fr-lb__title">{item.title}</div>
+            <div className="fr-lb__note">YOUTUBE / VIMEO EMBED — drop the video URL here</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+window.FocusRail = FocusRail;
+window.frPoster = frPoster;
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/LitGallery.jsx ===== */
+// LitGallery.jsx — CircularGallery (bent WebGL image rail) ported from the
+// 21st.dev / OGL component to a dependency-free React global. OGL is loaded
+// at runtime as an ES module from a CDN (via a Function-wrapped dynamic import
+// so Babel leaves it intact). Exposes window.LitCircularGallery.
+(function () {
+  const { useRef: cgUseRef, useEffect: cgUseEffect } = React;
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+  function lerp(p1, p2, t) { return p1 + (p2 - p1) * t; }
+  function autoBind(instance) {
+    const proto = Object.getPrototypeOf(instance);
+    Object.getOwnPropertyNames(proto).forEach((key) => {
+      if (key !== "constructor" && typeof instance[key] === "function") {
+        instance[key] = instance[key].bind(instance);
+      }
+    });
+  }
+
+  function createTextTexture(OGL, gl, text, font, color) {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    context.font = font;
+    const metrics = context.measureText(text);
+    const textWidth = Math.ceil(metrics.width);
+    const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
+    canvas.width = textWidth + 20;
+    canvas.height = textHeight + 20;
+    context.font = font;
+    context.fillStyle = color;
+    context.textBaseline = "middle";
+    context.textAlign = "center";
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillText(text, canvas.width / 2, canvas.height / 2);
+    const texture = new OGL.Texture(gl, { generateMipmaps: false });
+    texture.image = canvas;
+    return { texture, width: canvas.width, height: canvas.height };
+  }
+
+  class Title {
+    constructor({ OGL, gl, plane, text, textColor, font }) {
+      autoBind(this);
+      this.OGL = OGL; this.gl = gl; this.plane = plane;
+      this.text = text; this.textColor = textColor; this.font = font;
+      this.createMesh();
+    }
+    createMesh() {
+      const OGL = this.OGL;
+      const { texture, width, height } = createTextTexture(OGL, this.gl, this.text, this.font, this.textColor);
+      const geometry = new OGL.Plane(this.gl);
+      const program = new OGL.Program(this.gl, {
+        vertex: `attribute vec3 position;attribute vec2 uv;uniform mat4 modelViewMatrix;uniform mat4 projectionMatrix;varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+        fragment: `precision highp float;uniform sampler2D tMap;varying vec2 vUv;void main(){vec4 color=texture2D(tMap,vUv);if(color.a<0.1)discard;gl_FragColor=color;}`,
+        uniforms: { tMap: { value: texture } },
+        transparent: true,
+      });
+      this.mesh = new OGL.Mesh(this.gl, { geometry, program });
+      const aspect = width / height;
+      const textHeight = this.plane.scale.y * 0.15;
+      const textWidth = textHeight * aspect;
+      this.mesh.scale.set(textWidth, textHeight, 1);
+      this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
+      this.mesh.setParent(this.plane);
+    }
+  }
+
+  class Media {
+    constructor(opts) {
+      Object.assign(this, {
+        extra: 0, widthTotal: 0, width: 0, x: 0, scale: 1, padding: 2,
+        speed: 0, isBefore: false, isAfter: false,
+      });
+      this.OGL = opts.OGL;
+      this.geometry = opts.geometry;
+      this.gl = opts.gl;
+      this.image = opts.image;
+      this.index = opts.index;
+      this.length = opts.length;
+      this.scene = opts.scene;
+      this.screen = opts.screen;
+      this.text = opts.text;
+      this.viewport = opts.viewport;
+      this.bend = opts.bend;
+      this.textColor = opts.textColor;
+      this.borderRadius = opts.borderRadius || 0;
+      this.font = opts.font;
+      this.createShader();
+      this.createMesh();
+      this.createTitle();
+      this.onResize();
+    }
+    createShader() {
+      const OGL = this.OGL;
+      const texture = new OGL.Texture(this.gl, { generateMipmaps: true });
+      this.program = new OGL.Program(this.gl, {
+        depthTest: false,
+        depthWrite: false,
+        vertex: `precision highp float;attribute vec3 position;attribute vec2 uv;uniform mat4 modelViewMatrix;uniform mat4 projectionMatrix;uniform float uTime;uniform float uSpeed;varying vec2 vUv;void main(){vUv=uv;vec3 p=position;p.z=(sin(p.x*4.0+uTime)*1.5+cos(p.y*2.0+uTime)*1.5)*(0.1+uSpeed*0.5);gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}`,
+        fragment: `precision highp float;uniform vec2 uImageSizes;uniform vec2 uPlaneSizes;uniform sampler2D tMap;uniform float uBorderRadius;varying vec2 vUv;float roundedBoxSDF(vec2 p,vec2 b,float r){vec2 d=abs(p)-b;return length(max(d,vec2(0.0)))+min(max(d.x,d.y),0.0)-r;}void main(){vec2 ratio=vec2(min((uPlaneSizes.x/uPlaneSizes.y)/(uImageSizes.x/uImageSizes.y),1.0),min((uPlaneSizes.y/uPlaneSizes.x)/(uImageSizes.y/uImageSizes.x),1.0));vec2 uv=vec2(vUv.x*ratio.x+(1.0-ratio.x)*0.5,vUv.y*ratio.y+(1.0-ratio.y)*0.5);vec4 color=texture2D(tMap,uv);float d=roundedBoxSDF(vUv-0.5,vec2(0.5-uBorderRadius),uBorderRadius);float edgeSmooth=0.002;float alpha=1.0-smoothstep(-edgeSmooth,edgeSmooth,d);gl_FragColor=vec4(color.rgb,alpha);}`,
+        uniforms: {
+          tMap: { value: texture },
+          uPlaneSizes: { value: [0, 0] },
+          uImageSizes: { value: [0, 0] },
+          uSpeed: { value: 0 },
+          uTime: { value: 100 * Math.random() },
+          uBorderRadius: { value: this.borderRadius },
+        },
+        transparent: true,
+      });
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = this.image;
+      img.onload = () => {
+        texture.image = img;
+        this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+      };
+    }
+    createMesh() {
+      this.plane = new this.OGL.Mesh(this.gl, { geometry: this.geometry, program: this.program });
+      this.plane.setParent(this.scene);
+    }
+    createTitle() {
+      if (!this.text) return;
+      this.title = new Title({ OGL: this.OGL, gl: this.gl, plane: this.plane, text: this.text, textColor: this.textColor, font: this.font });
+    }
+    update(scroll, direction) {
+      this.plane.position.x = this.x - scroll.current - this.extra;
+      const x = this.plane.position.x;
+      const H = this.viewport.width / 2;
+      if (this.bend === 0) {
+        this.plane.position.y = 0; this.plane.rotation.z = 0;
+      } else {
+        const B_abs = Math.abs(this.bend);
+        const R = (H * H + B_abs * B_abs) / (2 * B_abs);
+        const effectiveX = Math.min(Math.abs(x), H);
+        const arc = R - Math.sqrt(R * R - effectiveX * effectiveX);
+        if (this.bend > 0) {
+          this.plane.position.y = -arc;
+          this.plane.rotation.z = -Math.sign(x) * Math.asin(effectiveX / R);
+        } else {
+          this.plane.position.y = arc;
+          this.plane.rotation.z = Math.sign(x) * Math.asin(effectiveX / R);
+        }
+      }
+      this.speed = scroll.current - scroll.last;
+      this.program.uniforms.uTime.value += 0.04;
+      this.program.uniforms.uSpeed.value = this.speed;
+      const planeOffset = this.plane.scale.x / 2;
+      const viewportOffset = this.viewport.width / 2;
+      this.isBefore = this.plane.position.x + planeOffset < -viewportOffset;
+      this.isAfter = this.plane.position.x - planeOffset > viewportOffset;
+      if (direction === "right" && this.isBefore) { this.extra -= this.widthTotal; this.isBefore = this.isAfter = false; }
+      if (direction === "left" && this.isAfter) { this.extra += this.widthTotal; this.isBefore = this.isAfter = false; }
+    }
+    onResize({ screen, viewport } = {}) {
+      if (screen) this.screen = screen;
+      if (viewport) this.viewport = viewport;
+      this.scale = this.screen.height / 1500;
+      this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
+      this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+      this.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
+      this.padding = 2;
+      this.width = this.plane.scale.x + this.padding;
+      this.widthTotal = this.width * this.length;
+      this.x = this.width * this.index;
+    }
+  }
+
+  class App {
+    constructor(OGL, container, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase }) {
+      this.OGL = OGL;
+      this.container = container;
+      this.scrollSpeed = scrollSpeed;
+      this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0, position: 0 };
+      this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
+      this.isDown = false; this.start = 0;
+      autoBind(this);
+      this.createRenderer();
+      this.createCamera();
+      this.createScene();
+      this.onResize();
+      this.createGeometry();
+      this.createMedias(items, bend, textColor, borderRadius, font);
+      this.update();
+      this.addEventListeners();
+    }
+    createRenderer() {
+      this.renderer = new this.OGL.Renderer({ alpha: true, antialias: true, dpr: Math.min(window.devicePixelRatio || 1, 2) });
+      this.gl = this.renderer.gl;
+      this.gl.clearColor(0, 0, 0, 0);
+      this.container.appendChild(this.gl.canvas);
+    }
+    createCamera() {
+      this.camera = new this.OGL.Camera(this.gl);
+      this.camera.fov = 45;
+      this.camera.position.z = 20;
+    }
+    createScene() { this.scene = new this.OGL.Transform(); }
+    createGeometry() { this.planeGeometry = new this.OGL.Plane(this.gl, { heightSegments: 50, widthSegments: 100 }); }
+    createMedias(items, bend, textColor, borderRadius, font) {
+      const galleryItems = items && items.length ? items : [];
+      this.mediasImages = galleryItems.concat(galleryItems);
+      this.medias = this.mediasImages.map((data, index) => new Media({
+        OGL: this.OGL, geometry: this.planeGeometry, gl: this.gl, image: data.image,
+        index, length: this.mediasImages.length, scene: this.scene, screen: this.screen,
+        text: data.text, viewport: this.viewport, bend, textColor, borderRadius, font,
+      }));
+    }
+    onTouchDown(e) {
+      this.isDown = true;
+      this.scroll.position = this.scroll.current;
+      this.start = "touches" in e ? e.touches[0].clientX : e.clientX;
+    }
+    onTouchMove(e) {
+      if (!this.isDown) return;
+      const x = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const distance = (this.start - x) * (this.scrollSpeed * 0.025);
+      this.scroll.target = this.scroll.position + distance;
+    }
+    onTouchUp() { this.isDown = false; this.onCheck(); }
+    onWheel(e) {
+      const delta = e.deltaY || e.wheelDelta || e.detail;
+      this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
+      this.onCheckDebounce();
+    }
+    onCheck() {
+      if (!this.medias || !this.medias[0]) return;
+      const width = this.medias[0].width;
+      const itemIndex = Math.round(Math.abs(this.scroll.target) / width);
+      const item = width * itemIndex;
+      this.scroll.target = this.scroll.target < 0 ? -item : item;
+    }
+    onResize() {
+      const rect = this.container.getBoundingClientRect();
+      const w = this.container.clientWidth || rect.width || window.innerWidth || 1280;
+      const h = this.container.clientHeight || rect.height || 620;
+      this.screen = { width: w, height: h };
+      this.renderer.setSize(this.screen.width, this.screen.height);
+      this.camera.perspective({ aspect: this.screen.width / this.screen.height });
+      const fov = (this.camera.fov * Math.PI) / 180;
+      const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
+      const width = height * this.camera.aspect;
+      this.viewport = { width, height };
+      if (this.medias) this.medias.forEach((m) => m.onResize({ screen: this.screen, viewport: this.viewport }));
+    }
+    update() {
+      this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+      const direction = this.scroll.current > this.scroll.last ? "right" : "left";
+      if (this.medias) this.medias.forEach((m) => m.update(this.scroll, direction));
+      this.renderer.render({ scene: this.scene, camera: this.camera });
+      this.scroll.last = this.scroll.current;
+      this.raf = window.requestAnimationFrame(this.update);
+    }
+    addEventListeners() {
+      window.addEventListener("resize", this.onResize);
+      window.addEventListener("mousewheel", this.onWheel);
+      window.addEventListener("wheel", this.onWheel);
+      this.container.addEventListener("mousedown", this.onTouchDown);
+      window.addEventListener("mousemove", this.onTouchMove);
+      window.addEventListener("mouseup", this.onTouchUp);
+      this.container.addEventListener("touchstart", this.onTouchDown, { passive: true });
+      window.addEventListener("touchmove", this.onTouchMove, { passive: true });
+      window.addEventListener("touchend", this.onTouchUp);
+      if (typeof ResizeObserver !== "undefined") {
+        this.ro = new ResizeObserver(() => this.onResize());
+        this.ro.observe(this.container);
+      }
+    }
+    destroy() {
+      window.cancelAnimationFrame(this.raf);
+      if (this.ro) { this.ro.disconnect(); this.ro = null; }
+      window.removeEventListener("resize", this.onResize);
+      window.removeEventListener("mousewheel", this.onWheel);
+      window.removeEventListener("wheel", this.onWheel);
+      this.container.removeEventListener("mousedown", this.onTouchDown);
+      window.removeEventListener("mousemove", this.onTouchMove);
+      window.removeEventListener("mouseup", this.onTouchUp);
+      this.container.removeEventListener("touchstart", this.onTouchDown);
+      window.removeEventListener("touchmove", this.onTouchMove);
+      window.removeEventListener("touchend", this.onTouchUp);
+      if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
+        this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
+      }
+    }
+  }
+
+  function LitCircularGallery(props) {
+    const ref = cgUseRef(null);
+    const items = props.items;
+    const bend = props.bend != null ? props.bend : 3;
+    const borderRadius = props.borderRadius != null ? props.borderRadius : 0.05;
+    const scrollSpeed = props.scrollSpeed != null ? props.scrollSpeed : 2;
+    const scrollEase = props.scrollEase != null ? props.scrollEase : 0.05;
+    const textColor = props.textColor || "#E8B777";
+    const font = props.font || "bold 30px serif";
+
+    cgUseEffect(() => {
+      if (!ref.current) return;
+      let app = null, destroyed = false;
+      const dynImport = new Function("u", "return import(u)");
+      dynImport("https://esm.sh/ogl@1.0.11")
+        .then((OGL) => {
+          if (destroyed || !ref.current) return;
+          app = new App(OGL, ref.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+          requestAnimationFrame(() => { if (app) app.onResize(); requestAnimationFrame(() => { if (app) app.onResize(); }); });
+        })
+        .catch((err) => { console.error("LitCircularGallery: OGL load failed", err); });
+      return () => { destroyed = true; if (app) app.destroy(); };
+    }, [items, bend, borderRadius, scrollSpeed, scrollEase]);
+
+    return React.createElement("div", { ref, className: "lp-cgal" + (props.className ? " " + props.className : "") });
+  }
+
+  window.LitCircularGallery = LitCircularGallery;
+})();
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/Header.jsx ===== */
+// Header.jsx — shared top nav (logo + links) used by EVERY page.
+// Portfolio expands into a cinematic mega-menu: 4 image-card categories, each
+// with a click-to-expand list of subpages.
+const { useState: useStateHdr } = React;
+
+const NAV_R = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
+
+// Category → image card + subpages. Paths are root-relative; nested pages
+// (portfolio/…) set <base href="../"> so these resolve to the site root.
+const PORTFOLIO_MEGA = [
+  { label: "Films", href: "portfolio/films.html", res: "navFilms", img: "assets/nav/films.png",
+    desc: "Festival narratives, brand films, and original cinematic worlds." },
+  { label: "Photography", href: "portfolio/photography.html", res: "navPhotography", img: "assets/nav/photography.png",
+    desc: "Portraits, light-painting, and beauty found in imperfection." },
+  { label: "Music", href: "portfolio/music.html", res: "navMusic", img: "assets/nav/music.png",
+    desc: "TedDrops DJ sets and original scores made to move you." },
+  { label: "Literature & Philosophy", href: "portfolio/literature.html", res: "navLiterature", img: "assets/nav/literature.png",
+    desc: "Poetry, essays, and worldbuilding for minds that wander." },
+];
+const HDR_MEGA = { Portfolio: PORTFOLIO_MEGA };
+
+function HdrCaret() {
+  return (
+    <svg className="tk-caret" viewBox="0 0 24 24" width="16" height="16" fill="none"
+         stroke="currentColor" strokeWidth="2.6" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+function HdrChev() {
+  return (
+    <svg className="tk-cat__chev" viewBox="0 0 24 24" width="13" height="13" fill="none"
+         stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function MegaPanel({ active }) {
+  return (
+    <div className="tk-dropdown tk-mega">
+      <div className="tk-mega__grid">
+        {PORTFOLIO_MEGA.map((cat) => (
+          <a className="tk-cat" key={cat.label} href={cat.href}>
+            <span className="tk-cat__card">
+              <img src={NAV_R(cat.res, cat.img)} alt={cat.label} />
+              <span className="tk-cat__title">{cat.label}</span>
+            </span>
+            <span className="tk-cat__desc">{cat.desc}</span>
+          </a>
+        ))}
+      </div>
+      <div className="tk-mega__foot">
+        <span className="tk-mega__foot-note">The full body of work — film, photography, music &amp; word.</span>
+        <a className="tk-mega__btn" href="Portfolio.html">
+          View Portfolio
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function Header({ active = "Portfolio", onNav, onCta }) {
+  const items = ["About", "Portfolio", "Work With Ted", "Contact"];
+  const HREFS = {
+    Home: "index.html",
+    About: "About.html",
+    Portfolio: "Portfolio.html",
+    "Work With Ted": "work-with-ted.html",
+    Contact: "contact.html",
+  };
+  const [open, setOpen] = useStateHdr(false);
+
+  React.useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  const pick = (e, label) => {
+    const href = HREFS[label];
+    if (active === label || !href) { e.preventDefault(); }
+    else { window.location.href = href; }
+    onNav && onNav(label);
+    setOpen(false);
+  };
+
+  const logoSrc = NAV_R("logo", "assets/logo.png");
+
+  return (
+    <header className="tk-header">
+      <a className="tk-brand" href={HREFS.Home}>
+        <img className="logo" src={logoSrc} alt="Ted Saunders" />
+      </a>
+
+      <ul className="tk-nav">
+        {items.map((label) => {
+          const mega = HDR_MEGA[label];
+          return (
+            <li key={label} className={mega ? "tk-has-sub" : ""}>
+              <a
+                className={active === label ? "is-active" : ""}
+                onClick={(e) => pick(e, label)}
+                href={HREFS[label] || "#"}
+              >{label}{mega ? <HdrCaret/> : null}</a>
+              {mega ? <MegaPanel active={active}/> : null}
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* Hamburger — only renders on mobile via CSS */}
+      <button
+        className="tk-menu-toggle"
+        aria-label="Open menu"
+        onClick={() => setOpen(true)}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" />
+        </svg>
+      </button>
+
+      {/* Full-screen mobile menu overlay */}
+      <div className={"tk-mobile-menu" + (open ? " is-open" : "")}>
+        <button
+          className="close"
+          aria-label="Close menu"
+          onClick={() => setOpen(false)}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+          </svg>
+        </button>
+        {items.map((label) => (
+          <React.Fragment key={label}>
+            <a
+              className={active === label ? "is-active" : ""}
+              onClick={(e) => pick(e, label)}
+              href={HREFS[label] || "#"}
+            >{label}</a>
+            {HDR_MEGA[label] ? (
+              <div className="tk-mobile-sub">
+                {HDR_MEGA[label].map((cat) => (
+                  <React.Fragment key={cat.label}>
+                    <a href={cat.href} className="tk-mobile-cat" onClick={() => setOpen(false)}>{cat.label}</a>
+                    <span className="tk-mobile-catdesc">{cat.desc}</span>
+                  </React.Fragment>
+                ))}
+                <a href="Portfolio.html" className="tk-mobile-viewport" onClick={() => setOpen(false)}>View Portfolio</a>
+              </div>
+            ) : null}
+          </React.Fragment>
+        ))}
+        {typeof Button !== "undefined" ? (
+          <Button variant="turquoise" onClick={() => { onCta && onCta(); setOpen(false); }}>
+            EXPLORE THE WORK
+          </Button>
+        ) : (
+          <a className="tk-mobile-cta" href="index.html" onClick={() => setOpen(false)}>EXPLORE THE WORK</a>
+        )}
+      </div>
+    </header>
+  );
+}
+
+window.Header = Header;
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/Footer.jsx ===== */
+// Footer.jsx — opt-in finale, laid out to the approved reference:
+//   LEFT   — "Download My Free Guide" (book cover + name/email + CTA)
+//   CENTER — Ted (the hooded-philosopher scene) as the full-bleed centerpiece
+//   RIGHT  — "Connect with Ted" social rail (rune-marked rows)
+//   BASE   — compass wordmark divider + sitemap nav + agency credit
+const { useState: useFtState } = React;
+
+function Footer({ onSubscribe }) {
+  const [form, setFt] = useFtState({ name: "", email: "" });
+  const set = (k) => (e) => setFt((f) => ({ ...f, [k]: e.target.value }));
+  const submit = (e) => { e.preventDefault(); onSubscribe && onSubscribe(form); };
+
+  const socials = [
+    { label: "Facebook", href: "#", path: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
+    { label: "Instagram", href: "#", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" },
+    { label: "YouTube", href: "#", path: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" },
+    { label: "X", href: "#", path: "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.933zm-1.291 19.57h2.039L6.486 3.24H4.298l13.312 17.483z" },
+  ];
+
+  return (
+    <footer className="tk-footer2">
+      {/* Center centerpiece — Ted with the glowing grimoire */}
+      <div className="ft-bg" aria-hidden="true">
+        <img
+          className="ft-bg__img"
+          src={(window.__resources && window.__resources.footerScene) || "assets/footer-scene.jpg"}
+          alt=""
+        />
+        <div className="ft-bg__fade" />
+      </div>
+
+      <div className="ft-inner">
+        {/* LEFT — opt-in */}
+        <div className="ft-optin">
+          <div className="ft-optin__copy">
+            <h2 className="ft-optin__head">Download My<br />Free Guide</h2>
+            <p className="ft-optin__sub">7 Questions That Turn a Moment Into a Story</p>
+            <form className="ft-optin__form" onSubmit={submit}>
+              <input type="text" placeholder="Name" value={form.name} onChange={set("name")} aria-label="Name" />
+              <input type="email" placeholder="Email" value={form.email} onChange={set("email")} aria-label="Email" required />
+              <button type="submit" className="ft-optin__btn">Download Now</button>
+            </form>
+          </div>
+        </div>
+
+        {/* CENTER — Ted shows through here */}
+        <div className="ft-spacer" aria-hidden="true"></div>
+
+        {/* RIGHT — connect */}
+        <div className="ft-connect">
+          <h2 className="ft-connect__head">Connect<br />with <strong>Ted</strong></h2>
+          <div className="ft-connect__rail">
+            {socials.map((s) => (
+              <a className="ft-social" href={s.href} key={s.label} aria-label={"Follow on " + s.label}>
+                <span className="ft-social__label">Follow on <strong>{s.label}</strong></span>
+                <span className="ft-social__rune" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d={s.path} /></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* BASE — compass wordmark + sitemap */}
+      <div className="ft-base">
+        <div className="ft-mark">
+          <span className="ft-mark__rule" />
+          <div className="ft-mark__center">
+            <img className="ft-mark__logo" src={(window.__resources && window.__resources.logoMark) || "assets/logo-mark.png"} alt="Ted Saunders" />
+          </div>
+          <span className="ft-mark__rule" />
+        </div>
+
+        <nav className="ft-nav" aria-label="Footer">
+          <a href="About.html">About</a>
+          <a href="Portfolio.html">Portfolio</a>
+          <a href="work-with-ted.html">Work With Ted</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div className="ft-credit">
+          <span>Innovated by</span> <strong>INFLUEX</strong>
+        </div>
+        <div className="ft-legal">
+          &copy; 2026 Ted Saunders &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+window.Footer = Footer;
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/LitData.jsx ===== */
+/* ============================================================
+ *  LitData — the written contents of Ted Saunders' literary wing.
+ *  Sample copy in Ted's voice; swap real text in later.
+ *  Exposed as window.LIT_DATA.
+ * ============================================================ */
+(function () {
+  // ---- The Book of Ignorance — an evolving framework of virtues ----
+  const VIRTUES = [
+    { rune: "\u16B1", name: "Wonder", line: "To meet the world as if for the first time, and the thousandth." },
+    { rune: "\u16A6", name: "Humility", line: "The wisest sentence I know still ends in a question." },
+    { rune: "\u16DE", name: "Surrender", line: "Not defeat. The art of letting the river carry what you cannot." },
+    { rune: "\u16C1", name: "Presence", line: "The only country I have never been exiled from is now." },
+    { rune: "\u16D6", name: "Devotion", line: "To return, and return, to the thing that asks everything of you." },
+    { rune: "\u16A0", name: "Courage", line: "To walk into the dark holding nothing but the next step." },
+    { rune: "\u16C9", name: "Stillness", line: "Beneath every answer is a silence that knew it first." },
+    { rune: "\u16E1", name: "Reverence", line: "To treat the ordinary as if it were on loan from the sacred." },
+  ];
+
+  // ---- TedThoughts — short philosophical fragments, each opens into the reader ----
+  const POEMS = [
+    { tag: "TedThought", title: "", lines: ["A fragile ego doesn't want to be wrong and wants to prove that they know best. An egoless person knows they can't know everything and is open learning new things while not needing to prove anything."] },
+    { tag: "TedThought", title: "", lines: ["Any given argument is usually just two egos that refuse to listen. The remedy to create a solution is deep presence and listening."] },
+    { tag: "TedThought", title: "", lines: ["Some things don't need to be figured out. Sometimes you just gotta let go and trust that the storm will pass."] },
+    { tag: "TedThought", title: "", lines: ["Happiness is when you are courageously moving towards what you fear, knowing that it's not only possible, but also incredible, exciting and fulfilling."] },
+    { tag: "TedThought", title: "", lines: ["The more noise outside you, the easier it is to find peace inside. For example, when at crowded or noisy places with many people, you stand out less, therefore you can connect deeper with your own essence.", "When one-on-one or in small groups, you have to be seen and can't hide."] },
+    { tag: "TedThought", title: "", lines: ["Scarcity creates value.\nEx: Release music video before an actual song"] },
+    { tag: "TedThought", title: "", lines: ["Grudges are traps. Forgiveness is freedom."] },
+    { tag: "TedThought", title: "", lines: ["Stories and judgements are excellent ways to avoid happiness of the presence. Remove your judgements/stories and become free in the infinite bliss of here and now."] },
+    { tag: "TedThought", title: "", lines: ["Anyone who says that they are healed and done learning or healing is never done healing. That's their ego trying to have pride, which shows that there is more work to do. A healed person knows that they can't know all and that's ok."] },
+    { tag: "TedThought", title: "", lines: ["Don't tell people your goals. Instead, show them your achievements."] },
+    { tag: "TedThought", title: "", lines: ["Chills don't lie."] },
+    { tag: "TedThought", title: "", lines: ["You won't know how good you are until you put yourself out there."] },
+  ];
+
+  // ---- Articles / Essays — philosophical transmissions ----
+  const ESSAYS = [
+    { imgKey: "hyperlapse",            img: "assets/hyperlapse.jpg",            date: "JAN 14, 2025", title: "The Art of the Hyperlapse" },
+    { imgKey: "videoEditing",          img: "assets/video-editing.png",          date: "JAN 14, 2025", title: "The Art of Documentary-Style Video Editing" },
+    { imgKey: "sixReasonsWix",         img: "assets/6-reasons-wix.jpg",          date: "JAN 03, 2025", title: "6 reasons why Wix, Squarespace and Wordpress are not good enough" },
+    { imgKey: "emotionalStorytelling", img: "assets/emotional-storytelling.jpg", date: "DEC 27, 2024", title: "The Art of Emotional Storytelling in a World of AI" },
+    { imgKey: "aiEndUs",               img: "assets/ai-end-us.jpg",              date: "DEC 27, 2024", title: "AI is going to end us - but you might not have to \"die\"" },
+    { imgKey: "animatedExplainer",     img: "assets/animated-explainer.jpg",     date: "DEC 08, 2024", title: "6 Essential Points when Creating an Animated Explainer Video" },
+  ];
+
+  // ---- Poems — objects with title, date, content ----
+  const THOUGHTS = [
+    {
+      title: "One second shits of moments.",
+      date: "7/12/2013",
+      content: `Did you catch that?
+
+Those were moments created from decisions that took a split second of action.
+
+You see our minds think fast. And one little smile or hello can change your entire destiny.
+
+Like right now. I could do this. Or this. Or this. It's all up to me.
+
+Because we. Are each a miracle. An individual. With the power to shift.`,
+    },
+    {
+      title: "Sometimes when I'm feeling stressed",
+      date: "3/25/2014",
+      content: `Sometimes when I'm feeling stressed
+I remind myself, just do your best
+For best is all that one can do
+And there's no need for feeling blue.
+
+And when you feel you have no time
+Remind yourself, it's in your mind
+For time is just a silly thing
+That humans made to measure lines.`,
+    },
+    {
+      title: "To My Mother",
+      date: "5/3/2014",
+      content: `There once was a mother unique as can be
+Because she's the mother who gave birth to me.
+If it wasn't for her, I'd be but a blur
+So I'm thankful for the time she spent raising we.
+
+My sister and I, are the people we are,
+Because of my mother commitment thus far,
+She nurtured us well,
+And gave us hell.
+But mostly when blasting the bass from my car.
+
+So thank you mom. For being the bomb. For singing us songs and keeping us calm.
+For trusting that we would be safe when we play.
+For teaching us things and showing the way.
+
+Thank you for craftfully cooking us meals and thank you for truth in keeping us real.
+Without you dearest mom, we wouldn't be us. Never making a fuss because we have trust.
+
+I wish I could see you more offten these days,
+but I'm glad that you let me explore life's great maze.
+I love you dearest mom
+So here is a poem
+To show you how proud that I am to say...
+
+My mom is the best. I wouldn't change a hair. She's perfect and beautiful and smart and she cares.
+So cheers to you boo.
+The mom that's so coo.
+I hope that you know how much we love you.`,
+    },
+    {
+      title: "Damn. Life is but a sham.",
+      date: "9/20/2015",
+      content: `Damn. Life is but a sham.
+Said the lamb. To the wolf.
+
+In sheeps clothing.
+"But why the loathing?"
+
+Said the wolf.`,
+    },
+    {
+      title: "Perhaps its phony to say that I'm lonely.",
+      date: "1/8/2017",
+      content: `Perhaps its phony to say that I'm lonely.
+I have have many friends, some lovers some homeys.
+
+Perhaps what I long for in these winter days.
+Is someone to wake up next to, a partner in play.
+
+For my heart is beating a steady slow pace,
+And its not up to me to make my heart race.
+
+By love, by excitement or feeling reborn.
+Not sure if I'm lonely. Not sure if I'm torn.
+
+I feel overwhelmed by the projects unfinished.
+My justification to hang, it feels quite diminished.
+
+With so many goals that I strive for in life.
+Those must be more simple, when you have a wife.
+
+As cool as my friends are, those goals still hold heavy.
+So I isolate myself, until I am ready.
+
+To play and to say yes to anything there.
+But for now I'll stay lonely and focused right here.
+
+Yet here I am sharing, not getting shit done.
+Staying connected because its more fun.
+
+Grateful to be with a community.
+But for now I'll unplug and be friends with this tree.`,
+    },
+    {
+      title: "Sunday",
+      date: "2/6/2017",
+      content: `Sunday
+
+You say we've come so far but darlin this has just begun.
+Cause I dont know myself enough to say that we have won.
+But I see futures thriving high for us to navigate
+Into an orbit undenying of our timeless fate.
+yes I do, I do I do I do I do
+
+I sat upon the sand to contemplate my bride in hand.
+And wrote a list of all the things that I felt would be grand.
+That list was named "my almost perfect woman" so my sane self knew that Id find faults inside this imperfect thing
+that I thought knew, I knew I knew I knew
+
+Now I don't claim to be a seer, but my imagination's clear
+All that you have to do is take my pen and write our story here.
+Cause I will follow what you preach and I will guide you with no leash. And I will queen you with my truth
+That I promise yes I do, I do I do I do I do I do
+
+As though the clouds were just right there, but then you walk in and its mist.`,
+    },
+  ];
+
+  // ---- TedLyrics — song fragments, sung lines ----
+  const LYRICS = [
+    {
+      title: "This is a story about some sorcerers living on this planet knowing…",
+      date: "4/18/2016",
+      content: `This is a story about some sorcerers living on this planet knowing that their force of words aren't given granted because everything do and say are spells casted powerful to change our destinay.
+
+So shoot the magic out your fingertips, out your hips, out your lips knowing it's a gift
+to up lift every person, every moment lived, around you; to be the party for those feeling blue.
+
+What I'm saying is that there is nothing you can't do; with this magic that you have deep inside of you. Any moment you can choose to be the light you spread. Even if alone and feeling trapped inside your head.
+
+Cause sorceress know that hexes are a state of mind. And enchantments can effect you in a wink of time. But knowing YOU are the one who is the wizard here. How about you make an aura for those far and near.
+
+CHORUS:
+Cause we are we are the magic and it feels so right.
+We are we are the magic and we spread that light.
+X2
+
+This second verse is about the curse: Knowing that we are the same yet have different brains.
+Because you and I yes we both are one consciousness; experiencing itself from two different rifts.
+
+But knowing we're the same light
+makes it hella tight--the same source of course, sharing the same force.
+Connected deeper than we'll ever really know. With His life effected strongly from Her clever flow.
+
+The power's in our hands to be each others glee. Perhaps by droppin' pants or bouncin' round with your titties--to make a smile that we both enjoy for miles. That's why we're here together in this super sexy pile.
+
+So thank you for what you contribute.
+For sharing things and speaking up when your typically mute. And for your magic that we hardly ever see. To me this magic is what makes us all Resourcery.
+
+CHORUS:
+Cause we are we are the magic and it feels so right.
+We are we are the magic and we spread that light.
+X2
+
+you The sparkle pony or the sincere hug to smoke a Spliff get it lit and uplift to the fifth d. Mention to infinity. Cause you and me together we write the story if the destiny they didn't see. Coming disruptive original in every way, created from the games we played, on these grounds we made, and this trust we must
+
+Cause we are, we are the magic and it feels so right.
+We are we are the magic,
+Cause these stars theses stars inside us make us shine so bright.`,
+    },
+    {
+      title: "This is a story about a boy named Ted.",
+      date: "1/14/2017",
+      content: `This is a story about a boy named Ted.
+Who has pictures of dragons and wizards next to his bed.
+He was a kid, with a dream to tell the stories in his head.
+Seeing life through the lens of a camera once gifted.
+
+In the flow. With a sense of magic in his mind.
+In class he would write tales bout lives on the line.
+Then after class, Ted, Alex and Jesse hit the bags.
+Full of props, 14 years old and playing roles of cops.
+
+Then in high, school he won awards for his edits,
+Flashed through four years of college with production as his credits.
+
+The left boston, and moved straight to Hollywood,
+Where he knew he would meet the people that new whats good.
+
+An adult, now responsible to pay his bills with his skills.
+Making a new video, every two weeks to build his reel.
+
+Then at 26, he hit his first streak.
+And went from 12 Subscribers, to a million views in one week.
+
+Living his dream, pouring out his soul onto the screen.
+Writing directing whimsical films told bout the deepest of his being.
+
+An explorer, - of art, wellness, technology an oras.
+In awe and excitement of the glory coming toward us.
+
+A ninja bro, in his words, edits and in the flow.
+Of thoughtless genuine stories bout humans in growth.
+
+Building Solar power video booths, then capturing dreams with em.
+Designing tech to get the people to connect.
+
+A creative mind, designing the fine details of lines in time.
+Setting pace for new projects he's never faced.
+
+Now what today, could this humble guy ask to become his fate.
+Just for you to know he's here and ready to take on the day.
+
+So come what may, it doesn't have to pay but hey it helps that way.
+Im here to serve, and swerve in ways that birth the thoughts of our best days.
+
+Whether to come, or having been, wether a blessing or a sin,
+May these images be felt, cause both of us deserve this win.
+
+This is my Reel.
+An expression of things I feel.
+To show you who. You should give your attention to.
+
+God bless you.`,
+    },
+    {
+      title: "She had them hips right. Tight jeans and the crop top.",
+      date: "5/26/2025",
+      content: `Abs like a snake, torso like a hot dog.
+Smooth like buddah, with moves like no others.
+She could groove like a goddess that glues all the brothers.
+
+I got shook. In a trance by her dance.
+With one look, she commands with her glance.
+Had to post up and wait for my chance.
+Cut shorties like that get that proper romance.
+
+Then when we dropped in, some depth was discovered.
+That day she had changed, awakened, uncovered.
+Like a cosmic fate, twin flames, came together.
+As I spoke of truth, On God, it was clever.
+
+As fate would have it the awakening was happening.
+We were laughing, on the floor, talking madness
+Micro dose acid, post sound bath and be blastin into action
+
+{CHORUS}
+She had them hips right. Tight jeans and the crop top.
+Abs like a snake, body knock ya socks off
+….Shits about to pop off
+
+She had them hips right. Fast forward many nights.
+I didnt get her number and went back to my own life.
+You see I had a good girl but the sex was aight.
+But something bout this one, stuck in my mind/night.
+
+What was I do to, to choose between two,
+Current girl was open, but this other was true.
+In the fact that she knew her path.
+And didn't want to share me with another in tact.
+
+Then one new year's I dropped in with her mom.
+Told her about my crush, and that her daughter was the bomb.
+Surprised, she said, don't be a playa young man,
+Then she told her daughter that I wanted her hand.
+
+Meanwhile my girl was down to share on this plan.
+A classic tale of trust, yet destined to go bust
+Cuz she couldn't share me, devoted to the path
+Of a closed union, I had to face the facts.
+
+{CHORUS}
+
+She had them hips right. And her mind right too.
+Drove me wild just by speaking her truth.
+How could a woman this young be so deep
+Wrapped around my heart, in my dreams when I sleep.
+
+These values beliefs, lines drawn in the sand.
+With only one path to becoming her man.
+I had to commit, all in, leave my current boo.
+Said goodby, but I knew it was right to do.
+
+With the open space to keep her safe,
+we depend faith, created greatness.
+Dreamed awake, and to this day we thrive,
+amazed, the love remains, despite some pains along the way.
+
+But now I praise a love so brave, and to my grave I love you babe.
+We ride this wave, immune to hate, we elevate and co-create, the codes of fate, and radiate a love so great, a love so great.
+Lord knows Our love is the force as we radiate.
+
+The beauty and the purity was
+Embodied in her essence, my soul felt compulsion.
+
+Amazonian hair the curs on the lock lock
+me in a stare.
+
+She said she had an awakening that night
+I guess I did too, as we talked about the majesty of truth.
+
+Fast forward, we go toward a love so deep but couldn't say it.
+Had to create a code word for I love you, code word blueberries.
+Staring at her eyes in the hot tup, blue berries
+
+I had two babes at the time, but she wasn't down to share,
+Demanding path of union, 1 on 1 only fair.
+So I took the eal.`,
+    },
+    {
+      title: "EYE TO EYE",
+      date: "6/24/2025",
+      content: `Once upon a time there was a God so happening that they bless all the people with the power of compassion.
+Awakened every soul, uplifted the masses, with the hopeono, the ancient rapture.
+
+There was peace on the land, unity everlasting, seen as humans, with their flaws and their fashions. People, they stand, with their faith in their grasp and its seen on their face that the feel each others sadness.
+
+You see. Your just like me, or at least you can be, not defined by your skin or your ethnicity.
+Cus is time that we blend, to a humanity, where we put down the guns, to see the truth in the screams, and the need for safety because we're all just doing our best, all just trying to rest, all just finding our paths, as mortals of flesh, oppressed by the powers we can't help but resist.
+
+So let rise so high (rise so high)
+We seeing eye to eye (eye to eye)
+We bringing up the vibe (up the vibe)
+Together, so alive (so alive)
+
+These days you cant go online with out a protest, a mob and some picket signs. Without a new mess, new law, new Columbine, and yet so many ar e scared feeling out of time.
+
+But what ever happened to the golden rule, its like old allies now act a fool. It's like we all forget that each other was cool, I guess times do change, and people do too.
+
+I just wish upon an earth that everybody could see, that it's not so hard to drop the ego and agree. at the end of the day nobody's really wrong, and if this could only be seen more people would belong.
+
+If we could stop projecting and realize that there are gifts in the words of the ones we despise, cus as soon as we know we can't know what unfolds, humility can turn with nobility of soul.
+
+So let rise so high (rise so high)
+We seeing eye to eye (eye to eye)
+We bringing up the vibe (up the vibe)
+Because we're so alive (so alive)
+
+Yo I know this sounds corny, but it takes one drop, to start up a ripple that moves a whole lot.
+To rise like a phoenix and burn in the pain, of acceptance of it all, letting go of the shame.
+
+Some times we gotta choose not the path that we want, but the path thats higher for the good of the bunch. The path that hurts, yet its the right thing, because pain can be alchemized beyond suffering.
+
+And then maybe one day that vibe you create, it turns from a drop into a tidal wave, as others join in,
+to lead and be brave, as we unify together, yo, what do you say?
+
+There's no reason to wait, so absolve all your pain, forgive all the ones that have driven you insane, let go of the grudges and be free in the plane, of a thriving humanity, which together we create.
+
+So let rise so high (rise so high)
+We seeing eye to eye (eye to eye)
+We bringing up the vibe (up the vibe)
+Because we're so alive (so alive)
+
+So let rise so high (rise so high)
+We seeing eye to eye (eye to eye)
+We bringing up the vibe (up the vibe)
+Because we're so alive (so alive)`,
+    },
+    {
+      title: "Baby, Change with Me",
+      date: "6/8/2017",
+      content: `You drive me to the point of suicide.
+That old me no longer wants you inside.
+Because the things you said you can't undo.
+Therefore that old me is no part of you.
+
+I wish it was easy or me to say
+that leaving you was really easy
+cuz baby there's no one that I love more.
+Than the old you I wish you would be no more.
+
+So baby change with me.
+Lets be someone who we aught to be
+Lets rise each other up in ecstasy.
+Oh baby, please just change with me.
+
+I know that change, it seems impossible.
+But to say I was who I was back then
+Would be impossible because I know
+that I have changed from so much of my growth.
+
+So baby change with me.
+Lets be somebody who we once believed
+lets go do all the things that make us see
+That its worth a shot to change with me.
+
+Baby change with me
+We can do go upon our destiny
+With you by my side, just take the leap
+Oh baby, please just change with me.
+
+Lets change our evil ways.
+Lets change the fact that we make big mistakes.
+Lets keep our promise and integrity.
+By promising the new you and the new me.
+
+Lets communicate.
+Something we're pretty good at wouldn't you say.
+Just be real with me.
+And baby this can be our destiny.
+
+But Im scared to do it with you.
+Im scared to admit that there may be not much thats new.
+That really deep inside of you.
+You are to programmed by the past.
+
+Out there in the world,
+there may be someone better than you girl.
+For me, but see I can not really see
+another person so imperfectly perfect you see.
+
+So what if instead,
+you didn't change the thinking in your head
+And I remain just who I am instead.
+You be you, and I'll be Ted.
+
+And I can know not to judge you for the things you do and say.
+I can know to learn to love all of the things that drive me crazy. Oh, so crazay.
+Because I dont claim to be perfect. And I don't expect you to be. Maybe without changing each other, we can simply change we. And change the way we acknowledge, and listen and accept you for you and me for me. Cause overtime I see you cry, it's when I know I'm so fallen in love you see. With all of your vulnerabilities. And maybe you shouldn't promise me a thing. And you can stay free.
+Just know I will not give up on we.
+Unless you fuck with me. And then I'll change the guy I once was, see.`,
+    },
+  ];
+
+  // ---- Worldbuilding — a drawer of unfinished universes ----
+  const WORLDS = [
+    { img: "ipFated", title: "The Fated", kind: "Cosmology", note: "A civilization that can see every outcome but one — its own choosing." },
+    { img: "ipInevitable", title: "Inevitable", kind: "Architecture of Time", note: "What if the future already happened, and memory is just the echo running backward?" },
+    { img: "ipProsopagnosia", title: "Prosopagnosia", kind: "A World Without Faces", note: "A society that recognizes souls by their weather, not their features." },
+    { img: "ipJuiced", title: "Juiced", kind: "Field Sketch", note: "Appetite as a religion. A neon parable about the hunger that eats its own god." },
+    { img: "filmStill", title: "The Bestiary of Virtues", kind: "Symbolic System", note: "Eight archetypal creatures, each the living embodiment of a virtue to attune to." },
+  ];
+
+  // ---- Films ----
+  const PAST_FILMS = [
+    { img: "posterPlaces", title: "Oh, the Places You\u2019ll Go", year: "2014", cat: "Documentary",
+      note: "A psychedelic odyssey through the dust and devotion of the playa." },
+    { img: "posterSynthesis", title: "The Great Synthesis", year: "2023", cat: "Experimental",
+      note: "There is no light without shadow — a meditation on duality and return." },
+  ];
+  const FUTURE_FILMS = [
+    { img: "ipInevitable", title: "Inevitable", year: "In Development", cat: "Sci-Fi Feature",
+      note: "Time is not a line. It is a room we keep walking back into." },
+    { img: "ipFated", title: "The Fated", year: "In Development", cat: "Mythic Drama",
+      note: "To know your destiny is the only way to lose it." },
+    { img: "ipProsopagnosia", title: "Prosopagnosia", year: "In Development", cat: "Psychological",
+      note: "A man who cannot see faces falls in love with the shape of a presence." },
+  ];
+
+  window.LIT_DATA = { VIRTUES, POEMS, ESSAYS, THOUGHTS, LYRICS, WORLDS, PAST_FILMS, FUTURE_FILMS };
+})();
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/LitSections.jsx ===== */
+// ============================================================
+//  LitSections — the environments of the literary wing.
+//  Reusable Row (Tedflix browse), reveal hook, and the six
+//  section components. Exposed on window.
+// ============================================================
+const { useRef: useLsRef, useEffect: useLsEffect, useState: useLsState } = React;
+const LR = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
+
+// Render a single TedThought aphorism to a portrait "paper" card image
+// (data URL) for the WebGL CircularGallery planes.
+function litThoughtCardURL(text, i) {
+  const W = 700, H = 900;
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const x = c.getContext("2d");
+  const g = x.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, "#11151d"); g.addColorStop(1, "#06080d");
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+  x.strokeStyle = "rgba(232,183,119,0.32)"; x.lineWidth = 3;
+  x.strokeRect(26, 26, W - 52, H - 52);
+  x.fillStyle = "rgba(232,183,119,0.5)";
+  x.font = "180px Georgia, 'Times New Roman', serif";
+  x.textBaseline = "top";
+  x.fillText("\u201C", 64, 70);
+  x.fillStyle = "#f2e6d2";
+  x.font = "italic 46px Georgia, 'Times New Roman', serif";
+  const words = String(text).split(" ");
+  const maxW = W - 150; let line = ""; const lines = [];
+  for (const w of words) {
+    const test = line ? line + " " + w : w;
+    if (x.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  let y = 300;
+  for (const l of lines) { x.fillText(l, 75, y); y += 64; }
+  x.fillStyle = "rgba(232,183,119,0.72)";
+  x.font = "bold 22px Arial, sans-serif";
+  x.fillText("T E D T H O U G H T S", 75, H - 110);
+  return c.toDataURL("image/jpeg", 0.86);
+}
+
+function LpPlay() { return (<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="7,4 21,12 7,20" /></svg>); }
+function LpArrowR() { return (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>); }
+function LpArrowL() { return (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>); }
+
+// Reveal-on-scroll — safety interval so content never strands hidden.
+function useLpReveal() {
+  const ref = useLsRef(null);
+  useLsEffect(() => {
+    const el = ref.current; if (!el) return;
+    const show = (n) => {
+      if (n.classList.contains("is-in")) return;
+      n.classList.add("is-in");
+      setTimeout(() => { n.style.transition = "none"; n.style.opacity = "1"; if (!n.hasAttribute("data-par")) n.style.transform = "none"; }, 1100);
+    };
+    const reveal = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      el.querySelectorAll(".lp-reveal").forEach((n) => { const r = n.getBoundingClientRect(); if (r.top < vh * 0.92 && r.bottom > 0) show(n); });
+    };
+    reveal();
+    window.addEventListener("scroll", reveal, { passive: true });
+    window.addEventListener("resize", reveal);
+    const iv = setInterval(reveal, 500);
+    return () => { window.removeEventListener("scroll", reveal); window.removeEventListener("resize", reveal); clearInterval(iv); };
+  }, []);
+  return ref;
+}
+
+// Horizontal browse row with ‹ › arrows (transform-driven).
+function LpRow({ children, par }) {
+  const viewRef = useLsRef(null);
+  const trackRef = useLsRef(null);
+  const [x, setX] = useLsState(0);
+  const [lim, setLim] = useLsState(0);
+  const measure = () => {
+    const v = viewRef.current, t = trackRef.current;
+    if (!v || !t) return 0;
+    return Math.min(0, v.clientWidth - t.scrollWidth);
+  };
+  const apply = (nx, animate) => {
+    const t = trackRef.current; if (!t) return;
+    t.style.transition = animate ? "transform .6s cubic-bezier(.4,0,.2,1)" : "none";
+    t.style.transform = "translateX(" + nx + "px)";
+  };
+  const step = (dir) => {
+    const v = viewRef.current; if (!v) return;
+    const min = measure(); setLim(min);
+    setX((cur) => { const nx = Math.max(min, Math.min(0, cur + dir * -v.clientWidth * 0.7)); apply(nx, true); return nx; });
+  };
+  useLsEffect(() => {
+    const onResize = () => { const min = measure(); setLim(min); setX((cur) => { const nx = Math.max(min, Math.min(0, cur)); apply(nx, false); return nx; }); };
+    onResize();
+    const t1 = setTimeout(onResize, 250), t2 = setTimeout(onResize, 1000);
+    window.addEventListener("resize", onResize);
+    return () => { window.removeEventListener("resize", onResize); clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+  return (
+    <div className="lp-row lp-reveal" data-par={par}>
+      <button className="lp-row__arrow lp-row__arrow--prev" aria-label="Previous" data-dim={x >= 0 ? "" : undefined} onClick={() => step(-1)}><LpArrowL /></button>
+      <div className="lp-row__view" ref={viewRef}>
+        <div className="lp-row__track" ref={trackRef}>{children}</div>
+      </div>
+      <button className="lp-row__arrow lp-row__arrow--next" aria-label="Next" data-dim={x <= lim ? "" : undefined} onClick={() => step(1)}><LpArrowR /></button>
+    </div>
+  );
+}
+
+function LpHead({ eyebrow, title, blurb, par }) {
+  return (
+    <div className="lp-head lp-reveal" data-par={par}>
+      <div className="lp-head__eyebrow">{eyebrow}</div>
+      <h2 className="lp-head__title lp-title-fill">{title}</h2>
+      {blurb && <p className="lp-head__blurb">{blurb}</p>}
+    </div>
+  );
+}
+
+// Editorial section banner — full-bleed cinematic still with the section
+// title in a card straddling the bottom edge (gold accent bar), intro below.
+function LpBanner({ img, eyebrow, title, blurb, side, compass, children }) {
+  return (
+    <div className="lp-banner lp-reveal">
+      {side ? <div className="lp-banner__side" aria-hidden="true">{side}</div> : null}
+      {compass ? (
+        <div className="lp-banner__compass" aria-hidden="true">
+          <svg viewBox="0 0 360 360" fill="none" stroke="currentColor">
+            <circle cx="180" cy="180" r="150" strokeWidth="1.2" />
+            <circle cx="180" cy="180" r="140" strokeWidth="7" strokeDasharray="1.6 13" opacity="0.85" />
+            <circle cx="180" cy="180" r="112" strokeWidth="0.9" />
+            <circle cx="180" cy="180" r="72" strokeWidth="0.9" />
+            <path d="M180 24 L180 336 M24 180 L336 180" strokeWidth="0.8" opacity="0.55" />
+            <path d="M52 52 L308 308 M308 52 L52 308" strokeWidth="0.6" opacity="0.35" />
+            <path d="M180 40 L196 180 L180 320 L164 180 Z" fill="currentColor" fillOpacity="0.18" stroke="none" />
+            <path d="M40 180 L180 196 L320 180 L180 164 Z" fill="currentColor" fillOpacity="0.12" stroke="none" />
+            <circle cx="180" cy="180" r="7" fill="currentColor" fillOpacity="0.55" stroke="none" />
+          </svg>
+        </div>
+      ) : null}
+      <div className="lp-banner__media">
+        <img src={img} alt="" aria-hidden="true" />
+        <div className="lp-banner__vig" />
+      </div>
+      <div className="lp-banner__card">
+        {eyebrow ? <div className="lp-banner__eyebrow">{eyebrow}</div> : null}
+        {title ? <h2 className="lp-banner__title">{title}</h2> : null}
+        <div className="lp-banner__bar" />
+        {children || null}
+      </div>
+      {blurb ? <p className="lp-banner__blurb">{blurb}</p> : null}
+    </div>
+  );
+}
+
+/* ============ THE BOOK OF IGNORANCE ============ */
+const BOOK_CHAPTERS = [
+  { no: "01", title: "Truth",        line: "Why the first act of wisdom is to lay down the weight of certainty.", img: "film1", file: "assets/film/photo-1.jpg" },
+  { no: "02", title: "Safety",       line: "Leaving a door in every belief, so the weather of truth can pass through.", img: "film2", file: "assets/film/photo-2.jpg" },
+  { no: "03", title: "Compassion",   line: "To meet the world as if for the first time, and the thousandth.", img: "film3", file: "assets/film/photo-3.jpg" },
+  { no: "04", title: "Relationships", line: "The wisest sentence I know still ends in a question.", img: "film4", file: "assets/film/photo-4.jpg" },
+  { no: "05", title: "Surrender",           line: "Not defeat — the art of letting the river carry what you cannot.", img: "film5", file: "assets/film/photo-5.jpg" },
+  { no: "06", title: "Presence",            line: "The only country I have never been exiled from is now.", img: "film6", file: "assets/film/photo-6.jpg" },
+  { no: "07", title: "Devotion",            line: "To return, and return, to the thing that asks everything of you.", img: "film7", file: "assets/film/photo-7.jpg" },
+  { no: "08", title: "The Strange Beauty",  line: "On uncertainty as the last open field where meaning is still allowed to grow.", img: "film8", file: "assets/film/photo-8.jpg" },
+];
+
+const CHAPTER_PREVIEWS = [
+  "The first act of wisdom is not the finding of truth — it is the laying down of the need to have found it already. We carry our conclusions like armor, and wonder why we cannot feel the rain.\n\nTruth is not a destination you arrive at. It is a weather system you learn to read. And the reading begins the moment you stop insisting you already know the forecast.\n\nI have been wrong more times than I have been right. That is not a confession — it is a credential.",
+  "A belief with no door is a prison. The wisest frameworks I have ever built were the ones I left deliberately unfinished — a gap at the edge where the next thing could enter without destroying what was already there.\n\nSafety is not the absence of threat. It is the presence of enough space inside you that the threat does not have to become your identity.\n\nLeave a door in everything you believe. Not because you are uncertain — because you are honest.",
+  "I met a man once who had not been seen in forty years. Not unseen by others — unseen by himself. He moved through the world with tremendous efficiency and zero presence.\n\nCompassion begins where efficiency ends. It begins in the moment you choose to be inconvenienced by another person's reality.\n\nTo meet the world as if for the first time, and the thousandth — that is not naivety. That is the discipline of remaining open.",
+  "Every relationship is a translation. You speak your language; they speak theirs. The space between — the gap where meaning gets lost and remade — that is where love actually lives.\n\nWe spend so much time trying to be understood. Very little time learning to understand. The wisest sentence I know still ends in a question.\n\nAsk more. Conclude less. That is the whole of it.",
+  "The river does not struggle to arrive at the sea. We, who were made of the same water, spend entire lifetimes fighting the current we came from.\n\nSurrender is not the white flag of the defeated. It is the open hand of someone who has finally understood what they were holding was never theirs to keep.\n\nNot defeat — the art of letting the river carry what you cannot.",
+  "There is only one country I have never been exiled from. Its name is Now. It has no map. No border control. No memory of how you arrived. Only the fact of your being here.\n\nI have lived in the past like a tenant who refuses to move out. I have lived in the future like a man renovating a house he has not yet bought.\n\nThe only country I have never been exiled from is now. And I keep forgetting to live there.",
+  "Return. That is the whole of it. After the doubt, after the distraction, after the long season of forgetting — return.\n\nDevotion is not the absence of wandering. It is the practice of coming back. The thing that asks everything of you is not cruel — it is simply honest about the price of becoming.\n\nTo return, and return, to the thing that asks everything of you. That is devotion. That is the only kind of loyalty that means anything.",
+  "Uncertainty is not the enemy of meaning. It is the only field wide enough for meaning to grow in. Certainty closes the story too soon.\n\nThe strange beauty I am pointing at is not the beauty of suffering — it is the beauty of not-knowing as a permanent address. Of living in the question without demanding it resolve itself on your timeline.\n\nOn uncertainty as the last open field where meaning is still allowed to grow. Stay there. Build there. That is where the real work happens.",
+];
+
+function BookChapterModal({ chapter, idx, onClose }) {
+  const [email, setEmail] = React.useState("");
+  const [submitted, setSubmitted] = React.useState(false);
+  const [err, setErr] = React.useState("");
+
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!email || !/\S+@\S+\.\S+/.test(email)) { setErr("Please enter a valid email."); return; }
+    setErr("");
+    setSubmitted(true);
+  }
+
+  return ReactDOM.createPortal(
+    <div className="lp-bmodal" role="dialog" aria-modal="true" onClick={onClose}>
+      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      <div className="lp-bmodal__scroll" onClick={(e) => e.stopPropagation()}>
+        <div className="lp-bmodal__card">
+          <div className="lp-bmodal__eyebrow">Chapter {chapter.no} · The Book of Ignorance</div>
+          <h2 className="lp-bmodal__title">{chapter.title}</h2>
+          <div className="lp-ttmodal__divider" style={{ marginBottom: 32 }} />
+
+          <div className="lp-bmodal__preview-wrap">
+            <p className="lp-bmodal__preview-text">{CHAPTER_PREVIEWS[idx]}</p>
+            <div className="lp-bmodal__preview-fade" aria-hidden="true" />
+          </div>
+
+          <div className="lp-bmodal__gate">
+            <div className="lp-bmodal__gate-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            {submitted ? (
+              <div className="lp-bmodal__success">
+                <p>You're on the list. We'll reach you when the book arrives.</p>
+              </div>
+            ) : (
+              <>
+                <p className="lp-bmodal__gate-label">The full chapter is locked until publication.</p>
+                <p className="lp-bmodal__gate-sub">Leave your email — be the first to know when <em>The Book of Ignorance</em> is released.</p>
+                <form className="lp-bmodal__form" onSubmit={handleSubmit} noValidate>
+                  <input
+                    className="lp-bmodal__input"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setErr(""); }}
+                    aria-label="Email address"
+                  />
+                  <button className="lp-bmodal__submit" type="submit">Notify Me</button>
+                </form>
+                {err && <p className="lp-bmodal__err">{err}</p>}
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+function BookOfIgnorance({ virtues, bg, onCta }) {
+  const ref = useLpReveal();
+  const [openIdx, setOpenIdx] = React.useState(null);
+  return (
+    <section className="lp-sec lp-sec--book lp-grain" id="book-of-ignorance" data-screen-label="The Book of Ignorance" ref={ref}>
+      {openIdx !== null && (
+        <BookChapterModal
+          chapter={BOOK_CHAPTERS[openIdx]}
+          idx={openIdx}
+          onClose={() => setOpenIdx(null)}
+        />
+      )}
+      <div className="lp-seam-top" />
+      <LpBanner img={bg || LR("parchmentDesk", "assets/opt/parchment-desk.jpg")}
+        compass={true}
+        eyebrow="A Living Framework · A Book of Virtues"
+        title={<span>The Book of Ignorance</span>}
+        blurb={<span>Not a doctrine but a practice — a living framework built on a single idea: that truth cannot be possessed, only passed through. A paradigm-shifting book of virtues to attune to, the way a sailor attunes to weather.</span>} />
+      <LpRow par="0.04">
+        {BOOK_CHAPTERS.map((c, i) => (
+          <div className="lp-chapter" key={i} onClick={() => setOpenIdx(i)} role="button" tabIndex={0}
+            onKeyDown={(e) => { if (e.key === "Enter") setOpenIdx(i); }}>
+            <div className="lp-chapter__content">
+              <div className="lp-chapter__no" aria-hidden="true">{c.no}</div>
+              <div className="lp-chapter__tag">Chapter {c.no}</div>
+              <h3 className="lp-chapter__title">{c.title}</h3>
+              <span className="lp-chapter__read">Read Preview<span aria-hidden="true">→</span></span>
+            </div>
+          </div>
+        ))}
+      </LpRow>
+      <div className="lp-book__cta-wrap lp-reveal">
+        <button className="lp-cta lp-cta--gold" onClick={onCta}>Explore The Book of Ignorance<span className="arr">→</span></button>
+      </div>
+    </section>
+  );
+}
+
+/* ============ SHARED: shareable link button ============ */
+function ShareBtn({ param, value, dark }) {
+  const [copied, setCopied] = React.useState(false);
+  const url = window.location.origin + window.location.pathname + "?" + param + "=" + encodeURIComponent(value);
+  function copy(e) {
+    e.stopPropagation();
+    navigator.clipboard.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2200); });
+  }
+  return (
+    <button type="button" className={"lp-share-btn" + (dark ? " lp-share-btn--dark" : "")} onClick={copy}>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+      </svg>
+      {copied ? "Link copied!" : "Copy link"}
+    </button>
+  );
+}
+
+/* ============ POETRY — scroll cards + Poems/Lyrics categories ============ */
+function getPreview(t) {
+  const text = typeof t === "object" && t.content ? t.content : (typeof t === "string" ? t : "");
+  const clean = text.replace(/\n/g, " ").trim();
+  const matches = clean.match(/[^.!?]+[.!?]+/g) || [];
+  const snippet = matches.slice(0, 2).join(" ").trim();
+  return snippet || clean.slice(0, 140);
+}
+
+function PoetryRow({ thoughts, lyrics }) {
+  const ref = useLpReveal();
+  const [mode, setMode] = useLsState("poem");
+  const [openIdx, setOpenIdx] = useLsState(null);
+  const items = mode === "lyrics" ? (lyrics || []) : (thoughts || []);
+  const label = mode === "lyrics" ? "Lyrics" : "Poem";
+  const openItem = openIdx === null ? null : items[openIdx];
+  // For poem objects: use .content; for lyrics (strings): use the string itself
+  const openParas = openItem
+    ? (typeof openItem === "object" ? null : (TT_LYRIC_FULL[openIdx] || [openItem]))
+    : null;
+  // lock body scroll + close on Escape while the reader is open
+  useLsEffect(() => {
+    if (openIdx === null) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") setOpenIdx(null); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [openIdx]);
+  return (
+    <section className="lp-sec lp-sec--poetry" id="poetry" data-screen-label="Poetry" ref={ref}>
+      <div className="lp-seam-top" />
+      <LpBanner img={LR("poetryBg", "assets/poetry-bg.jpg")}
+        blurb={<span>Fragments of meaning written down before they disappeared. Pull one from the desk — it opens into a quiet, fullscreen room built for a single poem.</span>}>
+        <div className="lp-ttfilter lp-ttfilter--inline" role="tablist" aria-label="Choose category">
+          <button type="button" role="tab" aria-selected={mode === "poem"}
+            className={"lp-ttfilter__btn" + (mode === "poem" ? " is-on" : "")}
+            onClick={() => setMode("poem")}>Poems</button>
+          <button type="button" role="tab" aria-selected={mode === "lyrics"}
+            className={"lp-ttfilter__btn" + (mode === "lyrics" ? " is-on" : "")}
+            onClick={() => setMode("lyrics")}>Lyrics</button>
+        </div>
+      </LpBanner>
+      <div className="lp-ttwrap">
+        <LpRow par="0.04">
+          {items.map((t, i) => (
+            <div className="lp-tt" key={mode + i}>
+              <p className="lp-tt__quote">{typeof t === "object" ? t.title : t}</p>
+              <p className="lp-tt__preview">{getPreview(t)}</p>
+              <button type="button" className="lp-tt__view"
+                onClick={() => setOpenIdx(i)}>View {label}<span className="arr">→</span></button>
+            </div>
+          ))}
+        </LpRow>
+      </div>
+
+      {openIdx !== null ? ReactDOM.createPortal(
+        <div className="lp-pmodal" role="dialog" aria-modal="true" aria-label={label} onClick={() => setOpenIdx(null)}>
+          <button type="button" className="lp-pmodal__x" aria-label="Close" onClick={() => setOpenIdx(null)}>×</button>
+          <button type="button" className="lp-pmodal__nav lp-pmodal__nav--prev" aria-label={"Previous " + label}
+            onClick={(e) => { e.stopPropagation(); setOpenIdx((openIdx - 1 + items.length) % items.length); }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <button type="button" className="lp-pmodal__nav lp-pmodal__nav--next" aria-label={"Next " + label}
+            onClick={(e) => { e.stopPropagation(); setOpenIdx((openIdx + 1) % items.length); }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <div className="lp-pmodal__count">
+            <b>{String(openIdx + 1).padStart(2, "0")}</b> / {String(items.length).padStart(2, "0")}
+          </div>
+          <div className="lp-pmodal__scroll" onClick={(e) => e.stopPropagation()}>
+            <div className="lp-pmodal__inner">
+              {openItem && typeof openItem === "object" ? (
+                <div className="lp-pmodal__body lp-pmodal__body--poem">
+                  <div className="lp-pmodal__poem-date">{openItem.date}</div>
+                  <h2 className="lp-pmodal__poem-title">{openItem.title}</h2>
+                  <div className="lp-pmodal__poem-divider" />
+                  {openItem.content.split(/\n\n+/).map((stanza, i) => (
+                    <p key={i} className="lp-pmodal__poem-stanza">
+                      {stanza.split("\n").map((ln, j, arr) => (
+                        <span key={j}>{ln}{j < arr.length - 1 ? <br /> : null}</span>
+                      ))}
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <div className="lp-pmodal__body">
+                  {openParas && openParas.map((p, i) => (<p key={i}>{p}</p>))}
+                </div>
+              )}
+              <div className="lp-pmodal__share">
+                <ShareBtn param={mode === "lyrics" ? "lyrics" : "poem"} value={typeof openItem === "object" && openItem.title ? openItem.title : String(openIdx)} />
+              </div>
+            </div>
+          </div>
+        </div>, document.body) : null}
+    </section>
+  );
+}
+
+/* ============ ESSAYS ============ */
+const ESSAY_IMGS = [
+  ["film1", "assets/film/photo-1.jpg"], ["ipInevitable", "assets/ip/inevitable.jpg"],
+  ["film3", "assets/film/photo-3.jpg"], ["ipProsopagnosia", "assets/ip/prosopagnosia.jpg"],
+  ["film5", "assets/film/photo-5.jpg"], ["ipFated", "assets/ip/fated.jpg"],
+  ["film7", "assets/film/photo-7.jpg"], ["ipJuiced", "assets/ip/juiced.jpg"],
+];
+
+const ESSAY_BODY = {
+  "The Art of the Hyperlapse": `A hyperlapse is not just a timelapse — it is a camera carried through space while time compresses around it. The technique demands patience: hundreds of frames, each shot a step apart. I first used it on the Kia Telluride campaign, a vast Nevada salt flat, a car that needed to feel like it owned the horizon.`,
+
+  "The Art of Documentary-Style Video Editing": `Documentary editing is the art of finding the story inside the footage rather than imposing one onto it. You show up with a structure. You leave with a different one — better, stranger, more honest. A long pause before an answer tells the audience something no voiceover can. Silence is an edit. Color temperature is an edit.`,
+
+  "6 reasons why Wix, Squarespace and Wordpress are not good enough": `They are builders for builders who do not want to build. The templates look finished — and that is exactly the problem. They look like everyone else's finished thing. SEO suffers. Page speed suffers. And your design, content, and customer data are tenants in someone else's building. A serious brand needs infrastructure it controls.`,
+
+  "The Art of Emotional Storytelling in a World of AI": `AI can generate a story that is structurally correct. What it cannot do is bleed. The specific scar that makes a story irreplaceable is in the detail only one person on earth would think to include. As AI floods every channel, the story only you can tell — because only you lived it — is worth more than ever.`,
+
+  "AI is going to end us - but you might not have to \"die\"": `The version of you that exists today — your assumptions, your habits, the identity you have been protecting — that version is already ending. AI is not killing it. Progress always was. The people who survive are the most narratively flexible: the ones who can tell a new story without requiring the old one to be vindicated first.`,
+
+  "6 Essential Points when Creating an Animated Explainer Video": `Script before everything. The animation serves the words, never the reverse. A weak script with beautiful motion is a beautiful lie. Establish the emotional register in the first ten seconds or lose the audience. Voice and pacing matter more than visual style. Color is not decoration — it is communication. Music is the emotional architecture the animation moves through.`,
+};
+
+function EssayModal({ essays, idx, onClose, onNav }) {
+  const essay = essays[idx];
+  const [copied, setCopied] = React.useState(false);
+  const shareUrl = window.location.origin + window.location.pathname + "?essay=" + encodeURIComponent(essay.title);
+  const heroImg = essay.imgKey === "hyperlapse" ? "assets/hyperlapse-bts.jpg" : LR(essay.imgKey || "", essay.img);
+  const body = ESSAY_BODY[essay.title] || "";
+  const hasPrev = idx > 0;
+  const hasNext = idx < essays.length - 1;
+
+  React.useEffect(() => {
+    setCopied(false);
+  }, [idx]);
+
+  React.useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft" && hasPrev) onNav(idx - 1);
+      if (e.key === "ArrowRight" && hasNext) onNav(idx + 1);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; document.removeEventListener("keydown", onKey); };
+  }, [onClose, onNav, idx, hasPrev, hasNext]);
+
+  function copyLink() {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    });
+  }
+
+  return ReactDOM.createPortal(
+    <div className="lp-emodal" role="dialog" aria-modal="true" onClick={onClose}>
+      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      {hasPrev && (
+        <button type="button" className="lp-emodal__nav lp-emodal__nav--prev" aria-label="Previous article"
+          onClick={(e) => { e.stopPropagation(); onNav(idx - 1); }}>‹</button>
+      )}
+      {hasNext && (
+        <button type="button" className="lp-emodal__nav lp-emodal__nav--next" aria-label="Next article"
+          onClick={(e) => { e.stopPropagation(); onNav(idx + 1); }}>›</button>
+      )}
+      <div className="lp-emodal__scroll" onClick={(e) => e.stopPropagation()}>
+        <div className="lp-emodal__card">
+          {heroImg && <div className="lp-emodal__hero" style={{ backgroundImage: `url(${heroImg})` }} />}
+          <div className="lp-emodal__body">
+            <div className="lp-emodal__date">{essay.date}</div>
+            <h2 className="lp-emodal__title">{essay.title}</h2>
+            <div className="lp-ttmodal__divider" style={{ margin: "20px 0 28px" }} />
+            {body.split("\n\n").map((para, i) => (
+              <p key={i} className="lp-emodal__para">{para}</p>
+            ))}
+            <div className="lp-emodal__footer">
+              <div className="lp-emodal__count">{idx + 1} / {essays.length}</div>
+              <button type="button" className="lp-emodal__share-btn" onClick={copyLink}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+                {copied ? "Link copied!" : "Copy shareable link"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+function EssaysSection({ essays, onOpen }) {
+  const ref = useLpReveal();
+  const [openIdx, setOpenIdx] = React.useState(null);
+  return (
+    <section className="lp-sec lp-sec--essays lp-grain" id="essays" data-screen-label="Articles & Blog" ref={ref}>
+      {openIdx !== null && (
+        <EssayModal essays={essays} idx={openIdx} onClose={() => setOpenIdx(null)} onNav={setOpenIdx} />
+      )}
+      <div className="lp-seam-top" />
+      <LpBanner img={LR("essaysBg", "assets/essays-bg.jpg")}
+        eyebrow="Transmissions · Field Notes"
+        title="Articles & Blog"
+        blurb={<span>Not a blog — a frequency. Observations, meditations, and field notes filed from the edge of what Ted is still trying to understand.</span>} />
+      <LpRow par="0.035">
+        {essays.map((e, i) => {
+          return (
+            <div className="lp-essay lp-reveal" key={i} onClick={() => { onOpen(e.title); setOpenIdx(i); }} role="button" tabIndex={0}
+              onKeyDown={(ev) => { if (ev.key === "Enter") { onOpen(e.title); setOpenIdx(i); } }}>
+              {e.img && <div className="lp-essay__thumb" style={{backgroundImage:`url(${LR(e.imgKey || '', e.img)})`}} />}
+              <div className="lp-essay__meta">
+                <h3 className="lp-essay__title">{e.title}</h3>
+                <div className="lp-essay__date">{e.date}</div>
+              </div>
+            </div>
+          );
+        })}
+      </LpRow>
+    </section>
+  );
+}
+
+/* ============ TEDTHOUGHTS ============ */
+const TT_DATES = ["5/18/2026", "5/18/2026", "5/8/2026", "10/19/2025", "10/19/2025", "9/25/2025", "6/30/2025", "6/14/2025", "5/31/2025", "1/10/2025", "8/13/2024", "8/9/2024"];
+// Full poem text for the reader popup, keyed by card index. Index 0 is written out;
+// others fall back to their card line until full versions are supplied.
+const TT_POEM_FULL = {
+  0: [
+    "One second shots of moments.\nCelebrating, laughing, talking, hugging.",
+    "Did you catch that?\nThose were moments created from decisions that took a split second of action.",
+    "You see our minds think fast. And one little smile or hello can change your entire destiny.",
+    "Like right now. I could do this. Or this. Or this. It's all up to me.",
+    "Because we. Are each a miracle. An individual. With the power to shift.",
+  ],
+  1: [
+    "Sometimes when I'm feeling stressed\nI remind myself, just do your best\nFor best is all that one can do\nAnd there's no need for feeling blue.",
+    "And when you feel you have no time\nRemind yourself, it's in your mind\nFor time is just a silly thing\nThat humans made to measure lines.",
+  ],
+  2: [
+    "Carlos castineda - the art of Dreaming",
+    "There once was a mother unique as can be\nBecause she's the mother who gave birth to me.\nIf it wasn't for her, I'd be but a blur\nSo I'm thankful for the time she spent raising we.",
+    "My sister and I, are the people we are,\nBecause of my mother commitment thus far,\nShe nurtured us well,\nAnd gave us hell.\nBut mostly when blasting the bass from my car.",
+    "So thank you mom. For being the bomb. For singing us songs and keeping us calm.\nFor trusting that we would be safe when we play.\nFor teaching us things and showing the way.",
+    "Thank you for craftfully cooking us meals and thank you for truth in keeping us real.\nWithout you dearest mom, we wouldn't be us. Never making a fuss because we have trust.",
+    "I wish I could see you more offten these days,\nbut I'm glad that you let me explore life's great maze.\nI love you dearest mom\nSo here is a poem\nTo show you how proud that I am to say...",
+    "My mom is the best. I wouldn't change a hair. She's perfect and beautiful and smart and she cares.\nSo cheers to you boo.\nThe mom that's so coo.\nI hope that you know how much we love you.",
+  ],
+  3: [
+    "Damn. Life is but a sham.\nSaid the lamb. To the wolf.\nIn sheeps clothing.\n\u201cBut why the loathing?\u201d\nSaid the wolf.",
+  ],
+};
+// Full lyric text for the reader popup, keyed by lyrics-card index.
+const TT_LYRIC_FULL = {
+  0: [
+    "This is a story about some sorcerers living on this planet knowing that their force of words aren't given granted because everything do and say are spells casted powerful to change our destinay.",
+    "So shoot the magic out your fingertips, out your hips, out your lips knowing it's a gift\nto up lift every person, every moment lived, around you; to be the party for those feeling blue.",
+    "What I'm saying is that there is nothing you can't do; with this magic that you have deep inside of you. Any moment you can choose to be the light you spread. Even if alone and feeling trapped inside your head.",
+    "Cause sorceress know that hexes are a state of mind. And enchantments can effect you in a wink of time. But knowing YOU are the one who is the wizard here. How about you make an aura for those far and near.",
+    "CHORUS:\nCause we are we are the magic and it feels so right.\nWe are we are the magic and we spread that light.\nX2",
+    "This second verse is about the curse: Knowing that we are the same yet have different brains.\nBecause you and I yes we both are one consciousness; experiencing itself from two different rifts.",
+    "But knowing we're the same light\nmakes it hella tight--the same source of course, sharing the same force.\nConnected deeper than we'll ever really know. With His life effected strongly from Her clever flow.",
+    "The power's in our hands to be each others glee. Perhaps by droppin' pants or bouncin' round with your titties--to make a smile that we both enjoy for miles. That's why we're here together in this super sexy pile.",
+    "So thank you for what you contribute.\nFor sharing things and speaking up when your typically mute. And for your magic that we hardly ever see. To me this magic is what makes us all Resourcery.",
+    "CHORUS:\nCause we are we are the magic and it feels so right.\nWe are we are the magic and we spread that light.\nX2",
+    "you The sparkle pony or the sincere hug to",
+    "smoke a Spliff get it lit and uplift to the fifth d. Mention to infinity. Cause you and me together we write the story if the destiny they didn't see. Coming disruptive original in every way, created from the games we played, on these grounds we made, and this trust we must",
+    "Cause we are, we are the magic and it feels so right.\nWe are we are the magic,\nCause these stars theses stars inside us make us shine so bright.",
+  ],
+};
+function TedThoughts({ poems, onOpen, onCta }) {
+  const ref = useLpReveal();
+  const items = poems || [];
+
+  return (
+    <section className="lp-sec lp-sec--thoughts lp-grain" id="tedthoughts" data-screen-label="TedThoughts" ref={ref}>
+      <div className="lp-env"><div className="lp-env__veil" /></div>
+      <div className="lp-seam-top" />
+      <LpBanner img={LR("thoughtsBg", "assets/tedthoughts-bg-v4.png")}
+        eyebrow="Epiphanies · Thought Sparks"
+        title="TedThoughts"
+        blurb={<span>Short philosophical fragments — aphorisms caught mid-flight. Scattered, discovered, alive.</span>} />
+      <LpRow par="0.04">
+        {items.map((p, i) => (
+          <div className="lp-tc" key={i}>
+            <p className="lp-tc__excerpt">{p.lines.join("\n\n")}</p>
+            <div className="lp-tc__foot">
+              <span className="lp-tc__date">{TT_DATES[i] || ""}</span>
+              <ShareBtn param="thought" value={String(i)} />
+            </div>
+          </div>
+        ))}
+      </LpRow>
+      <div className="lp-ttcta lp-reveal">
+        <button className="lp-cta lp-cta--gold" onClick={onCta}>Follow TedThoughts on X<span className="arr">→</span></button>
+      </div>
+    </section>
+  );
+}
+
+/* ============ WORLDBUILDING ============ */
+const WORLD_DETAILS = {
+  "The Fated": {
+    blurb: "A civilization that can see every outcome but one — its own choosing.",
+    synopsis: "In a world where every consequence of every action is visible before it is taken, an entire civilization has built its society around the certainty of prediction. Cities are planned for disasters that haven't happened yet. Wars are avoided — or started — before a single word is exchanged. The only thing the Seers cannot predict is the choice made at the moment of crisis. One woman discovers her own blind spot — and realizes it may be the last free act left in the world.",
+    genre: "Mythic Sci-Fi · Philosophical Drama",
+    characters: ["Ilara — the last unpredicted woman", "The Architect — designer of the prediction system", "The Blind Council — seven elders who govern by consensus of foreseen futures"],
+  },
+  "Inevitable": {
+    blurb: "What if the future already happened, and memory is just the echo running backward?",
+    synopsis: "A physicist discovers that memory and anticipation are the same neurological event — the brain cannot distinguish between remembering the past and remembering the future. As she follows this discovery, she realizes the world around her has already ended and begun again several times over. She is not predicting. She is remembering forward.",
+    genre: "Hard Sci-Fi · Existential Thriller",
+    characters: ["Dr. Maren Cole — the physicist who sees both directions", "The Residue — entities made entirely of events that haven't technically happened yet", "The Archive — a structure that exists outside linear time"],
+  },
+  "Prosopagnosia": {
+    blurb: "A society that recognizes souls by their weather, not their features.",
+    synopsis: "In this world, faces are invisible — literally blank to every perceiving mind. Identity is communicated entirely through emotional atmosphere: the quality of someone's presence, their behavioral weather, the particular texture of how they occupy a room. Two strangers fall in love without ever knowing what the other looks like. Then one of them develops the ability to see.",
+    genre: "Surrealist Drama · Love Story",
+    characters: ["Calla — who develops the ability to see faces", "The Weathered — a community that has evolved language around emotional atmosphere", "The Visible Man — the only person whose face can be seen by all"],
+  },
+  "Juiced": {
+    blurb: "Appetite as a religion. A neon parable about the hunger that eats its own god.",
+    synopsis: "In a near-future city where desire has been commodified at the neurological level, a black market emerges for raw, unfiltered wanting. The city runs on the energy of manufactured craving. A dealer in authentic hunger discovers that the most valuable commodity in the world is a single moment of wanting nothing at all.",
+    genre: "Noir · Speculative Fiction",
+    characters: ["Rael — the hunger dealer", "The Sated — a cult of people who have consumed themselves into emptiness", "The Origin — the source of the first manufactured desire"],
+  },
+  "The Bestiary of Virtues": {
+    blurb: "Eight archetypal creatures, each the living embodiment of a virtue to attune to.",
+    synopsis: "A living symbolic system in which each of the eight virtues from The Book of Ignorance is embodied by a mythic creature. Not allegory — these creatures are real within their world, and to encounter one is to be changed by it. The world is a cartography of moral weather, where the health of a civilization is measured by which creatures are still seen in the wild.",
+    genre: "Mythic Cosmology · Illustrated World",
+    characters: ["The Wanderer Bear — Wonder", "The Hollow Stag — Humility", "The Burning Moth — Devotion", "The Glass Whale — Presence", "The Root Fox — Surrender"],
+  },
+};
+
+function WorldModal({ world, onClose }) {
+  const details = WORLD_DETAILS[world.title] || {};
+  React.useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; document.removeEventListener("keydown", onKey); };
+  }, [onClose]);
+  return ReactDOM.createPortal(
+    <div className="lp-wmodal" role="dialog" aria-modal="true" onClick={onClose}>
+      <button type="button" className="lp-ttmodal__x" aria-label="Close" onClick={onClose}>×</button>
+      <div className="lp-wmodal__scroll" onClick={(e) => e.stopPropagation()}>
+        <div className="lp-wmodal__card">
+          <div className="lp-wmodal__hero" style={{ backgroundImage: `url(${world.imgSrc})` }}>
+            <div className="lp-wmodal__hero-veil" />
+            <div className="lp-wmodal__hero-label">
+              <span className="lp-wmodal__kind">{world.kind}</span>
+              <h2 className="lp-wmodal__title">{world.title}</h2>
+            </div>
+          </div>
+          <div className="lp-wmodal__body">
+            <p className="lp-wmodal__blurb">{details.blurb || world.note}</p>
+            <div className="lp-ttmodal__divider" style={{ margin: "24px 0 28px" }} />
+
+            <div className="lp-wmodal__section">
+              <div className="lp-wmodal__section-label">Synopsis</div>
+              <p className="lp-wmodal__text">{details.synopsis}</p>
+            </div>
+
+            <div className="lp-wmodal__row">
+              <div className="lp-wmodal__section lp-wmodal__section--half">
+                <div className="lp-wmodal__section-label">Genre</div>
+                <p className="lp-wmodal__text">{details.genre}</p>
+              </div>
+              {details.characters && (
+                <div className="lp-wmodal__section lp-wmodal__section--half">
+                  <div className="lp-wmodal__section-label">Characters</div>
+                  <ul className="lp-wmodal__chars">
+                    {details.characters.map((c, i) => <li key={i}>{c}</li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="lp-wmodal__cta-wrap">
+              <div className="lp-wmodal__cta-label">Request the full world deck as a PDF</div>
+              <a className="lp-wmodal__cta-btn" href={`mailto:ted@tedsaunders.com?subject=World Deck Request: ${encodeURIComponent(world.title)}&body=Hi Ted,%0A%0AI'd love to receive the full deck for "${world.title}".%0A%0AThanks`}>
+                Email Ted for the full deck
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+              <div className="lp-wmodal__share-row"><ShareBtn param="world" value={world.title} /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+function Worldbuilding({ worlds, bg, onOpen }) {
+  const ref = useLpReveal();
+  const [openWorld, setOpenWorld] = React.useState(null);
+  return (
+    <section className="lp-sec lp-sec--worlds" id="worldbuilding" data-screen-label="Worldbuilding" ref={ref}>
+      {openWorld && <WorldModal world={openWorld} onClose={() => setOpenWorld(null)} />}
+      <div className="lp-env"><img className="lp-poster lp-poster--par" src={bg} alt="" aria-hidden="true" data-par="0.12" /><div className="lp-env__veil" /></div>
+      <div className="lp-seam-top" />
+      <LpBanner img={bg}
+        eyebrow="Unfinished Universes"
+        title="Worldbuilding"
+        blurb={<span>A drawer of symbolic systems, archetypes, and maps — cosmologies still being drawn. Each card is the seed of a world Ted is building toward.</span>} />
+      <LpRow par="0.04">
+        {worlds.map((w, i) => (
+          <div className="lp-world" key={i} onClick={() => { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); }} role="button" tabIndex={0}
+            onKeyDown={(e) => { if (e.key === "Enter") { onOpen(w.title); setOpenWorld({ ...w, imgSrc: LR(w.img, "assets/cosmic-bg.png") }); } }}>
+            <div className="lp-world__art">
+              <img src={LR(w.img, "assets/cosmic-bg.png")} alt={w.title} />
+              <div className="lp-world__inner">
+                <h3 className="lp-world__title">{w.title}</h3>
+                <span className="lp-world__kind">{w.kind}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </LpRow>
+    </section>
+  );
+}
+
+/* ============ FILMS — past & future ============ */
+function FilmCard({ f, onPlay }) {
+  return (
+    <div className="lp-film" onClick={() => onPlay(f.title)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") onPlay(f.title); }}>
+      <div className="lp-film__art">
+        <img src={LR(f.img, "assets/cosmic-bg.png")} alt={f.title} />
+        <div className="lp-film__play"><LpPlay /></div>
+        <div className="lp-film__desc">{f.note}</div>
+      </div>
+      <div className="lp-film__meta">
+        <h3 className="lp-film__title">{f.title}</h3>
+        <div className="lp-film__sub">{f.year} · {f.cat}</div>
+      </div>
+    </div>
+  );
+}
+
+function FilmsSection({ past, future, onPlay }) {
+  const ref = useLpReveal();
+  const films = [].concat(past, future).map((f, i) => ({
+    id: "film-" + i,
+    title: f.title,
+    meta: f.year + " · " + f.cat,
+    description: f.note,
+    imageSrc: LR(f.img, "assets/cosmic-bg.png"),
+    videoUrl: "",
+  }));
+  return (
+    <section className="lp-sec lp-sec--films lp-grain" id="films" data-screen-label="Films" ref={ref}>
+      <div className="lp-seam-top" />
+      <LpBanner img={LR("filmStill", "assets/opt/film-still.jpg")}
+        eyebrow="Moving Pictures · The Archive & The Horizon"
+        title="Films"
+        blurb={<span>Where the philosophy becomes light and motion. Work already cast into the world, and worlds still waiting to be filmed.</span>} />
+      <div className="lp-films-rail lp-reveal">
+        <FocusRail items={films} loop={true} arrows={true}
+          controlsCta={<button className="lp-cta lp-cta--gold" onClick={() => onPlay("Explore all films")}>Explore all films<span className="arr">→</span></button>} />
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { LpRow, LpHead, LpBanner, useLpReveal, BookOfIgnorance, PoetryRow, EssaysSection, TedThoughts, Worldbuilding, FilmsSection });
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/LitReader.jsx ===== */
+// ============================================================
+//  LitReader — fullscreen poetry reading mode.
+//  Black takeover, large Castoro type, slow fades, ambient
+//  grain + warm aura, ‹ › page-turn nav, keyboard (←/→/Esc).
+// ============================================================
+const { useState: useRdState, useEffect: useRdEffect, useRef: useRdRef } = React;
+
+function PoetryReader({ poems, index, onClose, onIndex }) {
+  const open = index !== null && index !== undefined;
+  const [shown, setShown] = useRdState(index || 0);   // poem currently rendered
+  const [fading, setFading] = useRdState(false);
+  const timer = useRdRef(null);
+
+  // Cross-fade to a new poem when index changes.
+  useRdEffect(() => {
+    if (!open) return;
+    if (index === shown) return;
+    setFading(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => { setShown(index); setFading(false); }, 360);
+    return () => clearTimeout(timer.current);
+  }, [index]);
+
+  // When (re)opening, sync immediately.
+  useRdEffect(() => { if (open) setShown(index); }, [open]);
+
+  // Lock scroll + keyboard nav while open.
+  useRdEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowRight") onIndex((shown + 1) % poems.length);
+      else if (e.key === "ArrowLeft") onIndex((shown - 1 + poems.length) % poems.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKey); };
+  }, [open, shown, poems.length]);
+
+  const p = poems[shown] || poems[0];
+  const go = (dir) => onIndex((shown + dir + poems.length) % poems.length);
+
+  return (
+    <div className={"lp-reader" + (open ? " is-open" : "")} aria-hidden={!open} role="dialog" aria-modal="true">
+      <div className="lp-reader__aura" />
+      <div className="lp-reader__grain" />
+
+      <button className="lp-reader__close" aria-label="Close reader" onClick={onClose}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
+      </button>
+      <button className="lp-reader__nav lp-reader__nav--prev" aria-label="Previous poem" onClick={() => go(-1)}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 5l-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+      <button className="lp-reader__nav lp-reader__nav--next" aria-label="Next poem" onClick={() => go(1)}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+
+      <div className="lp-reader__stage">
+        <div className={"lp-reader__page" + (fading ? " is-fading" : "")}>
+          {p.no ? <div className="lp-reader__no">{p.no}</div> : null}
+          {p.title ? <h2 className="lp-reader__title lp-title-fill">{p.title}</h2> : null}
+          <div className="lp-reader__lines">
+            {p.lines.map((ln, i) => <span className="ln" key={i}>{ln || "\u00A0"}</span>)}
+          </div>
+          <div className="lp-reader__sig">Ted Saunders</div>
+        </div>
+      </div>
+
+      <div className="lp-reader__count"><b>{String(shown + 1).padStart(2, "0")}</b> / {String(poems.length).padStart(2, "0")}</div>
+      <div className="lp-reader__hint" aria-hidden="true">← → to turn · Esc to close</div>
+    </div>
+  );
+}
+
+window.PoetryReader = PoetryReader;
+
+  </script>
+  <script type="text/babel" data-presets="react">
+/* ===== src/LitPageApp.jsx ===== */
+// ============================================================
+//  LitPageApp — the literary wing. Header → hero (the study) →
+//  Book of Ignorance → Poetry → Essays → TedThoughts →
+//  Worldbuilding → Films → Footer. Fullscreen poetry reader
+//  lives above the scaled stage. 1920 stage, scaled.
+// ============================================================
+const { useState: useApState, useCallback: useApCb, useRef: useApRef, useEffect: useApEffect } = React;
+const AR = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
+
+const LP_TWEAKS = /*EDITMODE-BEGIN*/{
+  "mood": "Lantern Gold",
+  "haze": 1,
+  "grain": 0.06,
+  "motion": true
+}/*EDITMODE-END*/;
+
+const MOOD_PRESETS = {
+  "Lantern Gold": { g1: "#F7DBA0", g2: "#E8B777", g3: "#C9915C", g4: "#A26A30",
+    peach: "linear-gradient(132deg, #FFE6C6 0%, #F8CB92 32%, #E9A968 64%, #C9803F 100%)" },
+  "Peach Dawn":   { g1: "#FFE3CB", g2: "#F4C094", g3: "#E29B6C", g4: "#BE7244",
+    peach: "linear-gradient(132deg, #FFE9D6 0%, #F8D0A4 32%, #ECB07C 64%, #D08A54 100%)" },
+  "Brass Dusk":   { g1: "#E9D2A0", g2: "#C9A865", g3: "#9E7E45", g4: "#6E552C",
+    peach: "linear-gradient(132deg, #ECD6A4 0%, #C9A463 32%, #A07C42 64%, #74542A 100%)" },
+};
+
+function ToastShelf({ events, onDismiss }) {
+  if (!events.length) return null;
+  return (
+    <div style={{ position: "fixed", right: 24, bottom: 24, zIndex: 100000, display: "flex", flexDirection: "column", gap: 8 }}>
+      {events.map((e) => (
+        <div key={e.id} onClick={() => onDismiss(e.id)} style={{ background: "linear-gradient(180deg, #FFF2C6 0%, #BD8332 100%)", color: "#000", padding: "12px 18px", borderRadius: 4, fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", boxShadow: "0 12px 36px rgba(0,0,0,0.4)", cursor: "pointer", maxWidth: 360 }}>{e.text}</div>
+      ))}
+    </div>
+  );
+}
+
+function useLpStageScale(designWidth = 1920) {
+  const wrapRef = useApRef(null);
+  const stageRef = useApRef(null);
+  useApEffect(() => {
+    const MOBILE_BP = 768;
+    const apply = () => {
+      const stage = stageRef.current, wrap = wrapRef.current;
+      if (!stage || !wrap) return;
+      const vw = window.innerWidth;
+      if (vw < MOBILE_BP) { stage.classList.add("is-mobile"); stage.style.transform = "none"; stage.style.width = "100%"; wrap.style.height = "auto"; }
+      else { stage.classList.remove("is-mobile"); const scale = vw / designWidth; stage.style.width = designWidth + "px"; stage.style.transform = `scale(${scale})`; wrap.style.height = (stage.scrollHeight * scale) + "px"; }
+    };
+    apply();
+    window.addEventListener("resize", apply);
+    const ro = new ResizeObserver(apply);
+    if (stageRef.current) ro.observe(stageRef.current);
+    const t = setTimeout(apply, 400), t2 = setTimeout(apply, 1500), t3 = setTimeout(apply, 3000);
+    return () => { window.removeEventListener("resize", apply); ro.disconnect(); clearTimeout(t); clearTimeout(t2); clearTimeout(t3); };
+  }, [designWidth]);
+  return { wrapRef, stageRef };
+}
+
+function LitPageApp() {
+  const D = window.LIT_DATA;
+  const [events, setEvents] = useApState([]);
+  const [poem, setPoem] = useApState(null);   // open poem index, or null
+  const [t, setTweak] = useTweaks(LP_TWEAKS);
+  const { wrapRef, stageRef } = useLpStageScale(1920);
+  const rootRef = useApRef(null);
+
+  const fire = useApCb((text) => {
+    const id = Date.now() + Math.random();
+    setEvents((c) => [...c, { id, text }]);
+    setTimeout(() => setEvents((c) => c.filter((x) => x.id !== id)), 2600);
+  }, []);
+  const dismiss = (id) => setEvents((c) => c.filter((x) => x.id !== id));
+
+  // apply tweaks to the root
+  useApEffect(() => {
+    const el = rootRef.current; if (!el) return;
+    const m = MOOD_PRESETS[t.mood] || MOOD_PRESETS["Lantern Gold"];
+    el.style.setProperty("--lp-gold-1", m.g1);
+    el.style.setProperty("--lp-gold-2", m.g2);
+    el.style.setProperty("--lp-gold-3", m.g3);
+    el.style.setProperty("--lp-gold-4", m.g4);
+    el.style.setProperty("--lp-peach", m.peach);
+    el.style.setProperty("--lp-haze", String(t.haze));
+    el.style.setProperty("--lp-grain-op", String(t.grain));
+    el.classList.toggle("lp-still", !t.motion);
+  }, [t.mood, t.haze, t.grain, t.motion]);
+
+  const scrollToId = useApCb((id) => {
+    const el = document.getElementById(id); if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 10;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, []);
+
+  // Parallax — offset any [data-par] layer by its distance from viewport
+  // centre × speed, giving the lit sections layered depth on scroll.
+  useApEffect(() => {
+    const root = rootRef.current; if (!root) return;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    const run = () => {
+      raf = 0;
+      if (!t.motion || reduce) { root.querySelectorAll("[data-par]").forEach((n) => { n.style.transform = ""; }); return; }
+      const vpC = (window.innerHeight || 800) / 2;
+      root.querySelectorAll("[data-par]").forEach((n) => {
+        const r = n.getBoundingClientRect();
+        if (r.bottom < -400 || r.top > (window.innerHeight || 800) + 400) return;
+        const elC = r.top + r.height / 2;
+        const speed = parseFloat(n.getAttribute("data-par")) || 0;
+        const ty = (vpC - elC) * speed;
+        n.style.transform = "translate3d(0," + ty.toFixed(1) + "px,0)";
+      });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(run); };
+    run();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    const t1 = setTimeout(run, 400), t2 = setTimeout(run, 1500);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(raf); clearTimeout(t1); clearTimeout(t2); };
+  }, [t.motion]);
+
+  // 3D gallery hero — tilts in on scroll (mirrors the Portfolio hero). Pin math
+  // runs in JS so it stays correct inside the scaled (transform:scale) stage.
+  const heroRef = useApRef(null);
+  const stickyRef = useApRef(null);
+  const galleryRef = useApRef(null);
+  useApEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const track = heroRef.current, sticky = stickyRef.current, gal = galleryRef.current;
+    if (!track || !sticky || !gal) return;
+    const cols = Array.prototype.slice.call(gal.querySelectorAll(".lph-col"));
+    let raf = 0;
+    const run = () => {
+      raf = 0;
+      const mobile = window.innerWidth < 768;
+      if (mobile) { sticky.style.transform = ""; gal.style.transform = "none"; cols.forEach((c) => { c.style.transform = ""; }); return; }
+      const s = window.innerWidth / 1920;
+      const vh = window.innerHeight;
+      const r = track.getBoundingClientRect();
+      const pinReal = Math.max(1, r.height - vh);
+      const scrolled = Math.min(pinReal, Math.max(0, -r.top));
+      sticky.style.transform = "translateY(" + (scrolled / s).toFixed(1) + "px)";
+      const p = scrolled / pinReal;
+      if (reduce) { gal.style.transform = "rotateX(0deg) scale(1)"; return; }
+      const rot = 75 * (1 - Math.min(1, p / 0.5));
+      const scl = 1.2 - 0.2 * Math.min(1, Math.max(0, (p - 0.5) / 0.4));
+      gal.style.transform = "rotateX(" + rot.toFixed(2) + "deg) scale(" + scl.toFixed(3) + ")";
+      const pp = Math.min(1, Math.max(0, (p - 0.5) / 0.5));
+      cols.forEach((c, i) => { const range = i === 1 ? 80 : -52; c.style.transform = "translateY(" + (range * pp).toFixed(1) + "px)"; });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(run); };
+    run();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    const ht1 = setTimeout(run, 400), ht2 = setTimeout(run, 1500);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); if (raf) cancelAnimationFrame(raf); clearTimeout(ht1); clearTimeout(ht2); };
+  }, []);
+
+  const litTiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => AR("litTile" + n, "assets/lit-hero/tile" + n + ".png"));
+  const heroCols = [
+    [litTiles[0], litTiles[3], litTiles[6], litTiles[9], litTiles[2], litTiles[5]],
+    [litTiles[1], litTiles[4], litTiles[7], litTiles[0], litTiles[8], litTiles[3]],
+    [litTiles[2], litTiles[5], litTiles[8], litTiles[1], litTiles[6], litTiles[9]],
+  ];
+
+  return (
+    <React.Fragment>
+      <div className="tk-scaler" ref={wrapRef}>
+        <div className="tk-stage" ref={stageRef}>
+          <div className="site lp-root" ref={rootRef}>
+
+            {/* HERO — 3D gallery that tilts in on scroll (mirrors Portfolio) */}
+            <section className="lph-scroll" data-screen-label="Literature & Philosophy Hero" ref={heroRef}>
+              <div className="lph-sticky lp-grain" ref={stickyRef}>
+                <div className="lph-gallery" aria-hidden="true" ref={galleryRef}>
+                  {heroCols.map((col, ci) => (
+                    <div className={"lph-col" + (ci === 1 ? " lph-col--mid" : "")} key={ci}>
+                      {col.map((src, ti) => (
+                        <div className="lph-tile" key={ti}><img src={src} alt="" /></div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="lph-veil" />
+                <div className="lph-wash" />
+                <div className="lph-band" aria-hidden="true" />
+                <div className="lph-glow lph-glow--bl" aria-hidden="true" />
+                <div className="lph-glow lph-glow--tr" aria-hidden="true" />
+                <Header active="Portfolio" onNav={(label) => fire(`Nav → ${label}`)} onCta={() => scrollToId("book-of-ignorance")} />
+                <div className="lph-copy">
+                  <div className="lph-kicker">A Cinematic Archive</div>
+                  <h2 className="lph-title lp-title-fill">Literature &amp; Philosophy</h2>
+                  <div className="lph-rule" />
+                  <p className="lph-motto">Thoughts that refused to stay quiet.</p>
+                  <p className="lph-sub"><span>Philosophy, poetry, essays, observations, or fragments of meaning written down before they disappear.</span><span style={{display:'block'}}><span style={{display:'block',whiteSpace:'nowrap'}}>Ted&rsquo;s literary work explores human behavior, spirituality, creativity, suffering, polarity,</span><span style={{display:'block',whiteSpace:'nowrap'}}>technology, healing, mythology, consciousness, and the strange beauty of uncertainty.</span></span><span>At the center sits <em>The Book of Ignorance</em>, an evolving framework built on the idea that truth cannot be possessed, only experienced.</span></p>
+                </div>
+                <div className="lph-scrollcue"><span>Scroll</span><span className="bar" /></div>
+              </div>
+            </section>
+
+            <div className="lp-body-bg">
+              <BookOfIgnorance virtues={D.VIRTUES} bg={AR("bookOfIgnorance", "assets/book-of-ignorance.jpg")} onCta={() => fire("The Book of Ignorance — joined the waitlist")} />
+              <PoetryRow thoughts={D.THOUGHTS} lyrics={D.LYRICS} />
+              <EssaysSection essays={D.ESSAYS} onOpen={(title) => fire(`Open: ${title}`)} />
+              <TedThoughts poems={D.POEMS} onOpen={(i) => setPoem(i)} onCta={() => fire("Following TedThoughts")} />
+              <Worldbuilding worlds={D.WORLDS} bg={AR("worldBg", "assets/worldbuilding-bg.jpg")} onOpen={(title) => fire(`Enter world: ${title}`)} />
+
+              <section className="lp-excerpt" data-screen-label="Closing Quote"
+                style={{ background: "url(" + AR("excerptBg", "assets/excerpt-bg.png") + ") right center / cover no-repeat" }}>
+                <span className="lp-excerpt__mark" aria-hidden="true">&ldquo;</span>
+                <blockquote className="lp-excerpt__q">
+                  &ldquo;No matter what I say, it can&rsquo;t possibly be true. So I have permission to say everything.&rdquo;
+                </blockquote>
+                <span className="lp-excerpt__tick" aria-hidden="true"></span>
+                <cite className="lp-excerpt__by">From the Book of Ignorance</cite>
+              </section>
+            </div>
+
+            <Footer onSubscribe={(d) => fire(`Newsletter: ${(d && d.email) || ""}`)} />
+          </div>
+        </div>
+      </div>
+
+      {/* Fullscreen reader — above the scaled stage */}
+      <PoetryReader poems={D.POEMS} index={poem} onClose={() => setPoem(null)} onIndex={(i) => setPoem(i)} />
+
+      <ToastShelf events={events} onDismiss={dismiss} />
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Atmosphere" />
+        <TweakRadio label="Mood" value={t.mood} options={["Lantern Gold", "Peach Dawn", "Brass Dusk"]} onChange={(v) => setTweak("mood", v)} />
+        <TweakSlider label="Haze" value={t.haze} min={0} max={1.8} step={0.1} onChange={(v) => setTweak("haze", v)} />
+        <TweakSlider label="Film grain" value={t.grain} min={0} max={0.14} step={0.01} onChange={(v) => setTweak("grain", v)} />
+        <TweakSection label="Motion" />
+        <TweakToggle label="Animated drift" value={t.motion} onChange={(v) => setTweak("motion", v)} />
+      </TweaksPanel>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<LitPageApp />);
+
+  </script>
+</body>
+</html>

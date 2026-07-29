@@ -9,13 +9,17 @@ const { useState: useCoState, useRef: useCoRef, useEffect: useCoEffect } = React
 // "east" on the Warrior is placed at West so the four points stay distinct).
 const WK_QUADRANTS = [
   { key: "king",     pos: "n", bearing: "North", cat: "Career",        arch: "The King",
-    desc: "Purpose, positioning, storytelling, and creative alignment." },
+    desc: "Purpose, positioning, storytelling, and creative alignment.",
+    thumb: { img: "assets/heroes/cinematographer.jpg", plate: "Plate I \u00b7 Due North", line: "The throne is built, never inherited." } },
   { key: "lover",    pos: "e", bearing: "East",  cat: "Relationships", arch: "The Lover",
-    desc: "Polarity, communication, emotional intelligence, and connection." },
+    desc: "Polarity, communication, emotional intelligence, and connection.",
+    thumb: { img: "assets/story-bridge.jpg", plate: "Plate II \u00b7 Due East", line: "Two fires, one hearth." } },
   { key: "magician", pos: "s", bearing: "South", cat: "Finance",       arch: "The Magician",
-    desc: "Investing, crypto education, wealth psychology, and financial architecture." },
+    desc: "Investing, crypto education, wealth psychology, and financial architecture.",
+    thumb: { img: "assets/finance-portrait.jpg", plate: "Plate III \u00b7 Due South", line: "Turn labour into leverage." } },
   { key: "warrior",  pos: "w", bearing: "West",  cat: "Health",        arch: "The Warrior",
-    desc: "Energy, movement, vitality, and optimization." },
+    desc: "Energy, movement, vitality, and optimization.",
+    thumb: { img: "assets/hyperlapse.jpg", plate: "Plate IV \u00b7 Due West", line: "The body is the first instrument." } },
 ];
 
 const WK_COACH_TESTIMONIALS = [
@@ -71,6 +75,7 @@ function MapCompassRose() {
 
 function WorkCoaching({ onApply, onActivate }) {
   const [active, setActive] = useCoState(0);
+  const [modalOpen, setModalOpen] = useCoState(false);
   const N = WK_QUADRANTS.length;
   const timer = useCoRef(null);
   const lockRef = useCoRef(false);
@@ -158,12 +163,28 @@ function WorkCoaching({ onApply, onActivate }) {
                 <h3 className="wk-quad__cat wk-textured">{q.cat}</h3>
                 <p className="wk-quad__arch">{q.arch}</p>
                 <p className="wk-quad__desc">{q.desc}</p>
+                <figure className="wk-plate">
+                  <img className="wk-plate__img" src={q.thumb.img} alt="" loading="lazy" />
+                  <span className="wk-plate__scrim" aria-hidden="true"></span>
+                  <span className="wk-plate__ret" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                  <span className="wk-plate__glyph" aria-hidden="true"><ArchetypeGlyph name={q.key} size={20} /></span>
+                  <figcaption className="wk-plate__cap">
+                    <span className="wk-plate__eyebrow">{q.thumb.plate}</span>
+                    <span className="wk-plate__line">{q.thumb.line}</span>
+                  </figcaption>
+                </figure>
               </div>
             ))}
             <div className="wk-quad__dots">
               {WK_QUADRANTS.map((q, i) => (
                 <i key={q.key} className={i === active ? "on" : ""} onClick={() => pick(i)} role="button" aria-label={q.cat} />
               ))}
+            </div>
+            <div className="wk-cta-row" style={{ marginTop: 28 }}>
+              <button type="button" className="wk-btn wk-btn--solid" onClick={() => setModalOpen(true)}>
+                Explore Compass Coaching
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
             </div>
           </div>
         </div>
@@ -193,6 +214,20 @@ function WorkCoaching({ onApply, onActivate }) {
           </div>
         </div>
       </div>
+
+      {modalOpen && (
+        <div className="wkcc-modal" role="dialog" aria-modal="true" onClick={() => setModalOpen(false)}>
+          <div className="wkcc-modal__box" onClick={(e) => e.stopPropagation()}>
+            <button type="button" className="wkcc-modal__x" aria-label="Close" onClick={() => setModalOpen(false)}>×</button>
+            <h3 className="wkcc-modal__title wk-textured">Find Your True North</h3>
+            <p className="wkcc-modal__body">Your life is more than one dimension. Compass Coaching helps you create alignment across career, relationships, finances, and health—so every part of your life moves in the same direction.</p>
+            <a className="wk-btn wk-btn--solid" href="#">
+              Explore Compass Coaching
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -4,13 +4,25 @@ const { useState: useWgdState, useCallback: useWgdCb } = React;
 
 const WGD_CATS = [
   { n: "01", key: "websites", title: "Websites", tag: "Web",
-    frame: "browser", blurb: "Designed and built end to end." },
+    frame: "browser", subtitle: "Story-first digital experiences",
+    body: "Cinematic marketing sites and portfolios built from story first\u2014every scroll, transition, and frame composed to move people the way a film would. Designed and built end to end, from art direction through the final responsive build.",
+    deliverables: ["Art Direction", "Design Systems", "Responsive Build", "Motion & Interaction"],
+    link: "View Project" },
   { n: "02", key: "brand", title: "Brand Identity", tag: "Brand",
-    frame: "plaque", blurb: "Logos, systems, and visual language." },
+    frame: "plaque", subtitle: "Marks, systems, and visual language",
+    body: "Complete visual languages\u2014marks, type, color, and the rules that hold them together\u2014so a brand feels inevitable across every surface it touches. Each identity is built to carry the same weight in motion as it does in print.",
+    deliverables: ["Logo & Marks", "Typography", "Color Systems", "Brand Guidelines"],
+    link: "View Project" },
   { n: "03", key: "uiux", title: "UI / UX Design", tag: "Product",
-    frame: "phone", blurb: "Interfaces people genuinely enjoy using." },
+    frame: "phone", subtitle: "Interfaces people enjoy using",
+    body: "Product interfaces shaped around real human behavior\u2014flows that feel obvious, screens that feel effortless, details that reward a second look. Research and strategy grounded in what people actually do, not what looks good in a deck.",
+    deliverables: ["User Flows", "Wireframes", "Interface Design", "Prototypes"],
+    link: "View Project" },
   { n: "04", key: "ai", title: "AI Systems & Automation", tag: "AI",
-    frame: "browser", blurb: "Workflows and agents that do the heavy lifting." },
+    frame: "browser", subtitle: "Workflows that do the heavy lifting",
+    body: "Custom AI workflows and agents woven into the design process\u2014quietly handling the heavy lifting so the creative work stays front and center. Built to scale a one-person studio into something that moves like a full team.",
+    deliverables: ["Workflow Design", "Custom Agents", "Integrations", "Automation"],
+    link: "View Project" },
 ];
 
 function BrowserChrome() {
@@ -40,24 +52,36 @@ function WgdCard({ cat, i }) {
           ></image-slot>
         </div>
       </div>
-      <div className="wgd-card__meta">
-        <span className="wgd-card__title">Project Title</span>
-        <span className="wgd-card__tag">{cat.tag}</span>
-      </div>
     </article>
   );
 }
 
 function WgdCategory({ cat }) {
   return (
-    <section className="wgd-cat" data-screen-label={cat.title}>
-      <div className="wgd-cat__head">
-        <div className="wgd-cat__headtext">
-          <h2 className="wgd-cat__title ab-textured">{cat.title}</h2>
-          <p className="wgd-cat__blurb">{cat.blurb}</p>
+    <section className="wgd-row" data-screen-label={cat.title}>
+      {/* LEFT — copy */}
+      <div className="wgd-row__copy">
+        <div className="wgd-row__copyinner">
+          <h2 className="wgd-row__title ab-textured">{cat.title}</h2>
+          <p className="wgd-row__subtitle">{cat.subtitle}</p>
+          <p className="wgd-row__body">{cat.body}</p>
+          <div className="wgd-row__foot">
+            <div className="wgd-row__col">
+              <span className="wgd-row__coltitle">Deliverables</span>
+              <ul className="wgd-row__list">
+                {cat.deliverables.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="wgd-row__col">
+              <span className="wgd-row__coltitle">Link</span>
+              <a className="wgd-row__link" href="#">{cat.link}</a>
+            </div>
+          </div>
         </div>
-        <span className="wgd-cat__rule" aria-hidden="true"></span>
       </div>
+      {/* RIGHT — graphics */}
       <div className={"wgd-grid wgd-grid--" + cat.frame}>
         {[1, 2, 3, 4].map((i) => <WgdCard key={i} cat={cat} i={i} />)}
       </div>
@@ -83,29 +107,13 @@ function WgdApp() {
         <div className="wgd-hero__aura" aria-hidden="true"></div>
         <div className="wgd-hero__inner">
           <p className="ab-eyebrow">Portfolio · Digital</p>
-          <h1 className="wgd-hero__title ab-textured">Web &amp; Graphic Design</h1>
+          <h1 className="wgd-hero__title ab-textured">AI, Web &amp; Graphic Design</h1>
           <p className="wgd-hero__sub">
             Designing digital experiences where storytelling, branding, and technology become one.
           </p>
         </div>
         <div className="wgd-hero__fade" aria-hidden="true"></div>
       </header>
-
-      {/* INTRO */}
-      <section className="wgd-intro">
-        <span className="wgd-intro__mark" aria-hidden="true"></span>
-        <div className="wgd-intro__body">
-          <p>
-            Since COVID, digital design has become Teddy&rsquo;s primary professional focus. What began as
-            helping clients build websites evolved into creating complete digital ecosystems&mdash;combining
-            branding, UX strategy, interface design, AI workflows, and modern web development.
-          </p>
-          <p>
-            Each project is approached as more than a website. It&rsquo;s an opportunity to tell a story,
-            solve problems, and create experiences people genuinely enjoy using.
-          </p>
-        </div>
-      </section>
 
       {/* CATEGORIES */}
       <div className="wgd-cats">

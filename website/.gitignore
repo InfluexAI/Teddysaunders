@@ -1,0 +1,13 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Dependencies (none required — site is build-free)
+node_modules/
+
+# Local server / build artifacts
+.cache/
+dist/

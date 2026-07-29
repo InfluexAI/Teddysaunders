@@ -133,7 +133,6 @@ function PhotoSection({ data, onCta, photos }) {
     <section className="pp-sec pp-sec--photo pp-grain" id="photography" data-screen-label="Photography" ref={ref}>
       <div className="pp-env">
         <img className="pp-poster" src={data.env} alt="" aria-hidden="true" />
-        <image-slot id="pp-photo-env" src={data.env} fit="cover" radius="0" placeholder="Drop a backdrop photograph"></image-slot>
         <div className="pp-env__veil" />
       </div>
       <div className="pp-wall">
@@ -144,12 +143,14 @@ function PhotoSection({ data, onCta, photos }) {
       </div>
       <Drawer>
         {photos.map((s, i) => (
-          <div className="pp-thumb" key={i}>
-            <div className="pp-thumb__win">
-              <img className="pp-poster" src={s.src} alt="" aria-hidden="true" />
-              <image-slot id={"pp-photo-" + i} src={s.src} fit="cover" radius="0" placeholder="Drop a photograph"></image-slot>
+          <div className="pp-thumb-cell" key={i}>
+            <div className="pp-thumb">
+              <div className="pp-thumb__win">
+                <img className="pp-poster" src={s.src} alt="" aria-hidden="true" />
+                <image-slot id={"pp-photo-" + i} src={s.src} fit="cover" radius="0" placeholder="Drop a photograph"></image-slot>
+              </div>
             </div>
-            {s.label ? <div className="pp-thumb__label">{s.label}</div> : null}
+            {s.label ? <h3 className="pp-thumb__cap">{s.label}</h3> : null}
           </div>
         ))}
       </Drawer>
@@ -201,7 +202,7 @@ function JournalSection({ data, onCta, excerpts }) {
       <div className="pp-copyzone">
         <Copy num="04" title={<span>Literature &amp;<br />Philosophy</span>} tagline="Thoughts that refused to stay quiet."
           body={["Ted Saunders’ literary work explores philosophy, spirituality, creativity, mythology, consciousness, and the beauty of uncertainty.", <span key="b">At the center of this universe is <em>The Book of Ignorance</em> — an evolving philosophical framework built around the idea that truth cannot be fully possessed, only experienced.</span>]}
-          cta="Explore the Philosophy" onCta={onCta} />
+          cta="Explore all Literature" onCta={onCta} />
       </div>
       <div className="pp-slips pp-reveal">
         {excerpts.map((x, i) => (

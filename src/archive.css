@@ -82,7 +82,7 @@
 /* Poster + metadata dossier */
 .cinema-dossier { display: grid; grid-template-columns: 200px 1fr; gap: 26px; align-items: start; animation: arcFade 0.7s ease both; }
 .cinema-poster { border-radius: 8px; overflow: hidden; box-shadow: 0 28px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,162,75,0.22); }
-.cinema-poster img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.cinema-poster img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
 .cinema-meta { display: flex; flex-direction: column; gap: 12px; }
 .cinema-cat { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
   background: var(--grad-bronze); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -146,7 +146,7 @@
   box-shadow: 0 50px 110px rgba(0,0,0,0.7), 0 0 0 10px #100c08, 0 0 0 12px rgba(201,162,75,0.5);
 }
 .gal-frame__mat::after { content: ""; position: absolute; inset: 26px; box-shadow: inset 0 0 18px rgba(0,0,0,0.25); pointer-events: none; }
-.gal-frame__mat img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.gal-frame__mat img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 
 /* Museum label plaque */
 .gal-plaque { display: flex; flex-direction: column; gap: 12px; padding-left: 6px; border-left: 2px solid rgba(201,162,75,0.4); padding-left: 26px; }

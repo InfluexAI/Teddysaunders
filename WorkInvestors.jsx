@@ -47,33 +47,52 @@ const WK_VENTURES = [
     desc: "A platform built to help people's dreams come true.",
     log: "A platform built to help people's dreams come true.",
     fragK: "Mandate", fragQ: "Make the dream the most practical thing you own." },
+  { id: "instudios", mono: "IS", title: "InStudios.net",      kind: "Venture",
+    desc: "Virtual Studio to manage clients, projects, employees and hours.",
+    log: "Virtual Studio to manage clients, projects, employees and hours.",
+    fragK: "Mandate", fragQ: "One studio to run every client, project, and hour." },
 ];
 
 // Brands Ted has built — outbound links to the live sites.
 const WK_BRANDS = [
-  { id: "infinit",   mono: "IS", title: "InfinitStudios.com",   desc: "Full-stack creative agency \u2014 film, animation, web, and AI for ambitious brands.", url: "https://infinitstudios.com/" },
-  { id: "tedshots",  mono: "TS", title: "TedShots.com",         desc: "Headshot photography company capturing people at their most alive.", url: "https://tedshots.com/" },
-  { id: "dreambox",  mono: "PD", title: "Project Dream Box",    desc: "A platform built to help people's dreams come true.", url: "https://www.facebook.com/ProjectDreamBox/", temp: true },
-  { id: "speech",    mono: "SB", title: "Speech to Book",       desc: "Write your book with your voice, with step-by-step guidance from idea to manuscript.", url: null },
-  { id: "brooracle", mono: "BO", title: "BroOracle",            desc: "Draw a card. Forge your manhood. Guidance and ritual for the modern man.", url: null },
-  { id: "celestial", mono: "CC", title: "The Celestial Compass", desc: "Use your birthday to discover who you are, and get AI guidance from the stars.", url: null },
+  { id: "trustedcmo",  mono: "TC", title: "trustedcmo.com",                  desc: "Fractional CMO leadership and marketing strategy for growing companies.", url: "https://trustedcmo.com/" },
+  { id: "hatchers",    mono: "HP", title: "Hatcherspearls.com",             desc: "Luxury pearl jewelry brand \u2014 timeless pieces, crafted to last.", url: "https://hatcherspearls.com/" },
+  { id: "goodplanet",  mono: "GP", title: "goodplanet.green",               desc: "Sustainability platform for a greener, more conscious planet.", url: "https://goodplanet.green/" },
+  { id: "cannect",     mono: "CW", title: "cannectwellness.com",            desc: "Wellness brand connecting people to healthier, more balanced living.", url: "https://cannectwellness.com/" },
+  { id: "fifthkind",   mono: "5K", title: "5thkind.webflow.io",             desc: "Enterprise content and media management platform.", url: "https://5thkind.webflow.io/" },
+  { id: "acton",       mono: "AO", title: "act-on.com",                     desc: "Marketing automation platform for growth-focused teams.", url: "https://act-on.com/" },
+  { id: "tchain",      mono: "TC", title: "tchain.webflow.io",              desc: "Blockchain platform bringing trust and transparency to the chain.", url: "https://tchain.webflow.io/" },
+  { id: "edr",         mono: "ED", title: "englishfordisputeresolution.com", desc: "Specialized English training for legal and dispute-resolution professionals.", url: "https://englishfordisputeresolution.com/" },
+  { id: "raiinmaker",  mono: "RM", title: "raiinmaker1.webflow.io",         desc: "Decentralized platform rewarding creators for their influence.", url: "https://raiinmaker1.webflow.io/" },
+  { id: "infinit",     mono: "IS", title: "infinitstudios.com",             desc: "Full-stack creative agency \u2014 film, animation, web, and AI for ambitious brands.", url: "https://infinitstudios.com/" },
+  { id: "darvish",     mono: "DV", title: "darvish.webflow.io",             desc: "Brand and portfolio site built for a modern visionary.", url: "https://darvish.webflow.io/" },
+  { id: "genesisgems", mono: "GG", title: "genesis-gems.webflow.io",        desc: "Premium gemstone brand \u2014 rare stones, timeless design.", url: "https://genesis-gems.webflow.io/" },
 ];
 
-// BroOracle wordmark SVG (matches about page)
-function BroOracleLogo() {
-  return (
-    <svg className="wk-vcard__brosvg" viewBox="0 0 500 56" fill="none" role="img" aria-label="BRO·ORACLE">
-      <g fill="#D6A24A">
-        <g transform="rotate(45 22 30)"><rect x="19" y="8" width="6" height="34" rx="1.5" /><rect x="12" y="5" width="20" height="9" rx="2" /></g>
-        <g transform="rotate(-45 22 30)"><rect x="19" y="8" width="6" height="34" rx="1.5" /><rect x="12" y="5" width="20" height="9" rx="2" /></g>
-      </g>
-      <text x="52" y="40" fontFamily="Syne, sans-serif" fontWeight="800" fontSize="36" letterSpacing="1" fill="#F5EDE3">BRO·ORACLE</text>
-    </svg>
-  );
-}
+// Venture logos — the same artwork the About page uses.
+const WK_VENTURE_LOGOS = {
+  infinit:   { res: "infinit",  img: "assets/ventures/infinit-studios.png" },
+  tedshots:  { res: "tedshots", img: "assets/ventures/tedshots.png" },
+  brooracle: { res: "bro",      img: "assets/ventures/bro-oracle.png" },
+  dreambox:  { res: "dreambox", img: "assets/ventures/project-dreambox.png" },
+};
 
 function VentureMark({ v }) {
-  if (v.id === "brooracle") return <div className="wk-vcard__logo-slot"><BroOracleLogo /></div>;
+  const logo = WK_VENTURE_LOGOS[v.id];
+  if (logo) {
+    const src = (window.__resources && window.__resources[logo.res]) || logo.img;
+    return <div className="wk-vcard__logo-slot"><img className="wk-vcard__logoimg" src={src} alt={v.title} loading="lazy" /></div>;
+  }
+  if (v.id === "celestial") {
+    return (
+      <div className="wk-vcard__logo-slot wk-vcard__logo-slot--glyph">
+        <span className="wk-vcard__placeglyph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><polygon points="15.5,8.5 11,11 8.5,15.5 13,13" fill="currentColor" stroke="none" /></svg>
+        </span>
+        <span className="wk-vcard__placename">Celestial Compass</span>
+      </div>
+    );
+  }
   return <div className="wk-vcard__mark">{v.mono}</div>;
 }
 
@@ -205,11 +224,11 @@ function WorkInvestors({ onTedcast, onInquire }) {
         <section className="wk-tedcast wk-reveal" aria-label="Tedcast">
           <div className="wk-tedcast__veil"></div>
           <div className="wk-tedcast__inner">
-            <span className="wk-tedcast__eyebrow">The Podcast</span>
+            <span className="wk-tedcast__eyebrow">Coming Soon</span>
             <h3 className="wk-tedcast__title wk-textured">Tedcast</h3>
             <p className="wk-tedcast__sub">Apply to be a guest on Ted's podcast — long-form conversations on story, craft, and the worlds we build.</p>
             <button className="wk-btn wk-btn--solid wk-tedcast__btn" onClick={onTedcast}>
-              Apply to be on tedcast
+              Apply to be a Season 1 Guest
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </button>
           </div>

@@ -1,6 +1,15 @@
 // WorkBrand.jsx — /Brand Marketing · For Businesses.
 // Take your Business to new levels: services grid, accolade, testimonial
 // slider, media-ideas strip, and dual CTAs (Start a Project / Infinit Studios).
+const WK_ACCOLADES = [
+  { client: "Glint", buyer: "LinkedIn",
+    note: "Acquired after Ted helped grow the company from 25 employees to 1,500." },
+  { client: "5th Kind", buyer: "Sohonet",
+    note: "Acquired after Ted redesigned their website and the UI/UX of their digital product suite." },
+  { client: "Gatsby.js", buyer: "Microsoft",
+    note: "Acquired after Ted helped create their main product videos." },
+];
+
 const WK_SERVICES = [
   { n: "01", title: "Film & Video Production",       id: "wk-svc-film",  icon: "film",    img: "assets/film/photo-1.jpg",
     sub: ["Fiction", "Non-Fiction", "Documentary"] },
@@ -12,8 +21,8 @@ const WK_SERVICES = [
     sub: ["Team Management", "Brand Alignment", "Social Media Consultation"] },
   { n: "05", title: "AI Systems Design",              id: "wk-svc-ai",    icon: "chip",    img: "assets/film/photo-5.jpg",
     sub: ["Application", "Dashboard", "Product", "Team Management", "CRM", "CMS", "Brand Identity", "Web Development"] },
-  { n: "06", title: "Web Direction & Development",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg",
-    sub: ["Domain & Hosting", "Framer", "WordPress", "Webflow", "Shopify", "WooCommerce", "Squarespace", "Creative Strategy", "Brand Voice", "System Design", "UI/UX Design"] },
+  { n: "06", title: "Web & App",    id: "wk-svc-web",   icon: "code",    img: "assets/film/photo-6.jpg",
+    sub: ["Traditional web design", "AI web design", "UI", "UX", "Systems Design"] },
   { n: "07", title: "Speaking & Podcasting",          id: "wk-svc-speak", icon: "mic",     img: "assets/film/photo-7.jpg",
     sub: ["Keynote Speaker", "Guest Appearances", "Podcast Host"] },
 ];
@@ -62,31 +71,6 @@ function WorkBrand({ onStart, onStudios }) {
           body={<React.Fragment>
             <p>Ted can be hired for film direction, photography, branding, creative strategy, immersive storytelling, speaking engagements, and collaborative future projects.</p>
           </React.Fragment>}
-          extra={<div className="wk-accolades">
-            <div className="wk-accolades__head">
-              <span className="wk-accolades__rule" aria-hidden="true"></span>
-              <span className="wk-accolades__label">Accolades</span>
-              <span className="wk-accolades__rule" aria-hidden="true"></span>
-            </div>
-            <p className="wk-accolades__lead">Three client companies have gone on to be acquired.</p>
-            <ul className="wk-accolades__list">
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">Glint</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired by LinkedIn after Ted helped grow the company from 25 employees to 1,500.</span>
-              </li>
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">5th Kind</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired by Sohonet after Ted redesigned their website and the UI/UX of their digital product suite.</span>
-              </li>
-              <li className="wk-accolade">
-                <span className="wk-accolade__name">Toolchain</span>
-                <span className="wk-accolade__arrow" aria-hidden="true">&rarr;</span>
-                <span className="wk-accolade__note">Acquired following brand and creative direction work.</span>
-              </li>
-            </ul>
-          </div>}
           cta={{ label: "Watch the Reel", variant: "wk-btn--ghost", onClick: () => window.open("https://vimeo.com/405296100", "_blank", "noopener") }}
         />
         {/* creative services — full-bleed cinematic grid */}
@@ -125,6 +109,30 @@ function WorkBrand({ onStart, onStudios }) {
               </button>
             </div>
           </article>
+        </div>
+      </div>
+      <div className="wk-inner">
+        <div className="wk-accolades wk-accolades--after wk-reveal">
+          <div className="wk-accolades__head">
+            <p className="wk-accolades__label">Accolades</p>
+            <h3 className="wk-accolades__title wk-textured">Three clients. Three acquisitions.</h3>
+          </div>
+          <ul className="wk-accolades__list">
+            {WK_ACCOLADES.map((a) => (
+              <li className="wk-accolade" key={a.client}>
+                <span className="wk-accolade__ret" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <span className="wk-accolade__crest">
+                  <i className="wk-accolade__laurel wk-accolade__laurel--l" aria-hidden="true"></i>
+                  <span className="wk-accolade__buyer">{a.buyer}</span>
+                  <i className="wk-accolade__laurel wk-accolade__laurel--r" aria-hidden="true"></i>
+                </span>
+                <span className="wk-accolade__kicker">Acquired</span>
+                <span className="wk-accolade__hair" aria-hidden="true"></span>
+                <h4 className="wk-accolade__name">{a.client}</h4>
+                <p className="wk-accolade__note">{a.note}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
