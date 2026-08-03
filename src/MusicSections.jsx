@@ -252,8 +252,23 @@ function ReleasesSection({ releases, playingId, onToggle }) {
     <section className="mp-releases lp-grain" data-screen-label="Latest Releases" ref={ref}>
       <div className="mp-releases__seam" />
       <div className="mp-head lp-reveal">
-        <div className="mp-eyebrow">Latest Releases</div>
-        <h2 className="mp-head__title mp-tex">Original Music</h2>
+        <div className="mp-eyebrow">Original Music</div>
+        <h2 className="mp-head__title mp-tex">SØNÐRŚ</h2>
+      </div>
+      <div className="mp-sonder lp-reveal">
+        <div className="mp-sonder__artist">
+          <span className="mp-sonder__kicker">The Artist</span>
+          <h3 className="mp-sonder__name mp-tex">Teddy Sonder</h3>
+          <p className="mp-sonder__pron">/ˈsɒndər/</p>
+        </div>
+        <figure className="mp-sonder__card">
+          <div className="mp-sonder__entry">
+            <span className="mp-sonder__word">sonder</span>
+            <span className="mp-sonder__pos">noun</span>
+          </div>
+          <span className="mp-sonder__hair" aria-hidden="true"></span>
+          <blockquote className="mp-sonder__def">The profound feeling of realizing that everyone, including strangers passed in the street, has a life as complex as one&rsquo;s own, which they are constantly living despite one&rsquo;s personal lack of awareness of it.</blockquote>
+        </figure>
       </div>
       <div className="mp-relgrid">
         {releases.map((r) => (
@@ -274,14 +289,126 @@ function ReleasesSection({ releases, playingId, onToggle }) {
           </div>
         ))}
       </div>
+      <PlatformRail />
+    </section>
+  );
+}
+
+/* ===================== LISTEN EVERYWHERE (platform rail) ===================== */
+const MS_GLYPH = {
+  disc: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2.6" /></svg>),
+  note: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><circle cx="7" cy="18" r="2.6" /><circle cx="18" cy="15.5" r="2.6" /><path d="M9.6 18V7l11-2v10.5" /></svg>),
+  wave: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11.5v1M21 12h0" /></svg>),
+  square: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="0.9" fill="currentColor" /></svg>),
+  play: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><rect x="2.5" y="5" width="19" height="14" rx="4" /><path d="M11 9.5l4 2.5-4 2.5z" /></svg>),
+  cassette: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2" /><circle cx="8" cy="12" r="2" /><circle cx="16" cy="12" r="2" /></svg>),
+  cart: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M3 4h2.2l2.4 10.5h9.6L19.5 7H6" /><circle cx="9" cy="19" r="1.5" /><circle cx="17" cy="19" r="1.5" /></svg>),
+  radio: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><circle cx="12" cy="12" r="2" /><path d="M7.5 7.5a6.4 6.4 0 000 9M16.5 7.5a6.4 6.4 0 010 9M4.5 4.5a10.6 10.6 0 000 15M19.5 4.5a10.6 10.6 0 010 15" /></svg>),
+  heart: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M12 20s-7-4.4-7-9.4A3.9 3.9 0 0112 8a3.9 3.9 0 017 2.6c0 5-7 9.4-7 9.4z" /></svg>),
+  headphones: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M4 14v-2a8 8 0 0116 0v2" /><rect x="2.5" y="13.5" width="4.5" height="7" rx="2" /><rect x="17" y="13.5" width="4.5" height="7" rx="2" /></svg>),
+  tri: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M6 9.5L9.2 6.3 12.4 9.5 9.2 12.7z" /><path d="M12.4 9.5l3.2-3.2 3.2 3.2-3.2 3.2z" /><path d="M9.2 15.8l3.2-3.2 3.2 3.2-3.2 3.2z" /></svg>),
+  cloud: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"><path d="M7 17.5a3.5 3.5 0 010-7 5 5 0 019.6-1.4A3.9 3.9 0 0117.5 17.5z" /></svg>),
+};
+
+const MS_PLATFORMS = [
+  { label: "Spotify", glyph: "wave" },
+  { label: "Apple Music", glyph: "note" },
+  { label: "iTunes", glyph: "disc" },
+  { label: "Instagram", glyph: "square" },
+  { label: "YouTube", glyph: "play" },
+  { label: "Bandcamp", glyph: "cassette" },
+  { label: "Amazon Music", glyph: "headphones" },
+  { label: "Amazon.com", glyph: "cart" },
+  { label: "Pandora", glyph: "radio" },
+  { label: "Deezer", glyph: "heart" },
+  { label: "TIDAL", glyph: "tri" },
+  { label: "iHeartRadio", glyph: "cloud" },
+];
+
+function PlatformRail() {
+  return (
+    <div className="mp-platforms lp-reveal">
+      <div className="mp-platforms__head">
+        <span className="mp-platforms__rule" aria-hidden="true" />
+        <span className="mp-platforms__label">Listen Everywhere</span>
+        <span className="mp-platforms__rule" aria-hidden="true" />
+      </div>
+      <div className="mp-platforms__grid">
+        {MS_PLATFORMS.map((p) => (
+          <a className="mp-platform" href="#" key={p.label} aria-label={p.label + " — link coming soon"}>
+            <span className="mp-platform__glyph" aria-hidden="true">{MS_GLYPH[p.glyph]}</span>
+            <span className="mp-platform__name">{p.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ===================== FILM SOUNDTRACKS ===================== */
+function SoundtracksSection({ tracks }) {
+  const ref = useMpReveal();
+  const [open, setOpen] = useMsState(null);
+  useMsEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === "Escape") setOpen(null); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+  return (
+    <section className="mp-scores lp-grain" data-screen-label="Film Soundtracks" ref={ref}>
+      <div className="lp-seam-top" />
+      <div className="mp-head lp-reveal">
+        <div className="mp-eyebrow">Scored to Picture</div>
+        <h2 className="mp-head__title mp-tex">Film Soundtracks</h2>
+      </div>
+      <div className="mp-scoregrid">
+        {tracks.map((t) => (
+          <article className="mp-score lp-reveal" key={t.id}>
+            <div className="mp-score__head">
+              <h3 className="mp-score__title">{t.title}</h3>
+              <p className="mp-score__film">{t.film}</p>
+            </div>
+            <p className="mp-score__desc">{t.desc}</p>
+            <div className="mp-score__player">
+              <iframe className="mp-player__iframe" height="166" scrolling="no" frameBorder="no" loading="lazy"
+                title={t.title}
+                allow="autoplay; encrypted-media; fullscreen"
+                src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(t.scUrl) + "&color=%23e8b777&inverse=true&auto_play=false&show_user=true&visual=false&show_artwork=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
+            </div>
+            <div className="mp-score__foot">
+              <div className="mp-score__meta"><span>{t.genre}</span><span className="dot" /><span>{t.year}</span><span className="dot" /><span>{t.run}</span></div>
+              <button className="mp-score__watch" onClick={() => setOpen(t)}>{t.watch.label}<span className="arr">→</span></button>
+            </div>
+          </article>
+        ))}
+      </div>
+      {open ? ReactDOM.createPortal(
+        <div className="fr-lb" onClick={() => setOpen(null)}>
+          <button className="fr-lb__close" onClick={() => setOpen(null)} aria-label="Close">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+          <div className="fr-lb__frame" onClick={(e) => e.stopPropagation()}>
+            {open.videoUrl ? (
+              <iframe src={open.videoUrl} title={open.title} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+            ) : (
+              <div className="fr-lb__placeholder">
+                <PlayTriangle size={56} id={"film-" + open.id} />
+                <div className="fr-lb__meta">{open.watch.note}</div>
+                <div className="fr-lb__title">{open.title}</div>
+                <div className="fr-lb__note">YOUTUBE / VIMEO EMBED — drop the video URL here</div>
+              </div>
+            )}
+          </div>
+        </div>, document.body) : null}
     </section>
   );
 }
 
 /* ===================== CHILDHOOD ARCHIVE (cassettes) ===================== */
-function ArchiveSection({ tapes }) {
+function ArchiveSection({ tapes, playingId, onToggle }) {
   const ref = useMpReveal();
-  const STEP = 4;
+  const STEP = 8;
   const [visible, setVisible] = useMsState(STEP);
   const shown = tapes.slice(0, visible);
   const hasMore = visible < tapes.length;
@@ -292,26 +419,32 @@ function ArchiveSection({ tapes }) {
         <div className="mp-eyebrow">Original Music · The Archives</div>
         <h2 className="mp-head__title mp-tex">High School &amp; Childhood</h2>
       </div>
-      <div className="mp-relgrid">
+      <ol className="mp-tracklist">
         {shown.map((t) => (
-          <div className="mp-release lp-reveal" key={t.id}>
-            <div className="mp-release__art">
-              <img src={MS_R(t.strip, "assets/film/photo-4.jpg")} alt={t.title} loading="lazy" />
-            </div>
-            <div className="mp-release__meta">
-              <div className="mp-release__gy"><span>{t.label}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{t.year}</span></div>
-              <h3 className="mp-release__title">{t.title}</h3>
-              <p className="mp-release__desc">{t.note}</p>
-              <div className="mp-release__foot"><span>{t.genre}</span><span>{t.len}</span></div>
-            </div>
-          </div>
+          <li className={"mp-track lp-reveal" + (playingId === t.id ? " is-playing" : "")} key={t.id}>
+            <button className="mp-track__play" aria-label={(playingId === t.id ? "Pause " : "Play ") + t.title} onClick={() => onToggle && onToggle(t.id)}>
+              {playingId === t.id ? <MsPause /> : <PlayTriangle size={18} id={"tape-" + t.id} />}
+            </button>
+            <span className="mp-track__title">{t.title}</span>
+            <span className="mp-track__label">{t.label}</span>
+            <span className="mp-track__year">{t.year}</span>
+            {playingId === t.id ? (
+              t.scUrl
+                ? <div className="mp-track__player"><ScPlayer item={t} playing={true} onToggle={onToggle} /></div>
+                : <p className="mp-track__soon">Recording not yet digitized — coming soon.</p>
+            ) : null}
+          </li>
         ))}
-      </div>
+      </ol>
       {hasMore ? (
         <div className="mp-archive__cta lp-reveal" style={{ display: "flex", justifyContent: "center", marginTop: "clamp(40px,6vh,72px)" }}>
-          <button className="lp-cta lp-cta--gold" onClick={() => setVisible((v) => v + STEP)}>View All Childhood Music<span className="arr">→</span></button>
+          <button className="mp-archive__more" onClick={() => setVisible((v) => v + STEP)}>View All Childhood Music</button>
         </div>
       ) : null}
+      <div className="mp-archive__btns lp-reveal">
+        <button className="lp-cta lp-cta--gold" onClick={() => { window.location.href = "contact.html"; }}>Book Ted to DJ your event<span className="arr">→</span></button>
+        <button className="lp-cta" onClick={() => { window.location.href = "contact.html"; }}>Inquire about a song collab<span className="arr">→</span></button>
+      </div>
     </section>
   );
 }
@@ -497,5 +630,5 @@ function MusicCta({ onListen, onDrops, onFollow }) {
 
 Object.assign(window, {
   useMpReveal, MpBanner, MpWaveSep, ScPlayer, OverviewSection, DjSetsSection,
-  ReleasesSection, ArchiveSection, HighlightsSection, MediaSection, MusicCta,
+  ReleasesSection, PlatformRail, SoundtracksSection, ArchiveSection, HighlightsSection, MediaSection, MusicCta,
 });

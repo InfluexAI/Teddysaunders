@@ -160,12 +160,7 @@ function MusicPageApp() {
                   <div className="lph-kicker">A Sonic Archive</div>
                   <h2 className="lph-title lp-title-fill">Music</h2>
                   <div className="lph-rule" />
-                  <p className="lph-motto">Adding rhythm and harmony to life's vibrations.</p>
-                  <div className="mp-cta__btns lp-reveal">
-                    <button className="lp-cta lp-cta--gold" onClick={() => scrollTo(djRef)}>Listen Now<span className="arr">→</span></button>
-                    <button className="lp-cta" onClick={() => scrollTo(djRef)}>Explore TedDrops<span className="arr">→</span></button>
-                    <button className="lp-cta" onClick={() => { window.open("https://soundcloud.com/teddrops", "_blank"); }}>Follow on SoundCloud<span className="arr">→</span></button>
-                  </div>
+                  <p className="lph-motto">Original music, DJ sets, soundtracks and Childhood beats.</p>
                   <div className="mp-cta__mini-wave" aria-hidden="true">
                     {heroCtaWaves.map((w, i) => (<i key={i} style={{ height: w.h + "px", animationDelay: w.d + "s" }} />))}
                   </div>
@@ -183,7 +178,9 @@ function MusicPageApp() {
 
               <ReleasesSection releases={window.MUSIC_RELEASES} playingId={playingId} onToggle={togglePlay} />
 
-              <ArchiveSection tapes={window.MUSIC_ARCHIVE} />
+              <ArchiveSection tapes={window.MUSIC_ARCHIVE} playingId={playingId} onToggle={togglePlay} />
+
+              <SoundtracksSection tracks={window.MUSIC_SOUNDTRACKS} />
             </div>
 
             <Footer onSubscribe={(d) => fire(`Newsletter: ${(d && d.email) || ""}`)} />

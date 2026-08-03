@@ -168,3 +168,25 @@ const MUSIC_WORLDS = [
 Object.assign(window, {
   MD_R, MUSIC_DJSETS, MUSIC_RELEASES, MUSIC_ARCHIVE, MUSIC_HIGHLIGHTS, MUSIC_NOWPLAYING, MUSIC_WORLDS,
 });
+
+// ---- FILM SOUNDTRACKS ----
+const MUSIC_SOUNDTRACKS = [
+  {
+    id: "places-burning-man", title: "Oh the Places You'll Go", film: "at Burning Man",
+    year: "2023", genre: "Cinematic Score", run: "6:24",
+    art: "posterPlaces",
+    scUrl: "https://soundcloud.com/teddrops/oh-the-places-youll-go",
+    desc: "The score written for the Burning Man film \u2014 a slow-building cinematic swell that carries the piece from the first dust-lit frame to the burn itself.",
+    watch: { label: "Watch the Film", note: "Oh the Places You'll Go \u00b7 Burning Man" },
+  },
+  {
+    id: "magic-moments", title: "Magic Moments", film: "Soundtrack",
+    year: "2022", genre: "Original Soundtrack", run: "5:08",
+    art: "posterSynthesis",
+    scUrl: "https://soundcloud.com/teddrops/magic-moments",
+    desc: "An original soundtrack composed to the picture \u2014 warm, unhurried, and built to let the quiet moments in the edit breathe.",
+    watch: { label: "Watch the Film", note: "Magic Moments" },
+  },
+];
+
+Object.assign(window, { MUSIC_SOUNDTRACKS });
