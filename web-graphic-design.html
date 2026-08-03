@@ -5,6 +5,21 @@
   <title>Ted Saunders — Web &amp; Graphic Design</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Page lives one folder deep (portfolio/). Compute the real site root from the
+       URL and set <base> before any asset loads — robust on Vercel whether the page
+       is served as /portfolio/web-graphic-design.html, /portfolio/web-graphic-design, or .../web-graphic-design/. -->
+  <script>
+    (function () {
+      var p = location.pathname;
+      var i = p.indexOf('/portfolio/');
+      var root = i >= 0 ? p.slice(0, i + 1) : '/';
+      var b = document.createElement('base');
+      b.href = location.origin + root;
+      document.head.insertBefore(b, document.head.firstChild);
+    })();
+  </script>
+
+
   <meta name="ext-resource-dependency" content="assets/logo.png" data-resource-id="logo" />
   <meta name="ext-resource-dependency" content="assets/footer-scene.jpg" data-resource-id="footerScene" />
   <meta name="ext-resource-dependency" content="assets/heading-texture.jpg" data-resource-id="headingTexture" />
