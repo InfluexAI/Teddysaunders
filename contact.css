@@ -326,6 +326,10 @@ body.v2-standalone .tk-nav > li > a { font-size: 1.0417vw; letter-spacing: 0.06e
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   filter: drop-shadow(0 6px 26px rgba(0,0,0,0.55));
 }
+/* First 4 keeps the original texture crop (with its speck); the second samples a
+   different patch so the same mark never lands twice in the same place. */
+.nf-digit:first-child { background-position: center 40%; background-size: cover; }
+.nf-digit:last-child { background-position: 18% 78%; background-size: 300% auto; }
 
 .c-compass { position: relative; display: inline-flex; }
 .c-compass svg { display: block; overflow: visible; }

@@ -21,7 +21,7 @@ function NotFound() {
                   <span className="nf-digit">4</span>
                 </div>
                 <h1 className="c-display reveal d2" style={{ fontSize: "clamp(44px, 7vw, 92px)", marginTop: 14 }}>
-                  THIS FRAME<br/><span className="ink-sans">DOESN&rsquo;T EXIST.</span>
+                  THIS PATH<br/><span className="ink-sans">DOESN&rsquo;T EXIST.</span>
                 </h1>
                 <p className="c-lead reveal d3" style={{ marginTop: 24, fontSize: "clamp(18px, 2.05vw, 30px)", whiteSpace: "nowrap" }}>
                   Even the compass loses its bearings in the dark.
