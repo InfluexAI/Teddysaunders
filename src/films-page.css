@@ -114,7 +114,7 @@
 .lp-sec--filmrail .lp-banner { margin-top: -50px; }
 .lp-sec--filmrail .lp-banner__media { height: 600px; }
 .lp-sec--filmrail .lp-banner__media img { object-position: center top; }
-.lp-sec--filmrail[data-screen-label="Commercial Clients"] .lp-banner__media img { object-position: center 30%; }
+.lp-sec--filmrail[data-screen-label="Commercial Clients"] .lp-banner__media img { object-position: center 50%; }
 
 /* ============================================================
  *  TEDFLIX — the viewing experience
