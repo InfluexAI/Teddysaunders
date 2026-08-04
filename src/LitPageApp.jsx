@@ -196,13 +196,12 @@ function LitPageApp() {
               <Worldbuilding worlds={D.WORLDS} bg={AR("worldBg", "assets/worldbuilding-bg.jpg")} onOpen={(title) => fire(`Enter world: ${title}`)} />
 
               <section className="lp-excerpt" data-screen-label="Closing Quote"
-                style={{ background: "url(" + AR("excerptBg", "assets/excerpt-bg-v3.jpg") + ") 75% center / cover no-repeat" }}>
+                style={{ background: "url(" + AR("excerptBg", "assets/lit-excerpt-bg.png") + ") 75% center / cover no-repeat" }}>
                 <span className="lp-excerpt__mark" aria-hidden="true">&ldquo;</span>
                 <blockquote className="lp-excerpt__q">
-                  &ldquo;Safety is the subconscious priority of all human behavior and knowing this can change how you see life.&rdquo;
+                  &ldquo;Safety is the subconscious priority of all human behavior. Knowing this can change how you see life.&rdquo;
                 </blockquote>
-                <span className="lp-excerpt__tick" aria-hidden="true"></span>
-                <cite className="lp-excerpt__by">From the Book of Ignorance</cite>
+                <cite className="lp-excerpt__by">&mdash; Ted Saunders (From the Book of Ignorance)</cite>
               </section>
             </div>
 
