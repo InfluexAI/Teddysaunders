@@ -227,4 +227,6 @@ function LitPageApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<LitPageApp />);
+(window.TED ? window.TED.ready() : Promise.resolve()).then(() =>
+  ReactDOM.createRoot(document.getElementById("root")).render(<LitPageApp />)
+);
