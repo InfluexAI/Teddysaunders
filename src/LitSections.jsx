@@ -631,7 +631,7 @@ function TedThoughts({ poems, onOpen, onCta }) {
           <div className="lp-tc" key={i}>
             <p className="lp-tc__excerpt">{p.lines.join("\n\n")}</p>
             <div className="lp-tc__foot">
-              <span className="lp-tc__date">{TT_DATES[i] || ""}</span>
+              <span className="lp-tc__date">{p.date || TT_DATES[i] || ""}</span>
               <ShareBtn param="thought" value={String(i)} />
             </div>
           </div>

@@ -29,6 +29,7 @@
   "use strict";
 
   var API        = "https://tedverse-ted.fly.dev/api/public";
+  var ORIGIN     = API.replace(/\/api\/public\/?$/, "");   // for relative asset paths
   var TIMEOUT_MS = 6000;        // above his measured 2.7s cold start
   var CACHE_KEY  = "ted-source:v2:";
   var CACHE_TTL  = 86400000;    // keep a usable copy for 24h as an outage cushion
@@ -104,12 +105,28 @@
   // fallback. Handing it a raw URL misses every lookup and silently renders
   // the same placeholder for every film. Register the URL, return the key.
   function registerAsset(k, url) {
-    if (!url) return "";
+    var abs = resolveUrl(url);
+    if (!abs) return "";
     try {
       window.__resources = window.__resources || {};
-      window.__resources[k] = url;
+      window.__resources[k] = abs;
     } catch (e) { warn("could not register asset " + k); }
     return k;
+  }
+
+  /* ---------- asset resolution -------------------------------------------
+   * His feeds mix two kinds of URL. Articles carry absolute ones
+   * ("https://tedverse-ted.fly.dev/data/article-images/..."); photos carry
+   * root-relative ones ("/data/tedshots-thumbs/..."). A relative path used
+   * as-is resolves against the site's own domain and 404s, which is a broken
+   * image on a director's portfolio. Every asset from his backend goes
+   * through here, so the origin is applied exactly once and only when needed.
+   * -------------------------------------------------------------------- */
+  function resolveUrl(u) {
+    var s = str(u).trim();
+    if (!s) return "";
+    if (/^(https?:)?\/\//i.test(s) || /^data:/i.test(s)) return s;   // already absolute
+    return ORIGIN + (s.charAt(0) === "/" ? "" : "/") + s;
   }
 
   // Bunny 403s any request that carries no referrer, and CDN objects can go
@@ -248,6 +265,27 @@
       date: str(a.published) || str(a.published_iso), image: str(a.image),
       excerpt: str(a.excerpt), body: str(a.body_html) || str(a.body_text),
       text: str(a.body_text), url: str(a.url)
+    };
+  }
+
+  /* ---------- tweets -> TedThoughts ---------------------------------------
+   * The site's LIT_DATA.POEMS collection is the TedThoughts section, and its
+   * twelve entries are verbatim the first twelve records of his tweets feed,
+   * in feed order, hand-copied. He has 422.
+   *
+   * Shape the renderer expects: { tag, title, lines[] }, joined with blank
+   * lines. Newest first, matching both his feed and the site's existing order.
+   * -------------------------------------------------------------------- */
+  function mapTweet(t) {
+    var text = str(t.full_text).replace(/\r/g, "").trim();
+    return {
+      tag: "TedThought",
+      title: "",
+      lines: text.split(/\n{2,}/).map(function (s) { return s.trim(); })
+                 .filter(Boolean),
+      date: shortDate(t.created_at),
+      id: str(t.id),
+      permalink: str(t.permalink)
     };
   }
 
@@ -402,6 +440,12 @@
       touched.push("ESSAYS:" + D.ESSAYS.length);
     }
 
+    var tweets = window.TWEETS;
+    if (Array.isArray(tweets) && tweets.length) {
+      D.POEMS = tweets;
+      touched.push("POEMS:" + tweets.length);
+    }
+
     var notes = window.NOTES;
     if (Array.isArray(notes) && notes.length) {
       var asProse = function (n) {
@@ -424,6 +468,14 @@
     var items = clean(rows, ["id", "title"], "writings").map(mapWriting);
     if (!items.length) { warn("writings: nothing usable, keeping built-in copy"); return false; }
     window.WRITINGS = items;
+    return true;
+  }
+
+  function applyTweets(rows) {
+    var items = clean(rows, ["id", "full_text"], "tweets").map(mapTweet)
+                  .filter(function (t) { return t.lines.length; });
+    if (!items.length) { warn("tweets: nothing usable, keeping built-in copy"); return false; }
+    window.TWEETS = items;
     return true;
   }
 
@@ -468,7 +520,8 @@
     pending = Promise.all([
       feed("films",    "videos",   applyFilms),
       feed("writings", "articles", applyWritings),
-      feed("notes",    "notes",    applyNotes)
+      feed("notes",    "notes",    applyNotes),
+      feed("tweets",   "tweets",   applyTweets)
     ]);
   } catch (e) {
     warn("startup failed: " + e.message);
