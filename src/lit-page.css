@@ -377,7 +377,21 @@
 .lp-tc:nth-child(odd) { transform: rotate(-0.7deg); }
 .lp-tc:nth-child(even) { transform: rotate(0.6deg); }
 .lp-tc:hover { transform: rotate(0deg) translateY(-10px); filter: drop-shadow(0 50px 80px rgba(0,0,0,0.7)) drop-shadow(0 0 46px rgba(214,151,51,0.2)); }
-.lp-tc__excerpt { font-family: var(--font-serif); font-style: italic; font-size: 21px; line-height: 1.4; color: #3a2a12; margin: 0; white-space: pre-line; text-wrap: pretty; }
+.lp-tc__excerpt { font-family: var(--font-serif); font-style: italic; font-weight: 700; font-size: 24px; line-height: 1.4; color: #2a1c0a; margin: 0; white-space: pre-line; text-wrap: pretty; }
+/* Shuffle + sort controls above the scroll rail */
+.lp-tcbar { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 0 var(--lp-pad); margin: 40px 0 4px; }
+.lp-tcbar__shuffle { display: inline-flex; align-items: center; gap: 11px; cursor: pointer;
+  font-family: var(--font-sans); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #E8B777; background: transparent; border: 1px solid rgba(209,157,99,0.45); border-radius: 3px; padding: 13px 24px;
+  transition: background .3s ease, border-color .3s ease, color .3s ease; }
+.lp-tcbar__shuffle svg { width: 17px; height: 17px; }
+.lp-tcbar__shuffle:hover { background: rgba(209,157,99,0.1); border-color: #FBE6B8; color: #FBE6B8; }
+.lp-tcbar__sort { display: flex; align-items: center; gap: 10px; }
+.lp-tcbar__opt { cursor: pointer; font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(245,237,227,0.5); background: transparent; border: 1px solid rgba(209,157,99,0.28);
+  border-radius: 3px; padding: 11px 20px; transition: color .3s ease, border-color .3s ease, background .3s ease; }
+.lp-tcbar__opt:hover { color: #FBE6B8; border-color: rgba(232,183,119,0.6); }
+.lp-tcbar__opt.is-on { color: #FBE6B8; border-color: #E8B777; background: rgba(209,157,99,0.12); }
 .lp-tc__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(120,84,40,0.32); }
 .lp-tc__foot .lp-share-btn { border-color: rgba(107,63,23,0.4); color: #6b4a1f; padding: 7px 14px; font-size: 10px; }
 .lp-tc__foot .lp-share-btn:hover { background: rgba(107,63,23,0.08); border-color: rgba(107,63,23,0.7); color: #3a2210; }
@@ -572,6 +586,10 @@
   transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease; }
 .lp-essay:nth-child(3n+2) { background: url("../assets/vintage-card42.png?v=7") center / 100% 100% no-repeat; }
 .lp-essay:nth-child(3n+3) { background: url("../assets/vintage-card43.png?v=7") center / 100% 100% no-repeat; }
+/* Articles & Blog cards use the newer parchment set, alternating across three */
+.lp-sec--essays .lp-essay { background: url("../assets/vintage-card51.png?v=1") center / 100% 100% no-repeat; }
+.lp-sec--essays .lp-essay:nth-child(3n+2) { background: url("../assets/vintage-card52.png?v=1") center / 100% 100% no-repeat; }
+.lp-sec--essays .lp-essay:nth-child(3n+3) { background: url("../assets/vintage-card53.png?v=1") center / 100% 100% no-repeat; }
 /* worn corner-fold, like a lifted photo corner */
 .lp-essay::after {
   content: ""; position: absolute; top: 0; right: 0; width: 26px; height: 26px; pointer-events: none;
@@ -625,6 +643,12 @@
 .lp-emodal__para { font-family: var(--font-body); font-size: 17px; line-height: 1.78;
   color: rgba(44,27,13,0.82); margin: 0 0 20px; text-wrap: pretty; }
 .lp-emodal__para:last-of-type { margin-bottom: 0; }
+/* In-article photo placeholders — 4-up strip under the hero image */
+.lp-emodal__thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 26px; }
+.lp-emodal__thumbs image-slot { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border: 1px solid rgba(120,80,30,0.3); border-radius: 6px; overflow: hidden; }
+.lp-emodal__thumbs image-slot::part(cap),
+.lp-emodal__thumbs image-slot::part(sub) { display: none; }
+@media (max-width: 640px) { .lp-emodal__thumbs { grid-template-columns: repeat(2, 1fr); } }
 .lp-emodal__share { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(120,80,30,0.28); }
 .lp-emodal__footer { display: flex; align-items: center; justify-content: space-between; margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(120,80,30,0.28); gap: 16px; }
 .lp-emodal__count { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(107,66,26,0.6); flex-shrink: 0; }
@@ -708,6 +732,14 @@
   background: url("../assets/lyrics-parchment.png") center / 100% 100% no-repeat;
 }
 .lp-ttcta { position: relative; z-index: 2; display: flex; justify-content: flex-start; margin-top: 48px; padding: 0 var(--lp-pad); }
+/* TedThoughts rail: arrows sit at the bottom-left, above the X CTA */
+.lp-sec--thoughts .lp-row { padding-bottom: 68px; }
+.lp-sec--thoughts .lp-row__arrow { top: auto; bottom: 0; transform: none; }
+.lp-sec--thoughts .lp-row__arrow--prev { left: var(--lp-pad); right: auto; }
+.lp-sec--thoughts .lp-row__arrow--next { left: calc(var(--lp-pad) + 68px); right: auto; }
+.lp-sec--thoughts .lp-row__arrow[data-dim] { opacity: 1; border-color: rgba(150,150,150,0.5); color: rgba(150,150,150,0.6); cursor: default; }
+.lp-sec--thoughts .lp-row::before { display: none; }
+.lp-sec--thoughts .lp-ttcta { margin-top: 28px; }
 
 /* Poem / Lyrics category toggle — tall vertical gold-stroke tabs (sideways text) */
 .lp-ttwrap { position: relative; }
@@ -746,13 +778,15 @@
 @keyframes lpPmodalIn { from { opacity: 0; } to { opacity: 1; } }
 .lp-pmodal__scroll {
   position: relative; width: clamp(700px, 78vw, 1000px); margin: auto;
-  background: url("../assets/poetry-card-scroll.png") center / 100% 100% no-repeat;
+  background: url("../assets/poetry-scroll-bg.png") center / 100% 100% no-repeat;
   padding: clamp(100px, 11vw, 140px) clamp(120px, 12vw, 180px);
   filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
   display: flex; align-items: center; justify-content: center;
   animation: lpPmodalPop .35s cubic-bezier(.16,1,.3,1); }
 @keyframes lpPmodalPop { from { opacity: 0; transform: translateY(20px) scale(.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.lp-pmodal__inner { width: 100%; text-align: center; max-height: 400px; overflow-y: auto; }
+/* scrollbar rides outside the parchment's right edge */
+.lp-pmodal__inner { width: 100%; text-align: center; max-height: 400px; overflow-y: auto;
+  box-sizing: content-box; margin-right: -132px; padding-right: 132px; }
 .lp-pmodal__inner::-webkit-scrollbar { width: 8px; }
 .lp-pmodal__inner::-webkit-scrollbar-thumb { background: rgba(107,63,23,0.4); border-radius: 4px; }
 .lp-pmodal__inner::-webkit-scrollbar-track { background: transparent; }
@@ -802,7 +836,7 @@
 /* ---------- Featured excerpt — cream parchment band before footer ---------- */
 .lp-excerpt { position: relative; z-index: 2; overflow: hidden;
   background: url("../assets/lit-excerpt-bg.png") center / cover no-repeat, #e8ddc9;
-  padding: 40px var(--lp-pad) 72px; text-align: left;
+  padding: 130px var(--lp-pad) 160px; text-align: left;
   display: flex; flex-direction: column; align-items: flex-start; }
 .lp-excerpt::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: none; }
@@ -819,11 +853,11 @@
   -webkit-text-fill-color: transparent; color: transparent; position: relative; z-index: 2; }
 .lp-excerpt__q { margin: 14px 0 0; max-width: 1060px;
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
-  font-size: clamp(23px, 2.7vw, 42px); line-height: 1.24; letter-spacing: 0.004em;
+  font-size: clamp(34px, 4vw, 62px); line-height: 1.2; letter-spacing: 0.004em;
   color: #2b2317; text-wrap: balance; }
 .lp-excerpt__by { display: block; margin-top: 16px;
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
-  font-size: clamp(18px, 1.55vw, 26px); line-height: 1; letter-spacing: 0.01em; color: #5a4221; }
+  font-size: clamp(24px, 2.1vw, 35px); line-height: 1; letter-spacing: 0.01em; color: #5a4221; }
 .lp-tt__all { display: inline-flex; align-items: center; gap: 10px;
   background: none; border: none; cursor: pointer; padding: 0;
   font-family: var(--font-sans); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;

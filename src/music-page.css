@@ -209,20 +209,67 @@
 .mp-track__label { font-family: var(--font-sans); font-weight: 600; font-size: clamp(10px, 0.8vw, 12px); letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,183,119,0.62); white-space: nowrap; }
 .mp-track__year { font-family: var(--font-body); font-weight: 300; font-size: clamp(13px, 1vw, 16px); color: rgba(245,237,227,0.5); min-width: 4ch; text-align: right; }
 /* SONDER — artist name + dictionary-entry card */
-.mp-sonder { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 72px); align-items: center; padding: clamp(34px, 5vh, 56px) var(--mp-pad) 0; }
+.mp-sonder { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: center; padding: clamp(34px, 5vh, 56px) var(--mp-pad) 0; }
 .mp-sonder__kicker { display: block; font-family: var(--font-sans); font-weight: 700; font-size: clamp(10px, 0.8vw, 12px); letter-spacing: 0.3em; text-transform: uppercase; color: rgba(232,183,119,0.7); margin-bottom: 14px; }
 .mp-sonder__name { font-family: var(--font-display); font-size: clamp(30px, 3.4vw, 60px); line-height: 1; text-transform: uppercase; margin: 0; }
 .mp-sonder__pron { font-family: var(--font-body); font-weight: 300; font-size: clamp(14px, 1.1vw, 18px); color: rgba(245,237,227,0.5); margin: 14px 0 0; }
-.mp-sonder__card { margin: 0; padding: clamp(26px, 2.6vw, 42px); border: 1px solid rgba(209,157,99,0.24); border-radius: 12px;
-  background: linear-gradient(180deg, rgba(20,16,11,0.85) 0%, rgba(10,7,5,0.85) 100%); box-shadow: 0 30px 70px -32px rgba(0,0,0,0.85); }
-.mp-sonder__entry { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.mp-sonder__word { font-family: var(--font-display); font-size: clamp(22px, 2vw, 34px); line-height: 1; color: #F5EDE3; }
-.mp-sonder__pos { font-family: var(--font-body); font-weight: 300; font-style: italic; font-size: clamp(13px, 1vw, 17px); color: #D89733; }
+/* headline + definition card share one row, two columns */
+.mp-sonderrow { display: grid; grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr); column-gap: clamp(24px, 2.5vw, 44px); align-items: center; }
+.mp-sonderrow .mp-head { padding-right: 0; }
+.mp-sonderrow .mp-sonder { padding-left: 0; }
+.mp-sonderrow .mp-sonder__card { padding-left: clamp(32px, 3vw, 56px); }
+
+.mp-sonder__card { margin: 0; padding: clamp(40px, 4vw, 68px); padding-left: 0; border: 1px solid rgba(209,157,99,0.24); border-left: 0; border-radius: 12px;
+  background: linear-gradient(180deg, rgba(20,16,11,0.85) 0%, rgba(10,7,5,0.85) 100%); box-shadow: 0 30px 70px -32px rgba(0,0,0,0.85);
+  display: grid; grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr); column-gap: clamp(32px, 4vw, 72px); align-items: start; }
+.mp-sonder__entry { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; grid-column: 1; }
+.mp-sonder__hair { grid-column: 1; }
+.mp-sonder__def { grid-column: 2; grid-row: 1 / span 3; }
+.mp-sonder__word { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 62px); line-height: 1; color: #F5EDE3; }
+.mp-sonder__pos { font-family: var(--font-body); font-weight: 300; font-style: italic; font-size: clamp(20px, 1.7vw, 29px); color: #D89733; }
 .mp-sonder__hair { display: block; width: 54px; height: 1px; margin: clamp(16px, 2vh, 22px) 0; background: linear-gradient(90deg, rgba(216,151,51,0.8), rgba(216,151,51,0)); }
-.mp-sonder__def { margin: 0; font-family: var(--font-body); font-weight: 300; font-size: clamp(14px, 1.1vw, 18px); line-height: 1.72; color: rgba(245,237,227,0.76); text-wrap: pretty; }
-@media (max-width: 900px) { .mp-sonder { grid-template-columns: 1fr; } }
+.mp-sonder__def { margin: 0; font-family: var(--font-body); font-weight: 300; font-size: clamp(18px, 1.85vw, 28px); line-height: 1.62; color: rgba(245,237,227,0.86); text-wrap: pretty; }
 
 /* platform rail — where to listen */
+/* Link-out play row for sets without an individual embed URL */
+.mp-release__out { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; text-decoration: none;
+  font-family: var(--font-sans); font-weight: 600; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #E8B769; padding: 12px 20px; border: 1px solid rgba(209,157,99,0.35); border-radius: 8px;
+  background: linear-gradient(180deg, rgba(20,16,11,0.7) 0%, rgba(10,7,5,0.7) 100%);
+  transition: border-color .3s ease, background .3s ease, color .3s ease; }
+.mp-release__out:hover { border-color: rgba(240,196,120,0.6); background: rgba(209,157,99,0.1); color: #FFEACA; }
+.mp-release__outglyph { width: 16px; height: 16px; display: block; }
+.mp-release__out .arr { transition: transform .3s ease; }
+.mp-release__out:hover .arr { transform: translateX(3px); }
+
+/* Playlist-backed set cards — the widget itself supplies cover + playback */
+.mp-release--set { grid-template-columns: 1fr; }
+.mp-release__setplayer { margin-top: 18px; }
+.mp-release__setplayer iframe { width: 100%; display: block; border: 1px solid rgba(209,157,99,0.2); border-radius: 10px; background: #0b0806; }
+.mp-release__setskel { width: 100%; height: 166px; border: 1px solid rgba(209,157,99,0.14); border-radius: 10px; background: linear-gradient(180deg, rgba(20,16,11,0.6) 0%, rgba(10,7,5,0.6) 100%); }
+
+/* Live DJ-sets playlist embed — SoundCloud owns the list so it stays in sync */
+.mp-djs__livehead { display: flex; align-items: center; gap: 22px; margin-bottom: clamp(20px, 3vh, 32px); }
+.mp-djs__liverule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(209,157,99,0), rgba(209,157,99,0.4), rgba(209,157,99,0)); }
+.mp-djs__livelabel { flex: none; font-family: var(--font-sans); font-weight: 700; font-size: clamp(11px, 0.9vw, 13px); letter-spacing: 0.28em; text-transform: uppercase; color: rgba(232,183,119,0.8); }
+.mp-djs__live { position: relative; z-index: 2; padding: clamp(40px, 6vh, 72px) var(--mp-pad) 0; }
+.mp-djs__live iframe { width: 100%; display: block; border: 1px solid rgba(209,157,99,0.2); border-radius: 10px; background: #0b0806; }
+
+/* Playback engine — kept rendered at a real size inside the visible stage
+   (zero-size or offscreen cross-origin media iframes get playback blocked),
+   but tucked behind the tracklist at near-zero opacity so it reads as hidden. */
+.mp-archive { position: relative; }
+.mp-archive__playlist { position: absolute; left: var(--mp-pad); top: 42%; width: 320px; height: 166px; z-index: 0; opacity: 0.01 !important; pointer-events: none; }
+.mp-archive__playhint { display: none; }
+/* Gated start: reveal the widget so the visitor can begin playback themselves. */
+.mp-archive__playlist.is-blocked { position: relative; left: auto; top: auto; width: auto; height: auto; z-index: 2; opacity: 1 !important; pointer-events: auto; padding: clamp(28px, 4vh, 44px) var(--mp-pad) 0; }
+.mp-archive__playlist.is-blocked iframe { width: 100%; height: 166px; border: 1px solid rgba(209,157,99,0.2); border-radius: 10px; background: #0b0806;
+  /* SoundCloud's classic widget only ships a light chrome, so invert it into the
+     page's dark palette and re-rotate hues to keep the bronze accent warm. */
+  filter: invert(0.92) hue-rotate(180deg) saturate(1.1) contrast(0.95); }
+.mp-archive__playlist.is-blocked .mp-archive__playhint { display: block; font-family: var(--font-body); font-weight: 300; font-style: italic; font-size: clamp(13px, 1vw, 16px); color: rgba(245,237,227,0.5); margin: 0 0 14px; }
+.mp-archive__playlist iframe { width: 320px; height: 166px; display: block; border: 0; }
+.mp-tracklist, .mp-head, .mp-archive__cta, .mp-archive__btns { position: relative; z-index: 2; }
 .mp-platforms { position: relative; z-index: 2; padding: clamp(56px, 8vh, 96px) var(--mp-pad) 0; }
 .mp-platforms__head { display: flex; align-items: center; gap: 22px; margin-bottom: clamp(28px, 4vh, 44px); }
 .mp-platforms__rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(209,157,99,0), rgba(209,157,99,0.4), rgba(209,157,99,0)); }
@@ -238,8 +285,6 @@
 .mp-platform__name { font-family: var(--font-sans); font-weight: 600; font-size: clamp(10px, 0.8vw, 12px); letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,237,227,0.78); text-align: center; }
 .mp-platform:hover .mp-platform__name { color: #FFEACA; }
 .mp-platforms__note { font-family: var(--font-body); font-weight: 300; font-style: italic; font-size: clamp(12px, 0.95vw, 15px); color: rgba(245,237,227,0.45); text-align: center; margin: clamp(20px, 3vh, 32px) 0 0; }
-@media (max-width: 1100px) { .mp-platforms__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .mp-platforms__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ============================================================
  *  FILM SOUNDTRACKS — scored-to-picture, with film popups
@@ -264,7 +309,6 @@
   font-family: var(--font-sans); font-weight: 700; font-size: clamp(11px, 0.9vw, 14px); letter-spacing: 0.2em; text-transform: uppercase;
   color: #D89733; border-bottom: 1px solid rgba(216,151,51,0.4); transition: color .3s ease, border-color .3s ease; }
 .mp-score__watch:hover { color: #F0C478; border-color: #F0C478; }
-@media (max-width: 900px) { .mp-scoregrid { grid-template-columns: 1fr; } }
 
 .mp-archive__btns { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; padding: 0 var(--mp-pad); margin-top: clamp(40px, 6vh, 72px); }
 /* "View all" as a plain gold text link — no box, no arrow */
@@ -272,11 +316,6 @@
   font-family: var(--font-sans); font-weight: 700; font-size: clamp(12px, 0.95vw, 15px); letter-spacing: 0.24em; text-transform: uppercase;
   color: #D89733; border-bottom: 1px solid rgba(216,151,51,0.4); padding-bottom: 4px; transition: color .3s ease, border-color .3s ease; }
 .mp-archive__more:hover { color: #F0C478; border-color: #F0C478; }
-@media (max-width: 700px) {
-  .mp-tracklist { grid-template-columns: 1fr; }
-  .mp-track { grid-template-columns: auto minmax(0, 1fr) auto; }
-  .mp-track__label { display: none; }
-}
 
 .mp-cass { position: relative; cursor: pointer; border-radius: 12px; overflow: hidden; padding: 26px 26px 22px;
   background: linear-gradient(158deg, #241a10 0%, #14100a 100%);
