@@ -576,6 +576,15 @@ function EssaysSection({ essays, onOpen }) {
 
 /* ============ TEDTHOUGHTS ============ */
 const TT_DATES = ["5/18/2026", "5/18/2026", "5/8/2026", "10/19/2025", "10/19/2025", "9/25/2025", "6/30/2025", "6/14/2025", "5/31/2025", "1/10/2025", "8/13/2024", "8/9/2024"];
+
+// TT_DATES is positional and only covers the twelve built-in thoughts. When the
+// live feed is connected the list is far longer, so a record's own date wins and
+// TT_DATES stays as the fallback for the built-in copy. Display and sort both go
+// through here so they can never disagree about a thought's date.
+function ttDate(items, i) {
+  const p = items && items[i];
+  return (p && p.date) || TT_DATES[i] || "";
+}
 // Full poem text for the reader popup, keyed by card index. Index 0 is written out;
 // others fall back to their card line until full versions are supplied.
 const TT_POEM_FULL = {
@@ -629,7 +638,7 @@ function TedThoughts({ poems, onOpen, onCta }) {
 
   const view = React.useMemo(() => {
     const idx = items.map((_, i) => i);
-    const time = (i) => { const d = new Date(TT_DATES[i] || 0); return isNaN(d) ? 0 : d.getTime(); };
+    const time = (i) => { const d = new Date(ttDate(items, i) || 0); return isNaN(d) ? 0 : d.getTime(); };
     if (order === "oldest") return idx.slice().sort((a, b) => time(a) - time(b));
     if (order === "shuffle") {
       const a = idx.slice();
@@ -674,7 +683,7 @@ function TedThoughts({ poems, onOpen, onCta }) {
             <div className="lp-tc" key={i}>
               <p className="lp-tc__excerpt">{p.lines.join("\n\n")}</p>
               <div className="lp-tc__foot">
-                <span className="lp-tc__date">{TT_DATES[i] || ""}</span>
+                <span className="lp-tc__date">{ttDate(items, i)}</span>
                 <ShareBtn param="thought" value={String(i)} />
               </div>
             </div>

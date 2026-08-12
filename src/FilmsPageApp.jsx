@@ -239,4 +239,6 @@ function FilmsPageApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<FilmsPageApp />);
+(window.TED ? window.TED.ready() : Promise.resolve()).then(() =>
+  ReactDOM.createRoot(document.getElementById("root")).render(<FilmsPageApp />)
+);
