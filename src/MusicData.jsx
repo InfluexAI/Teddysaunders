@@ -8,6 +8,8 @@
 const MD_R = (k, fallback) => (window.__resources && window.__resources[k]) || fallback;
 
 // ---- DJ SETS (TedDrops & Mastercodes) ----
+const DJ_SETS_PLAYLIST = "https://soundcloud.com/teddrops/sets/teddrops-dj-sets";
+
 const MUSIC_DJSETS = [
   {
     id: "teddrops-festival", kicker: "TedDrops · Live Set", title: "Peak State — Abraxas Afters",
@@ -30,33 +32,111 @@ const MUSIC_DJSETS = [
     desc: "A members-only after-hours mix — deep, hypnotic, and unhurried. The room reduced to a heartbeat and a horizon.",
   },
   {
-    id: "high-vibe-swagzilla", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Swagzilla",
-    art: "film2", scUrl: "https://soundcloud.com/teddrops/swaggyafters", run: "1:00:00", plays: "—", tag: "Festival / Bass",
-    desc: "A High Vibe Fest afters set — swaggering, bass-forward, and built to keep a tired crowd on its feet till sunrise.",
+    id: "dj-mastercodes-mystic-manor-activation-live", kicker: "Mastercodes · Live Set", title: "Mastercodes - Mystic Manor Activation (live set)",
+    art: "musician", setIdx: 0, tag: "Melodic / Ritual",
+    desc: "An activation set for Mystic Manor — melodic, ceremonial, and built to hold a room in one long exhale.",
   },
   {
-    id: "high-vibe-baddie-dreams", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Baddie Dreams",
-    art: "film5", scUrl: "https://soundcloud.com/teddrops/baddiedreams", run: "1:00:00", plays: "—", tag: "Industree Tent",
-    desc: "Recorded live in the Industree Tent — a dreamy, confident set built for a late-night dance floor.",
+    id: "dj-the-infamous-uf-fro-art-car-sunrise-set-", kicker: "TedDrops · Sunrise Set", title: "The Infamous UF-FRO Art Car Sunrise Set at LIB",
+    art: "posterSynthesis", setIdx: 1, tag: "Sunrise / Playa",
+    desc: "The UF-FRO art car at Lightning in a Bottle, playing the hour the sky turns — warm, weightless, and unhurried.",
   },
   {
-    id: "high-vibe-elevate-2026", kicker: "TedDrops · Live Set", title: "High Vibe Fest — Elevate Stage 2026",
-    art: "posterPlaces", scUrl: "https://soundcloud.com/teddrops/high-vibe-elevate-stage-2026", run: "1:00:00", plays: "—", tag: "Main Stage",
-    desc: "A main-stage moment at High Vibe Fest 2026 — elevated energy from the first drop to the last.",
+    id: "dj-butter-nuggets-3-hour-dj-set-from-tina-a", kicker: "TedDrops · Wedding Set", title: "Butter Nuggets (3+ hour DJ Set from Tina and Rewi's Wedding)",
+    art: "posterBubbles", setIdx: 2, tag: "Open Format",
+    desc: "Three hours from Tina and Rewi's wedding — open-format and generous, moving a whole family across one night.",
   },
   {
-    id: "sxsw-perfect-premiere", kicker: "TedDrops · Live Set", title: "SXSW — Perfect Premiere Party",
-    art: "film6", scUrl: "https://soundcloud.com/teddrops/sxsw-perfect", run: "1:00:00", plays: "—", tag: "SXSW / Party",
-    desc: "A premiere-party set recorded during SXSW — polished, high-energy, and built for a room full of first impressions.",
+    id: "dj-nonstop-bass-drops-new-years-eve-2019-li", kicker: "TedDrops · Live Set", title: "Nonstop Bass Drops (New Years Eve 2019 Live Set)",
+    art: "ipProsopagnosia", setIdx: 3, tag: "Bass / NYE",
+    desc: "New Year's Eve 2019 — relentless bass, no gaps, built to carry a room straight through midnight.",
+  },
+  {
+    id: "dj-dragon-fire-burning-man-bass-set", kicker: "TedDrops · Burning Man", title: "Dragon Fire (Burning Man Bass Set)",
+    art: "film2", setIdx: 4, tag: "Bass / Playa",
+    desc: "A Burning Man bass set with the heat of the thing it's named for — heavy, elemental, unrepentant.",
+  },
+  {
+    id: "dj-a-lightning-in-a-bottle-morning-5-hour-d", kicker: "TedDrops · Festival Set", title: "A Lightning in a Bottle Morning (5+ Hour DJ Set)",
+    art: "film5", setIdx: 5, tag: "Morning / Long-Form",
+    desc: "Five hours of a Lightning in a Bottle morning — the full arc from last-dark to full-sun in one continuous take.",
+  },
+  {
+    id: "dj-future-bass-pop-drops-live-dj-set-from-a", kicker: "TedDrops · Live Set", title: "Future Bass POP Drops (Live DJ Set from Arielle Om's Birthday)",
+    art: "posterPlaces", setIdx: 6, tag: "Future Bass / Pop",
+    desc: "A birthday set for Arielle Om — future bass with pop bones, bright and unserious in the best way.",
+  },
+  {
+    id: "dj-dragon-upon-a-burning-temple-sunset-to-t", kicker: "TedDrops · Burning Man", title: "Dragon Upon A Burning Temple (Sunset to Temple Burn)",
+    art: "film6", setIdx: 7, tag: "Sunset / Ceremonial",
+    desc: "From sunset to the Temple burn — a set that follows the light down and the fire up.",
+  },
+  {
+    id: "dj-ecstatic-dance-the-upgrade-live-set-reco", kicker: "TedDrops · Ecstatic Dance", title: "Ecstatic Dance: The Upgrade ~ Live Set recorded at the Upgrade Retreat",
+    art: "film1", setIdx: 8, tag: "Ecstatic / Journey",
+    desc: "Recorded at the Upgrade Retreat — an ecstatic dance journey with a clear beginning, middle, and landing.",
+  },
+  {
+    id: "dj-shadows-into-light-dj-set-from-an-affini", kicker: "TedDrops · DJ Set", title: "Shadows into Light (DJ Set from an Affinity Party)",
+    art: "film3", setIdx: 9, tag: "Dark to Light",
+    desc: "An Affinity party set that earns its title — starting in shadow and arriving, eventually, somewhere luminous.",
+  },
+  {
+    id: "dj-tripping-into-dirt-dj-set", kicker: "TedDrops · DJ Set", title: "Tripping Into Dirt (DJ Set)",
+    art: "film4", setIdx: 10, tag: "Gritty / Groove",
+    desc: "Grit-forward and grounded — a set that stays low to the earth and grooves there.",
+  },
+  {
+    id: "dj-a-spicy-syrup-sunrise-3-hour-set", kicker: "TedDrops · Sunrise Set", title: "A Spicy Syrup Sunrise (3+ hour Set)",
+    art: "film7", setIdx: 11, tag: "Sunrise / Long-Form",
+    desc: "Three-plus hours of sunrise at the Syrup — sweet, hot, and paced for people who never went to bed.",
+  },
+  {
+    id: "dj-burlesque-booty-bounce-at-amori-s-casino", kicker: "TedDrops · Burning Man", title: "Burlesque Booty Bounce at Amori's Casino, Burning Man 2016",
+    art: "musician", setIdx: 12, tag: "Burlesque / Bounce",
+    desc: "Amori's Casino, Burning Man 2016 — burlesque bounce for a crowd dressed for trouble.",
+  },
+  {
+    id: "dj-electro-crunk-booty-bouncin-highlove-s-l", kicker: "TedDrops · Live Set", title: "Electro-Crunk-Booty-Bouncin @ Highlove's Lounge LIB 2016",
+    art: "posterSynthesis", setIdx: 13, tag: "Electro / Crunk",
+    desc: "Highlove's Lounge at LIB 2016 — electro-crunk with the low end turned all the way up.",
+  },
+  {
+    id: "dj-dionysus-sexy-party-the-syrup-loft", kicker: "TedDrops · Loft Set", title: "Dionysus Sexy Party @ The Syrup Loft",
+    art: "posterBubbles", setIdx: 14, tag: "Sultry / House",
+    desc: "The Syrup Loft, in full Dionysian mode — sultry, close, and built for a room with no corners.",
+  },
+  {
+    id: "dj-vampire-lounge-set-2", kicker: "TedDrops · Lounge Set", title: "Vampire Lounge Set 2",
+    art: "ipProsopagnosia", setIdx: 15, tag: "Dark / Lounge",
+    desc: "The second Vampire Lounge set — nocturnal, velvet-dark, and patient.",
+  },
+  {
+    id: "dj-vampire-lounge-set-1", kicker: "TedDrops · Lounge Set", title: "Vampire Lounge Set 1",
+    art: "film2", setIdx: 16, tag: "Dark / Lounge",
+    desc: "Where the Vampire Lounge began — after-dark textures for a room that prefers candlelight.",
+  },
+  {
+    id: "dj-rancho-relaxo-sunrise-set", kicker: "TedDrops · Sunrise Set", title: "Rancho Relaxo Sunrise Set",
+    art: "film5", setIdx: 17, tag: "Downtempo / Warm",
+    desc: "A sunrise set at Rancho Relaxo — downtempo and warm, made for the slowest hour of the party.",
+  },
+  {
+    id: "dj-penthouse-sunrise-at-z-s-loft", kicker: "TedDrops · Loft Set", title: "Penthouse Sunrise At Z's Loft",
+    art: "posterPlaces", setIdx: 18, tag: "Sunrise / House",
+    desc: "Sunrise from a penthouse at Z's loft — the city coming up while the room refuses to sit down.",
+  },
+  {
+    id: "dj-resourcery-my-first-ever-dj-set", kicker: "TedDrops · Live Set", title: "Resourcery (My first ever DJ Set)",
+    art: "film6", setIdx: 19, tag: "Debut / Archive",
+    desc: "The first set Ted ever played, kept exactly as it happened — the origin point of everything after it.",
+  },
+  {
+    id: "dj-adventures-in-whenderland-live-set", kicker: "TedDrops · Live Set", title: "Adventures in Whenderland - Live Set",
+    art: "film1", setIdx: 20, tag: "Whimsical / Bass",
+    desc: "A trip through Whenderland — whimsical, bass-lit, and never quite where you expect it to be.",
   },
 ];
-
-// Only 8 unique tracks are exposed on the public profile; cycle them into
-// 12 more entries so the carousel fills out (ids kept unique for React).
-for (let i = 0; i < 12; i++) {
-  const src = MUSIC_DJSETS[i % 8];
-  MUSIC_DJSETS.push(Object.assign({}, src, { id: src.id + "-x" + i }));
-}
 
 // ---- LATEST RELEASES (Original Music) ----
 const MUSIC_RELEASES = [
@@ -84,42 +164,32 @@ const MUSIC_RELEASES = [
 
 // ---- CHILDHOOD & HIGH-SCHOOL ARCHIVE (cassette cards) ----
 const MUSIC_ARCHIVE = [
-  {
-    id: "first-loops", title: "First Loops", label: "Bedroom Recordings", year: "2004", genre: "Early Beats", len: "Side A · 32:10",
-    strip: "film4", note: "The very first experiments — a borrowed keyboard, a cracked copy of a sequencer, and an afternoon that never ended.",
-  },
-  {
-    id: "garage-sessions", title: "Garage Sessions", label: "High School", year: "2007", genre: "Rock / Experiment", len: "Side B · 41:28",
-    strip: "film6", note: "Recorded live in a friend's garage — loud, imperfect, and completely fearless. The sound of learning by doing.",
-  },
-  {
-    id: "senior-year", title: "Senior Year Demos", label: "Four-Track Tape", year: "2008", genre: "Songwriting", len: "Full Tape · 47:02",
-    strip: "film8", note: "A cassette of songs written the year everything felt like it was about to begin — earnest, raw, and quietly ambitious.",
-  },
-  {
-    id: "college-radio", title: "College Radio Cuts", label: "Late-Night Sessions", year: "2010", genre: "Indie / Lo-Fi", len: "Side A · 38:52",
-    strip: "film7", note: "Recorded between classes on borrowed studio time — the first songs made for an audience beyond the bedroom.",
-  },
-  {
-    id: "first-samplers", title: "First Samplers", label: "Bedroom Recordings", year: "2005", genre: "Beat Sketches", len: "Side B · 28:44",
-    strip: "film2", note: "An afternoon spent chopping records into something new — the first time a loop felt like it belonged to him.",
-  },
-  {
-    id: "battle-of-bands", title: "Battle of the Bands", label: "High School", year: "2006", genre: "Rock / Live", len: "Full Set · 22:15",
-    strip: "film5", note: "One loud night in a gymnasium — three chords, no fear, and the first taste of a crowd counting on the downbeat.",
-  },
-  {
-    id: "winter-tapes", title: "Winter Tapes", label: "Four-Track Tape", year: "2009", genre: "Ambient / Folk", len: "Side A · 35:30",
-    strip: "film8", note: "Quiet songs recorded through a long cold season — a guitar, a cheap mic, and a lot of patience.",
-  },
-  {
-    id: "dorm-sessions", title: "Dorm Sessions", label: "Late-Night Sessions", year: "2011", genre: "Lo-Fi / Electronic", len: "Side B · 44:18",
-    strip: "film6", note: "Made after midnight on a laptop and headphones — the sound of a curfew that only existed for everyone else.",
-  },
-  {
-    id: "summer-eps", title: "Summer EPs", label: "Home Studio", year: "2012", genre: "Indie / Electronic", len: "Full Tape · 51:07",
-    strip: "film4", note: "Three short EPs recorded across one long summer — the moment the bedroom producer started thinking like a composer.",
-  },
+  { id: "arc-thoughtful-instrumental", idx: 0, title: "Thoughtful (Instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-porcelain-keys-instrumental", idx: 1, title: "Porcelain Keys (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-venus-instrumental", idx: 2, title: "Venus (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-the-beach-2001", idx: 3, title: "The Beach (2001)", label: "Original Beats", year: "", },
+  { id: "arc-mandalin", idx: 4, title: "Mandalin", label: "Original Beats", year: "", },
+  { id: "arc-open-gates-instrumental", idx: 5, title: "Open Gates (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-bt-communicate-teddy-saunders-remix", idx: 6, title: "BT - Communicate (Teddy Saunders Remix)", label: "Original Beats", year: "", },
+  { id: "arc-future-crunk-instrumental", idx: 7, title: "Future Crunk (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-cupid-instrumental", idx: 8, title: "Cupid (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-reggaeton-instrumental", idx: 9, title: "Reggaeton (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-from-spain-instrumental", idx: 10, title: "From Spain (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-eclectic-instrumental", idx: 11, title: "Eclectic (Instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-playing-with-dragons", idx: 12, title: "Playing with Dragons", label: "Original Beats", year: "", },
+  { id: "arc-come-on-in-instrumental", idx: 13, title: "Come on in (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-random-sauce", idx: 14, title: "Random Sauce", label: "Original Beats", year: "", },
+  { id: "arc-mystical-instrumental", idx: 15, title: "Mystical (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-rocky-instrumental", idx: 16, title: "Rocky (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-dance-yo-face-instumental", idx: 17, title: "Dance Yo Face (instumental)", label: "Original Beats", year: "", },
+  { id: "arc-phase-breaker", idx: 18, title: "Phase Breaker", label: "Original Beats", year: "", },
+  { id: "arc-the-beer-song", idx: 19, title: "THE BEER SONG", label: "Original Beats", year: "", },
+  { id: "arc-22-the-beer-song-instrumental", idx: 20, title: "22 The Beer Song (instrumental)", label: "Original Beats", year: "", },
+  { id: "arc-oh-the-places-you-ll-go-instrumental", idx: 21, title: "Oh! The Places You'll Go! - Instrumental", label: "Original Beats", year: "", },
+  { id: "arc-oh-the-places-you-ll-go-soundtrack", idx: 22, title: "Oh! The Places You'll Go! - Soundtrack", label: "Original Beats", year: "", },
+  { id: "arc-poem-of-praise", idx: 23, title: "Poem of Praise", label: "Original Beats", year: "", },
+  { id: "arc-magic-moments-soundtrack-from-the-tedsho", idx: 24, title: "Magic Moments Soundtrack (from the Tedshots film)", label: "Original Beats", year: "", },
+  { id: "arc-the-punsher", idx: 25, title: "The Punsher", label: "Original Beats", year: "", },
 ];
 
 // ---- FEATURED HIGHLIGHTS (large layered cards) ----
@@ -166,7 +236,7 @@ const MUSIC_WORLDS = [
 ];
 
 Object.assign(window, {
-  MD_R, MUSIC_DJSETS, MUSIC_RELEASES, MUSIC_ARCHIVE, MUSIC_HIGHLIGHTS, MUSIC_NOWPLAYING, MUSIC_WORLDS,
+  MD_R, DJ_SETS_PLAYLIST, MUSIC_DJSETS, MUSIC_RELEASES, MUSIC_ARCHIVE, MUSIC_HIGHLIGHTS, MUSIC_NOWPLAYING, MUSIC_WORLDS,
 });
 
 // ---- FILM SOUNDTRACKS ----
@@ -175,7 +245,7 @@ const MUSIC_SOUNDTRACKS = [
     id: "places-burning-man", title: "Oh the Places You'll Go", film: "at Burning Man",
     year: "2023", genre: "Cinematic Score", run: "6:24",
     art: "posterPlaces",
-    scUrl: "https://soundcloud.com/teddrops/oh-the-places-youll-go",
+    scUrl: "https://soundcloud.com/teddrops/ohtheplaces",
     desc: "The score written for the Burning Man film \u2014 a slow-building cinematic swell that carries the piece from the first dust-lit frame to the burn itself.",
     watch: { label: "Watch the Film", note: "Oh the Places You'll Go \u00b7 Burning Man" },
   },
@@ -183,7 +253,7 @@ const MUSIC_SOUNDTRACKS = [
     id: "magic-moments", title: "Magic Moments", film: "Soundtrack",
     year: "2022", genre: "Original Soundtrack", run: "5:08",
     art: "posterSynthesis",
-    scUrl: "https://soundcloud.com/teddrops/magic-moments",
+    scUrl: "https://soundcloud.com/teddrops/magicmoments",
     desc: "An original soundtrack composed to the picture \u2014 warm, unhurried, and built to let the quiet moments in the edit breathe.",
     watch: { label: "Watch the Film", note: "Magic Moments" },
   },

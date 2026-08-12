@@ -186,8 +186,12 @@ function OverviewSection({ worlds }) {
 }
 
 /* ---- a single DJ-set card (owns its own oEmbed-cover hook) ---- */
-function DjSetCard({ s, playingId, onToggle }) {
+function DjSetCard({ s, playingId, onToggle, active }) {
   const liveArt = useScArtwork(!s.cover ? s.scUrl : null);
+  // Sets that live only inside the playlist get their own player pointed at the
+  // playlist and skipped to that track — real artwork, real playback, and no
+  // per-track URL needed. Mounted lazily so 21 iframes don't load at once.
+  if (s.setIdx != null) return <DjSetPlaylistCard s={s} active={active} />;
   return (
     <div className={"mp-release lp-reveal" + (playingId === s.id ? " is-playing" : "")}>
       <div className="mp-release__art">
@@ -197,7 +201,90 @@ function DjSetCard({ s, playingId, onToggle }) {
         <div className="mp-release__gy"><span>{s.kicker}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{s.tag}</span></div>
         <h3 className="mp-release__title">{s.title}</h3>
         <p className="mp-release__desc">{s.desc}</p>
-        <ScPlayer item={s} playingId={playingId} onToggle={onToggle} />
+        {s.scUrl
+          ? <ScPlayer item={s} playingId={playingId} onToggle={onToggle} />
+          : <a className="mp-release__out" href={s.link} target="_blank" rel="noopener noreferrer">
+              <span className="mp-release__outglyph" aria-hidden="true"><PlayTriangle size={16} id={"dj-" + s.id} /></span>
+              Play on SoundCloud<span className="arr" aria-hidden="true">→</span>
+            </a>}
+      </div>
+    </div>
+  );
+}
+
+/* A card whose player is the playlist widget, skipped to this set's index. */
+function DjSetPlaylistCard({ s, active }) {
+  const hostRef = useMsRef(null);
+  const frameRef = useMsRef(null);
+  const [mounted, setMounted] = useMsState(false);
+  const [art, setArt] = useMsState(null);
+  const [link, setLink] = useMsState(null);
+  const url = window.DJ_SETS_PLAYLIST;
+
+  useMsEffect(() => {
+    if (mounted) return;
+    // A carousel slide can become visible via transform without any scroll, so
+    // mount as soon as this card's slide is active as well as on intersection.
+    if (active) { setMounted(true); return; }
+    const el = hostRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { setMounted(true); io.disconnect(); }
+    }, { rootMargin: "300px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [mounted, active]);
+
+  // Once the widget is ready, jump it to this set, then read that track's real
+  // artwork and permalink straight off the widget — no per-track URL needed.
+  useMsEffect(() => {
+    if (!mounted) return;
+    const el = frameRef.current;
+    if (!el || !window.SC || !window.SC.Widget) return;
+    const w = window.SC.Widget(el);
+    const E = window.SC.Widget.Events;
+    let cancelled = false, tries = 0;
+    // skip()'s own async round-trip often swallows a getCurrentSound issued in
+    // the same tick, so poll for the sound instead of asking once.
+    const attempt = () => {
+      if (cancelled) return;
+      try {
+        w.getCurrentSound((snd) => {
+          if (cancelled) return;
+          if (snd && snd.artwork_url) {
+            setArt(String(snd.artwork_url).replace("-large", "-t500x500"));
+            if (snd.permalink_url) setLink(snd.permalink_url);
+          } else if (tries++ < 10) { setTimeout(attempt, 400); }
+        });
+      } catch (e) { if (tries++ < 10) setTimeout(attempt, 400); }
+    };
+    const onReady = () => { try { w.skip(s.setIdx); } catch (e) {} setTimeout(attempt, 300); };
+    w.bind(E.READY, onReady);
+    // A widget can already be READY before this effect binds (READY never
+    // re-fires), so kick off an independent attempt too.
+    setTimeout(attempt, 900);
+    return () => { cancelled = true; try { w.unbind(E.READY); } catch (e) {} };
+  }, [mounted, s.setIdx]);
+
+  const cover = art || MS_R(s.art, "assets/heroes/musician.jpg");
+  return (
+    <div className="mp-release lp-reveal" ref={hostRef}>
+      <div className="mp-release__art">
+        {link
+          ? <a href={link} target="_blank" rel="noopener noreferrer"><img src={cover} alt={s.title} loading="lazy" /></a>
+          : <img src={cover} alt={s.title} loading="lazy" />}
+      </div>
+      <div className="mp-release__meta">
+        <div className="mp-release__gy"><span>{s.kicker}</span><span className="dot" style={{ width: 4, height: 4, borderRadius: "50%", background: "currentColor", opacity: 0.6 }} /><span>{s.tag}</span></div>
+        <h3 className="mp-release__title">{s.title}</h3>
+        <p className="mp-release__desc">{s.desc}</p>
+        <div className="mp-scplayer">
+          {mounted ? (
+            <iframe ref={frameRef} className="mp-player__iframe" title={s.title} height="166" scrolling="no" frameBorder="no"
+              allow="autoplay; encrypted-media; fullscreen"
+              src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(url) + "&color=%23e8b777&inverse=true&auto_play=false&show_user=true&visual=false&show_artwork=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
+          ) : <div className="mp-release__setskel" aria-hidden="true" />}
+        </div>
       </div>
     </div>
   );
@@ -220,7 +307,7 @@ function DjSetsSection({ sets, banner, onCta, playingId, onToggle }) {
         <div className="mp-carousel__track" style={{ transform: "translateX(-" + (slide * 100) + "%)" }}>
           {slides.map((group, gi) => (
             <div className="mp-players mp-carousel__slide" key={gi}>
-              {group.map((s) => (<DjSetCard s={s} playingId={playingId} onToggle={onToggle} key={s.id} />))}
+              {group.map((s) => (<DjSetCard s={s} playingId={playingId} onToggle={onToggle} active={gi === slide} key={s.id} />))}
             </div>
           ))}
         </div>
@@ -251,16 +338,12 @@ function ReleasesSection({ releases, playingId, onToggle }) {
   return (
     <section className="mp-releases lp-grain" data-screen-label="Latest Releases" ref={ref}>
       <div className="mp-releases__seam" />
+      <div className="mp-sonderrow">
       <div className="mp-head lp-reveal">
         <div className="mp-eyebrow">Original Music</div>
         <h2 className="mp-head__title mp-tex">SØNÐRŚ</h2>
       </div>
       <div className="mp-sonder lp-reveal">
-        <div className="mp-sonder__artist">
-          <span className="mp-sonder__kicker">The Artist</span>
-          <h3 className="mp-sonder__name mp-tex">Teddy Sonder</h3>
-          <p className="mp-sonder__pron">/ˈsɒndər/</p>
-        </div>
         <figure className="mp-sonder__card">
           <div className="mp-sonder__entry">
             <span className="mp-sonder__word">sonder</span>
@@ -269,6 +352,7 @@ function ReleasesSection({ releases, playingId, onToggle }) {
           <span className="mp-sonder__hair" aria-hidden="true"></span>
           <blockquote className="mp-sonder__def">The profound feeling of realizing that everyone, including strangers passed in the street, has a life as complex as one&rsquo;s own, which they are constantly living despite one&rsquo;s personal lack of awareness of it.</blockquote>
         </figure>
+      </div>
       </div>
       <div className="mp-relgrid">
         {releases.map((r) => (
@@ -406,12 +490,70 @@ function SoundtracksSection({ tracks }) {
 }
 
 /* ===================== CHILDHOOD ARCHIVE (cassettes) ===================== */
-function ArchiveSection({ tapes, playingId, onToggle }) {
+function ArchiveSection({ tapes }) {
   const ref = useMpReveal();
   const STEP = 8;
   const [visible, setVisible] = useMsState(STEP);
+  const [current, setCurrent] = useMsState(-1);
+  const [paused, setPaused] = useMsState(false);
+  const [needsStart, setNeedsStart] = useMsState(false);
+  const frameRef = useMsRef(null);
+  const widgetRef = useMsRef(null);
+  const skippingRef = useMsRef(false);
+  const attemptRef = useMsRef(0);
+  const playedRef = useMsRef(0);
+  const pendingRef = useMsRef(-1);
   const shown = tapes.slice(0, visible);
   const hasMore = visible < tapes.length;
+  const PLAYLIST_URL = "https://soundcloud.com/teddrops/sets/original-beats";
+
+  // Bind the SoundCloud Widget API once the iframe mounts, so each row's play
+  // button can skip the shared playlist player to that track's index.
+  useMsEffect(() => {
+    const el = frameRef.current;
+    if (!el || !window.SC || !window.SC.Widget) return;
+    const w = window.SC.Widget(el);
+    widgetRef.current = w;
+    const E = window.SC.Widget.Events;
+    // Drive state purely from the widget's own events; a skip issued from an
+    // idle player emits PAUSE, so ignore PAUSE while a skip is in flight.
+    w.bind(E.PLAY, () => {
+      w.getCurrentSoundIndex((i) => { setCurrent(i); });
+    });
+    // SoundCloud emits transient PAUSE on skip/buffer — trust the widget's own
+    // state rather than a local flag.
+    w.bind(E.PAUSE, () => { if (!skippingRef.current) w.isPaused((p) => setPaused(!!p)); });
+    return () => { try { w.unbind(E.PLAY); w.unbind(E.PAUSE); } catch (e) {} };
+  }, []);
+
+  const toggle = (t) => {
+    const w = widgetRef.current;
+    if (!w) return;
+    if (current === t.idx) {
+      if (paused) { w.play(); } else { w.pause(); }
+      return;
+    }
+    setCurrent(t.idx);
+    setPaused(false);
+    setNeedsStart(false);
+    // A transient PLAY event is NOT proof of playback (each play() attempt emits
+    // PLAY then immediately PAUSE when the browser gates it), so the only
+    // trustworthy signal is a standalone isPaused() read well after the fact.
+    skippingRef.current = true;
+    const token = ++attemptRef.current;
+    w.skip(t.idx, () => { try { w.play(); } catch (e) {} });
+    setTimeout(() => { if (attemptRef.current === token) { try { w.play(); } catch (e) {} } }, 400);
+    setTimeout(() => {
+      if (attemptRef.current !== token) return;
+      w.isPaused((p) => {
+        if (attemptRef.current !== token) return;
+        skippingRef.current = false;
+        setPaused(!!p);
+        setNeedsStart(!!p);
+      });
+    }, 1800);
+  };
+
   return (
     <section className="mp-archive lp-grain" data-screen-label="Childhood Archive" ref={ref}>
       <div className="lp-seam-top" />
@@ -420,27 +562,31 @@ function ArchiveSection({ tapes, playingId, onToggle }) {
         <h2 className="mp-head__title mp-tex">High School &amp; Childhood</h2>
       </div>
       <ol className="mp-tracklist">
-        {shown.map((t) => (
-          <li className={"mp-track lp-reveal" + (playingId === t.id ? " is-playing" : "")} key={t.id}>
-            <button className="mp-track__play" aria-label={(playingId === t.id ? "Pause " : "Play ") + t.title} onClick={() => onToggle && onToggle(t.id)}>
-              {playingId === t.id ? <MsPause /> : <PlayTriangle size={18} id={"tape-" + t.id} />}
-            </button>
-            <span className="mp-track__title">{t.title}</span>
-            <span className="mp-track__label">{t.label}</span>
-            <span className="mp-track__year">{t.year}</span>
-            {playingId === t.id ? (
-              t.scUrl
-                ? <div className="mp-track__player"><ScPlayer item={t} playing={true} onToggle={onToggle} /></div>
-                : <p className="mp-track__soon">Recording not yet digitized — coming soon.</p>
-            ) : null}
-          </li>
-        ))}
+        {shown.map((t) => {
+          const isOn = current === t.idx && !paused;
+          return (
+            <li className={"mp-track lp-reveal" + (isOn ? " is-playing" : "")} key={t.id}>
+              <button className="mp-track__play" aria-label={(isOn ? "Pause " : "Play ") + t.title} onClick={() => toggle(t)}>
+                {isOn ? <MsPause /> : <PlayTriangle size={18} id={"tape-" + t.id} />}
+              </button>
+              <span className="mp-track__title">{t.title}</span>
+              <span className="mp-track__label">{t.label}</span>
+              <span className="mp-track__year">{t.year}</span>
+            </li>
+          );
+        })}
       </ol>
       {hasMore ? (
         <div className="mp-archive__cta lp-reveal" style={{ display: "flex", justifyContent: "center", marginTop: "clamp(40px,6vh,72px)" }}>
-          <button className="mp-archive__more" onClick={() => setVisible((v) => v + STEP)}>View All Childhood Music</button>
+          <button className="mp-archive__more" onClick={() => setVisible(tapes.length)}>View All Childhood Music</button>
         </div>
       ) : null}
+      <div className={"mp-archive__playlist" + (needsStart ? " is-blocked" : "")}>
+        {needsStart ? <p className="mp-archive__playhint">Your browser blocked the start &mdash; press play here once, then the list above will jump between tracks.</p> : null}
+        <iframe ref={frameRef} title="Childhood music playlist" height="166" scrolling="no" frameBorder="no"
+          allow="autoplay; encrypted-media; fullscreen"
+          src={"https://w.soundcloud.com/player/?url=" + encodeURIComponent(PLAYLIST_URL) + "&color=%23e8b777&inverse=true&auto_play=false&show_user=true&visual=false&show_artwork=false&hide_related=true&show_comments=false&show_reposts=false"}></iframe>
+      </div>
       <div className="mp-archive__btns lp-reveal">
         <button className="lp-cta lp-cta--gold" onClick={() => { window.location.href = "contact.html"; }}>Book Ted to DJ your event<span className="arr">→</span></button>
         <button className="lp-cta" onClick={() => { window.location.href = "contact.html"; }}>Inquire about a song collab<span className="arr">→</span></button>

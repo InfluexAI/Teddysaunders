@@ -178,7 +178,7 @@ function MusicPageApp() {
 
               <ReleasesSection releases={window.MUSIC_RELEASES} playingId={playingId} onToggle={togglePlay} />
 
-              <ArchiveSection tapes={window.MUSIC_ARCHIVE} playingId={playingId} onToggle={togglePlay} />
+              <ArchiveSection tapes={window.MUSIC_ARCHIVE} />
 
               <SoundtracksSection tracks={window.MUSIC_SOUNDTRACKS} />
             </div>

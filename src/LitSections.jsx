@@ -508,11 +508,18 @@ function EssayModal({ essays, idx, onClose, onNav }) {
         <div className="lp-emodal__card" style={{ backgroundImage: `url(${["assets/essay-modal-paper.png","assets/essay-modal-paper2.png","assets/essay-modal-paper3.png"][idx % 3]})`, backgroundSize: "100% 100%", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
           {heroImg && <div className="lp-emodal__hero" style={{ backgroundImage: `url(${heroImg})` }} />}
           <div className="lp-emodal__body">
+            <div className="lp-emodal__thumbs">
+              {[0, 1, 2, 3].map((n) => (
+                <image-slot key={n} id={`essay-${idx}-thumb-${n}`} shape="rounded" radius="6" fit="cover" placeholder=""></image-slot>
+              ))}
+            </div>
             <div className="lp-emodal__date">{essay.date}</div>
             <h2 className="lp-emodal__title">{essay.title}</h2>
             <div className="lp-ttmodal__divider" style={{ margin: "20px 0 28px" }} />
             {body.split("\n\n").map((para, i) => (
-              <p key={i} className="lp-emodal__para">{para}</p>
+              <React.Fragment key={i}>
+                <p className="lp-emodal__para">{para}</p>
+              </React.Fragment>
             ))}
             <div className="lp-emodal__footer">
               <div className="lp-emodal__count">{idx + 1} / {essays.length}</div>
@@ -569,6 +576,15 @@ function EssaysSection({ essays, onOpen }) {
 
 /* ============ TEDTHOUGHTS ============ */
 const TT_DATES = ["5/18/2026", "5/18/2026", "5/8/2026", "10/19/2025", "10/19/2025", "9/25/2025", "6/30/2025", "6/14/2025", "5/31/2025", "1/10/2025", "8/13/2024", "8/9/2024"];
+
+// TT_DATES is positional and only covers the twelve built-in thoughts. When the
+// live feed is connected the list is far longer, so a record's own date wins and
+// TT_DATES stays as the fallback for the built-in copy. Display and sort both go
+// through here so they can never disagree about a thought's date.
+function ttDate(items, i) {
+  const p = items && items[i];
+  return (p && p.date) || TT_DATES[i] || "";
+}
 // Full poem text for the reader popup, keyed by card index. Index 0 is written out;
 // others fall back to their card line until full versions are supplied.
 const TT_POEM_FULL = {
@@ -617,6 +633,25 @@ const TT_LYRIC_FULL = {
 function TedThoughts({ poems, onOpen, onCta }) {
   const ref = useLpReveal();
   const items = poems || [];
+  const [order, setOrder] = useLsState("newest");
+  const [seed, setSeed] = useLsState(0);
+
+  const view = React.useMemo(() => {
+    const idx = items.map((_, i) => i);
+    const time = (i) => { const d = new Date(ttDate(items, i) || 0); return isNaN(d) ? 0 : d.getTime(); };
+    if (order === "oldest") return idx.slice().sort((a, b) => time(a) - time(b));
+    if (order === "shuffle") {
+      const a = idx.slice();
+      let s = seed || 1;
+      for (let i = a.length - 1; i > 0; i--) {
+        s = (s * 1103515245 + 12345) & 0x7fffffff;
+        const j = s % (i + 1);
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    return idx.slice().sort((a, b) => time(b) - time(a));
+  }, [items, order, seed]);
 
   return (
     <section className="lp-sec lp-sec--thoughts lp-grain" id="tedthoughts" data-screen-label="TedThoughts" ref={ref}>
@@ -626,16 +661,34 @@ function TedThoughts({ poems, onOpen, onCta }) {
         eyebrow="Epiphanies · Thought Sparks"
         title="TedThoughts"
         blurb={<span>Short philosophical fragments — aphorisms caught mid-flight. Scattered, discovered, alive.</span>} />
+      <div className="lp-tcbar lp-reveal">
+        <button type="button" className="lp-tcbar__shuffle"
+          onClick={() => { setOrder("shuffle"); setSeed(Date.now() % 100000); }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M16 3h5v5" /><path d="M4 20L21 3" /><path d="M21 16v5h-5" /><path d="M15 15l6 6" /><path d="M4 4l5 5" />
+          </svg>
+          Shuffle the scrolls
+        </button>
+        <div className="lp-tcbar__sort" role="group" aria-label="Sort scrolls">
+          <button type="button" className={"lp-tcbar__opt" + (order === "newest" ? " is-on" : "")}
+            onClick={() => setOrder("newest")}>Newest</button>
+          <button type="button" className={"lp-tcbar__opt" + (order === "oldest" ? " is-on" : "")}
+            onClick={() => setOrder("oldest")}>Oldest</button>
+        </div>
+      </div>
       <LpRow par="0.04">
-        {items.map((p, i) => (
-          <div className="lp-tc" key={i}>
-            <p className="lp-tc__excerpt">{p.lines.join("\n\n")}</p>
-            <div className="lp-tc__foot">
-              <span className="lp-tc__date">{p.date || TT_DATES[i] || ""}</span>
-              <ShareBtn param="thought" value={String(i)} />
+        {view.map((i) => {
+          const p = items[i];
+          return (
+            <div className="lp-tc" key={i}>
+              <p className="lp-tc__excerpt">{p.lines.join("\n\n")}</p>
+              <div className="lp-tc__foot">
+                <span className="lp-tc__date">{ttDate(items, i)}</span>
+                <ShareBtn param="thought" value={String(i)} />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </LpRow>
       <div className="lp-ttcta lp-reveal">
         <button className="lp-cta lp-cta--gold" onClick={onCta}>Follow TedThoughts on X<span className="arr">→</span></button>
